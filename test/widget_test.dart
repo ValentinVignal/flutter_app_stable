@@ -11,6 +11,16 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
+    // TODO: I want a lint here for the missing comma.
+    // ignore: unused_local_variable
+    final nestedObject = [
+      {'entry0': {}}
+    ];
+
+    // TODO: I don't want a lint here for the empty block.
+    // ignore: unused_element
+    void methodWithEmptyBlock() {}
+
     // Build our app and trigger a frame.
     await tester.pumpWidget(const MyApp());
 
