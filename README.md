@@ -1,16 +1,22 @@
 # flutter_app_stable
 
-A flutter repository with small reproducible examples of a flutter app on using the stable channel.
+## Go router
 
-## Getting Started
+This is a POC to investigate how to use [go_router](https://pub.dev/packages/go_router).
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+It needs to be able to:
+- [ ] Redirect to different pages
+- [ ] Update the URL when the page changes
+- [ ] Rebuild the app when the user changes the URL
+- [ ] Work with the internet navigator arrows.
+- [ ] Updates the URL without triggering the rebuild of the UI (ex: URL parameter)
+- [ ] Create "shells": Stateful widgets that queries data and provide it with [provider](https://pub.dev/packages/provider). 
+  Maybe there is a workaround possible with [riverpod](https://pub.dev/packages/riverpod)
+  - This also means that the routing might need to be nested.
+- [ ] Force reload the UI (This might be need when data are cleared)
+- [ ] Add security/checks when a page is pushed/an URL is loaded if the user doesn't have access to the page.
+- [ ] Animate between pages.
+- [ ] Access the root router without the `context`.
+- [ ] Allow to change the URL of the pages in history (ex: parameters linked to a singleton/shared state of the app).
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
