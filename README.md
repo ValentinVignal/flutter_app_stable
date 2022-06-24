@@ -6,10 +6,10 @@ This is a POC to investigate how to use [go_router](https://pub.dev/packages/go_
 
 
 It needs to be able to:
-- [ ] Redirect to different pages
-- [ ] Update the URL when the page changes
-- [ ] Rebuild the app when the user changes the URL
-- [ ] Work with the internet navigator arrows.
+- [x] Redirect to different pages
+- [x] Update the URL when the page changes
+- [x] Rebuild the app when the user changes the URL
+- [x] Work with the internet navigator arrows.
 - [ ] Updates the URL without triggering the rebuild of the UI (ex: URL parameter)
 - [ ] Create "shells": Stateful widgets that queries data and provide it with [provider](https://pub.dev/packages/provider). 
   Maybe there is a workaround possible with [riverpod](https://pub.dev/packages/riverpod)
