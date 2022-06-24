@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_stable/screens/login.dart';
+import 'package:flutter_app_stable/screens/projects.dart';
 import 'package:flutter_app_stable/screens/screen_404.dart';
 import 'package:flutter_app_stable/screens/sign_up.dart';
 import 'package:go_router/go_router.dart';
@@ -25,6 +26,11 @@ final router = GoRouter(
       name: WebPage.signUp.pageName,
       builder: (context, state) => const SignUpScreen(),
     ),
+    GoRoute(
+      path: '/projects',
+      name: WebPage.projects.pageName,
+      builder: (context, state) => const ProjectsScreen(),
+    ),
   ],
   errorPageBuilder: (context, state) => MaterialPage(
     key: state.pageKey,
@@ -36,6 +42,7 @@ enum WebPage {
   home,
   login,
   signUp,
+  projects,
 }
 
 extension WebPageX on WebPage {

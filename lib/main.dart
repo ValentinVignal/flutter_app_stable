@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_stable/router/router.dart';
+import 'package:flutter_app_stable/services/cache.dart';
 
-void main() {
+Future<void> main() async {
+  await Cache.init();
   runApp(const MyApp());
 }
 
