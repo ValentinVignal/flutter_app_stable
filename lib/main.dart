@@ -14,10 +14,15 @@ class MyApp extends StatelessWidget {
     return AnimatedBuilder(
       animation: themeNotifier,
       builder: (context, child) {
+        final ThemeData theme;
+        if (themeNotifier.value == ThemeMode.light) {
+          theme = ThemeData.light();
+        } else {
+          theme = ThemeData.dark();
+        }
         return MaterialApp(
           title: 'Flutter Demo',
-          darkTheme: ThemeData.dark(),
-          themeMode: themeNotifier.value,
+          theme: theme,
           home: child,
         );
       },
