@@ -33,14 +33,37 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            showDialog(
-              context: context,
-              builder: (context) => const Dialog(),
-            );
-          },
-          child: const Text('Show dialog'),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            PopupMenuButton(
+              itemBuilder: (context) {
+                return [
+                  const PopupMenuItem(
+                      child: Text('Show dialog'), value: 'dialog'),
+                ];
+              },
+              child: const Text('Menu'),
+              onSelected: (value) {
+                if (value == 'dialog') {
+                  showDialog(
+                    context: context,
+                    builder: (context) => const Dialog(),
+                  );
+                }
+              },
+            ),
+            const SizedBox(height: 16),
+            ElevatedButton(
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (context) => const Dialog(),
+                );
+              },
+              child: const Text('Show dialog'),
+            ),
+          ],
         ),
       ),
     );
