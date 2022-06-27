@@ -41,22 +41,23 @@ class MyHomePage extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            PopupMenuButton(
-              itemBuilder: (context) {
-                return [
-                  const PopupMenuItem(
-                      child: Text('Show dialog'), value: 'dialog'),
-                ];
-              },
-              child: const Text('Menu'),
-              onSelected: (value) {
-                if (value == 'dialog') {
-                  showDialog(
-                    context: context,
-                    builder: (context) => const Dialog(),
+            Theme(
+              data: Theme.of(context).copyWith(
+                primaryColor: Colors.red,
+              ),
+              child: Builder(
+                builder: (context) {
+                  return ElevatedButton(
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) => const Dialog(),
+                      );
+                    },
+                    child: const Text('Show dialog with overridden theme'),
                   );
-                }
-              },
+                },
+              ),
             ),
             const SizedBox(height: 16),
             ElevatedButton(
