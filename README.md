@@ -27,3 +27,19 @@ It needs to be able to:
 - [ ] Ability to pop several pages at once.
 - [ ] Being able to implement a custom address bar (desktop).
 
+
+# Comments
+
+## String and no types.
+
+Go router uses mostly strings.
+To push a new page, you need to push the URL. It is possible not to manipulate URL at all by using names pages. But the parameters and query parameters are still given through a `Map<String, String>`. 
+
+But google works on [go_router_builder](https://pub.dev/packages/go_router_builder) which brings type safety with generated code.
+
+## Nesting
+
+One of the biggest issue is that it doesn't support nested routers/shells at the moment.
+- https://docs.google.com/document/u/0/d/1_mRXinbL_rb0mUt6DAFZ8kj0kh33ZjEMJuUq4PJgwj8/mobilebasic?resourcekey=0-sYbRzE9opneOFZ5F8J3gGw
+- https://github.com/csells/go_router/issues/82
+- https://github.com/flutter/flutter/issues/99126
