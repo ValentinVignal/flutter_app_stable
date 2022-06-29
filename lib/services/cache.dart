@@ -6,14 +6,10 @@ enum CacheKey {
 
 class Cache {
   static Future<void> init() async {
-    final collection = await BoxCollection.open(
-      'cacheCollection',
-      {'cacheBox'},
-    );
-    _box = await collection.openBox<String>('cacheBox');
+    _box ??= await Hive.openBox<String>('cacheBox');
   }
 
-  static CollectionBox<String>? _box;
+  static Box<String?>? _box;
 
-  static CollectionBox<String> get box => _box!;
+  static Box<String?> get box => _box!;
 }

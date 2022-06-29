@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_stable/router/page_name.dart';
 import 'package:flutter_app_stable/router/router.dart';
 
 class SignUpScreen extends StatelessWidget {
@@ -10,7 +11,7 @@ class SignUpScreen extends StatelessWidget {
       body: Center(
         child: TextButton(
           onPressed: () {
-            router.goNamed(WebPage.login.pageName);
+            router.goNamed(WebPageName.login.pageName);
           },
           child: const Text('login'),
         ),

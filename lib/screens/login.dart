@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_stable/router/page_name.dart';
 import 'package:flutter_app_stable/router/router.dart';
 import 'package:flutter_app_stable/services/cache.dart';
 
@@ -18,14 +19,14 @@ class LoginScreen extends StatelessWidget {
                   CacheKey.userId.name,
                   'userId-${DateTime.now()}',
                 );
-                router.pushNamed(WebPage.projects.pageName);
+                router.goNamed(WebPageName.projects.pageName);
               },
               child: const Text('Log in'),
             ),
             const SizedBox(height: 16),
             TextButton(
               onPressed: () {
-                router.goNamed(WebPage.signUp.pageName);
+                router.goNamed(WebPageName.signUp.pageName);
               },
               child: const Text('Sign up'),
             ),

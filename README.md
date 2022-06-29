@@ -25,4 +25,5 @@ It needs to be able to:
 - [ ] Allow to change the URL of the pages in history (ex: parameters linked to a singleton/shared state of the app).
 - [ ] Replace all method.
 - [ ] Ability to pop several pages at once.
+- [ ] Being able to implement a custom address bar (desktop).
 
