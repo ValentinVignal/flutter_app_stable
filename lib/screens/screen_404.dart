@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_stable/router/page_name.dart';
+import 'package:flutter_app_stable/router/pages.dart';
 import 'package:flutter_app_stable/router/router.dart';
 
 class Screen404 extends StatelessWidget {
@@ -19,7 +19,8 @@ class Screen404 extends StatelessWidget {
             const SizedBox(height: 16),
             TextButton(
               onPressed: () {
-                router.goNamed(WebPageName.login.pageName);
+                const route = LoginRoute();
+                router.go(route.location, extra: route);
               },
               child: const Text('home'),
             ),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_stable/router/page_name.dart';
 import 'package:flutter_app_stable/router/pages.dart';
 import 'package:flutter_app_stable/router/router.dart';
 import 'package:flutter_app_stable/screens/projects/data.dart';
@@ -21,7 +20,8 @@ class ProjectScreen extends StatelessWidget {
           IconButton(
             onPressed: () {
               Cache.box.clear();
-              router.goNamed(WebPageName.login.pageName);
+              const route = LoginRoute();
+              router.go(route.location, extra: route);
             },
             icon: const Icon(Icons.logout),
           ),
@@ -35,16 +35,16 @@ class ProjectScreen extends StatelessWidget {
             const SizedBox(height: 16),
             TextButton(
               onPressed: () {
-                final page = ProjectWebPage(id: projects.first.id);
-                router.goNamed(page.name.name, params: page.params);
+                final page = ProjectRoute(id: projects.first.id);
+                router.go(page.location, extra: page);
               },
               child: const Text('Go first'),
             ),
             const SizedBox(height: 16),
             TextButton(
               onPressed: () {
-                final page = ProjectWebPage(id: projects.first.id);
-                router.pushNamed(page.name.name, params: page.params);
+                final page = ProjectRoute(id: projects.first.id);
+                router.push(page.location, extra: page);
               },
               child: const Text('Push first'),
             ),

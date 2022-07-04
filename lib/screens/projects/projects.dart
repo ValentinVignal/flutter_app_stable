@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_stable/router/page_name.dart';
 import 'package:flutter_app_stable/router/pages.dart';
 import 'package:flutter_app_stable/router/router.dart';
 import 'package:flutter_app_stable/screens/projects/data.dart';
@@ -19,7 +18,8 @@ class ProjectsScreen extends StatelessWidget {
           IconButton(
             onPressed: () {
               Cache.box.clear();
-              router.goNamed(WebPageName.login.pageName);
+              const page = LoginRoute();
+              router.go(page.location, extra: page);
             },
             icon: const Icon(Icons.logout),
           ),
@@ -31,8 +31,8 @@ class ProjectsScreen extends StatelessWidget {
           return ListTile(
             title: Text(projects[index].name),
             onTap: () {
-              final page = ProjectWebPage(id: projects[index].id);
-              router.pushNamed(page.name.name, params: page.params);
+              final page = ProjectRoute(id: projects[index].id);
+              router.push(page.location, extra: page);
             },
           );
         },
