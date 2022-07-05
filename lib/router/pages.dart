@@ -3,6 +3,7 @@ import 'package:flutter_app_stable/screens/login.dart';
 import 'package:flutter_app_stable/screens/projects/project.dart';
 import 'package:flutter_app_stable/screens/projects/projects.dart';
 import 'package:flutter_app_stable/screens/sign_up.dart';
+import 'package:flutter_app_stable/screens/tasks/tasks.dart';
 import 'package:go_router/go_router.dart';
 
 part 'pages.g.dart';
@@ -62,4 +63,28 @@ class ProjectRoute extends GoRouteData {
 
   @override
   Widget build(BuildContext context) => ProjectScreen(id: id);
+}
+
+@TypedGoRoute<TasksRoute>(
+  path: '/tasks',
+  routes: [
+    TypedGoRoute<TaskRoute>(path: ':id'),
+  ],
+)
+class TasksRoute extends GoRouteData {
+  const TasksRoute();
+
+  @override
+  Widget build(BuildContext context) => const TasksScreen();
+}
+
+class TaskRoute extends GoRouteData {
+  const TaskRoute({
+    required this.id,
+  });
+
+  final String id;
+
+  @override
+  Widget build(BuildContext context) => const TasksScreen();
 }

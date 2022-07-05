@@ -14,7 +14,7 @@ It needs to be able to:
   - It looks like it works out of the box from the routes
 - [x] Work with the internet navigator arrows.
 - [ ] Updates the URL without triggering the rebuild of the UI (ex: URL parameter)
-- [ ] Create "shells": Stateful widgets that queries data and provide it with [provider](https://pub.dev/packages/provider). 
+- :x: Create "shells": Stateful widgets that queries data and provide it with [provider](https://pub.dev/packages/provider). 
   Maybe there is a workaround possible with [riverpod](https://pub.dev/packages/riverpod)
   - This also means that the routing might need to be nested.
 - [ ] Force reload the UI (This might be need when data are cleared)
@@ -26,8 +26,10 @@ It needs to be able to:
 - [x] Replace all method.
   - This is done with `go` or `goNamed`.
 - [ ] Ability to pop several pages at once.
+  https://github.com/flutter/flutter/issues/107052 
 - [ ] Being able to implement a custom address bar (desktop).
 - [ ] Being able to have the same page in the history several times.
+  https://github.com/flutter/flutter/issues/107045
 
 
 

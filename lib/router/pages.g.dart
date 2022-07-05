@@ -11,6 +11,7 @@ List<GoRoute> get $appRoutes => [
       $loginRoute,
       $signUpRoute,
       $projectsRoute,
+      $tasksRoute,
     ];
 
 GoRoute get $homeRoute => GoRouteData.$route(
@@ -94,6 +95,43 @@ extension $ProjectRouteExtension on ProjectRoute {
 
   String get location => GoRouteData.$location(
         '/projects/${Uri.encodeComponent(id)}',
+      );
+
+  void go(BuildContext context) => context.go(location, extra: this);
+
+  void push(BuildContext context) => context.push(location, extra: this);
+}
+
+GoRoute get $tasksRoute => GoRouteData.$route(
+      path: '/tasks',
+      factory: $TasksRouteExtension._fromState,
+      routes: [
+        GoRouteData.$route(
+          path: ':id',
+          factory: $TaskRouteExtension._fromState,
+        ),
+      ],
+    );
+
+extension $TasksRouteExtension on TasksRoute {
+  static TasksRoute _fromState(GoRouterState state) => const TasksRoute();
+
+  String get location => GoRouteData.$location(
+        '/tasks',
+      );
+
+  void go(BuildContext context) => context.go(location, extra: this);
+
+  void push(BuildContext context) => context.push(location, extra: this);
+}
+
+extension $TaskRouteExtension on TaskRoute {
+  static TaskRoute _fromState(GoRouterState state) => TaskRoute(
+        id: state.params['id']!,
+      );
+
+  String get location => GoRouteData.$location(
+        '/tasks/${Uri.encodeComponent(id)}',
       );
 
   void go(BuildContext context) => context.go(location, extra: this);

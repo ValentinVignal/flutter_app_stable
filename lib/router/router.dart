@@ -12,6 +12,5 @@ final router = GoRouter(
     return null;
   },
   routes: $appRoutes,
-
   errorBuilder: (context, state) => const Screen404(),
 );
