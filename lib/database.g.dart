@@ -10,7 +10,7 @@ part of 'database.dart';
 class UserTableData extends DataClass implements Insertable<UserTableData> {
   final String id;
   final UserBuiltValue user;
-  final dynamic userBuilder;
+  final UserBuiltValueBuilder userBuilder;
   UserTableData(
       {required this.id, required this.user, required this.userBuilder});
   factory UserTableData.fromData(Map<String, dynamic> data, {String? prefix}) {
@@ -53,7 +53,8 @@ class UserTableData extends DataClass implements Insertable<UserTableData> {
     return UserTableData(
       id: serializer.fromJson<String>(json['id']),
       user: serializer.fromJson<UserBuiltValue>(json['user']),
-      userBuilder: serializer.fromJson<dynamic>(json['userBuilder']),
+      userBuilder:
+          serializer.fromJson<UserBuiltValueBuilder>(json['userBuilder']),
     );
   }
   @override
@@ -62,12 +63,14 @@ class UserTableData extends DataClass implements Insertable<UserTableData> {
     return <String, dynamic>{
       'id': serializer.toJson<String>(id),
       'user': serializer.toJson<UserBuiltValue>(user),
-      'userBuilder': serializer.toJson<dynamic>(userBuilder),
+      'userBuilder': serializer.toJson<UserBuiltValueBuilder>(userBuilder),
     };
   }
 
   UserTableData copyWith(
-          {String? id, UserBuiltValue? user, dynamic? userBuilder}) =>
+          {String? id,
+          UserBuiltValue? user,
+          UserBuiltValueBuilder? userBuilder}) =>
       UserTableData(
         id: id ?? this.id,
         user: user ?? this.user,
@@ -97,7 +100,7 @@ class UserTableData extends DataClass implements Insertable<UserTableData> {
 class UserTableCompanion extends UpdateCompanion<UserTableData> {
   final Value<String> id;
   final Value<UserBuiltValue> user;
-  final Value<dynamic> userBuilder;
+  final Value<UserBuiltValueBuilder> userBuilder;
   const UserTableCompanion({
     this.id = const Value.absent(),
     this.user = const Value.absent(),
@@ -106,14 +109,14 @@ class UserTableCompanion extends UpdateCompanion<UserTableData> {
   UserTableCompanion.insert({
     required String id,
     required UserBuiltValue user,
-    required dynamic userBuilder,
+    required UserBuiltValueBuilder userBuilder,
   })  : id = Value(id),
         user = Value(user),
         userBuilder = Value(userBuilder);
   static Insertable<UserTableData> custom({
     Expression<String>? id,
     Expression<UserBuiltValue>? user,
-    Expression<dynamic>? userBuilder,
+    Expression<UserBuiltValueBuilder>? userBuilder,
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
@@ -125,7 +128,7 @@ class UserTableCompanion extends UpdateCompanion<UserTableData> {
   UserTableCompanion copyWith(
       {Value<String>? id,
       Value<UserBuiltValue>? user,
-      Value<dynamic>? userBuilder}) {
+      Value<UserBuiltValueBuilder>? userBuilder}) {
     return UserTableCompanion(
       id: id ?? this.id,
       user: user ?? this.user,
@@ -182,10 +185,10 @@ class $UserTableTable extends UserTable
   final VerificationMeta _userBuilderMeta =
       const VerificationMeta('userBuilder');
   @override
-  late final GeneratedColumnWithTypeConverter<dynamic, String?> userBuilder =
-      GeneratedColumn<String?>('user_builder', aliasedName, false,
+  late final GeneratedColumnWithTypeConverter<UserBuiltValueBuilder, String?>
+      userBuilder = GeneratedColumn<String?>('user_builder', aliasedName, false,
               type: const StringType(), requiredDuringInsert: true)
-          .withConverter<dynamic>($UserTableTable.$converter1);
+          .withConverter<UserBuiltValueBuilder>($UserTableTable.$converter1);
   @override
   List<GeneratedColumn> get $columns => [id, user, userBuilder];
   @override
@@ -222,7 +225,7 @@ class $UserTableTable extends UserTable
 
   static TypeConverter<UserBuiltValue, String> $converter0 =
       const UserConverter();
-  static TypeConverter<dynamic, String> $converter1 =
+  static TypeConverter<UserBuiltValueBuilder, String> $converter1 =
       const UserBuilderConverter();
 }
 

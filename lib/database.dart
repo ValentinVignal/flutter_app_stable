@@ -1,4 +1,5 @@
 import 'package:drift/drift.dart';
+import 'package:flutter_app_stable/user_builder_converter.dart';
 import 'package:flutter_app_stable/user_built_value.dart';
 import 'package:flutter_app_stable/user_converter.dart';
 import 'package:flutter_app_stable/user_table.dart';

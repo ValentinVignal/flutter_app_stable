@@ -1,0 +1,9 @@
+targets:
+  $default:
+    sources:
+      exclude: ["lib/database.dart"]
+
+  drift:
+    dependencies: ["$default"]
+    sources:
+      - lib/database.dart
