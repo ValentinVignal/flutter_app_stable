@@ -14,13 +14,13 @@ class LoginScreen extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             ElevatedButton(
-              onPressed: () async {
-                await Cache.box.put(
+              onPressed: () {
+                Cache.box.put(
                   CacheKey.userId.name,
                   'userId-${DateTime.now()}',
                 );
-                const page = ProjectsRoute();
-                router.go(page.location, extra: page);
+                // The login should be done automatically with the refresh
+                // listenable.
               },
               child: const Text('Log in'),
             ),

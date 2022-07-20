@@ -25,12 +25,14 @@ It needs to be able to:
 - [ ] Allow to change the URL of the pages in history (ex: parameters linked to a singleton/shared state of the app).
 - [x] Replace all method.
   - This is done with `go` or `goNamed`.
+- [ ] Replace the current page. 
+  https://github.com/flutter/flutter/issues/106402
 - [ ] Ability to pop several pages at once.
   https://github.com/flutter/flutter/issues/107052 
 - [ ] Being able to implement a custom address bar (desktop).
 - [ ] Being able to have the same page in the history several times.
   https://github.com/flutter/flutter/issues/107045
-
+- [ ] When in a single object screen, be able to switch to next / previous according to the applied filters.
 
 
 # Comments

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_stable/router/router.dart';
+import 'package:flutter_app_stable/services/auth_service.dart';
 import 'package:flutter_app_stable/services/cache.dart';
 
 Future<void> main() async {
   await Cache.init();
+  await AuthService.init();
   runApp(const MyApp());
 }
 

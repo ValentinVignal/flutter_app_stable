@@ -1,14 +1,30 @@
+import 'dart:developer';
+
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_app_stable/router/pages.dart';
 import 'package:flutter_app_stable/screens/screen_404.dart';
+import 'package:flutter_app_stable/services/auth_service.dart';
 import 'package:go_router/go_router.dart';
 
 final router = GoRouter(
   urlPathStrategy: UrlPathStrategy.path,
-  // TODO: Add a a listenable and give it to the parameter `refreshListenable`
-  // to automatically log-in/out when the use logs in/out.
+  refreshListenable: Listenable.merge([
+    AuthService.isAuthenticatedValueListenable,
+    // We can add other listenable here.
+  ]),
   redirect: (state) {
-    // TODO: Add guards to check whether or not the user is logged in.
-    // TODO: Add sub guards.
+    log('router.redirect: ${state.location}');
+    final uri = Uri.parse(state.location);
+    final rootSegment = uri.pathSegments.first;
+    // TODO: Find a better way to know what page is pushed
+    if (authenticatedRootSegments.contains(rootSegment) &&
+        !AuthService.isAuthenticatedValueListenable.value) {
+      return '/login';
+    } else if (unauthenticatedRootSegments.contains(rootSegment) &&
+        AuthService.isAuthenticatedValueListenable.value) {
+      return '/projects';
+    }
     return null;
   },
   routes: $appRoutes,

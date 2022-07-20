@@ -10,6 +10,10 @@ import 'package:go_router/go_router.dart';
 
 part 'pages.g.dart';
 
+// TODO: Find a better way to classify pages.
+const authenticatedRootSegments = {'projects', 'tasks'};
+const unauthenticatedRootSegments = {'sign-up', 'login'};
+
 class _AuthenticatedScreen extends StatelessWidget {
   const _AuthenticatedScreen({required this.child, Key? key}) : super(key: key);
 
