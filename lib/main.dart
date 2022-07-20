@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app_stable/router/router.dart';
 import 'package:flutter_app_stable/services/auth_service.dart';
 import 'package:flutter_app_stable/services/cache.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logging/logging.dart';
 
 Future<void> main() async {
@@ -16,12 +17,21 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      darkTheme: ThemeData.dark(),
-      routeInformationProvider: router.routeInformationProvider,
-      routeInformationParser: router.routeInformationParser,
-      routerDelegate: router.routerDelegate,
-      title: 'Go router POC',
+    return ProviderScope(
+      child: MaterialApp.router(
+        theme: ThemeData(
+          brightness: Brightness.light,
+          useMaterial3: true,
+        ),
+        darkTheme: ThemeData(
+          brightness: Brightness.dark,
+          useMaterial3: true,
+        ),
+        routeInformationProvider: router.routeInformationProvider,
+        routeInformationParser: router.routeInformationParser,
+        routerDelegate: router.routerDelegate,
+        title: 'Go router POC',
+      ),
     );
   }
 }

@@ -16,7 +16,7 @@ final router = GoRouter(
   ]),
   debugLogDiagnostics: true,
   redirect: (state) {
-    _logger.fine('router.redirect: ${state.location}');
+    _logger.finest('router.redirect: ${state.location}');
     final uri = Uri.parse(state.location);
     final rootSegment =
         uri.pathSegments.isNotEmpty ? uri.pathSegments.first : '/';
