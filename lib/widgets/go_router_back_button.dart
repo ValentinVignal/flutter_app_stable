@@ -1,21 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_stable/router/router.dart';
+import 'package:go_router/go_router.dart';
 
 class GoRouterBackButton extends StatelessWidget {
   const GoRouterBackButton({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedBuilder(
-      animation: router,
-      builder: (context, child) {
-        if (router.canPop()) {
-          return child!;
-        }
-        return const SizedBox.shrink();
-      },
+    final router = GoRouter.of(context);
+    return Visibility(
+      visible: router.canPop(),
       child: BackButton(
-        onPressed: router.pop,
+        onPressed: () {
+          router.pop();
+        },
       ),
     );
   }
