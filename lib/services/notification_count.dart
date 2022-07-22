@@ -10,7 +10,7 @@ final notificationCountProvider = StreamProvider.autoDispose<int>((ref) {
       'The user needs to be logged in');
 
   return Stream.periodic(
-    const Duration(seconds: 30),
+    const Duration(seconds: 1),
     (index) {
       _logger.finest('New count dumped in the stream');
       return index;

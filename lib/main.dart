@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_stable/database/database.dart';
 import 'package:flutter_app_stable/router/router.dart';
 import 'package:flutter_app_stable/services/auth_service.dart';
 import 'package:flutter_app_stable/services/cache.dart';
@@ -9,6 +10,7 @@ Future<void> main() async {
   Logger.root.level = Level.ALL;
   await Cache.init();
   await AuthService.init();
+  await Database.init();
   runApp(const MyApp());
 }
 
