@@ -1,7 +1,9 @@
 import 'package:drift/drift.dart';
 import 'package:flutter_app_stable/database/entities/form/form_dao.dart';
+import 'package:flutter_app_stable/database/entities/form/form_status.dart';
 import 'package:flutter_app_stable/database/entities/form/form_table.dart';
 import 'package:flutter_app_stable/database/entities/project/project_dao.dart';
+import 'package:flutter_app_stable/database/entities/project/project_status.dart';
 import 'package:flutter_app_stable/database/entities/project/project_table.dart';
 import 'package:flutter_app_stable/database/entities/task/task_dao.dart';
 import 'package:flutter_app_stable/database/entities/task/task_status.dart';

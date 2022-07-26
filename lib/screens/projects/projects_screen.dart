@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_stable/database/database.dart';
+import 'package:flutter_app_stable/database/entities/project/project_status.dart';
 import 'package:flutter_app_stable/router/pages.dart';
 import 'package:flutter_app_stable/router/router.dart';
 
@@ -43,9 +44,17 @@ class _ProjectListState extends State<ProjectList> {
           itemCount: snapshot.data!.length,
           itemBuilder: (context, index) {
             final project = snapshot.data![index];
+            final theme = Theme.of(context);
             return ListTile(
+              leading: DecoratedBox(
+                decoration: BoxDecoration(
+                  color: project.status.color(theme),
+                  shape: BoxShape.circle,
+                ),
+                child: const SizedBox.square(dimension: 8),
+              ),
               title: Text(project.name),
-              subtitle: Text(project.id.toString()),
+              subtitle: Text('${project.id} - ${project.status.name}'),
               onTap: () {
                 final page = ProjectRoute(id: project.id.toString());
                 router.push(page.location, extra: page);

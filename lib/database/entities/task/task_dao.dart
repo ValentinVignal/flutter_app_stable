@@ -11,8 +11,21 @@ part 'task_dao.g.dart';
 class TaskDao extends DatabaseAccessor<Database> with _$TaskDaoMixin {
   TaskDao(Database database) : super(database);
 
-  Stream<List<TaskData>> watch() {
-    return select(task).watch();
+  Stream<Iterable<TaskWithProject>> watch() {
+    final query = select(task).join([
+      innerJoin(project, project.id.equalsExp(task.projectId)),
+    ]);
+
+    final stream = query.watch();
+
+    return stream.map((rows) {
+      return rows.map((row) {
+        return TaskWithProject(
+          task: row.readTable(task),
+          project: row.readTable(project),
+        );
+      });
+    });
   }
 
   Stream<TaskData> watchSingle(int id) {
@@ -44,4 +57,13 @@ class TaskDao extends DatabaseAccessor<Database> with _$TaskDaoMixin {
       );
     });
   }
+}
+
+class TaskWithProject {
+  const TaskWithProject({
+    required this.task,
+    required this.project,
+  });
+  final TaskData task;
+  final ProjectData project;
 }

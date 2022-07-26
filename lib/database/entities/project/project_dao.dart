@@ -33,6 +33,7 @@ class ProjectDao extends DatabaseAccessor<Database> with _$ProjectDaoMixin {
           10,
           (index) => ProjectCompanion.insert(
             name: faker.company.name(),
+            status: random.element(ProjectStatus.values),
           ),
         ),
       );

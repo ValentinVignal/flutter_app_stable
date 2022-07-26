@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_stable/screens/login.dart';
-import 'package:flutter_app_stable/screens/projects/project.dart';
-import 'package:flutter_app_stable/screens/projects/projects.dart';
+import 'package:flutter_app_stable/screens/projects/project_screen.dart';
+import 'package:flutter_app_stable/screens/projects/projects_screen.dart';
 import 'package:flutter_app_stable/screens/sign_up.dart';
-import 'package:flutter_app_stable/screens/tasks/tasks.dart';
+import 'package:flutter_app_stable/screens/tasks/tasks_screen.dart';
 import 'package:flutter_app_stable/widgets/left_pane.dart';
 import 'package:flutter_app_stable/widgets/top_bar.dart';
 import 'package:go_router/go_router.dart';
