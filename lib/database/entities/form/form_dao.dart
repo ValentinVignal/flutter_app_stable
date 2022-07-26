@@ -11,12 +11,37 @@ part 'form_dao.g.dart';
 class FormDao extends DatabaseAccessor<Database> with _$FormDaoMixin {
   FormDao(Database database) : super(database);
 
-  Stream<List<FormData>> watch() {
-    return select(form).watch();
+  Stream<Iterable<FormWithProject>> watch() {
+    final query = select(form).join([
+      innerJoin(project, project.id.equalsExp(form.projectId)),
+    ]);
+
+    final stream = query.watch();
+
+    return stream.map((rows) {
+      return rows.map((row) {
+        return FormWithProject(
+          form: row.readTable(form),
+          project: row.readTable(project),
+        );
+      });
+    });
   }
 
-  Stream<FormData> watchSingle(int id) {
-    return (select(form)..where((p) => p.id.equals(id))).watchSingle();
+  Stream<FormWithProject> watchSingle(int id) {
+    final query = (select(form).join([
+      innerJoin(project, project.id.equalsExp(form.projectId)),
+    ])
+      ..where(form.id.equals(id)));
+
+    final stream = query.watchSingle();
+
+    return stream.map((row) {
+      return FormWithProject(
+        form: row.readTable(form),
+        project: row.readTable(project),
+      );
+    });
   }
 
   Future<void> insert() async {
@@ -44,4 +69,13 @@ class FormDao extends DatabaseAccessor<Database> with _$FormDaoMixin {
       );
     });
   }
+}
+
+class FormWithProject {
+  const FormWithProject({
+    required this.form,
+    required this.project,
+  });
+  final FormData form;
+  final ProjectData project;
 }

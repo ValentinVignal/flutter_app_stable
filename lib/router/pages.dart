@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_stable/screens/forms/form_screen.dart';
+import 'package:flutter_app_stable/screens/forms/forms_screen.dart';
 import 'package:flutter_app_stable/screens/login.dart';
 import 'package:flutter_app_stable/screens/projects/project_screen.dart';
 import 'package:flutter_app_stable/screens/projects/projects_screen.dart';
@@ -11,7 +13,7 @@ import 'package:go_router/go_router.dart';
 part 'pages.g.dart';
 
 // TODO: Find a better way to classify pages.
-const authenticatedRootSegments = {'projects', 'tasks'};
+const authenticatedRootSegments = {'projects', 'tasks', 'forms'};
 const unauthenticatedRootSegments = {'sign-up', 'login'};
 
 class _AuthenticatedScreen extends StatelessWidget {
@@ -143,4 +145,28 @@ class TaskRoute extends AuthenticatedRoute {
 
   @override
   Widget buildScreen() => const TasksScreen();
+}
+
+@TypedGoRoute<FormsRoute>(
+  path: '/forms',
+  routes: [
+    TypedGoRoute<FormRoute>(path: ':id'),
+  ],
+)
+class FormsRoute extends AuthenticatedRoute {
+  const FormsRoute();
+
+  @override
+  Widget buildScreen() => const FormsScreen();
+}
+
+class FormRoute extends AuthenticatedRoute {
+  const FormRoute({
+    required this.id,
+  });
+
+  final String id;
+
+  @override
+  Widget buildScreen() => FormScreen(id: id);
 }

@@ -40,6 +40,13 @@ class LeftPane extends StatelessWidget {
                     ),
                     ListTile(
                       onTap: () {
+                        const route = FormsRoute();
+                        router.go(route.location);
+                      },
+                      title: const Text('Forms'),
+                    ),
+                    ListTile(
+                      onTap: () {
                         const route = TasksRoute();
                         router.go(route.location);
                       },

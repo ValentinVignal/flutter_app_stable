@@ -12,6 +12,7 @@ List<GoRoute> get $appRoutes => [
       $signUpRoute,
       $projectsRoute,
       $tasksRoute,
+      $formsRoute,
     ];
 
 GoRoute get $homeRoute => GoRouteData.$route(
@@ -132,6 +133,43 @@ extension $TaskRouteExtension on TaskRoute {
 
   String get location => GoRouteData.$location(
         '/tasks/${Uri.encodeComponent(id)}',
+      );
+
+  void go(BuildContext context) => context.go(location, extra: this);
+
+  void push(BuildContext context) => context.push(location, extra: this);
+}
+
+GoRoute get $formsRoute => GoRouteData.$route(
+      path: '/forms',
+      factory: $FormsRouteExtension._fromState,
+      routes: [
+        GoRouteData.$route(
+          path: ':id',
+          factory: $FormRouteExtension._fromState,
+        ),
+      ],
+    );
+
+extension $FormsRouteExtension on FormsRoute {
+  static FormsRoute _fromState(GoRouterState state) => const FormsRoute();
+
+  String get location => GoRouteData.$location(
+        '/forms',
+      );
+
+  void go(BuildContext context) => context.go(location, extra: this);
+
+  void push(BuildContext context) => context.push(location, extra: this);
+}
+
+extension $FormRouteExtension on FormRoute {
+  static FormRoute _fromState(GoRouterState state) => FormRoute(
+        id: state.params['id']!,
+      );
+
+  String get location => GoRouteData.$location(
+        '/forms/${Uri.encodeComponent(id)}',
       );
 
   void go(BuildContext context) => context.go(location, extra: this);

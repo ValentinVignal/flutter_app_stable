@@ -10,6 +10,7 @@ class SeedButton extends StatelessWidget {
       onPressed: () async {
         await Database.instance.projectDao.seed();
         await Database.instance.taskDao.seed();
+        await Database.instance.formDao.seed();
       },
       icon: const Icon(Icons.grass),
     );
