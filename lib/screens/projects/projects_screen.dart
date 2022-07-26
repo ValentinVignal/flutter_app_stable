@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_stable/database/database.dart';
 import 'package:flutter_app_stable/database/entities/project/project_status.dart';
+import 'package:flutter_app_stable/database/entities/project/projects_provider.dart';
 import 'package:flutter_app_stable/router/pages.dart';
 import 'package:flutter_app_stable/router/router.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class ProjectsScreen extends StatelessWidget {
   const ProjectsScreen({Key? key}) : super(key: key);
@@ -21,29 +23,22 @@ class ProjectsScreen extends StatelessWidget {
   }
 }
 
-class ProjectList extends StatefulWidget {
+class ProjectList extends ConsumerWidget {
   const ProjectList({Key? key}) : super(key: key);
 
   @override
-  State<ProjectList> createState() => _ProjectListState();
-}
-
-class _ProjectListState extends State<ProjectList> {
-  final _projectsStream = Database.instance.projectDao.watch();
-  @override
-  Widget build(BuildContext context) {
-    return StreamBuilder<List<ProjectData>>(
-      stream: _projectsStream,
-      builder: (context, snapshot) {
-        if (snapshot.hasError) {
-          return Center(child: ErrorWidget(snapshot.error!));
-        } else if (!snapshot.hasData) {
-          return const Center(child: CircularProgressIndicator());
-        }
+  Widget build(BuildContext context, WidgetRef ref) {
+    final projectsAsyncValue = ref.watch(filteredProjectsProvider);
+    return projectsAsyncValue.map<Widget>(
+      error: (error) {
+        return Center(child: ErrorWidget(error));
+      },
+      loading: (_) => const Center(child: CircularProgressIndicator()),
+      data: (data) {
         return ListView.builder(
-          itemCount: snapshot.data!.length,
+          itemCount: data.value.length,
           itemBuilder: (context, index) {
-            final project = snapshot.data![index];
+            final project = data.value[index];
             final theme = Theme.of(context);
             return ListTile(
               leading: DecoratedBox(

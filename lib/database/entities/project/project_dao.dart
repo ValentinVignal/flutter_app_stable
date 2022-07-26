@@ -10,8 +10,12 @@ part 'project_dao.g.dart';
 class ProjectDao extends DatabaseAccessor<Database> with _$ProjectDaoMixin {
   ProjectDao(Database database) : super(database);
 
-  Stream<List<ProjectData>> watch() {
-    return select(project).watch();
+  Stream<List<ProjectData>> watch({Iterable<int> ids = const {}}) {
+    var query = select(project);
+    if (ids.isNotEmpty) {
+      query = query..where((p) => p.id.isIn(ids));
+    }
+    return query.watch();
   }
 
   Stream<ProjectData> watchSingle(int id) {
@@ -30,7 +34,7 @@ class ProjectDao extends DatabaseAccessor<Database> with _$ProjectDaoMixin {
       batch.insertAll(
         project,
         List.generate(
-          10,
+          3,
           (index) => ProjectCompanion.insert(
             name: faker.company.name(),
             status: random.element(ProjectStatus.values),

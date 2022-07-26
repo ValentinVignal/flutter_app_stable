@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_stable/database/database.dart';
-import 'package:flutter_app_stable/database/entities/task/task_dao.dart';
+import 'package:flutter_app_stable/database/entities/task/task_provider.dart';
 import 'package:flutter_app_stable/database/entities/task/task_status.dart';
 import 'package:flutter_app_stable/router/pages.dart';
 import 'package:flutter_app_stable/router/router.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class TasksScreen extends StatelessWidget {
   const TasksScreen({Key? key}) : super(key: key);
@@ -22,29 +23,20 @@ class TasksScreen extends StatelessWidget {
   }
 }
 
-class TaskList extends StatefulWidget {
+class TaskList extends ConsumerWidget {
   const TaskList({Key? key}) : super(key: key);
 
   @override
-  State<TaskList> createState() => _TaskListState();
-}
-
-class _TaskListState extends State<TaskList> {
-  final _tasksStream = Database.instance.taskDao.watch();
-  @override
-  Widget build(BuildContext context) {
-    return StreamBuilder<Iterable<TaskWithProject>>(
-      stream: _tasksStream,
-      builder: (context, snapshot) {
-        if (snapshot.hasError) {
-          return Center(child: ErrorWidget(snapshot.error!));
-        } else if (!snapshot.hasData) {
-          return const Center(child: CircularProgressIndicator());
-        }
+  Widget build(BuildContext context, WidgetRef ref) {
+    final tasksAsyncValue = ref.watch(filteredTasksProvider);
+    return tasksAsyncValue.map(
+      error: (error) => Center(child: ErrorWidget(error)),
+      loading: (_) => const Center(child: CircularProgressIndicator()),
+      data: (data) {
         return ListView.builder(
-          itemCount: snapshot.data!.length,
+          itemCount: data.value.length,
           itemBuilder: (context, index) {
-            final taskWithProject = snapshot.data!.elementAt(index);
+            final taskWithProject = data.value.elementAt(index);
             final theme = Theme.of(context);
             return ListTile(
               leading: DecoratedBox(

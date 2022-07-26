@@ -11,12 +11,18 @@ part 'task_dao.g.dart';
 class TaskDao extends DatabaseAccessor<Database> with _$TaskDaoMixin {
   TaskDao(Database database) : super(database);
 
-  Stream<Iterable<TaskWithProject>> watch() {
-    final query = select(task).join([
+  Stream<Iterable<TaskWithProject>> watch(
+      {Iterable<int> projectIds = const {}}) {
+    final query = select(task);
+    if (projectIds.isNotEmpty) {
+      query.where((t) => t.projectId.isIn(projectIds));
+    }
+
+    final joinQuery = query.join([
       innerJoin(project, project.id.equalsExp(task.projectId)),
     ]);
 
-    final stream = query.watch();
+    final stream = joinQuery.watch();
 
     return stream.map((rows) {
       return rows.map((row) {
