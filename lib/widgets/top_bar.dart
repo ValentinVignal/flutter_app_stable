@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app_stable/services/cache.dart';
 import 'package:flutter_app_stable/widgets/go_router_back_button.dart';
 import 'package:flutter_app_stable/widgets/notification_bell.dart';
+import 'package:flutter_app_stable/widgets/seed_button.dart';
 
 // Even if we were to make is a stateful widget to reuse the state when we us
 // GoRouter's `go` method, it won't work for `push` as the previous top bar
@@ -15,6 +16,7 @@ class TopBar extends StatelessWidget {
       leading: const GoRouterBackButton(),
       title: const Text('Top bar'),
       actions: [
+        const SeedButton(),
         const NotificationBell(),
         IconButton(
           onPressed: () {

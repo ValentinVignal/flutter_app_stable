@@ -1,9 +1,12 @@
 import 'package:drift/drift.dart';
-import 'package:flutter_app_stable/database/dao/project_dao.dart';
-import 'package:flutter_app_stable/database/dao/task_dao.dart';
+import 'package:flutter_app_stable/database/entities/form/form_dao.dart';
+import 'package:flutter_app_stable/database/entities/form/form_table.dart';
+import 'package:flutter_app_stable/database/entities/project/project_dao.dart';
+import 'package:flutter_app_stable/database/entities/project/project_table.dart';
+import 'package:flutter_app_stable/database/entities/task/task_dao.dart';
+import 'package:flutter_app_stable/database/entities/task/task_status.dart';
+import 'package:flutter_app_stable/database/entities/task/task_table.dart';
 import 'package:flutter_app_stable/database/query_executor/shared.dart';
-import 'package:flutter_app_stable/database/tables/project.dart';
-import 'package:flutter_app_stable/database/tables/task.dart';
 
 part 'database.g.dart';
 
@@ -11,10 +14,12 @@ part 'database.g.dart';
   tables: [
     Project,
     Task,
+    Form,
   ],
   daos: [
     ProjectDao,
     TaskDao,
+    FormDao,
   ],
 )
 class Database extends _$Database {

@@ -1,11 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'task_dao.dart';
+part of 'form_dao.dart';
 
 // **************************************************************************
 // DaoGenerator
 // **************************************************************************
 
-mixin _$TaskDaoMixin on DatabaseAccessor<Database> {
-  $TaskTable get task => attachedDatabase.task;
+mixin _$FormDaoMixin on DatabaseAccessor<Database> {
+  $FormTable get form => attachedDatabase.form;
+  $ProjectTable get project => attachedDatabase.project;
 }
