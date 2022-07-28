@@ -1,19 +1,21 @@
 import 'package:flutter_app_stable/utils/option.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:riverpod/riverpod.dart';
 
-part 'applied_filter.freezed.dart';
+part 'filter.freezed.dart';
 
 @freezed
-class AppliedFilter<T> with _$AppliedFilter<T> {
-  const factory AppliedFilter({
+class Filter<T> with _$Filter<T> {
+  const factory Filter({
     required String name,
     required Set<T> selected,
     required Iterable<Option<T>> options,
-  }) = _AppliedFilter;
+    required StateProvider<Set<T>> appliedFilterProvider,
+  }) = _Filter;
 
-  const AppliedFilter._();
+  const Filter._();
 
-  AppliedFilter<T> copyWithSelection(T id) {
+  Filter<T> copyWithSelection(T id) {
     final _selected = Set<T>.from(selected);
     if (_selected.contains(id)) {
       _selected.remove(id);

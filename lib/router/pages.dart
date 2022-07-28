@@ -6,9 +6,12 @@ import 'package:flutter_app_stable/screens/projects/project_screen.dart';
 import 'package:flutter_app_stable/screens/projects/projects_screen.dart';
 import 'package:flutter_app_stable/screens/sign_up.dart';
 import 'package:flutter_app_stable/screens/tasks/tasks_screen.dart';
+import 'package:flutter_app_stable/services/auth_service.dart';
+import 'package:flutter_app_stable/utils/utils.dart';
 import 'package:flutter_app_stable/widgets/left_pane.dart';
 import 'package:flutter_app_stable/widgets/top_bar.dart';
 import 'package:go_router/go_router.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'pages.g.dart';
 
@@ -76,7 +79,11 @@ class HomeRoute extends GoRouteData {
   String? redirect() {
     // TODO: If logged in, go to projects
     // TODO: Looks how to know manipulate URI. (look at named location).
-    return '/login';
+    if (AuthService.isAuthenticatedValueListenable.value) {
+      return '/projects';
+    } else {
+      return '/login';
+    }
   }
 }
 
@@ -103,10 +110,45 @@ class SignUpRoute extends GoRouteData {
   ],
 )
 class ProjectsRoute extends AuthenticatedRoute {
-  const ProjectsRoute();
+  const ProjectsRoute({this.projectId});
+
+  final String? projectId;
 
   @override
   Widget buildScreen() => const ProjectsScreen();
+}
+
+@JsonSerializable(
+  fieldRename: FieldRename.kebab,
+)
+class ProjectsRouteParameters {
+  const ProjectsRouteParameters({
+    this.projectId,
+  });
+
+  factory ProjectsRouteParameters.fromParsedData({
+    Set<int>? projectIds,
+  }) {
+    final String? projectId;
+    if (projectIds?.isNotEmpty ?? false) {
+      projectId = projectIds!.join(' ');
+    } else {
+      projectId = null;
+    }
+    return ProjectsRouteParameters(projectId: projectId);
+  }
+
+  factory ProjectsRouteParameters.fromJson(Json json) =>
+      _$ProjectsRouteParametersFromJson(json);
+
+  final String? projectId;
+
+  Set<int> get parsedProjectIds {
+    if (projectId == null || projectId!.isEmpty) return const {};
+    return projectId!.split(' ').map((id) => int.parse(id)).toSet();
+  }
+
+  Json toJson() => _$ProjectsRouteParametersToJson(this);
 }
 
 // Nested route don't need to be decorated as the [TypedGoRoute<NestedRoute>] is

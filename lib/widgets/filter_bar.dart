@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_stable/filters/applied_filter.dart';
+import 'package:flutter_app_stable/filters/filter.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class FilterBar extends StatelessWidget {
   const FilterBar({
+    required this.onChanged,
     this.filters = const [],
     Key? key,
   }) : super(key: key);
 
-  final Iterable<StateProvider<AppliedFilter>> filters;
+  final Iterable<Provider<Filter>> filters;
+
+  final VoidCallback onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +24,8 @@ class FilterBar extends StatelessWidget {
           children: filters
               .map(
                 (filter) => FilterWidget(
-                  appliedFilter: filter,
+                  filterProvider: filter,
+                  onChanged: onChanged,
                 ),
               )
               .toList(),
@@ -33,15 +37,17 @@ class FilterBar extends StatelessWidget {
 
 class FilterWidget<T> extends ConsumerWidget {
   const FilterWidget({
-    required this.appliedFilter,
+    required this.onChanged,
+    required this.filterProvider,
     Key? key,
   }) : super(key: key);
 
-  final StateProvider<AppliedFilter<T>> appliedFilter;
+  final Provider<Filter<T>> filterProvider;
+  final VoidCallback onChanged;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final filter = ref.watch(appliedFilter);
+    final filter = ref.watch(filterProvider);
 
     final selected = filter.options.where(
       (option) => filter.selected.contains(option.id),
@@ -64,10 +70,18 @@ class FilterWidget<T> extends ConsumerWidget {
       },
       onSelected: (id) {
         if (id == null) return;
-        final filterNotifier = ref.read(appliedFilter.notifier);
-        filterNotifier.state = filterNotifier.state.copyWithSelection(
-          id,
+        final filter = ref.read(filterProvider);
+        final appliedFilterNotifier = ref.read(
+          filter.appliedFilterProvider.notifier,
         );
+        final newSet = appliedFilterNotifier.state.toSet();
+        if (newSet.contains(id)) {
+          newSet.remove(id);
+        } else {
+          newSet.add(id);
+        }
+        appliedFilterNotifier.state = newSet;
+        onChanged();
       },
       child: Padding(
         padding: const EdgeInsets.all(8.0),
