@@ -1,5 +1,5 @@
 import 'package:flutter_app_stable/database/database.dart';
-import 'package:flutter_app_stable/filters/project/project_applied_filters.dart';
+import 'package:flutter_app_stable/filters/global/project/project_applied_filter.dart';
 import 'package:riverpod/riverpod.dart';
 
 final filteredTasksProvider = StreamProvider.autoDispose((ref) {

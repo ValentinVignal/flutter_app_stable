@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_stable/database/database.dart';
 import 'package:flutter_app_stable/database/entities/project/project_status.dart';
-import 'package:flutter_app_stable/database/entities/project/projects_provider.dart';
+import 'package:flutter_app_stable/filters/global/project/project_applied_filter.dart';
 import 'package:flutter_app_stable/router/pages.dart';
 import 'package:flutter_app_stable/router/router.dart';
+import 'package:flutter_app_stable/screens/projects/filters/project_status_filter.dart';
+import 'package:flutter_app_stable/screens/projects/projects_provider.dart';
+import 'package:flutter_app_stable/widgets/filter_bar.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class ProjectsScreen extends StatelessWidget {
@@ -13,13 +16,18 @@ class ProjectsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: const ProjectList(),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Database.instance.projectDao.insert();
-        },
-        child: const Icon(Icons.add),
+    return ProviderScope(
+      overrides: [
+        projectStatusAppliedFilterProvider,
+      ],
+      child: Scaffold(
+        body: const ProjectList(),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Database.instance.projectDao.insert();
+          },
+          child: const Icon(Icons.add),
+        ),
       ),
     );
   }
@@ -30,8 +38,9 @@ class ProjectList extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    ref.watch(projectStatusAppliedFilterProvider);
     final projectsAsyncValue = ref.watch(filteredProjectsProvider);
-    return projectsAsyncValue.map<Widget>(
+    final child = projectsAsyncValue.map<Widget>(
       error: (error) {
         return Center(child: ErrorWidget(error));
       },
@@ -60,6 +69,20 @@ class ProjectList extends ConsumerWidget {
           },
         );
       },
+    );
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        FilterBar(
+          filters: [
+            projectFilterProvider,
+            projectStatusFilterProvider,
+          ],
+        ),
+        Expanded(
+          child: child,
+        ),
+      ],
     );
   }
 }

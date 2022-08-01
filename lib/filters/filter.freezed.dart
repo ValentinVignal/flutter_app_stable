@@ -19,7 +19,7 @@ mixin _$Filter<T> {
   String get name => throw _privateConstructorUsedError;
   Set<T> get selected => throw _privateConstructorUsedError;
   Iterable<Option<T>> get options => throw _privateConstructorUsedError;
-  StateProvider<Set<T>> get appliedFilterProvider =>
+  StateProviderOverrideMixin<Set<T>> get appliedFilterProvider =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -35,7 +35,7 @@ abstract class $FilterCopyWith<T, $Res> {
       {String name,
       Set<T> selected,
       Iterable<Option<T>> options,
-      StateProvider<Set<T>> appliedFilterProvider});
+      StateProviderOverrideMixin<Set<T>> appliedFilterProvider});
 }
 
 /// @nodoc
@@ -69,7 +69,7 @@ class _$FilterCopyWithImpl<T, $Res> implements $FilterCopyWith<T, $Res> {
       appliedFilterProvider: appliedFilterProvider == freezed
           ? _value.appliedFilterProvider
           : appliedFilterProvider // ignore: cast_nullable_to_non_nullable
-              as StateProvider<Set<T>>,
+              as StateProviderOverrideMixin<Set<T>>,
     ));
   }
 }
@@ -84,7 +84,7 @@ abstract class _$$_FilterCopyWith<T, $Res> implements $FilterCopyWith<T, $Res> {
       {String name,
       Set<T> selected,
       Iterable<Option<T>> options,
-      StateProvider<Set<T>> appliedFilterProvider});
+      StateProviderOverrideMixin<Set<T>> appliedFilterProvider});
 }
 
 /// @nodoc
@@ -120,7 +120,7 @@ class __$$_FilterCopyWithImpl<T, $Res> extends _$FilterCopyWithImpl<T, $Res>
       appliedFilterProvider: appliedFilterProvider == freezed
           ? _value.appliedFilterProvider
           : appliedFilterProvider // ignore: cast_nullable_to_non_nullable
-              as StateProvider<Set<T>>,
+              as StateProviderOverrideMixin<Set<T>>,
     ));
   }
 }
@@ -148,7 +148,7 @@ class _$_Filter<T> extends _Filter<T> {
   @override
   final Iterable<Option<T>> options;
   @override
-  final StateProvider<Set<T>> appliedFilterProvider;
+  final StateProviderOverrideMixin<Set<T>> appliedFilterProvider;
 
   @override
   String toString() {
@@ -183,11 +183,11 @@ class _$_Filter<T> extends _Filter<T> {
 
 abstract class _Filter<T> extends Filter<T> {
   const factory _Filter(
-          {required final String name,
-          required final Set<T> selected,
-          required final Iterable<Option<T>> options,
-          required final StateProvider<Set<T>> appliedFilterProvider}) =
-      _$_Filter<T>;
+      {required final String name,
+      required final Set<T> selected,
+      required final Iterable<Option<T>> options,
+      required final StateProviderOverrideMixin<Set<T>>
+          appliedFilterProvider}) = _$_Filter<T>;
   const _Filter._() : super._();
 
   @override
@@ -197,7 +197,7 @@ abstract class _Filter<T> extends Filter<T> {
   @override
   Iterable<Option<T>> get options;
   @override
-  StateProvider<Set<T>> get appliedFilterProvider;
+  StateProviderOverrideMixin<Set<T>> get appliedFilterProvider;
   @override
   @JsonKey(ignore: true)
   _$$_FilterCopyWith<T, _$_Filter<T>> get copyWith =>

@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_stable/filters/project/project_applied_filters.dart';
-import 'package:flutter_app_stable/router/router.dart';
 import 'package:flutter_app_stable/services/cache.dart';
 import 'package:flutter_app_stable/widgets/address_bar.dart';
-import 'package:flutter_app_stable/widgets/filter_bar.dart';
 import 'package:flutter_app_stable/widgets/go_router_back_button.dart';
 import 'package:flutter_app_stable/widgets/notification_bell.dart';
 import 'package:flutter_app_stable/widgets/seed_button.dart';
@@ -36,14 +33,6 @@ class TopBar extends ConsumerWidget {
               icon: const Icon(Icons.logout),
             ),
           ],
-        ),
-        FilterBar(
-          filters: [
-            projectFilterProvider,
-          ],
-          onChanged: () {
-            router.refresh();
-          },
         ),
       ],
     );

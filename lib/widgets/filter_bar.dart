@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_stable/filters/filter.dart';
+import 'package:flutter_app_stable/router/router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class FilterBar extends StatelessWidget {
   const FilterBar({
-    required this.onChanged,
     this.filters = const [],
     Key? key,
   }) : super(key: key);
 
-  final Iterable<Provider<Filter>> filters;
-
-  final VoidCallback onChanged;
+  final Iterable<ProviderBase<Filter>> filters;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +23,6 @@ class FilterBar extends StatelessWidget {
               .map(
                 (filter) => FilterWidget(
                   filterProvider: filter,
-                  onChanged: onChanged,
                 ),
               )
               .toList(),
@@ -37,13 +34,11 @@ class FilterBar extends StatelessWidget {
 
 class FilterWidget<T> extends ConsumerWidget {
   const FilterWidget({
-    required this.onChanged,
     required this.filterProvider,
     Key? key,
   }) : super(key: key);
 
-  final Provider<Filter<T>> filterProvider;
-  final VoidCallback onChanged;
+  final ProviderBase<Filter<T>> filterProvider;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -81,7 +76,7 @@ class FilterWidget<T> extends ConsumerWidget {
           newSet.add(id);
         }
         appliedFilterNotifier.state = newSet;
-        onChanged();
+        router.refresh();
       },
       child: Padding(
         padding: const EdgeInsets.all(8.0),

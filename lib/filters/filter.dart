@@ -1,6 +1,7 @@
 import 'package:flutter_app_stable/utils/option.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:riverpod/riverpod.dart';
+// https://github.com/rrousselGit/riverpod/issues/1523
+import 'package:riverpod/src/state_provider.dart';
 
 part 'filter.freezed.dart';
 
@@ -10,7 +11,7 @@ class Filter<T> with _$Filter<T> {
     required String name,
     required Set<T> selected,
     required Iterable<Option<T>> options,
-    required StateProvider<Set<T>> appliedFilterProvider,
+    required StateProviderOverrideMixin<Set<T>> appliedFilterProvider,
   }) = _Filter;
 
   const Filter._();

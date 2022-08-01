@@ -10,10 +10,16 @@ part 'project_dao.g.dart';
 class ProjectDao extends DatabaseAccessor<Database> with _$ProjectDaoMixin {
   ProjectDao(Database database) : super(database);
 
-  Stream<List<ProjectData>> watch({Iterable<int> ids = const {}}) {
+  Stream<List<ProjectData>> watch({
+    Iterable<int> ids = const {},
+    Iterable<ProjectStatus> statuses = const {},
+  }) {
     var query = select(project);
     if (ids.isNotEmpty) {
-      query = query..where((p) => p.id.isIn(ids));
+      query.where((p) => p.id.isIn(ids));
+    }
+    if (statuses.isNotEmpty) {
+      query.where((p) => p.status.isIn(statuses.map((s) => s.index)));
     }
     return query.watch();
   }
