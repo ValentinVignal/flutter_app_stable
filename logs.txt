@@ -1,0 +1,1764 @@
+[  +92 ms] executing: sysctl hw.optional.arm64
+[  +16 ms] Exit code 1 from: sysctl hw.optional.arm64
+[        ] sysctl: unknown oid 'hw.optional.arm64'
+[   +8 ms] executing: [/Users/valentin/flutter/flutter/] git -c log.showSignature=false log -n 1 --pretty=format:%H
+[  +24 ms] Exit code 0 from: git -c log.showSignature=false log -n 1 --pretty=format:%H
+[        ] f1875d570e39de09040c8f79aa13cc56baab8db1
+[        ] executing: [/Users/valentin/flutter/flutter/] git tag --points-at f1875d570e39de09040c8f79aa13cc56baab8db1
+[  +39 ms] Exit code 0 from: git tag --points-at f1875d570e39de09040c8f79aa13cc56baab8db1
+[        ] 3.0.5
+[  +10 ms] executing: [/Users/valentin/flutter/flutter/] git rev-parse --abbrev-ref --symbolic @{u}
+[  +19 ms] Exit code 0 from: git rev-parse --abbrev-ref --symbolic @{u}
+[        ] origin/stable
+[        ] executing: [/Users/valentin/flutter/flutter/] git ls-remote --get-url origin
+[  +22 ms] Exit code 0 from: git ls-remote --get-url origin
+[        ] https://github.com/flutter/flutter.git
+[ +121 ms] executing: [/Users/valentin/flutter/flutter/] git rev-parse --abbrev-ref HEAD
+[  +23 ms] Exit code 0 from: git rev-parse --abbrev-ref HEAD
+[        ] stable
+[   +6 ms] executing: sw_vers -productName
+[  +18 ms] Exit code 0 from: sw_vers -productName
+[        ] macOS
+[        ] executing: sw_vers -productVersion
+[  +23 ms] Exit code 0 from: sw_vers -productVersion
+[        ] 11.5.1
+[        ] executing: sw_vers -buildVersion
+[  +24 ms] Exit code 0 from: sw_vers -buildVersion
+[        ] 20G80
+[        ] executing: uname -m
+[   +7 ms] Exit code 0 from: uname -m
+[        ] x86_64
+[ +144 ms] Artifact Instance of 'AndroidGenSnapshotArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'AndroidInternalBuildArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IOSEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterWebSdk' is not required, skipping update.
+[   +7 ms] Artifact Instance of 'WindowsEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'WindowsUwpEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'MacOSEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'LinuxEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'LinuxFuchsiaSDKArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'MacOSFuchsiaSDKArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterRunnerSDKArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterRunnerDebugSymbols' is not required, skipping update.
+[  +95 ms] executing: /usr/local/Caskroom/android-sdk/4333796/platform-tools/adb devices -l
+[  +16 ms] executing: sysctl hw.optional.arm64
+[   +6 ms] Exit code 1 from: sysctl hw.optional.arm64
+[        ] sysctl: unknown oid 'hw.optional.arm64'
+[        ] executing: xcrun xcodebuild -version
+[ +215 ms] Exit code 0 from: xcrun xcodebuild -version
+[        ] Xcode 13.2.1
+           Build version 13C100
+[   +4 ms] executing: xcrun xcdevice list --timeout 2
+[   +6 ms] xcrun simctl list --json devices
+[        ] executing: xcrun simctl list --json devices
+[   +7 ms] executing: xcrun simctl list
+[ +271 ms] Exit code 0 from: xcrun simctl list
+[   +1 ms] == Device Types ==
+           iPhone 4s (com.apple.CoreSimulator.SimDeviceType.iPhone-4s)
+           iPhone 5 (com.apple.CoreSimulator.SimDeviceType.iPhone-5)
+           iPhone 5s (com.apple.CoreSimulator.SimDeviceType.iPhone-5s)
+           iPhone 6 Plus (com.apple.CoreSimulator.SimDeviceType.iPhone-6-Plus)
+           iPhone 6 (com.apple.CoreSimulator.SimDeviceType.iPhone-6)
+           iPhone 6s (com.apple.CoreSimulator.SimDeviceType.iPhone-6s)
+           iPhone 6s Plus (com.apple.CoreSimulator.SimDeviceType.iPhone-6s-Plus)
+           iPhone SE (1st generation) (com.apple.CoreSimulator.SimDeviceType.iPhone-SE)
+           iPhone 7 (com.apple.CoreSimulator.SimDeviceType.iPhone-7)
+           iPhone 7 Plus (com.apple.CoreSimulator.SimDeviceType.iPhone-7-Plus)
+           iPhone 8 (com.apple.CoreSimulator.SimDeviceType.iPhone-8)
+           iPhone 8 Plus (com.apple.CoreSimulator.SimDeviceType.iPhone-8-Plus)
+           iPhone X (com.apple.CoreSimulator.SimDeviceType.iPhone-X)
+           iPhone Xs (com.apple.CoreSimulator.SimDeviceType.iPhone-XS)
+           iPhone Xs Max (com.apple.CoreSimulator.SimDeviceType.iPhone-XS-Max)
+           iPhone Xʀ (com.apple.CoreSimulator.SimDeviceType.iPhone-XR)
+           iPhone 11 (com.apple.CoreSimulator.SimDeviceType.iPhone-11)
+           iPhone 11 Pro (com.apple.CoreSimulator.SimDeviceType.iPhone-11-Pro)
+           iPhone 11 Pro Max (com.apple.CoreSimulator.SimDeviceType.iPhone-11-Pro-Max)
+           iPhone SE (2nd generation) (com.apple.CoreSimulator.SimDeviceType.iPhone-SE--2nd-generation-)
+           iPhone 12 mini (com.apple.CoreSimulator.SimDeviceType.iPhone-12-mini)
+           iPhone 12 (com.apple.CoreSimulator.SimDeviceType.iPhone-12)
+           iPhone 12 Pro (com.apple.CoreSimulator.SimDeviceType.iPhone-12-Pro)
+           iPhone 12 Pro Max (com.apple.CoreSimulator.SimDeviceType.iPhone-12-Pro-Max)
+           iPhone 13 Pro (com.apple.CoreSimulator.SimDeviceType.iPhone-13-Pro)
+           iPhone 13 Pro Max (com.apple.CoreSimulator.SimDeviceType.iPhone-13-Pro-Max)
+           iPhone 13 mini (com.apple.CoreSimulator.SimDeviceType.iPhone-13-mini)
+           iPhone 13 (com.apple.CoreSimulator.SimDeviceType.iPhone-13)
+           iPod touch (7th generation) (com.apple.CoreSimulator.SimDeviceType.iPod-touch--7th-generation-)
+           iPad 2 (com.apple.CoreSimulator.SimDeviceType.iPad-2)
+           iPad Retina (com.apple.CoreSimulator.SimDeviceType.iPad-Retina)
+           iPad Air (com.apple.CoreSimulator.SimDeviceType.iPad-Air)
+           iPad mini 2 (com.apple.CoreSimulator.SimDeviceType.iPad-mini-2)
+           iPad mini 3 (com.apple.CoreSimulator.SimDeviceType.iPad-mini-3)
+           iPad mini 4 (com.apple.CoreSimulator.SimDeviceType.iPad-mini-4)
+           iPad Air 2 (com.apple.CoreSimulator.SimDeviceType.iPad-Air-2)
+           iPad Pro (9.7-inch) (com.apple.CoreSimulator.SimDeviceType.iPad-Pro--9-7-inch-)
+           iPad Pro (12.9-inch) (1st generation) (com.apple.CoreSimulator.SimDeviceType.iPad-Pro)
+           iPad (5th generation) (com.apple.CoreSimulator.SimDeviceType.iPad--5th-generation-)
+           iPad Pro (12.9-inch) (2nd generation) (com.apple.CoreSimulator.SimDeviceType.iPad-Pro--12-9-inch---2nd-generation-)
+           iPad Pro (10.5-inch) (com.apple.CoreSimulator.SimDeviceType.iPad-Pro--10-5-inch-)
+           iPad (6th generation) (com.apple.CoreSimulator.SimDeviceType.iPad--6th-generation-)
+           iPad (7th generation) (com.apple.CoreSimulator.SimDeviceType.iPad--7th-generation-)
+           iPad Pro (11-inch) (1st generation) (com.apple.CoreSimulator.SimDeviceType.iPad-Pro--11-inch-)
+           iPad Pro (12.9-inch) (3rd generation) (com.apple.CoreSimulator.SimDeviceType.iPad-Pro--12-9-inch---3rd-generation-)
+           iPad Pro (11-inch) (2nd generation) (com.apple.CoreSimulator.SimDeviceType.iPad-Pro--11-inch---2nd-generation-)
+           iPad Pro (12.9-inch) (4th generation) (com.apple.CoreSimulator.SimDeviceType.iPad-Pro--12-9-inch---4th-generation-)
+           iPad mini (5th generation) (com.apple.CoreSimulator.SimDeviceType.iPad-mini--5th-generation-)
+           iPad Air (3rd generation) (com.apple.CoreSimulator.SimDeviceType.iPad-Air--3rd-generation-)
+           iPad (8th generation) (com.apple.CoreSimulator.SimDeviceType.iPad--8th-generation-)
+           iPad (9th generation) (com.apple.CoreSimulator.SimDeviceType.iPad-9th-generation)
+           iPad Air (4th generation) (com.apple.CoreSimulator.SimDeviceType.iPad-Air--4th-generation-)
+           iPad Pro (11-inch) (3rd generation) (com.apple.CoreSimulator.SimDeviceType.iPad-Pro-11-inch-3rd-generation)
+           iPad Pro (12.9-inch) (5th generation) (com.apple.CoreSimulator.SimDeviceType.iPad-Pro-12-9-inch-5th-generation)
+           iPad mini (6th generation) (com.apple.CoreSimulator.SimDeviceType.iPad-mini-6th-generation)
+           Apple TV (com.apple.CoreSimulator.SimDeviceType.Apple-TV-1080p)
+           Apple TV 4K (com.apple.CoreSimulator.SimDeviceType.Apple-TV-4K-4K)
+           Apple TV 4K (at 1080p) (com.apple.CoreSimulator.SimDeviceType.Apple-TV-4K-1080p)
+           Apple TV 4K (2nd generation) (com.apple.CoreSimulator.SimDeviceType.Apple-TV-4K-2nd-generation-4K)
+           Apple TV 4K (at 1080p) (2nd generation) (com.apple.CoreSimulator.SimDeviceType.Apple-TV-4K-2nd-generation-1080p)
+           Apple Watch - 38mm (com.apple.CoreSimulator.SimDeviceType.Apple-Watch-38mm)
+           Apple Watch - 42mm (com.apple.CoreSimulator.SimDeviceType.Apple-Watch-42mm)
+           Apple Watch Series 2 - 38mm (com.apple.CoreSimulator.SimDeviceType.Apple-Watch-Series-2-38mm)
+           Apple Watch Series 2 - 42mm (com.apple.CoreSimulator.SimDeviceType.Apple-Watch-Series-2-42mm)
+           Apple Watch Series 3 - 38mm (com.apple.CoreSimulator.SimDeviceType.Apple-Watch-Series-3-38mm)
+           Apple Watch Series 3 - 42mm (com.apple.CoreSimulator.SimDeviceType.Apple-Watch-Series-3-42mm)
+           Apple Watch Series 4 - 40mm (com.apple.CoreSimulator.SimDeviceType.Apple-Watch-Series-4-40mm)
+           Apple Watch Series 4 - 44mm (com.apple.CoreSimulator.SimDeviceType.Apple-Watch-Series-4-44mm)
+           Apple Watch Series 5 - 40mm (com.apple.CoreSimulator.SimDeviceType.Apple-Watch-Series-5-40mm)
+           Apple Watch Series 5 - 44mm (com.apple.CoreSimulator.SimDeviceType.Apple-Watch-Series-5-44mm)
+           Apple Watch SE - 40mm (com.apple.CoreSimulator.SimDeviceType.Apple-Watch-SE-40mm)
+           Apple Watch SE - 44mm (com.apple.CoreSimulator.SimDeviceType.Apple-Watch-SE-44mm)
+           Apple Watch Series 6 - 40mm (com.apple.CoreSimulator.SimDeviceType.Apple-Watch-Series-6-40mm)
+           Apple Watch Series 6 - 44mm (com.apple.CoreSimulator.SimDeviceType.Apple-Watch-Series-6-44mm)
+           Apple Watch Series 7 - 41mm (com.apple.CoreSimulator.SimDeviceType.Apple-Watch-Series-7-41mm)
+           Apple Watch Series 7 - 45mm (com.apple.CoreSimulator.SimDeviceType.Apple-Watch-Series-7-45mm)
+           == Runtimes ==
+           iOS 15.2 (15.2 - 19C51) - com.apple.CoreSimulator.SimRuntime.iOS-15-2
+           tvOS 15.2 (15.2 - 19K50) - com.apple.CoreSimulator.SimRuntime.tvOS-15-2
+           watchOS 8.3 (8.3 - 19S51) - com.apple.CoreSimulator.SimRuntime.watchOS-8-3
+           == Devices ==
+           -- iOS 15.2 --
+               iPhone 8 (7568D948-19B2-4E15-831E-1CC33C4CA082) (Shutdown) 
+               iPhone 8 Plus (9F571AEB-87D4-40B2-AF05-F1677439F65E) (Shutdown) 
+               iPhone 11 (BAFB5847-582B-48AE-9A25-E79060D76BD5) (Shutdown) 
+               iPhone 11 Pro (B71352DE-E93D-42B7-AE97-77C7C8135F54) (Shutdown) 
+               iPhone 11 Pro Max (E4EC4D7F-D32D-4AE4-95F3-8F41CF5D36BF) (Shutdown) 
+               iPhone SE (2nd generation) (6600B7BA-0E27-421B-9B7F-8D9014C2DD06) (Shutdown) 
+               iPhone 12 mini (D86F8946-8ED3-4033-8BE4-E0958244EB03) (Shutdown) 
+               iPhone 12 (568B8B5D-FC7B-4C43-B5EA-DB4BF678144B) (Shutdown) 
+               iPhone 12 Pro (AE12CDBB-638D-41F8-B4A6-F4DC23CB039C) (Shutdown) 
+               iPhone 12 Pro Max (F96BD48D-E431-487B-9D48-49FD688B8B4F) (Shutdown) 
+               iPhone 13 Pro (BA296C32-2CA4-470B-877F-AC1243A5D236) (Shutdown) 
+               iPhone 13 Pro Max (60792E92-B2D3-4D46-83AC-C15297B5EE6F) (Shutdown) 
+               iPhone 13 mini (19E3D18B-8D51-449E-B921-543673F1858F) (Shutdown) 
+               iPhone 13 (6D1E9DF8-540C-4307-89E7-FC2D14CF27B8) (Shutdown) 
+               iPod touch (7th generation) (5DC4D366-3E74-44EB-95EF-9A4AC75A92B0) (Shutdown) 
+               iPad Pro (9.7-inch) (A69C375A-B58B-4141-9F4A-6A92CEFCA4DC) (Shutdown) 
+               iPad (9th generation) (8E07D9A8-2F6B-436A-9BAD-CAA2C567FBD1) (Shutdown) 
+               iPad Air (4th generation) (F3AE11D2-2742-41DA-8681-CB7124EC8314) (Shutdown) 
+               iPad Pro (11-inch) (3rd generation) (85717AFD-529D-4D2A-B4F7-0C829A98B3D9) (Shutdown) 
+               iPad Pro (12.9-inch) (5th generation) (F867A3CA-8949-4E96-9806-F7C0A5D7C1F1) (Shutdown) 
+               iPad mini (6th generation) (8DB31899-C701-448D-B4CA-B764AB9EDA5A) (Shutdown) 
+           -- tvOS 15.2 --
+               Apple TV (613B2511-8F4E-4D84-B601-101AD2A616C4) (Shutdown) 
+               Apple TV 4K (2nd generation) (19357C02-2579-41D4-8723-DA70090EE5D7) (Shutdown) 
+               Apple TV 4K (at 1080p) (2nd generation) (1BC0D572-C22B-4923-8F4E-8533178B0AF0) (Shutdown) 
+           -- watchOS 8.3 --
+               Apple Watch Series 5 - 40mm (0333DF1E-BA74-4A09-9896-0CE29E03A147) (Shutdown) 
+               Apple Watch Series 5 - 44mm (F5A2644C-FE2C-4ACE-951D-50404EC30AEB) (Shutdown) 
+               Apple Watch Series 6 - 40mm (15C9B565-8717-441D-B387-C1C25AAEC6A5) (Shutdown) 
+               Apple Watch Series 6 - 44mm (1F8226B1-DAEC-42B7-88F0-37D65DD1BDEE) (Shutdown) 
+               Apple Watch Series 7 - 41mm (B2C11EDD-F82A-4C44-AB35-9E97866686B7) (Shutdown) 
+               Apple Watch Series 7 - 45mm (261CC96C-7654-49C8-A0A3-38E7D8DE9930) (Shutdown) 
+           -- Unavailable: com.apple.CoreSimulator.SimRuntime.iOS-14-5 --
+               iPhone 8 (300EA764-DD62-496B-84C9-2EF93893CF1B) (Shutdown) (unavailable, runtime profile not found)
+               iPhone 8 Plus (08205454-2C09-4651-99EC-288011CE02C0) (Shutdown) (unavailable, runtime profile not found)
+               iPhone 11 (BE639B7D-F2DB-4C36-8D2D-85D5E38F4180) (Shutdown) (unavailable, runtime profile not found)
+               iPhone 11 Pro (749BD714-B274-4ACE-B172-BF3B39B6E247) (Shutdown) (unavailable, runtime profile not found)
+               iPhone 11 Pro Max (20251CAA-45B3-4DEE-AA56-8D3573C19156) (Shutdown) (unavailable, runtime profile not found)
+               iPhone SE (2nd generation) (80B5CAC1-3152-49FA-90A7-255C1E3670F8) (Shutdown) (unavailable, runtime profile not
+               found)
+               iPhone 12 mini (DABD76CA-64B1-4D73-AAE6-CF66BC360506) (Shutdown) (unavailable, runtime profile not found)
+               iPhone 12 (15F74D19-CF3D-4070-ADE0-140FE2A48BDA) (Shutdown) (unavailable, runtime profile not found)
+               iPhone 12 Pro (9AB27EB2-AA87-4411-B875-DA1C19B843A8) (Shutdown) (unavailable, runtime profile not found)
+               iPhone 12 Pro Max (A816048D-807B-4FC0-A4A3-5F1272457E4C) (Shutdown) (unavailable, runtime profile not found)
+               iPod touch (7th generation) (01239413-5833-443E-B8FF-7ACB9812E144) (Shutdown) (unavailable, runtime profile not
+               found)
+               iPad Pro (9.7-inch) (D14F7134-295B-4F86-9B60-F4B7AE858E14) (Shutdown) (unavailable, runtime profile not found)
+               iPad (8th generation) (69266F84-BF0A-4972-A338-E49A8125205B) (Shutdown) (unavailable, runtime profile not found)
+               iPad Air (4th generation) (56D5D85B-C83F-4305-8576-401B13AD312A) (Shutdown) (unavailable, runtime profile not
+               found)
+               iPad Pro (11-inch) (3rd generation) (31932307-5CD1-4090-B11D-361FA7EBCA55) (Shutdown) (unavailable, runtime profile
+               not found)
+               iPad Pro (12.9-inch) (5th generation) (6F64FB76-CEB6-4FEF-93DD-11539BBE141B) (Shutdown) (unavailable, runtime
+               profile not found)
+           -- Unavailable: com.apple.CoreSimulator.SimRuntime.tvOS-14-5 --
+               Apple TV (84696814-3055-4824-A999-55B32E15AAB9) (Shutdown) (unavailable, runtime profile not found)
+               Apple TV 4K (2nd generation) (1722E88F-B22D-4118-90D6-7A399A1E91B5) (Shutdown) (unavailable, runtime profile not
+               found)
+               Apple TV 4K (at 1080p) (2nd generation) (52BF95AB-7FCD-48D5-8FF7-56BAAFCB0B6D) (Shutdown) (unavailable, runtime
+               profile not found)
+           -- Unavailable: com.apple.CoreSimulator.SimRuntime.watchOS-7-4 --
+               Apple Watch Series 5 - 40mm (BFB12E60-54C2-4A97-B64C-E05EC6F3C2CA) (Shutdown) (unavailable, runtime profile not
+               found)
+               Apple Watch Series 6 - 40mm (C941BC8F-700C-4F44-B887-8A6AFB42612C) (Shutdown) (unavailable, runtime profile not
+               found)
+               Apple Watch Series 6 - 44mm (B9DEEA60-D0B9-478F-8FD2-38FD51F09E66) (Shutdown) (unavailable, runtime profile not
+               found)
+           == Device Pairs ==
+           4D5BE0BE-4CBA-4D1F-8B04-793BD6C357E4 (active, disconnected)
+               Watch: Apple Watch Series 5 - 40mm (0333DF1E-BA74-4A09-9896-0CE29E03A147) (Shutdown)
+               Phone: iPhone 12 Pro (AE12CDBB-638D-41F8-B4A6-F4DC23CB039C) (Shutdown)
+           4B140616-EE24-4278-A7D6-C59010ECA3B6 (active, disconnected)
+               Watch: Apple Watch Series 5 - 44mm (F5A2644C-FE2C-4ACE-951D-50404EC30AEB) (Shutdown)
+               Phone: iPhone 12 Pro Max (F96BD48D-E431-487B-9D48-49FD688B8B4F) (Shutdown)
+           804BF8F8-2471-4A5D-A338-A26988EBC6D7 (active, disconnected)
+               Watch: Apple Watch Series 6 - 40mm (15C9B565-8717-441D-B387-C1C25AAEC6A5) (Shutdown)
+               Phone: iPhone 13 Pro (BA296C32-2CA4-470B-877F-AC1243A5D236) (Shutdown)
+           19FEB857-4642-45CA-BAC7-E7923455CD57 (active, disconnected)
+               Watch: Apple Watch Series 6 - 44mm (1F8226B1-DAEC-42B7-88F0-37D65DD1BDEE) (Shutdown)
+               Phone: iPhone 13 Pro Max (60792E92-B2D3-4D46-83AC-C15297B5EE6F) (Shutdown)
+           A5D21AE2-F135-4CFB-BAE6-F0F63FCDD147 (active, disconnected)
+               Watch: Apple Watch Series 7 - 41mm (B2C11EDD-F82A-4C44-AB35-9E97866686B7) (Shutdown)
+               Phone: iPhone 13 mini (19E3D18B-8D51-449E-B921-543673F1858F) (Shutdown)
+           B68F5B58-990D-48F1-A516-B42CC2717D1F (active, disconnected)
+               Watch: Apple Watch Series 7 - 45mm (261CC96C-7654-49C8-A0A3-38E7D8DE9930) (Shutdown)
+               Phone: iPhone 13 (6D1E9DF8-540C-4307-89E7-FC2D14CF27B8) (Shutdown)
+           0A83BC5E-91EE-4444-A04C-D011C218E3F5 (unavailable)
+               Watch: Apple Watch Series 5 - 40mm (BFB12E60-54C2-4A97-B64C-E05EC6F3C2CA) (Shutdown)
+               Phone: iPhone 12 (15F74D19-CF3D-4070-ADE0-140FE2A48BDA) (Shutdown)
+           DEBD4803-2964-4221-9CB3-13A23F83EE5F (unavailable)
+               Watch: Apple Watch Series 6 - 40mm (C941BC8F-700C-4F44-B887-8A6AFB42612C) (Shutdown)
+               Phone: iPhone 12 Pro (9AB27EB2-AA87-4411-B875-DA1C19B843A8) (Shutdown)
+           68074B0D-F257-4B3E-8A41-44C2B814CAB5 (unavailable)
+               Watch: Apple Watch Series 6 - 44mm (B9DEEA60-D0B9-478F-8FD2-38FD51F09E66) (Shutdown)
+               Phone: iPhone 12 Pro Max (A816048D-807B-4FC0-A4A3-5F1272457E4C) (Shutdown)
+[  +72 ms] List of devices attached
+[ +323 ms] {
+                      "devices" : {
+                        "com.apple.CoreSimulator.SimRuntime.tvOS-14-5" : [
+                          {
+                            "availabilityError" : "runtime profile not found",
+                            "dataPath" :
+                            "\/Users\/valentin\/Library\/Developer\/CoreSimulator\/Devices\/84696814-3055-4824-A999-55B32E15AAB9\/
+                            data",
+                            "dataPathSize" : 0,
+                            "logPath" : "\/Users\/valentin\/Library\/Logs\/CoreSimulator\/84696814-3055-4824-A999-55B32E15AAB9",
+                            "udid" : "84696814-3055-4824-A999-55B32E15AAB9",
+                            "isAvailable" : false,
+                            "deviceTypeIdentifier" : "com.apple.CoreSimulator.SimDeviceType.Apple-TV-1080p",
+                            "state" : "Shutdown",
+                            "name" : "Apple TV"
+                          },
+                          {
+                            "availabilityError" : "runtime profile not found",
+                            "dataPath" :
+                            "\/Users\/valentin\/Library\/Developer\/CoreSimulator\/Devices\/1722E88F-B22D-4118-90D6-7A399A1E91B5\/
+                            data",
+                            "dataPathSize" : 0,
+                            "logPath" : "\/Users\/valentin\/Library\/Logs\/CoreSimulator\/1722E88F-B22D-4118-90D6-7A399A1E91B5",
+                            "udid" : "1722E88F-B22D-4118-90D6-7A399A1E91B5",
+                            "isAvailable" : false,
+                            "deviceTypeIdentifier" : "com.apple.CoreSimulator.SimDeviceType.Apple-TV-4K-2nd-generation-4K",
+                            "state" : "Shutdown",
+                            "name" : "Apple TV 4K (2nd generation)"
+                          },
+                          {
+                            "availabilityError" : "runtime profile not found",
+                            "dataPath" :
+                            "\/Users\/valentin\/Library\/Developer\/CoreSimulator\/Devices\/52BF95AB-7FCD-48D5-8FF7-56BAAFCB0B6D\/
+                            data",
+                            "dataPathSize" : 0,
+                            "logPath" : "\/Users\/valentin\/Library\/Logs\/CoreSimulator\/52BF95AB-7FCD-48D5-8FF7-56BAAFCB0B6D",
+                            "udid" : "52BF95AB-7FCD-48D5-8FF7-56BAAFCB0B6D",
+                            "isAvailable" : false,
+                            "deviceTypeIdentifier" : "com.apple.CoreSimulator.SimDeviceType.Apple-TV-4K-2nd-generation-1080p",
+                            "state" : "Shutdown",
+                            "name" : "Apple TV 4K (at 1080p) (2nd generation)"
+                          }
+                        ],
+                        "com.apple.CoreSimulator.SimRuntime.watchOS-7-4" : [
+                          {
+                            "availabilityError" : "runtime profile not found",
+                            "dataPath" :
+                            "\/Users\/valentin\/Library\/Developer\/CoreSimulator\/Devices\/BFB12E60-54C2-4A97-B64C-E05EC6F3C2CA\/
+                            data",
+                            "dataPathSize" : 0,
+                            "logPath" : "\/Users\/valentin\/Library\/Logs\/CoreSimulator\/BFB12E60-54C2-4A97-B64C-E05EC6F3C2CA",
+                            "udid" : "BFB12E60-54C2-4A97-B64C-E05EC6F3C2CA",
+                            "isAvailable" : false,
+                            "deviceTypeIdentifier" : "com.apple.CoreSimulator.SimDeviceType.Apple-Watch-Series-5-40mm",
+                            "state" : "Shutdown",
+                            "name" : "Apple Watch Series 5 - 40mm"
+                          },
+                          {
+                            "availabilityError" : "runtime profile not found",
+                            "dataPath" :
+                            "\/Users\/valentin\/Library\/Developer\/CoreSimulator\/Devices\/C941BC8F-700C-4F44-B887-8A6AFB42612C\/
+                            data",
+                            "dataPathSize" : 0,
+                            "logPath" : "\/Users\/valentin\/Library\/Logs\/CoreSimulator\/C941BC8F-700C-4F44-B887-8A6AFB42612C",
+                            "udid" : "C941BC8F-700C-4F44-B887-8A6AFB42612C",
+                            "isAvailable" : false,
+                            "deviceTypeIdentifier" : "com.apple.CoreSimulator.SimDeviceType.Apple-Watch-Series-6-40mm",
+                            "state" : "Shutdown",
+                            "name" : "Apple Watch Series 6 - 40mm"
+                          },
+                          {
+                            "availabilityError" : "runtime profile not found",
+                            "dataPath" :
+                            "\/Users\/valentin\/Library\/Developer\/CoreSimulator\/Devices\/B9DEEA60-D0B9-478F-8FD2-38FD51F09E66\/
+                            data",
+                            "dataPathSize" : 0,
+                            "logPath" : "\/Users\/valentin\/Library\/Logs\/CoreSimulator\/B9DEEA60-D0B9-478F-8FD2-38FD51F09E66",
+                            "udid" : "B9DEEA60-D0B9-478F-8FD2-38FD51F09E66",
+                            "isAvailable" : false,
+                            "deviceTypeIdentifier" : "com.apple.CoreSimulator.SimDeviceType.Apple-Watch-Series-6-44mm",
+                            "state" : "Shutdown",
+                            "name" : "Apple Watch Series 6 - 44mm"
+                          }
+                        ],
+                        "com.apple.CoreSimulator.SimRuntime.iOS-15-2" : [
+                          {
+                            "dataPath" :
+                            "\/Users\/valentin\/Library\/Developer\/CoreSimulator\/Devices\/7568D948-19B2-4E15-831E-1CC33C4CA082\/
+                            data",
+                            "dataPathSize" : 13312000,
+                            "logPath" : "\/Users\/valentin\/Library\/Logs\/CoreSimulator\/7568D948-19B2-4E15-831E-1CC33C4CA082",
+                            "udid" : "7568D948-19B2-4E15-831E-1CC33C4CA082",
+                            "isAvailable" : true,
+                            "deviceTypeIdentifier" : "com.apple.CoreSimulator.SimDeviceType.iPhone-8",
+                            "state" : "Shutdown",
+                            "name" : "iPhone 8"
+                          },
+                          {
+                            "dataPath" :
+                            "\/Users\/valentin\/Library\/Developer\/CoreSimulator\/Devices\/9F571AEB-87D4-40B2-AF05-F1677439F65E\/
+                            data",
+                            "dataPathSize" : 13312000,
+                            "logPath" : "\/Users\/valentin\/Library\/Logs\/CoreSimulator\/9F571AEB-87D4-40B2-AF05-F1677439F65E",
+                            "udid" : "9F571AEB-87D4-40B2-AF05-F1677439F65E",
+                            "isAvailable" : true,
+                            "deviceTypeIdentifier" : "com.apple.CoreSimulator.SimDeviceType.iPhone-8-Plus",
+                            "state" : "Shutdown",
+                            "name" : "iPhone 8 Plus"
+                          },
+                          {
+                            "dataPath" :
+                            "\/Users\/valentin\/Library\/Developer\/CoreSimulator\/Devices\/BAFB5847-582B-48AE-9A25-E79060D76BD5\/
+                            data",
+                            "dataPathSize" : 13312000,
+                            "logPath" : "\/Users\/valentin\/Library\/Logs\/CoreSimulator\/BAFB5847-582B-48AE-9A25-E79060D76BD5",
+                            "udid" : "BAFB5847-582B-48AE-9A25-E79060D76BD5",
+                            "isAvailable" : true,
+                            "deviceTypeIdentifier" : "com.apple.CoreSimulator.SimDeviceType.iPhone-11",
+                            "state" : "Shutdown",
+                            "name" : "iPhone 11"
+                          },
+                          {
+                            "dataPath" :
+                            "\/Users\/valentin\/Library\/Developer\/CoreSimulator\/Devices\/B71352DE-E93D-42B7-AE97-77C7C8135F54\/
+                            data",
+                            "dataPathSize" : 13312000,
+                            "logPath" : "\/Users\/valentin\/Library\/Logs\/CoreSimulator\/B71352DE-E93D-42B7-AE97-77C7C8135F54",
+                            "udid" : "B71352DE-E93D-42B7-AE97-77C7C8135F54",
+                            "isAvailable" : true,
+                            "deviceTypeIdentifier" : "com.apple.CoreSimulator.SimDeviceType.iPhone-11-Pro",
+                            "state" : "Shutdown",
+                            "name" : "iPhone 11 Pro"
+                          },
+                          {
+                            "dataPath" :
+                            "\/Users\/valentin\/Library\/Developer\/CoreSimulator\/Devices\/E4EC4D7F-D32D-4AE4-95F3-8F41CF5D36BF\/
+                            data",
+                            "dataPathSize" : 13312000,
+                            "logPath" : "\/Users\/valentin\/Library\/Logs\/CoreSimulator\/E4EC4D7F-D32D-4AE4-95F3-8F41CF5D36BF",
+                            "udid" : "E4EC4D7F-D32D-4AE4-95F3-8F41CF5D36BF",
+                            "isAvailable" : true,
+                            "deviceTypeIdentifier" : "com.apple.CoreSimulator.SimDeviceType.iPhone-11-Pro-Max",
+                            "state" : "Shutdown",
+                            "name" : "iPhone 11 Pro Max"
+                          },
+                          {
+                            "dataPath" :
+                            "\/Users\/valentin\/Library\/Developer\/CoreSimulator\/Devices\/6600B7BA-0E27-421B-9B7F-8D9014C2DD06\/
+                            data",
+                            "dataPathSize" : 13312000,
+                            "logPath" : "\/Users\/valentin\/Library\/Logs\/CoreSimulator\/6600B7BA-0E27-421B-9B7F-8D9014C2DD06",
+                            "udid" : "6600B7BA-0E27-421B-9B7F-8D9014C2DD06",
+                            "isAvailable" : true,
+                            "deviceTypeIdentifier" : "com.apple.CoreSimulator.SimDeviceType.iPhone-SE--2nd-generation-",
+                            "state" : "Shutdown",
+                            "name" : "iPhone SE (2nd generation)"
+                          },
+                          {
+                            "dataPath" :
+                            "\/Users\/valentin\/Library\/Developer\/CoreSimulator\/Devices\/D86F8946-8ED3-4033-8BE4-E0958244EB03\/
+                            data",
+                            "dataPathSize" : 13312000,
+                            "logPath" : "\/Users\/valentin\/Library\/Logs\/CoreSimulator\/D86F8946-8ED3-4033-8BE4-E0958244EB03",
+                            "udid" : "D86F8946-8ED3-4033-8BE4-E0958244EB03",
+                            "isAvailable" : true,
+                            "deviceTypeIdentifier" : "com.apple.CoreSimulator.SimDeviceType.iPhone-12-mini",
+                            "state" : "Shutdown",
+                            "name" : "iPhone 12 mini"
+                          },
+                          {
+                            "dataPath" :
+                            "\/Users\/valentin\/Library\/Developer\/CoreSimulator\/Devices\/568B8B5D-FC7B-4C43-B5EA-DB4BF678144B\/
+                            data",
+                            "dataPathSize" : 13312000,
+                            "logPath" : "\/Users\/valentin\/Library\/Logs\/CoreSimulator\/568B8B5D-FC7B-4C43-B5EA-DB4BF678144B",
+                            "udid" : "568B8B5D-FC7B-4C43-B5EA-DB4BF678144B",
+                            "isAvailable" : true,
+                            "deviceTypeIdentifier" : "com.apple.CoreSimulator.SimDeviceType.iPhone-12",
+                            "state" : "Shutdown",
+                            "name" : "iPhone 12"
+                          },
+                          {
+                            "dataPath" :
+                            "\/Users\/valentin\/Library\/Developer\/CoreSimulator\/Devices\/AE12CDBB-638D-41F8-B4A6-F4DC23CB039C\/
+                            data",
+                            "dataPathSize" : 13312000,
+                            "logPath" : "\/Users\/valentin\/Library\/Logs\/CoreSimulator\/AE12CDBB-638D-41F8-B4A6-F4DC23CB039C",
+                            "udid" : "AE12CDBB-638D-41F8-B4A6-F4DC23CB039C",
+                            "isAvailable" : true,
+                            "deviceTypeIdentifier" : "com.apple.CoreSimulator.SimDeviceType.iPhone-12-Pro",
+                            "state" : "Shutdown",
+                            "name" : "iPhone 12 Pro"
+                          },
+                          {
+                            "dataPath" :
+                            "\/Users\/valentin\/Library\/Developer\/CoreSimulator\/Devices\/F96BD48D-E431-487B-9D48-49FD688B8B4F\/
+                            data",
+                            "dataPathSize" : 13312000,
+                            "logPath" : "\/Users\/valentin\/Library\/Logs\/CoreSimulator\/F96BD48D-E431-487B-9D48-49FD688B8B4F",
+                            "udid" : "F96BD48D-E431-487B-9D48-49FD688B8B4F",
+                            "isAvailable" : true,
+                            "deviceTypeIdentifier" : "com.apple.CoreSimulator.SimDeviceType.iPhone-12-Pro-Max",
+                            "state" : "Shutdown",
+                            "name" : "iPhone 12 Pro Max"
+                          },
+                          {
+                            "dataPath" :
+                            "\/Users\/valentin\/Library\/Developer\/CoreSimulator\/Devices\/BA296C32-2CA4-470B-877F-AC1243A5D236\/
+                            data",
+                            "dataPathSize" : 13312000,
+                            "logPath" : "\/Users\/valentin\/Library\/Logs\/CoreSimulator\/BA296C32-2CA4-470B-877F-AC1243A5D236",
+                            "udid" : "BA296C32-2CA4-470B-877F-AC1243A5D236",
+                            "isAvailable" : true,
+                            "deviceTypeIdentifier" : "com.apple.CoreSimulator.SimDeviceType.iPhone-13-Pro",
+                            "state" : "Shutdown",
+                            "name" : "iPhone 13 Pro"
+                          },
+                          {
+                            "dataPath" :
+                            "\/Users\/valentin\/Library\/Developer\/CoreSimulator\/Devices\/60792E92-B2D3-4D46-83AC-C15297B5EE6F\/
+                            data",
+                            "dataPathSize" : 13312000,
+                            "logPath" : "\/Users\/valentin\/Library\/Logs\/CoreSimulator\/60792E92-B2D3-4D46-83AC-C15297B5EE6F",
+                            "udid" : "60792E92-B2D3-4D46-83AC-C15297B5EE6F",
+                            "isAvailable" : true,
+                            "deviceTypeIdentifier" : "com.apple.CoreSimulator.SimDeviceType.iPhone-13-Pro-Max",
+                            "state" : "Shutdown",
+                            "name" : "iPhone 13 Pro Max"
+                          },
+                          {
+                            "dataPath" :
+                            "\/Users\/valentin\/Library\/Developer\/CoreSimulator\/Devices\/19E3D18B-8D51-449E-B921-543673F1858F\/
+                            data",
+                            "dataPathSize" : 13312000,
+                            "logPath" : "\/Users\/valentin\/Library\/Logs\/CoreSimulator\/19E3D18B-8D51-449E-B921-543673F1858F",
+                            "udid" : "19E3D18B-8D51-449E-B921-543673F1858F",
+                            "isAvailable" : true,
+                            "deviceTypeIdentifier" : "com.apple.CoreSimulator.SimDeviceType.iPhone-13-mini",
+                            "state" : "Shutdown",
+                            "name" : "iPhone 13 mini"
+                          },
+                          {
+                            "dataPath" :
+                            "\/Users\/valentin\/Library\/Developer\/CoreSimulator\/Devices\/6D1E9DF8-540C-4307-89E7-FC2D14CF27B8\/
+                            data",
+                            "dataPathSize" : 2217353216,
+                            "logPath" : "\/Users\/valentin\/Library\/Logs\/CoreSimulator\/6D1E9DF8-540C-4307-89E7-FC2D14CF27B8",
+                            "udid" : "6D1E9DF8-540C-4307-89E7-FC2D14CF27B8",
+                            "isAvailable" : true,
+                            "logPathSize" : 1413120,
+                            "deviceTypeIdentifier" : "com.apple.CoreSimulator.SimDeviceType.iPhone-13",
+                            "state" : "Shutdown",
+                            "name" : "iPhone 13"
+                          },
+                          {
+                            "dataPath" :
+                            "\/Users\/valentin\/Library\/Developer\/CoreSimulator\/Devices\/5DC4D366-3E74-44EB-95EF-9A4AC75A92B0\/
+                            data",
+                            "dataPathSize" : 13312000,
+                            "logPath" : "\/Users\/valentin\/Library\/Logs\/CoreSimulator\/5DC4D366-3E74-44EB-95EF-9A4AC75A92B0",
+                            "udid" : "5DC4D366-3E74-44EB-95EF-9A4AC75A92B0",
+                            "isAvailable" : true,
+                            "deviceTypeIdentifier" : "com.apple.CoreSimulator.SimDeviceType.iPod-touch--7th-generation-",
+                            "state" : "Shutdown",
+                            "name" : "iPod touch (7th generation)"
+                          },
+                          {
+                            "dataPath" :
+                            "\/Users\/valentin\/Library\/Developer\/CoreSimulator\/Devices\/A69C375A-B58B-4141-9F4A-6A92CEFCA4DC\/
+                            data",
+                            "dataPathSize" : 13312000,
+                            "logPath" : "\/Users\/valentin\/Library\/Logs\/CoreSimulator\/A69C375A-B58B-4141-9F4A-6A92CEFCA4DC",
+                            "udid" : "A69C375A-B58B-4141-9F4A-6A92CEFCA4DC",
+                            "isAvailable" : true,
+                            "deviceTypeIdentifier" : "com.apple.CoreSimulator.SimDeviceType.iPad-Pro--9-7-inch-",
+                            "state" : "Shutdown",
+                            "name" : "iPad Pro (9.7-inch)"
+                          },
+                          {
+                            "dataPath" :
+                            "\/Users\/valentin\/Library\/Developer\/CoreSimulator\/Devices\/8E07D9A8-2F6B-436A-9BAD-CAA2C567FBD1\/
+                            data",
+                            "dataPathSize" : 13312000,
+                            "logPath" : "\/Users\/valentin\/Library\/Logs\/CoreSimulator\/8E07D9A8-2F6B-436A-9BAD-CAA2C567FBD1",
+                            "udid" : "8E07D9A8-2F6B-436A-9BAD-CAA2C567FBD1",
+                            "isAvailable" : true,
+                            "deviceTypeIdentifier" : "com.apple.CoreSimulator.SimDeviceType.iPad-9th-generation",
+                            "state" : "Shutdown",
+                            "name" : "iPad (9th generation)"
+                          },
+                          {
+                            "dataPath" :
+                            "\/Users\/valentin\/Library\/Developer\/CoreSimulator\/Devices\/F3AE11D2-2742-41DA-8681-CB7124EC8314\/
+                            data",
+                            "dataPathSize" : 13312000,
+                            "logPath" : "\/Users\/valentin\/Library\/Logs\/CoreSimulator\/F3AE11D2-2742-41DA-8681-CB7124EC8314",
+                            "udid" : "F3AE11D2-2742-41DA-8681-CB7124EC8314",
+                            "isAvailable" : true,
+                            "deviceTypeIdentifier" : "com.apple.CoreSimulator.SimDeviceType.iPad-Air--4th-generation-",
+                            "state" : "Shutdown",
+                            "name" : "iPad Air (4th generation)"
+                          },
+                          {
+                            "dataPath" :
+                            "\/Users\/valentin\/Library\/Developer\/CoreSimulator\/Devices\/85717AFD-529D-4D2A-B4F7-0C829A98B3D9\/
+                            data",
+                            "dataPathSize" : 13312000,
+                            "logPath" : "\/Users\/valentin\/Library\/Logs\/CoreSimulator\/85717AFD-529D-4D2A-B4F7-0C829A98B3D9",
+                            "udid" : "85717AFD-529D-4D2A-B4F7-0C829A98B3D9",
+                            "isAvailable" : true,
+                            "deviceTypeIdentifier" : "com.apple.CoreSimulator.SimDeviceType.iPad-Pro-11-inch-3rd-generation",
+                            "state" : "Shutdown",
+                            "name" : "iPad Pro (11-inch) (3rd generation)"
+                          },
+                          {
+                            "dataPath" :
+                            "\/Users\/valentin\/Library\/Developer\/CoreSimulator\/Devices\/F867A3CA-8949-4E96-9806-F7C0A5D7C1F1\/
+                            data",
+                            "dataPathSize" : 13312000,
+                            "logPath" : "\/Users\/valentin\/Library\/Logs\/CoreSimulator\/F867A3CA-8949-4E96-9806-F7C0A5D7C1F1",
+                            "udid" : "F867A3CA-8949-4E96-9806-F7C0A5D7C1F1",
+                            "isAvailable" : true,
+                            "deviceTypeIdentifier" : "com.apple.CoreSimulator.SimDeviceType.iPad-Pro-12-9-inch-5th-generation",
+                            "state" : "Shutdown",
+                            "name" : "iPad Pro (12.9-inch) (5th generation)"
+                          },
+                          {
+                            "dataPath" :
+                            "\/Users\/valentin\/Library\/Developer\/CoreSimulator\/Devices\/8DB31899-C701-448D-B4CA-B764AB9EDA5A\/
+                            data",
+                            "dataPathSize" : 13312000,
+                            "logPath" : "\/Users\/valentin\/Library\/Logs\/CoreSimulator\/8DB31899-C701-448D-B4CA-B764AB9EDA5A",
+                            "udid" : "8DB31899-C701-448D-B4CA-B764AB9EDA5A",
+                            "isAvailable" : true,
+                            "deviceTypeIdentifier" : "com.apple.CoreSimulator.SimDeviceType.iPad-mini-6th-generation",
+                            "state" : "Shutdown",
+                            "name" : "iPad mini (6th generation)"
+                          }
+                        ],
+                        "com.apple.CoreSimulator.SimRuntime.watchOS-8-3" : [
+                          {
+                            "dataPath" :
+                            "\/Users\/valentin\/Library\/Developer\/CoreSimulator\/Devices\/0333DF1E-BA74-4A09-9896-0CE29E03A147\/
+                            data",
+                            "dataPathSize" : 0,
+                            "logPath" : "\/Users\/valentin\/Library\/Logs\/CoreSimulator\/0333DF1E-BA74-4A09-9896-0CE29E03A147",
+                            "udid" : "0333DF1E-BA74-4A09-9896-0CE29E03A147",
+                            "isAvailable" : true,
+                            "deviceTypeIdentifier" : "com.apple.CoreSimulator.SimDeviceType.Apple-Watch-Series-5-40mm",
+                            "state" : "Shutdown",
+                            "name" : "Apple Watch Series 5 - 40mm"
+                          },
+                          {
+                            "dataPath" :
+                            "\/Users\/valentin\/Library\/Developer\/CoreSimulator\/Devices\/F5A2644C-FE2C-4ACE-951D-50404EC30AEB\/
+                            data",
+                            "dataPathSize" : 0,
+                            "logPath" : "\/Users\/valentin\/Library\/Logs\/CoreSimulator\/F5A2644C-FE2C-4ACE-951D-50404EC30AEB",
+                            "udid" : "F5A2644C-FE2C-4ACE-951D-50404EC30AEB",
+                            "isAvailable" : true,
+                            "deviceTypeIdentifier" : "com.apple.CoreSimulator.SimDeviceType.Apple-Watch-Series-5-44mm",
+                            "state" : "Shutdown",
+                            "name" : "Apple Watch Series 5 - 44mm"
+                          },
+                          {
+                            "dataPath" :
+                            "\/Users\/valentin\/Library\/Developer\/CoreSimulator\/Devices\/15C9B565-8717-441D-B387-C1C25AAEC6A5\/
+                            data",
+                            "dataPathSize" : 0,
+                            "logPath" : "\/Users\/valentin\/Library\/Logs\/CoreSimulator\/15C9B565-8717-441D-B387-C1C25AAEC6A5",
+                            "udid" : "15C9B565-8717-441D-B387-C1C25AAEC6A5",
+                            "isAvailable" : true,
+                            "deviceTypeIdentifier" : "com.apple.CoreSimulator.SimDeviceType.Apple-Watch-Series-6-40mm",
+                            "state" : "Shutdown",
+                            "name" : "Apple Watch Series 6 - 40mm"
+                          },
+                          {
+                            "dataPath" :
+                            "\/Users\/valentin\/Library\/Developer\/CoreSimulator\/Devices\/1F8226B1-DAEC-42B7-88F0-37D65DD1BDEE\/
+                            data",
+                            "dataPathSize" : 0,
+                            "logPath" : "\/Users\/valentin\/Library\/Logs\/CoreSimulator\/1F8226B1-DAEC-42B7-88F0-37D65DD1BDEE",
+                            "udid" : "1F8226B1-DAEC-42B7-88F0-37D65DD1BDEE",
+                            "isAvailable" : true,
+                            "deviceTypeIdentifier" : "com.apple.CoreSimulator.SimDeviceType.Apple-Watch-Series-6-44mm",
+                            "state" : "Shutdown",
+                            "name" : "Apple Watch Series 6 - 44mm"
+                          },
+                          {
+                            "dataPath" :
+                            "\/Users\/valentin\/Library\/Developer\/CoreSimulator\/Devices\/B2C11EDD-F82A-4C44-AB35-9E97866686B7\/
+                            data",
+                            "dataPathSize" : 0,
+                            "logPath" : "\/Users\/valentin\/Library\/Logs\/CoreSimulator\/B2C11EDD-F82A-4C44-AB35-9E97866686B7",
+                            "udid" : "B2C11EDD-F82A-4C44-AB35-9E97866686B7",
+                            "isAvailable" : true,
+                            "deviceTypeIdentifier" : "com.apple.CoreSimulator.SimDeviceType.Apple-Watch-Series-7-41mm",
+                            "state" : "Shutdown",
+                            "name" : "Apple Watch Series 7 - 41mm"
+                          },
+                          {
+                            "dataPath" :
+                            "\/Users\/valentin\/Library\/Developer\/CoreSimulator\/Devices\/261CC96C-7654-49C8-A0A3-38E7D8DE9930\/
+                            data",
+                            "dataPathSize" : 0,
+                            "logPath" : "\/Users\/valentin\/Library\/Logs\/CoreSimulator\/261CC96C-7654-49C8-A0A3-38E7D8DE9930",
+                            "udid" : "261CC96C-7654-49C8-A0A3-38E7D8DE9930",
+                            "isAvailable" : true,
+                            "deviceTypeIdentifier" : "com.apple.CoreSimulator.SimDeviceType.Apple-Watch-Series-7-45mm",
+                            "state" : "Shutdown",
+                            "name" : "Apple Watch Series 7 - 45mm"
+                          }
+                        ],
+                        "com.apple.CoreSimulator.SimRuntime.tvOS-15-2" : [
+                          {
+                            "dataPath" :
+                            "\/Users\/valentin\/Library\/Developer\/CoreSimulator\/Devices\/613B2511-8F4E-4D84-B601-101AD2A616C4\/
+                            data",
+                            "dataPathSize" : 0,
+                            "logPath" : "\/Users\/valentin\/Library\/Logs\/CoreSimulator\/613B2511-8F4E-4D84-B601-101AD2A616C4",
+                            "udid" : "613B2511-8F4E-4D84-B601-101AD2A616C4",
+                            "isAvailable" : true,
+                            "deviceTypeIdentifier" : "com.apple.CoreSimulator.SimDeviceType.Apple-TV-1080p",
+                            "state" : "Shutdown",
+                            "name" : "Apple TV"
+                          },
+                          {
+                            "dataPath" :
+                            "\/Users\/valentin\/Library\/Developer\/CoreSimulator\/Devices\/19357C02-2579-41D4-8723-DA70090EE5D7\/
+                            data",
+                            "dataPathSize" : 0,
+                            "logPath" : "\/Users\/valentin\/Library\/Logs\/CoreSimulator\/19357C02-2579-41D4-8723-DA70090EE5D7",
+                            "udid" : "19357C02-2579-41D4-8723-DA70090EE5D7",
+                            "isAvailable" : true,
+                            "deviceTypeIdentifier" : "com.apple.CoreSimulator.SimDeviceType.Apple-TV-4K-2nd-generation-4K",
+                            "state" : "Shutdown",
+                            "name" : "Apple TV 4K (2nd generation)"
+                          },
+                          {
+                            "dataPath" :
+                            "\/Users\/valentin\/Library\/Developer\/CoreSimulator\/Devices\/1BC0D572-C22B-4923-8F4E-8533178B0AF0\/
+                            data",
+                            "dataPathSize" : 0,
+                            "logPath" : "\/Users\/valentin\/Library\/Logs\/CoreSimulator\/1BC0D572-C22B-4923-8F4E-8533178B0AF0",
+                            "udid" : "1BC0D572-C22B-4923-8F4E-8533178B0AF0",
+                            "isAvailable" : true,
+                            "deviceTypeIdentifier" : "com.apple.CoreSimulator.SimDeviceType.Apple-TV-4K-2nd-generation-1080p",
+                            "state" : "Shutdown",
+                            "name" : "Apple TV 4K (at 1080p) (2nd generation)"
+                          }
+                        ],
+                        "com.apple.CoreSimulator.SimRuntime.iOS-14-5" : [
+                          {
+                            "availabilityError" : "runtime profile not found",
+                            "dataPath" :
+                            "\/Users\/valentin\/Library\/Developer\/CoreSimulator\/Devices\/300EA764-DD62-496B-84C9-2EF93893CF1B\/
+                            data",
+                            "dataPathSize" : 13312000,
+                            "logPath" : "\/Users\/valentin\/Library\/Logs\/CoreSimulator\/300EA764-DD62-496B-84C9-2EF93893CF1B",
+                            "udid" : "300EA764-DD62-496B-84C9-2EF93893CF1B",
+                            "isAvailable" : false,
+                            "deviceTypeIdentifier" : "com.apple.CoreSimulator.SimDeviceType.iPhone-8",
+                            "state" : "Shutdown",
+                            "name" : "iPhone 8"
+                          },
+                          {
+                            "availabilityError" : "runtime profile not found",
+                            "dataPath" :
+                            "\/Users\/valentin\/Library\/Developer\/CoreSimulator\/Devices\/08205454-2C09-4651-99EC-288011CE02C0\/
+                            data",
+                            "dataPathSize" : 13312000,
+                            "logPath" : "\/Users\/valentin\/Library\/Logs\/CoreSimulator\/08205454-2C09-4651-99EC-288011CE02C0",
+                            "udid" : "08205454-2C09-4651-99EC-288011CE02C0",
+                            "isAvailable" : false,
+                            "deviceTypeIdentifier" : "com.apple.CoreSimulator.SimDeviceType.iPhone-8-Plus",
+                            "state" : "Shutdown",
+                            "name" : "iPhone 8 Plus"
+                          },
+                          {
+                            "availabilityError" : "runtime profile not found",
+                            "dataPath" :
+                            "\/Users\/valentin\/Library\/Developer\/CoreSimulator\/Devices\/BE639B7D-F2DB-4C36-8D2D-85D5E38F4180\/
+                            data",
+                            "dataPathSize" : 13312000,
+                            "logPath" : "\/Users\/valentin\/Library\/Logs\/CoreSimulator\/BE639B7D-F2DB-4C36-8D2D-85D5E38F4180",
+                            "udid" : "BE639B7D-F2DB-4C36-8D2D-85D5E38F4180",
+                            "isAvailable" : false,
+                            "deviceTypeIdentifier" : "com.apple.CoreSimulator.SimDeviceType.iPhone-11",
+                            "state" : "Shutdown",
+                            "name" : "iPhone 11"
+                          },
+                          {
+                            "availabilityError" : "runtime profile not found",
+                            "dataPath" :
+                            "\/Users\/valentin\/Library\/Developer\/CoreSimulator\/Devices\/749BD714-B274-4ACE-B172-BF3B39B6E247\/
+                            data",
+                            "dataPathSize" : 13312000,
+                            "logPath" : "\/Users\/valentin\/Library\/Logs\/CoreSimulator\/749BD714-B274-4ACE-B172-BF3B39B6E247",
+                            "udid" : "749BD714-B274-4ACE-B172-BF3B39B6E247",
+                            "isAvailable" : false,
+                            "deviceTypeIdentifier" : "com.apple.CoreSimulator.SimDeviceType.iPhone-11-Pro",
+                            "state" : "Shutdown",
+                            "name" : "iPhone 11 Pro"
+                          },
+                          {
+                            "availabilityError" : "runtime profile not found",
+                            "dataPath" :
+                            "\/Users\/valentin\/Library\/Developer\/CoreSimulator\/Devices\/20251CAA-45B3-4DEE-AA56-8D3573C19156\/
+                            data",
+                            "dataPathSize" : 13312000,
+                            "logPath" : "\/Users\/valentin\/Library\/Logs\/CoreSimulator\/20251CAA-45B3-4DEE-AA56-8D3573C19156",
+                            "udid" : "20251CAA-45B3-4DEE-AA56-8D3573C19156",
+                            "isAvailable" : false,
+                            "deviceTypeIdentifier" : "com.apple.CoreSimulator.SimDeviceType.iPhone-11-Pro-Max",
+                            "state" : "Shutdown",
+                            "name" : "iPhone 11 Pro Max"
+                          },
+                          {
+                            "availabilityError" : "runtime profile not found",
+                            "dataPath" :
+                            "\/Users\/valentin\/Library\/Developer\/CoreSimulator\/Devices\/80B5CAC1-3152-49FA-90A7-255C1E3670F8\/
+                            data",
+                            "dataPathSize" : 13312000,
+                            "logPath" : "\/Users\/valentin\/Library\/Logs\/CoreSimulator\/80B5CAC1-3152-49FA-90A7-255C1E3670F8",
+                            "udid" : "80B5CAC1-3152-49FA-90A7-255C1E3670F8",
+                            "isAvailable" : false,
+                            "deviceTypeIdentifier" : "com.apple.CoreSimulator.SimDeviceType.iPhone-SE--2nd-generation-",
+                            "state" : "Shutdown",
+                            "name" : "iPhone SE (2nd generation)"
+                          },
+                          {
+                            "availabilityError" : "runtime profile not found",
+                            "dataPath" :
+                            "\/Users\/valentin\/Library\/Developer\/CoreSimulator\/Devices\/DABD76CA-64B1-4D73-AAE6-CF66BC360506\/
+                            data",
+                            "dataPathSize" : 13312000,
+                            "logPath" : "\/Users\/valentin\/Library\/Logs\/CoreSimulator\/DABD76CA-64B1-4D73-AAE6-CF66BC360506",
+                            "udid" : "DABD76CA-64B1-4D73-AAE6-CF66BC360506",
+                            "isAvailable" : false,
+                            "deviceTypeIdentifier" : "com.apple.CoreSimulator.SimDeviceType.iPhone-12-mini",
+                            "state" : "Shutdown",
+                            "name" : "iPhone 12 mini"
+                          },
+                          {
+                            "availabilityError" : "runtime profile not found",
+                            "dataPath" :
+                            "\/Users\/valentin\/Library\/Developer\/CoreSimulator\/Devices\/15F74D19-CF3D-4070-ADE0-140FE2A48BDA\/
+                            data",
+                            "dataPathSize" : 13312000,
+                            "logPath" : "\/Users\/valentin\/Library\/Logs\/CoreSimulator\/15F74D19-CF3D-4070-ADE0-140FE2A48BDA",
+                            "udid" : "15F74D19-CF3D-4070-ADE0-140FE2A48BDA",
+                            "isAvailable" : false,
+                            "deviceTypeIdentifier" : "com.apple.CoreSimulator.SimDeviceType.iPhone-12",
+                            "state" : "Shutdown",
+                            "name" : "iPhone 12"
+                          },
+                          {
+                            "availabilityError" : "runtime profile not found",
+                            "dataPath" :
+                            "\/Users\/valentin\/Library\/Developer\/CoreSimulator\/Devices\/9AB27EB2-AA87-4411-B875-DA1C19B843A8\/
+                            data",
+                            "dataPathSize" : 13312000,
+                            "logPath" : "\/Users\/valentin\/Library\/Logs\/CoreSimulator\/9AB27EB2-AA87-4411-B875-DA1C19B843A8",
+                            "udid" : "9AB27EB2-AA87-4411-B875-DA1C19B843A8",
+                            "isAvailable" : false,
+                            "deviceTypeIdentifier" : "com.apple.CoreSimulator.SimDeviceType.iPhone-12-Pro",
+                            "state" : "Shutdown",
+                            "name" : "iPhone 12 Pro"
+                          },
+                          {
+                            "availabilityError" : "runtime profile not found",
+                            "dataPath" :
+                            "\/Users\/valentin\/Library\/Developer\/CoreSimulator\/Devices\/A816048D-807B-4FC0-A4A3-5F1272457E4C\/
+                            data",
+                            "dataPathSize" : 1431621632,
+                            "logPath" : "\/Users\/valentin\/Library\/Logs\/CoreSimulator\/A816048D-807B-4FC0-A4A3-5F1272457E4C",
+                            "udid" : "A816048D-807B-4FC0-A4A3-5F1272457E4C",
+                            "isAvailable" : false,
+                            "logPathSize" : 7442432,
+                            "deviceTypeIdentifier" : "com.apple.CoreSimulator.SimDeviceType.iPhone-12-Pro-Max",
+                            "state" : "Shutdown",
+                            "name" : "iPhone 12 Pro Max"
+                          },
+                          {
+                            "availabilityError" : "runtime profile not found",
+                            "dataPath" :
+                            "\/Users\/valentin\/Library\/Developer\/CoreSimulator\/Devices\/01239413-5833-443E-B8FF-7ACB9812E144\/
+                            data",
+                            "dataPathSize" : 13312000,
+                            "logPath" : "\/Users\/valentin\/Library\/Logs\/CoreSimulator\/01239413-5833-443E-B8FF-7ACB9812E144",
+                            "udid" : "01239413-5833-443E-B8FF-7ACB9812E144",
+                            "isAvailable" : false,
+                            "deviceTypeIdentifier" : "com.apple.CoreSimulator.SimDeviceType.iPod-touch--7th-generation-",
+                            "state" : "Shutdown",
+                            "name" : "iPod touch (7th generation)"
+                          },
+                          {
+                            "availabilityError" : "runtime profile not found",
+                            "dataPath" :
+                            "\/Users\/valentin\/Library\/Developer\/CoreSimulator\/Devices\/D14F7134-295B-4F86-9B60-F4B7AE858E14\/
+                            data",
+                            "dataPathSize" : 13312000,
+                            "logPath" : "\/Users\/valentin\/Library\/Logs\/CoreSimulator\/D14F7134-295B-4F86-9B60-F4B7AE858E14",
+                            "udid" : "D14F7134-295B-4F86-9B60-F4B7AE858E14",
+                            "isAvailable" : false,
+                            "deviceTypeIdentifier" : "com.apple.CoreSimulator.SimDeviceType.iPad-Pro--9-7-inch-",
+                            "state" : "Shutdown",
+                            "name" : "iPad Pro (9.7-inch)"
+                          },
+                          {
+                            "availabilityError" : "runtime profile not found",
+                            "dataPath" :
+                            "\/Users\/valentin\/Library\/Developer\/CoreSimulator\/Devices\/69266F84-BF0A-4972-A338-E49A8125205B\/
+                            data",
+                            "dataPathSize" : 13312000,
+                            "logPath" : "\/Users\/valentin\/Library\/Logs\/CoreSimulator\/69266F84-BF0A-4972-A338-E49A8125205B",
+                            "udid" : "69266F84-BF0A-4972-A338-E49A8125205B",
+                            "isAvailable" : false,
+                            "deviceTypeIdentifier" : "com.apple.CoreSimulator.SimDeviceType.iPad--8th-generation-",
+                            "state" : "Shutdown",
+                            "name" : "iPad (8th generation)"
+                          },
+                          {
+                            "availabilityError" : "runtime profile not found",
+                            "dataPath" :
+                            "\/Users\/valentin\/Library\/Developer\/CoreSimulator\/Devices\/56D5D85B-C83F-4305-8576-401B13AD312A\/
+                            data",
+                            "dataPathSize" : 13312000,
+                            "logPath" : "\/Users\/valentin\/Library\/Logs\/CoreSimulator\/56D5D85B-C83F-4305-8576-401B13AD312A",
+                            "udid" : "56D5D85B-C83F-4305-8576-401B13AD312A",
+                            "isAvailable" : false,
+                            "deviceTypeIdentifier" : "com.apple.CoreSimulator.SimDeviceType.iPad-Air--4th-generation-",
+                            "state" : "Shutdown",
+                            "name" : "iPad Air (4th generation)"
+                          },
+                          {
+                            "availabilityError" : "runtime profile not found",
+                            "dataPath" :
+                            "\/Users\/valentin\/Library\/Developer\/CoreSimulator\/Devices\/31932307-5CD1-4090-B11D-361FA7EBCA55\/
+                            data",
+                            "dataPathSize" : 13312000,
+                            "logPath" : "\/Users\/valentin\/Library\/Logs\/CoreSimulator\/31932307-5CD1-4090-B11D-361FA7EBCA55",
+                            "udid" : "31932307-5CD1-4090-B11D-361FA7EBCA55",
+                            "isAvailable" : false,
+                            "deviceTypeIdentifier" : "com.apple.CoreSimulator.SimDeviceType.iPad-Pro-11-inch-3rd-generation",
+                            "state" : "Shutdown",
+                            "name" : "iPad Pro (11-inch) (3rd generation)"
+                          },
+                          {
+                            "availabilityError" : "runtime profile not found",
+                            "dataPath" :
+                            "\/Users\/valentin\/Library\/Developer\/CoreSimulator\/Devices\/6F64FB76-CEB6-4FEF-93DD-11539BBE141B\/
+                            data",
+                            "dataPathSize" : 13312000,
+                            "logPath" : "\/Users\/valentin\/Library\/Logs\/CoreSimulator\/6F64FB76-CEB6-4FEF-93DD-11539BBE141B",
+                            "udid" : "6F64FB76-CEB6-4FEF-93DD-11539BBE141B",
+                            "isAvailable" : false,
+                            "deviceTypeIdentifier" : "com.apple.CoreSimulator.SimDeviceType.iPad-Pro-12-9-inch-5th-generation",
+                            "state" : "Shutdown",
+                            "name" : "iPad Pro (12.9-inch) (5th generation)"
+                          }
+                        ]
+                      }
+                    }
+[+2925 ms] [
+                      {
+                        "simulator" : true,
+                        "operatingSystemVersion" : "15.2 (19C51)",
+                        "available" : true,
+                        "platform" : "com.apple.platform.iphonesimulator",
+                        "modelCode" : "iPhone12,1",
+                        "identifier" : "BAFB5847-582B-48AE-9A25-E79060D76BD5",
+                        "architecture" : "x86_64",
+                        "modelUTI" : "com.apple.iphone-11-1",
+                        "modelName" : "iPhone 11",
+                        "name" : "iPhone 11"
+                      },
+                      {
+                        "simulator" : false,
+                        "operatingSystemVersion" : "11.5.1 (20G80)",
+                        "interface" : "usb",
+                        "available" : true,
+                        "platform" : "com.apple.platform.macosx",
+                        "modelCode" : "MacBookPro16,1",
+                        "identifier" : "64B4A1C4-9FFC-5EE0-9FB0-BECCF64640C8",
+                        "architecture" : "x86_64h",
+                        "modelUTI" : "com.apple.macbookpro-16",
+                        "modelName" : "MacBook Pro",
+                        "name" : "My Mac"
+                      },
+                      {
+                        "simulator" : true,
+                        "operatingSystemVersion" : "15.2 (19C51)",
+                        "available" : true,
+                        "platform" : "com.apple.platform.iphonesimulator",
+                        "modelCode" : "iPad13,2",
+                        "identifier" : "F3AE11D2-2742-41DA-8681-CB7124EC8314",
+                        "architecture" : "x86_64",
+                        "modelUTI" : "com.apple.ipad-air4-1",
+                        "modelName" : "iPad Air (4th generation)",
+                        "name" : "iPad Air (4th generation)"
+                      },
+                      {
+                        "simulator" : true,
+                        "operatingSystemVersion" : "15.2 (19C51)",
+                        "available" : true,
+                        "platform" : "com.apple.platform.iphonesimulator",
+                        "modelCode" : "iPhone12,3",
+                        "identifier" : "B71352DE-E93D-42B7-AE97-77C7C8135F54",
+                        "architecture" : "x86_64",
+                        "modelUTI" : "com.apple.iphone-11-pro-1",
+                        "modelName" : "iPhone 11 Pro",
+                        "name" : "iPhone 11 Pro"
+                      },
+                      {
+                        "simulator" : true,
+                        "operatingSystemVersion" : "15.2 (19C51)",
+                        "available" : true,
+                        "platform" : "com.apple.platform.iphonesimulator",
+                        "modelCode" : "iPhone10,4",
+                        "identifier" : "7568D948-19B2-4E15-831E-1CC33C4CA082",
+                        "architecture" : "x86_64",
+                        "modelUTI" : "com.apple.iphone-8-2",
+                        "modelName" : "iPhone 8",
+                        "name" : "iPhone 8"
+                      },
+                      {
+                        "simulator" : true,
+                        "operatingSystemVersion" : "15.2 (19C51)",
+                        "available" : true,
+                        "platform" : "com.apple.platform.iphonesimulator",
+                        "modelCode" : "iPhone13,1",
+                        "identifier" : "D86F8946-8ED3-4033-8BE4-E0958244EB03",
+                        "architecture" : "x86_64",
+                        "modelUTI" : "com.apple.iphone-12-mini-1",
+                        "modelName" : "iPhone 12 mini",
+                        "name" : "iPhone 12 mini"
+                      },
+                      {
+                        "simulator" : true,
+                        "operatingSystemVersion" : "15.2 (19C51)",
+                        "available" : true,
+                        "platform" : "com.apple.platform.iphonesimulator",
+                        "modelCode" : "iPhone12,8",
+                        "identifier" : "6600B7BA-0E27-421B-9B7F-8D9014C2DD06",
+                        "architecture" : "x86_64",
+                        "modelUTI" : "com.apple.iphone-se-1",
+                        "modelName" : "iPhone SE (2nd generation)",
+                        "name" : "iPhone SE (2nd generation)"
+                      },
+                      {
+                        "simulator" : true,
+                        "operatingSystemVersion" : "15.2 (19C51)",
+                        "available" : true,
+                        "platform" : "com.apple.platform.iphonesimulator",
+                        "modelCode" : "iPad13,5",
+                        "identifier" : "85717AFD-529D-4D2A-B4F7-0C829A98B3D9",
+                        "architecture" : "x86_64",
+                        "modelUTI" : "com.apple.ipad-pro-11-3rd-1",
+                        "modelName" : "iPad Pro (11-inch) (3rd generation)",
+                        "name" : "iPad Pro (11-inch) (3rd generation)"
+                      },
+                      {
+                        "simulator" : true,
+                        "operatingSystemVersion" : "8.3 (19S51)",
+                        "available" : true,
+                        "platform" : "com.apple.platform.watchsimulator",
+                        "modelCode" : "Watch6,2",
+                        "identifier" : "1F8226B1-DAEC-42B7-88F0-37D65DD1BDEE",
+                        "architecture" : "x86_64",
+                        "modelUTI" : "com.apple.watch-series6-1",
+                        "modelName" : "Apple Watch Series 6 - 44mm",
+                        "name" : "Apple Watch Series 6 - 44mm"
+                      },
+                      {
+                        "simulator" : true,
+                        "operatingSystemVersion" : "8.3 (19S51)",
+                        "available" : true,
+                        "platform" : "com.apple.platform.watchsimulator",
+                        "modelCode" : "Watch5,4",
+                        "identifier" : "F5A2644C-FE2C-4ACE-951D-50404EC30AEB",
+                        "architecture" : "x86_64",
+                        "modelUTI" : "com.apple.watch-series5-1",
+                        "modelName" : "Apple Watch Series 5 - 44mm",
+                        "name" : "Apple Watch Series 5 - 44mm"
+                      },
+                      {
+                        "simulator" : true,
+                        "operatingSystemVersion" : "15.2 (19C51)",
+                        "available" : true,
+                        "platform" : "com.apple.platform.iphonesimulator",
+                        "modelCode" : "iPad14,1",
+                        "identifier" : "8DB31899-C701-448D-B4CA-B764AB9EDA5A",
+                        "architecture" : "x86_64",
+                        "modelUTI" : "com.apple.ipad-mini6-1",
+                        "modelName" : "iPad mini (6th generation)",
+                        "name" : "iPad mini (6th generation)"
+                      },
+                      {
+                        "simulator" : true,
+                        "operatingSystemVersion" : "15.2 (19C51)",
+                        "available" : true,
+                        "platform" : "com.apple.platform.iphonesimulator",
+                        "modelCode" : "iPhone13,3",
+                        "identifier" : "AE12CDBB-638D-41F8-B4A6-F4DC23CB039C",
+                        "architecture" : "x86_64",
+                        "modelUTI" : "com.apple.iphone-12-pro-1",
+                        "modelName" : "iPhone 12 Pro",
+                        "name" : "iPhone 12 Pro"
+                      },
+                      {
+                        "simulator" : true,
+                        "operatingSystemVersion" : "15.2 (19C51)",
+                        "available" : true,
+                        "platform" : "com.apple.platform.iphonesimulator",
+                        "modelCode" : "iPad6,4",
+                        "identifier" : "A69C375A-B58B-4141-9F4A-6A92CEFCA4DC",
+                        "architecture" : "x86_64",
+                        "modelUTI" : "com.apple.ipad-pro-9point7-a1674-b9b7ba",
+                        "modelName" : "iPad Pro (9.7-inch)",
+                        "name" : "iPad Pro (9.7-inch)"
+                      },
+                      {
+                        "simulator" : true,
+                        "operatingSystemVersion" : "15.2 (19K50)",
+                        "available" : true,
+                        "platform" : "com.apple.platform.appletvsimulator",
+                        "modelCode" : "AppleTV11,1",
+                        "identifier" : "19357C02-2579-41D4-8723-DA70090EE5D7",
+                        "architecture" : "x86_64",
+                        "modelUTI" : "com.apple.apple-tv-4k-2nd",
+                        "modelName" : "Apple TV 4K (2nd generation)",
+                        "name" : "Apple TV 4K (2nd generation)"
+                      },
+                      {
+                        "simulator" : true,
+                        "operatingSystemVersion" : "15.2 (19C51)",
+                        "available" : true,
+                        "platform" : "com.apple.platform.iphonesimulator",
+                        "modelCode" : "iPhone10,5",
+                        "identifier" : "9F571AEB-87D4-40B2-AF05-F1677439F65E",
+                        "architecture" : "x86_64",
+                        "modelUTI" : "com.apple.iphone-8-plus-2",
+                        "modelName" : "iPhone 8 Plus",
+                        "name" : "iPhone 8 Plus"
+                      },
+                      {
+                        "simulator" : true,
+                        "operatingSystemVersion" : "15.2 (19C51)",
+                        "available" : true,
+                        "platform" : "com.apple.platform.iphonesimulator",
+                        "modelCode" : "iPhone13,4",
+                        "identifier" : "F96BD48D-E431-487B-9D48-49FD688B8B4F",
+                        "architecture" : "x86_64",
+                        "modelUTI" : "com.apple.iphone-12-pro-max-1",
+                        "modelName" : "iPhone 12 Pro Max",
+                        "name" : "iPhone 12 Pro Max"
+                      },
+                      {
+                        "simulator" : true,
+                        "operatingSystemVersion" : "15.2 (19C51)",
+                        "available" : true,
+                        "platform" : "com.apple.platform.iphonesimulator",
+                        "modelCode" : "iPhone14,5",
+                        "identifier" : "6D1E9DF8-540C-4307-89E7-FC2D14CF27B8",
+                        "architecture" : "x86_64",
+                        "modelUTI" : "com.apple.iphone-13-1",
+                        "modelName" : "iPhone 13",
+                        "name" : "iPhone 13"
+                      },
+                      {
+                        "simulator" : true,
+                        "operatingSystemVersion" : "15.2 (19C51)",
+                        "available" : true,
+                        "platform" : "com.apple.platform.iphonesimulator",
+                        "modelCode" : "iPad12,2",
+                        "identifier" : "8E07D9A8-2F6B-436A-9BAD-CAA2C567FBD1",
+                        "architecture" : "x86_64",
+                        "modelUTI" : "com.apple.ipad-9-wwan-1",
+                        "modelName" : "iPad (9th generation)",
+                        "name" : "iPad (9th generation)"
+                      },
+                      {
+                        "simulator" : true,
+                        "operatingSystemVersion" : "15.2 (19C51)",
+                        "available" : true,
+                        "platform" : "com.apple.platform.iphonesimulator",
+                        "modelCode" : "iPhone14,2",
+                        "identifier" : "BA296C32-2CA4-470B-877F-AC1243A5D236",
+                        "architecture" : "x86_64",
+                        "modelUTI" : "com.apple.iphone-13-pro-1",
+                        "modelName" : "iPhone 13 Pro",
+                        "name" : "iPhone 13 Pro"
+                      },
+                      {
+                        "simulator" : true,
+                        "operatingSystemVersion" : "15.2 (19C51)",
+                        "available" : true,
+                        "platform" : "com.apple.platform.iphonesimulator",
+                        "modelCode" : "iPhone14,3",
+                        "identifier" : "60792E92-B2D3-4D46-83AC-C15297B5EE6F",
+                        "architecture" : "x86_64",
+                        "modelUTI" : "com.apple.iphone-13-pro-max-1",
+                        "modelName" : "iPhone 13 Pro Max",
+                        "name" : "iPhone 13 Pro Max"
+                      },
+                      {
+                        "simulator" : true,
+                        "operatingSystemVersion" : "8.3 (19S51)",
+                        "available" : true,
+                        "platform" : "com.apple.platform.watchsimulator",
+                        "modelCode" : "Watch6,6",
+                        "identifier" : "B2C11EDD-F82A-4C44-AB35-9E97866686B7",
+                        "architecture" : "x86_64",
+                        "modelUTI" : "com.apple.watch-series7-1",
+                        "modelName" : "Apple Watch Series 7 - 41mm",
+                        "name" : "Apple Watch Series 7 - 41mm"
+                      },
+                      {
+                        "simulator" : true,
+                        "operatingSystemVersion" : "15.2 (19C51)",
+                        "available" : true,
+                        "platform" : "com.apple.platform.iphonesimulator",
+                        "modelCode" : "iPhone14,4",
+                        "identifier" : "19E3D18B-8D51-449E-B921-543673F1858F",
+                        "architecture" : "x86_64",
+                        "modelUTI" : "com.apple.iphone-13-mini-1",
+                        "modelName" : "iPhone 13 mini",
+                        "name" : "iPhone 13 mini"
+                      },
+                      {
+                        "simulator" : true,
+                        "operatingSystemVersion" : "15.2 (19C51)",
+                        "available" : true,
+                        "platform" : "com.apple.platform.iphonesimulator",
+                        "modelCode" : "iPod9,1",
+                        "identifier" : "5DC4D366-3E74-44EB-95EF-9A4AC75A92B0",
+                        "architecture" : "x86_64",
+                        "modelUTI" : "com.apple.ipod-touch-7-2",
+                        "modelName" : "iPod touch (7th generation)",
+                        "name" : "iPod touch (7th generation)"
+                      },
+                      {
+                        "simulator" : true,
+                        "operatingSystemVersion" : "8.3 (19S51)",
+                        "available" : true,
+                        "platform" : "com.apple.platform.watchsimulator",
+                        "modelCode" : "Watch5,3",
+                        "identifier" : "0333DF1E-BA74-4A09-9896-0CE29E03A147",
+                        "architecture" : "x86_64",
+                        "modelUTI" : "com.apple.watch-series5-1",
+                        "modelName" : "Apple Watch Series 5 - 40mm",
+                        "name" : "Apple Watch Series 5 - 40mm"
+                      },
+                      {
+                        "simulator" : true,
+                        "operatingSystemVersion" : "8.3 (19S51)",
+                        "available" : true,
+                        "platform" : "com.apple.platform.watchsimulator",
+                        "modelCode" : "Watch6,9",
+                        "identifier" : "261CC96C-7654-49C8-A0A3-38E7D8DE9930",
+                        "architecture" : "x86_64",
+                        "modelUTI" : "com.apple.watch-series7-1",
+                        "modelName" : "Apple Watch Series 7 - 45mm",
+                        "name" : "Apple Watch Series 7 - 45mm"
+                      },
+                      {
+                        "simulator" : true,
+                        "operatingSystemVersion" : "15.2 (19K50)",
+                        "available" : true,
+                        "platform" : "com.apple.platform.appletvsimulator",
+                        "modelCode" : "AppleTV11,1",
+                        "identifier" : "1BC0D572-C22B-4923-8F4E-8533178B0AF0",
+                        "architecture" : "x86_64",
+                        "modelUTI" : "com.apple.apple-tv-4k-2nd",
+                        "modelName" : "Apple TV 4K (at 1080p) (2nd generation)",
+                        "name" : "Apple TV 4K (at 1080p) (2nd generation)"
+                      },
+                      {
+                        "simulator" : true,
+                        "operatingSystemVersion" : "15.2 (19K50)",
+                        "available" : true,
+                        "platform" : "com.apple.platform.appletvsimulator",
+                        "modelCode" : "AppleTV5,3",
+                        "identifier" : "613B2511-8F4E-4D84-B601-101AD2A616C4",
+                        "architecture" : "x86_64",
+                        "modelUTI" : "com.apple.apple-tv-4",
+                        "modelName" : "Apple TV",
+                        "name" : "Apple TV"
+                      },
+                      {
+                        "simulator" : true,
+                        "operatingSystemVersion" : "15.2 (19C51)",
+                        "available" : true,
+                        "platform" : "com.apple.platform.iphonesimulator",
+                        "modelCode" : "iPad13,10",
+                        "identifier" : "F867A3CA-8949-4E96-9806-F7C0A5D7C1F1",
+                        "architecture" : "x86_64",
+                        "modelUTI" : "com.apple.ipad-pro-12point9-5th-1",
+                        "modelName" : "iPad Pro (12.9-inch) (5th generation)",
+                        "name" : "iPad Pro (12.9-inch) (5th generation)"
+                      },
+                      {
+                        "simulator" : true,
+                        "operatingSystemVersion" : "8.3 (19S51)",
+                        "available" : true,
+                        "platform" : "com.apple.platform.watchsimulator",
+                        "modelCode" : "Watch6,1",
+                        "identifier" : "15C9B565-8717-441D-B387-C1C25AAEC6A5",
+                        "architecture" : "x86_64",
+                        "modelUTI" : "com.apple.watch-series6-1",
+                        "modelName" : "Apple Watch Series 6 - 40mm",
+                        "name" : "Apple Watch Series 6 - 40mm"
+                      },
+                      {
+                        "simulator" : true,
+                        "operatingSystemVersion" : "15.2 (19C51)",
+                        "available" : true,
+                        "platform" : "com.apple.platform.iphonesimulator",
+                        "modelCode" : "iPhone12,5",
+                        "identifier" : "E4EC4D7F-D32D-4AE4-95F3-8F41CF5D36BF",
+                        "architecture" : "x86_64",
+                        "modelUTI" : "com.apple.iphone-11-pro-max-1",
+                        "modelName" : "iPhone 11 Pro Max",
+                        "name" : "iPhone 11 Pro Max"
+                      },
+                      {
+                        "simulator" : true,
+                        "operatingSystemVersion" : "15.2 (19C51)",
+                        "available" : true,
+                        "platform" : "com.apple.platform.iphonesimulator",
+                        "modelCode" : "iPhone13,2",
+                        "identifier" : "568B8B5D-FC7B-4C43-B5EA-DB4BF678144B",
+                        "architecture" : "x86_64",
+                        "modelUTI" : "com.apple.iphone-12-1",
+                        "modelName" : "iPhone 12",
+                        "name" : "iPhone 12"
+                      }
+                    ]
+[  +13 ms] Artifact Instance of 'AndroidGenSnapshotArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'AndroidInternalBuildArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IOSEngineArtifacts' is not required, skipping update.
+[   +9 ms] Artifact Instance of 'WindowsEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'WindowsUwpEngineArtifacts' is not required, skipping update.
+[  +20 ms] Artifact Instance of 'LinuxEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'LinuxFuchsiaSDKArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'MacOSFuchsiaSDKArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterRunnerSDKArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterRunnerDebugSymbols' is not required, skipping update.
+[ +138 ms] Multiple devices found:
+[  +65 ms] macOS (desktop) • macos  • darwin-x64     • macOS 11.5.1 20G80 darwin-x64
+[        ] Chrome (web)    • chrome • web-javascript • Google Chrome 103.0.5060.134
+[        ] [1]: macOS (macos)
+[        ] [2]: Chrome (chrome)
+[   +1 ms] Please choose one (To quit, press "q/Q")
+[        ] : 
+[+2945 ms] 2
+[  +21 ms] Skipping pub get: version match.
+[ +166 ms] Generating
+/Users/valentin/Perso/Projects/flutter_app_stable/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java
+[ +127 ms] Launching lib/main.dart on Chrome in debug mode...
+[ +206 ms] Updating assets
+[ +132 ms] Waiting for connection from debug service on Chrome...
+[  +94 ms] <- reset
+[   +9 ms] /Users/valentin/flutter/flutter/bin/cache/dart-sdk/bin/dart --disable-dart-dev
+/Users/valentin/flutter/flutter/bin/cache/dart-sdk/bin/snapshots/frontend_server.dart.snapshot --sdk-root
+/Users/valentin/flutter/flutter/bin/cache/flutter_web_sdk/ --incremental --target=dartdevc --debugger-module-names
+--experimental-emit-debug-metadata -DFLUTTER_WEB_AUTO_DETECT=true --output-dill
+/var/folders/pl/d95zgbzd4hbb3z0rt9bl02z40000gn/T/flutter_tools.aqBs7A/flutter_tool.lI7rKb/app.dill --libraries-spec
+file:///Users/valentin/flutter/flutter/bin/cache/flutter_web_sdk/libraries.json --packages
+/Users/valentin/Perso/Projects/flutter_app_stable/.dart_tool/package_config.json -Ddart.vm.profile=false -Ddart.vm.product=false
+--enable-asserts --track-widget-creation --filesystem-root
+/var/folders/pl/d95zgbzd4hbb3z0rt9bl02z40000gn/T/flutter_tools.aqBs7A/flutter_tools.VnVgfw --filesystem-scheme org-dartlang-app
+--initialize-from-dill build/b1b715402d823b7fd5c2b68d2edcb2ce.cache.dill.track.dill --platform
+file:///Users/valentin/flutter/flutter/bin/cache/flutter_web_sdk/kernel/flutter_ddc_sdk_sound.dill --sound-null-safety
+[  +15 ms] <- compile org-dartlang-app:/web_entrypoint.dart
+[+17357 ms] Waiting for connection from debug service on Chrome... (completed in 17.5s)
+[        ] Synced 30.2MB.
+[        ] <- accept
+[        ] Caching compiled dill
+[ +140 ms] Using Google Chrome 103.0.5060.134 
+
+[ +776 ms] executing: sysctl hw.optional.arm64
+[   +7 ms] Exit code 1 from: sysctl hw.optional.arm64
+[        ] sysctl: unknown oid 'hw.optional.arm64'
+[ +404 ms] [CHROME]: 
+[   +1 ms] [CHROME]: DevTools listening on ws://127.0.0.1:57455/devtools/browser/e39d57f5-babf-40c7-8adf-3d3301f9679d
+[+1209 ms] DwdsInjector: Received request for entrypoint at http://localhost:57386/main_module.bootstrap.js
+[   +5 ms] MetadataProvider: Loading debug metadata...
+[   +4 ms] MetadataProvider: Loaded debug metadata for module: web_entrypoint.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter_app_stable/main.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/go_router/go_router.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/go_router/src/state.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/foundation.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/foundation/unicode.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/foundation/synchronous_future.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/foundation/stack_frame.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/foundation/object.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/foundation/constants.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/meta/meta.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/meta/meta_meta.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/foundation/serialization.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/foundation/print.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/foundation/_platform_web.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/foundation/observer_list.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/foundation/node.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/foundation/licenses.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/foundation/key.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/foundation/debug.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/foundation/basic_types.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/foundation/_isolates_web.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/foundation/consolidate_response.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/foundation/collections.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/foundation/change_notifier.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/foundation/_bitfield_web.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/foundation/binding.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/foundation/annotations.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/go_router/src/path_utils.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/widgets.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/will_pop_scope.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/title.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/rendering.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/rendering/wrap.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/rendering/layer.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/painting.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/painting/placeholder_span.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/services/text_formatter.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/services/text_layout_metrics.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/services/text_editing.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/services/system_chrome.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/services/restoration.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/scheduler.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/scheduler/ticker.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/scheduler/binding.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/scheduler/priority.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/scheduler/debug.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/collection/src/union_set_controller.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/collection/src/queue_list.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/collection/src/priority_queue.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/collection/src/utils.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/collection/src/list_extensions.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/collection/src/equality.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/collection/src/comparators.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/collection/src/algorithms.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/collection/src/iterable_zip.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/collection/src/iterable_extensions.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/collection/src/functions.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/collection/src/combined_wrappers/combined_map.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/collection/src/combined_wrappers/combined_iterable.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/collection/src/combined_wrappers/combined_iterator.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/collection/src/combined_wrappers/combined_list.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/collection/src/canonicalized_map.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/services/keyboard_maps.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/services/keyboard_key.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/services/binary_messenger.dart
+[   +1 ms] MetadataProvider: Loaded debug metadata for module: packages/vector_math/vector_math_64.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/characters/characters.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/characters/src/extensions.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/characters/src/characters_impl.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/characters/src/grapheme_clusters/breaks.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/characters/src/grapheme_clusters/table.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/characters/src/grapheme_clusters/constants.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/services/system_sound.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/services/system_navigator.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/services/platform_views.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/gestures.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/gestures/velocity_tracker.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/gestures/lsq_solver.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/gestures/events.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/gestures/gesture_settings.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/gestures/constants.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/gestures/team.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/gestures/binding.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/gestures/resampler.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/gestures/pointer_signal_resolver.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/gestures/pointer_router.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/gestures/hit_test.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/gestures/debug.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/gestures/converter.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/gestures/arena.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/gestures/tap.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/gestures/recognizer.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/gestures/scale.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/gestures/multitap.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/gestures/multidrag.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/gestures/drag_details.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/gestures/drag.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/gestures/monodrag.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/gestures/long_press.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/gestures/force_press.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/gestures/eager.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/services/mouse_tracking.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/services/mouse_cursor.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/services/haptic_feedback.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/services/font_loader.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/services/deferred_component.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/services/debug.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/services/clipboard.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/painting/basic_types.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/painting/colors.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/painting/stadium_border.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/painting/rounded_rectangle_border.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/painting/edge_insets.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/painting/circle_border.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/painting/borders.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/painting/border_radius.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/painting/shape_decoration.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/painting/_network_image_web.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/painting/image_stream.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/painting/image_cache.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/painting/binding.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/painting/shader_warm_up.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/painting/debug.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/painting/gradient.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/painting/alignment.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/painting/decoration_image.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/painting/box_fit.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/painting/decoration.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/painting/box_shadow.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/painting/box_decoration.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/painting/box_border.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/painting/paint_utilities.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/painting/notched_shapes.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/painting/matrix_utils.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/painting/image_resolution.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/painting/image_decoder.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/painting/geometry.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/painting/fractional_offset.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/painting/flutter_logo.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/painting/continuous_rectangle_border.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/painting/clip.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/painting/beveled_rectangle_border.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/semantics.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/semantics/semantics_service.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/semantics/semantics_event.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/semantics/semantics.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/semantics/binding.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/semantics/debug.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/animation.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/animation/tween_sequence.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/animation/listener_helpers.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/animation/curves.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/animation/animation_controller.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/physics.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/physics/utils.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/physics/tolerance.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/physics/spring_simulation.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/physics/simulation.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/physics/gravity_simulation.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/physics/friction_simulation.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/physics/clamped_simulation.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/rendering/layout_helper.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/rendering/viewport_offset.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/rendering/sliver.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/rendering/tweens.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/rendering/texture.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/rendering/table_border.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/rendering/table.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/rendering/stack.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/rendering/sliver_persistent_header.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/rendering/sliver_padding.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/rendering/sliver_multi_box_adaptor.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/rendering/sliver_list.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/rendering/sliver_grid.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/rendering/sliver_fixed_extent_list.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/rendering/sliver_fill.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/rendering/shifted_box.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/rendering/debug_overflow_indicator.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/rendering/rotated_box.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/rendering/proxy_sliver.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/rendering/proxy_box.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/rendering/platform_view.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/rendering/performance_overlay.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/rendering/paragraph.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/rendering/list_wheel_viewport.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/rendering/list_body.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/rendering/image.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/rendering/flow.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/rendering/flex.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/rendering/error.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/rendering/editable.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/rendering/custom_paint.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/rendering/custom_layout.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/rendering/animated_size.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/scroll_metrics.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/scroll_simulation.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/constants.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/visibility.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/value_listenable_builder.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/unique_widget.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/tween_animation_builder.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/implicit_animations.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/texture.dart
+[        ] MetadataProvider: Loaded debug metadata for module:
+packages/flutter/src/widgets/text_selection_toolbar_layout_delegate.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/status_transitions.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/spacer.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/slotted_render_object_widget.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/sliver_prototype_extent_list.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/sliver_persistent_header.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/sliver_layout_builder.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/layout_builder.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/sliver_fill.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/size_changed_layout_notifier.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/single_child_scroll_view.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/scroll_view.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/scroll_notification_observer.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/safe_area.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/reorderable_list.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/raw_keyboard_listener.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/preferred_size.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/platform_view.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/page_view.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/overflow_bar.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/orientation_builder.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/nested_scroll_view.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/navigation_toolbar.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/list_wheel_scroll_view.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/keyboard_listener.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/interactive_viewer.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/image_icon.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/icon_theme_data.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/icon_theme.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/icon.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/icon_data.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/image_filter.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/grid_paper.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/form.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/fade_in_image.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/dual_transition_builder.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/draggable_scrollable_sheet.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/drag_target.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/dismissible.dart
+[        ] MetadataProvider: Loaded debug metadata for module:
+packages/flutter/src/widgets/desktop_text_selection_toolbar_layout_delegate.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/color_filter.dart
+[   +1 ms] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/bottom_navigation_bar_item.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/autocomplete.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/async.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/annotated_region.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/animated_switcher.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/animated_size.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/animated_list.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/animated_cross_fade.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/go_router/src/logging.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/logging/logging.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/logging/src/logger.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/logging/src/level.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/go_router/src/misc/inherited_router.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/go_router/src/platform.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/go_router/src/platform/url_path_strategy.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/go_router/src/platform/path_strategy_web.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter_web_plugins/flutter_web_plugins.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter_web_plugins/src/plugin_registry.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter_web_plugins/src/plugin_event_channel.dart
+[        ] MetadataProvider: Loaded debug metadata for module:
+packages/flutter_web_plugins/src/navigation_common/url_strategy.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter_web_plugins/src/navigation/utils.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter_web_plugins/src/navigation/url_strategy.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter_web_plugins/src/navigation/js_url_strategy.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/js/js.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/go_router/src/parser.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/go_router/src/redirection.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/go_router/src/matching.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/go_router/src/match.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/go_router/src/route_data.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/material.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/user_accounts_drawer_header.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/icon_button.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/typography.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/colors.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/material_state.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/input_border.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/constants.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/material_color_utilities/material_color_utilities.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/material_color_utilities/score/score.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/material_color_utilities/utils/math_utils.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/material_color_utilities/utils/color_utils.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/material_color_utilities/hct/cam16.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/material_color_utilities/hct/viewing_conditions.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/material_color_utilities/scheme/scheme.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/material_color_utilities/palettes/core_palette.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/material_color_utilities/palettes/tonal_palette.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/material_color_utilities/hct/hct.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/material_color_utilities/quantize/quantizer_wu.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/material_color_utilities/quantize/quantizer_map.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/material_color_utilities/quantize/quantizer.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/material_color_utilities/quantize/quantizer_wsmeans.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/material_color_utilities/quantize/point_provider_lab.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/material_color_utilities/quantize/point_provider.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/material_color_utilities/quantize/quantizer_celebi.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/material_color_utilities/blend/blend.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/material_state_mixin.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/tooltip_visibility.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/floating_action_button_theme.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/curves.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/bottom_sheet_theme.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/tab_indicator.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/tab_controller.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/icons.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/cupertino.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/cupertino/thumb_painter.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/cupertino/text_theme.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/cupertino/interface_level.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/cupertino/text_selection_toolbar_button.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/cupertino/button.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/cupertino/constants.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/cupertino/text_selection_toolbar.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/cupertino/text_selection.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/cupertino/debug.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/cupertino/text_form_field_row.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/cupertino/text_field.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/cupertino/icons.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/cupertino/desktop_text_selection.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/cupertino/form_row.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/cupertino/tab_view.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/cupertino/route.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/cupertino/app.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/cupertino/scrollbar.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/cupertino/tab_scaffold.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/cupertino/bottom_tab_bar.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/cupertino/switch.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/cupertino/sliding_segmented_control.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/cupertino/slider.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/cupertino/segmented_control.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/cupertino/search_field.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/cupertino/refresh.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/cupertino/activity_indicator.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/cupertino/picker.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/cupertino/page_scaffold.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/cupertino/nav_bar.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/cupertino/form_section.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/cupertino/dialog.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/cupertino/date_picker.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/cupertino/context_menu_action.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/cupertino/context_menu.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/drawer_header.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/toggleable.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/toggle_buttons.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/time_picker.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/text_form_field.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/text_field.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/text_selection.dart
+[        ] MetadataProvider: Loaded debug metadata for module:
+packages/flutter/src/material/text_selection_toolbar_text_button.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/text_selection_toolbar.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/selectable_text.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/desktop_text_selection.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/dialog.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/switch_list_tile.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/switch.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/shadows.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/stepper.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/slider.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/search.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/scrollbar.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/reorderable_list.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/refresh_indicator.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/progress_indicator.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/range_slider.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/radio_list_tile.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/radio.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/popup_menu.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/paginated_data_table.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/dropdown.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/data_table_source.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/data_table.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/checkbox.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/card.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/page.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/outlined_button.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/no_splash.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/mergeable_material.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/input_date_picker_form_field.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/date.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/grid_tile_bar.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/grid_tile.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/flutter_logo.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/expansion_tile.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/expansion_panel.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/expand_icon.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/elevated_button.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/date_picker.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/calendar_date_picker.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/circle_avatar.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/chip.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/checkbox_list_tile.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/button_bar.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/bottom_app_bar.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/autocomplete.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/arc.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/app.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/animated_icons.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/about.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/go_router/src/pages/custom_transition_page.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/go_router/src/misc/refresh_stream.dart
+[        ] MetadataProvider: Loaded debug metadata (sound null safety)
+[   +7 ms] DwdsInjector: Injected debugging metadata for entrypoint at http://localhost:57386/main_module.bootstrap.js
+[+2756 ms] ChromeProxyService: Initializing expression compiler for main_module.bootstrap.js with sound null safety: true
+[  +76 ms] DevHandler: Debug service listening on ws://127.0.0.1:57487/uGi72M4-qpg=/ws
+
+[  +20 ms] DevHandler: VmService proxy responded with an error:
+           {jsonrpc: 2.0, id: 9, error: {code: -32601, message: Method not found, data: {jsonrpc: 2.0, method:
+           _setStreamIncludePrivateMembers, id: 9, params: {streamId: Stdout, includePrivateMembers: false}}}}
+[   +4 ms] This app is linked to the debug service: ws://127.0.0.1:57487/uGi72M4-qpg=/ws
+[   +3 ms] DevHandler: VmService proxy responded with an error:
+           {jsonrpc: 2.0, id: 10, error: {code: -32601, message: Method not found, data: {jsonrpc: 2.0, method:
+           _setStreamIncludePrivateMembers, id: 10, params: {streamId: Stderr, includePrivateMembers: false}}}}
+[   +3 ms] DevHandler: VmService proxy responded with an error:
+           {jsonrpc: 2.0, id: 11, error: {code: -32601, message: Method not found, data: {jsonrpc: 2.0, method:
+           _setStreamIncludePrivateMembers, id: 11, params: {streamId: Isolate, includePrivateMembers: false}}}}
+[   +9 ms] DevHandler: VmService proxy responded with an error:
+           {jsonrpc: 2.0, id: 12, error: {code: -32601, message: Method not found, data: {jsonrpc: 2.0, method:
+           _setStreamIncludePrivateMembers, id: 12, params: {streamId: Extension, includePrivateMembers: false}}}}
+[   +6 ms] Debug service listening on ws://127.0.0.1:57487/uGi72M4-qpg=/ws
+[        ] 💪 Running with sound null safety 💪
+[   +3 ms] 🔥  To hot restart changes while running, press "r" or "R".
+[        ] For a more detailed help message, press "h". To quit, press "q".
+[        ] An Observatory debugger and profiler on Chrome is available at: http://127.0.0.1:57487/uGi72M4-qpg=
+[  +16 ms] Flutter Web Bootstrap: Auto
+[ +972 ms] The Flutter DevTools debugger and profiler on Chrome is available at:
+                    http://127.0.0.1:9101?uri=http://127.0.0.1:57487/uGi72M4-qpg=
+[+53529 ms] DevHandler: Stopped debug service on ws://127.0.0.1:44456
+
+[+1040 ms] Application finished.
+[   +5 ms] "flutter run" took 86,405ms.
+[  +45 ms] ensureAnalyticsSent: 41ms
+[   +1 ms] Running shutdown hooks
+[        ] Shutdown hooks complete
+[        ] exiting with code 0
