@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_stable/filters/project/project_applied_filters.dart';
-import 'package:flutter_app_stable/router/pages.dart';
+import 'package:flutter_app_stable/router/router.dart';
 import 'package:flutter_app_stable/services/cache.dart';
 import 'package:flutter_app_stable/widgets/address_bar.dart';
 import 'package:flutter_app_stable/widgets/filter_bar.dart';
@@ -42,13 +42,7 @@ class TopBar extends ConsumerWidget {
             projectFilterProvider,
           ],
           onChanged: () {
-            final projectAppliedFilters = ref.read(projectFilterProvider);
-
-            final parameters = ProjectsRouteParameters.fromParsedData(
-                projectIds: projectAppliedFilters.selected);
-            ProjectsRoute(
-              projectId: parameters.projectId,
-            ).go(context);
+            router.refresh();
           },
         ),
       ],

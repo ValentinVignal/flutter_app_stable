@@ -181,19 +181,3 @@ extension $FormRouteExtension on FormRoute {
 
   void push(BuildContext context) => context.push(location, extra: this);
 }
-
-// **************************************************************************
-// JsonSerializableGenerator
-// **************************************************************************
-
-ProjectsRouteParameters _$ProjectsRouteParametersFromJson(
-        Map<String, dynamic> json) =>
-    ProjectsRouteParameters(
-      projectId: json['project-id'] as String?,
-    );
-
-Map<String, dynamic> _$ProjectsRouteParametersToJson(
-        ProjectsRouteParameters instance) =>
-    <String, dynamic>{
-      'project-id': instance.projectId,
-    };
