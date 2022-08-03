@@ -1,0 +1,6 @@
+00:44 +2000: print                                                                                                                                                                                                                                         
+Total time: 18626ms
+Time test widget: 8532ms
+Time test widget run async: 10094ms
+run async is 1.183075480543835 slower
+00:44 +2001: All tests passed!  

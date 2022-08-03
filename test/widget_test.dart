@@ -6,24 +6,84 @@
 // tree, read text, and verify that the values of widget properties are correct.
 
 import 'package:flutter/material.dart';
-import 'package:flutter_app_stable/main.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:get_it/get_it.dart';
+
+const n = 1000;
+
+class MyWidget extends StatefulWidget {
+  const MyWidget({Key? key}) : super(key: key);
+
+  @override
+  State<MyWidget> createState() => _MyWidgetState();
+}
+
+class _MyWidgetState extends State<MyWidget> {
+  @override
+  void initState() {
+    super.initState();
+    GetIt.instance.registerSingleton<Singleton>(Singleton());
+  }
+
+  @override
+  void dispose() {
+    GetIt.instance.unregister<Singleton>();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Title'),
+        ),
+        body: const Center(
+          child: Text('Hello World'),
+        ),
+      ),
+    );
+  }
+}
+
+class Singleton {}
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  var duration = const Duration();
+  var durationRunAsync = const Duration();
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+  for (var i = 0; i < n; i++) {
+    testWidgets('test', (tester) async {
+      final start = DateTime.now();
+      await tester.pumpWidget(const MyWidget());
+      final end = DateTime.now();
+      duration += end.difference(start);
+    });
+  }
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+  for (var i = 0; i < n; i++) {
+    testWidgets('test run async', (tester) async {
+      final start = DateTime.now();
+      await tester.runAsync(() async {
+        await tester.pumpWidget(const MyWidget());
+        await tester.idle();
+        await tester.pump(const Duration(seconds: 1));
+        await tester.pump();
+      });
+      final end = DateTime.now();
+      durationRunAsync += end.difference(start);
+    });
+  }
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+  testWidgets('print', (tester) async {
+    print('Total time: ${(duration + durationRunAsync).inMilliseconds}ms');
+    print('Time test widget: ${duration.inMilliseconds}ms');
+    print(
+      'Time test widget run async: ${durationRunAsync.inMilliseconds}ms',
+    );
+
+    print(
+      'run async is ${durationRunAsync.inMilliseconds / duration.inMilliseconds} slower',
+    );
   });
 }
