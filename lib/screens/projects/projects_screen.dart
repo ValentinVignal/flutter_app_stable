@@ -74,10 +74,8 @@ class ProjectList extends ConsumerWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         FilterBar(
-          filters: [
-            projectFilterProvider,
-            projectStatusFilterProvider,
-          ],
+          local: [projectStatusFilterProvider],
+          global: [projectFilterProvider],
         ),
         Expanded(
           child: child,

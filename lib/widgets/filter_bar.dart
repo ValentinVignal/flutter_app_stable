@@ -3,29 +3,43 @@ import 'package:flutter_app_stable/filters/filter.dart';
 import 'package:flutter_app_stable/router/router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class FilterBar extends StatelessWidget {
+class FilterBar extends ConsumerWidget {
   const FilterBar({
-    this.filters = const [],
+    this.local = const [],
+    this.global = const [],
     Key? key,
   }) : super(key: key);
 
-  final Iterable<ProviderBase<Filter>> filters;
+  final Iterable<ProviderBase<Filter>> local;
+  final Iterable<ProviderBase<Filter>> global;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
     return Material(
       color: theme.colorScheme.surface,
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
-        child: Row(
-          children: filters
-              .map(
+        child: IntrinsicHeight(
+          child: Row(
+            children: [
+              ...global.map(
                 (filter) => FilterWidget(
                   filterProvider: filter,
+                  onChanged: router.refresh,
                 ),
-              )
-              .toList(),
+              ),
+              const SizedBox(width: 16),
+              const VerticalDivider(),
+              const SizedBox(width: 16),
+              ...local.map(
+                (filter) => FilterWidget(
+                  filterProvider: filter,
+                  onChanged: () {},
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -35,10 +49,13 @@ class FilterBar extends StatelessWidget {
 class FilterWidget<T> extends ConsumerWidget {
   const FilterWidget({
     required this.filterProvider,
+    required this.onChanged,
     Key? key,
   }) : super(key: key);
 
   final ProviderBase<Filter<T>> filterProvider;
+
+  final VoidCallback onChanged;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -76,7 +93,7 @@ class FilterWidget<T> extends ConsumerWidget {
           newSet.add(id);
         }
         appliedFilterNotifier.state = newSet;
-        router.refresh();
+        onChanged();
       },
       child: Padding(
         padding: const EdgeInsets.all(8.0),
