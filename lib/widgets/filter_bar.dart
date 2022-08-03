@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class FilterBar extends ConsumerWidget {
   const FilterBar({
+    required this.onChanged,
     this.local = const [],
     this.global = const [],
     Key? key,
@@ -12,6 +13,7 @@ class FilterBar extends ConsumerWidget {
 
   final Iterable<ProviderBase<Filter>> local;
   final Iterable<ProviderBase<Filter>> global;
+  final VoidCallback onChanged;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -35,7 +37,7 @@ class FilterBar extends ConsumerWidget {
               ...local.map(
                 (filter) => FilterWidget(
                   filterProvider: filter,
-                  onChanged: () {},
+                  onChanged: onChanged,
                 ),
               ),
             ],

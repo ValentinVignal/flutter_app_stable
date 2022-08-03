@@ -79,13 +79,13 @@ GoRoute get $projectsRoute => GoRouteData.$route(
 
 extension $ProjectsRouteExtension on ProjectsRoute {
   static ProjectsRoute _fromState(GoRouterState state) => ProjectsRoute(
-        projectId: state.queryParams['project-id'],
+        status: state.queryParams['status'],
       );
 
   String get location => GoRouteData.$location(
         '/projects',
         queryParams: {
-          if (projectId != null) 'project-id': projectId!,
+          if (status != null) 'status': status!,
         },
       );
 
@@ -181,3 +181,19 @@ extension $FormRouteExtension on FormRoute {
 
   void push(BuildContext context) => context.push(location, extra: this);
 }
+
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+ProjectsFiltersParameters _$ProjectsFiltersParametersFromJson(
+        Map<String, dynamic> json) =>
+    ProjectsFiltersParameters(
+      status: json['status'] as String?,
+    );
+
+Map<String, dynamic> _$ProjectsFiltersParametersToJson(
+        ProjectsFiltersParameters instance) =>
+    <String, dynamic>{
+      'status': instance.status,
+    };

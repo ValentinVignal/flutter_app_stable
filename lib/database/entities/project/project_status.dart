@@ -1,9 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
+part 'project_status.g.dart';
+
+@JsonEnum(alwaysCreate: true)
 enum ProjectStatus {
   notStarted,
   started,
-  completed,
+  completed;
+
+  factory ProjectStatus.fromName(String name) {
+    return _$ProjectStatusEnumMap.entries
+        .firstWhere((entry) => entry.value == name)
+        .key;
+  }
 }
 
 extension ProjectStatusX on ProjectStatus {

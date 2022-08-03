@@ -31,5 +31,8 @@ final projectsFiltersProvider = Provider.autoDispose<ProjectsFilters>(
       projectStatusFilter: projectStatusFilter,
     );
   },
-  dependencies: [projectFilterProvider, projectStatusFilterProvider],
+  dependencies: [
+    projectFilterProvider,
+    projectStatusFilterProvider,
+  ],
 );

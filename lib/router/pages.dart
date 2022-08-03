@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_stable/database/entities/project/project_status.dart';
 import 'package:flutter_app_stable/screens/forms/form_screen.dart';
 import 'package:flutter_app_stable/screens/forms/forms_screen.dart';
 import 'package:flutter_app_stable/screens/login.dart';
@@ -7,9 +8,11 @@ import 'package:flutter_app_stable/screens/projects/projects_screen.dart';
 import 'package:flutter_app_stable/screens/sign_up.dart';
 import 'package:flutter_app_stable/screens/tasks/tasks_screen.dart';
 import 'package:flutter_app_stable/services/auth_service.dart';
+import 'package:flutter_app_stable/utils/utils.dart';
 import 'package:flutter_app_stable/widgets/left_pane.dart';
 import 'package:flutter_app_stable/widgets/top_bar.dart';
 import 'package:go_router/go_router.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'pages.g.dart';
 
@@ -108,9 +111,11 @@ class SignUpRoute extends GoRouteData {
   ],
 )
 class ProjectsRoute extends AuthenticatedRoute {
-  const ProjectsRoute({this.projectId});
+  const ProjectsRoute({
+    this.status,
+  });
 
-  final String? projectId;
+  final String? status;
 
   @override
   Widget buildScreen() => const ProjectsScreen();
@@ -128,6 +133,57 @@ class ProjectRoute extends AuthenticatedRoute {
 
   @override
   Widget buildScreen() => ProjectScreen(id: id);
+}
+
+@JsonSerializable(
+  fieldRename: FieldRename.kebab,
+)
+class ProjectsFiltersParameters {
+  const ProjectsFiltersParameters({
+    this.status,
+  });
+
+  factory ProjectsFiltersParameters.fromParsedData({
+    Set<ProjectStatus>? statuses,
+  }) {
+    final String? status;
+    if (statuses?.isNotEmpty ?? false) {
+      status = statuses!.map((status) => status.name).join(' ');
+    } else {
+      status = null;
+    }
+    return ProjectsFiltersParameters(status: status);
+  }
+
+  factory ProjectsFiltersParameters.fromJson(Json json) =>
+      _$ProjectsFiltersParametersFromJson(json);
+
+  final String? status;
+
+  Set<ProjectStatus> get parsedStatuses {
+    if (status == null || status!.isEmpty) return const {};
+    return status!
+        .split(' ')
+        .map((status) => ProjectStatus.fromName(status))
+        .toSet();
+  }
+
+  Json toJson() => _$ProjectsFiltersParametersToJson(this);
+
+  Json mergeJson(Json other) {
+    final newJson = {...other};
+    for (final entry in toJson().entries) {
+      if (entry.value == null) {
+        newJson.remove(entry.key);
+      } else {
+        newJson[entry.key] = entry.value;
+      }
+    }
+    return newJson;
+  }
+
+  bool get isEmpty => status == null || status!.isEmpty;
+  bool get isNotEmpty => !isEmpty;
 }
 
 @TypedGoRoute<TasksRoute>(

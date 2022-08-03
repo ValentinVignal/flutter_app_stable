@@ -76,6 +76,16 @@ class ProjectList extends ConsumerWidget {
         FilterBar(
           local: [projectStatusFilterProvider],
           global: [projectFilterProvider],
+          onChanged: () {
+            final parameters = ProjectsFiltersParameters.fromParsedData(
+                    statuses: ref.read(projectStatusAppliedFilterProvider))
+                .status;
+            router.replace(
+              ProjectsRoute(
+                status: parameters,
+              ).location,
+            );
+          },
         ),
         Expanded(
           child: child,
