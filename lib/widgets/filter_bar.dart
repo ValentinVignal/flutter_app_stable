@@ -83,16 +83,13 @@ class FilterWidget<T> extends ConsumerWidget {
       onSelected: (id) {
         if (id == null) return;
         final filter = ref.read(filterProvider);
-        final appliedFilterNotifier = ref.read(
-          filter.appliedFilterProvider.notifier,
-        );
-        final newSet = appliedFilterNotifier.state.toSet();
+        final newSet = filter.appliedFilterStateController.state.toSet();
         if (newSet.contains(id)) {
           newSet.remove(id);
         } else {
           newSet.add(id);
         }
-        appliedFilterNotifier.state = newSet;
+        filter.appliedFilterStateController.state = newSet;
         onChanged();
       },
       child: Padding(

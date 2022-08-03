@@ -11,17 +11,20 @@ final projectAppliedFilterProvider = StateProvider<Set<int>>(
 /// The global project filters with the selected IDs and the projects available.
 final projectFilterProvider = Provider.autoDispose<Filter<int>>(
   (ref) {
-    final appliedFilters = ref.watch(projectAppliedFilterProvider);
+    final appliedFiltersNotifier =
+        ref.watch(projectAppliedFilterProvider.state);
     final projects = ref.watch(projectsProvider);
     return Filter(
-      appliedFilterProvider: projectAppliedFilterProvider,
+      appliedFilterStateController: appliedFiltersNotifier,
       options: projects.asData?.value.map(
             (project) => Option(id: project.id, name: project.name),
           ) ??
           const [],
-      selected: appliedFilters,
       name: 'Project',
     );
   },
-  dependencies: [projectsProvider, projectAppliedFilterProvider],
+  dependencies: [
+    projectsProvider,
+    projectAppliedFilterProvider.state,
+  ],
 );

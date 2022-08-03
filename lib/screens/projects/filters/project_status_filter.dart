@@ -10,15 +10,15 @@ final projectStatusAppliedFilterProvider =
 
 final projectStatusFilterProvider = Provider.autoDispose<Filter<ProjectStatus>>(
   (ref) {
-    final appliedFilters = ref.watch(projectStatusAppliedFilterProvider);
+    final appliedFiltersNotifier =
+        ref.watch(projectStatusAppliedFilterProvider.state);
     return Filter(
-      appliedFilterProvider: projectStatusAppliedFilterProvider,
+      appliedFilterStateController: appliedFiltersNotifier,
       options: ProjectStatus.values.map(
         (projectStatus) => Option(id: projectStatus, name: projectStatus.name),
       ),
-      selected: appliedFilters,
       name: 'Status',
     );
   },
-  dependencies: [projectStatusAppliedFilterProvider],
+  dependencies: [projectStatusAppliedFilterProvider.state],
 );

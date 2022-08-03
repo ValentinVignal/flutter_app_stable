@@ -17,9 +17,8 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$Filter<T> {
   String get name => throw _privateConstructorUsedError;
-  Set<T> get selected => throw _privateConstructorUsedError;
   Iterable<Option<T>> get options => throw _privateConstructorUsedError;
-  StateProviderOverrideMixin<Set<T>> get appliedFilterProvider =>
+  StateController<Set<T>> get appliedFilterStateController =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -33,9 +32,8 @@ abstract class $FilterCopyWith<T, $Res> {
       _$FilterCopyWithImpl<T, $Res>;
   $Res call(
       {String name,
-      Set<T> selected,
       Iterable<Option<T>> options,
-      StateProviderOverrideMixin<Set<T>> appliedFilterProvider});
+      StateController<Set<T>> appliedFilterStateController});
 }
 
 /// @nodoc
@@ -49,27 +47,22 @@ class _$FilterCopyWithImpl<T, $Res> implements $FilterCopyWith<T, $Res> {
   @override
   $Res call({
     Object? name = freezed,
-    Object? selected = freezed,
     Object? options = freezed,
-    Object? appliedFilterProvider = freezed,
+    Object? appliedFilterStateController = freezed,
   }) {
     return _then(_value.copyWith(
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      selected: selected == freezed
-          ? _value.selected
-          : selected // ignore: cast_nullable_to_non_nullable
-              as Set<T>,
       options: options == freezed
           ? _value.options
           : options // ignore: cast_nullable_to_non_nullable
               as Iterable<Option<T>>,
-      appliedFilterProvider: appliedFilterProvider == freezed
-          ? _value.appliedFilterProvider
-          : appliedFilterProvider // ignore: cast_nullable_to_non_nullable
-              as StateProviderOverrideMixin<Set<T>>,
+      appliedFilterStateController: appliedFilterStateController == freezed
+          ? _value.appliedFilterStateController
+          : appliedFilterStateController // ignore: cast_nullable_to_non_nullable
+              as StateController<Set<T>>,
     ));
   }
 }
@@ -82,9 +75,8 @@ abstract class _$$_FilterCopyWith<T, $Res> implements $FilterCopyWith<T, $Res> {
   @override
   $Res call(
       {String name,
-      Set<T> selected,
       Iterable<Option<T>> options,
-      StateProviderOverrideMixin<Set<T>> appliedFilterProvider});
+      StateController<Set<T>> appliedFilterStateController});
 }
 
 /// @nodoc
@@ -100,27 +92,22 @@ class __$$_FilterCopyWithImpl<T, $Res> extends _$FilterCopyWithImpl<T, $Res>
   @override
   $Res call({
     Object? name = freezed,
-    Object? selected = freezed,
     Object? options = freezed,
-    Object? appliedFilterProvider = freezed,
+    Object? appliedFilterStateController = freezed,
   }) {
     return _then(_$_Filter<T>(
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      selected: selected == freezed
-          ? _value._selected
-          : selected // ignore: cast_nullable_to_non_nullable
-              as Set<T>,
       options: options == freezed
           ? _value.options
           : options // ignore: cast_nullable_to_non_nullable
               as Iterable<Option<T>>,
-      appliedFilterProvider: appliedFilterProvider == freezed
-          ? _value.appliedFilterProvider
-          : appliedFilterProvider // ignore: cast_nullable_to_non_nullable
-              as StateProviderOverrideMixin<Set<T>>,
+      appliedFilterStateController: appliedFilterStateController == freezed
+          ? _value.appliedFilterStateController
+          : appliedFilterStateController // ignore: cast_nullable_to_non_nullable
+              as StateController<Set<T>>,
     ));
   }
 }
@@ -130,29 +117,20 @@ class __$$_FilterCopyWithImpl<T, $Res> extends _$FilterCopyWithImpl<T, $Res>
 class _$_Filter<T> extends _Filter<T> {
   const _$_Filter(
       {required this.name,
-      required final Set<T> selected,
       required this.options,
-      required this.appliedFilterProvider})
-      : _selected = selected,
-        super._();
+      required this.appliedFilterStateController})
+      : super._();
 
   @override
   final String name;
-  final Set<T> _selected;
-  @override
-  Set<T> get selected {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableSetView(_selected);
-  }
-
   @override
   final Iterable<Option<T>> options;
   @override
-  final StateProviderOverrideMixin<Set<T>> appliedFilterProvider;
+  final StateController<Set<T>> appliedFilterStateController;
 
   @override
   String toString() {
-    return 'Filter<$T>(name: $name, selected: $selected, options: $options, appliedFilterProvider: $appliedFilterProvider)';
+    return 'Filter<$T>(name: $name, options: $options, appliedFilterStateController: $appliedFilterStateController)';
   }
 
   @override
@@ -161,19 +139,18 @@ class _$_Filter<T> extends _Filter<T> {
         (other.runtimeType == runtimeType &&
             other is _$_Filter<T> &&
             const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other._selected, _selected) &&
             const DeepCollectionEquality().equals(other.options, options) &&
-            const DeepCollectionEquality()
-                .equals(other.appliedFilterProvider, appliedFilterProvider));
+            const DeepCollectionEquality().equals(
+                other.appliedFilterStateController,
+                appliedFilterStateController));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(_selected),
       const DeepCollectionEquality().hash(options),
-      const DeepCollectionEquality().hash(appliedFilterProvider));
+      const DeepCollectionEquality().hash(appliedFilterStateController));
 
   @JsonKey(ignore: true)
   @override
@@ -184,20 +161,17 @@ class _$_Filter<T> extends _Filter<T> {
 abstract class _Filter<T> extends Filter<T> {
   const factory _Filter(
       {required final String name,
-      required final Set<T> selected,
       required final Iterable<Option<T>> options,
-      required final StateProviderOverrideMixin<Set<T>>
-          appliedFilterProvider}) = _$_Filter<T>;
+      required final StateController<Set<T>>
+          appliedFilterStateController}) = _$_Filter<T>;
   const _Filter._() : super._();
 
   @override
   String get name;
   @override
-  Set<T> get selected;
-  @override
   Iterable<Option<T>> get options;
   @override
-  StateProviderOverrideMixin<Set<T>> get appliedFilterProvider;
+  StateController<Set<T>> get appliedFilterStateController;
   @override
   @JsonKey(ignore: true)
   _$$_FilterCopyWith<T, _$_Filter<T>> get copyWith =>
