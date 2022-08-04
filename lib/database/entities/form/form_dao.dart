@@ -11,11 +11,16 @@ part 'form_dao.g.dart';
 class FormDao extends DatabaseAccessor<Database> with _$FormDaoMixin {
   FormDao(Database database) : super(database);
 
-  Stream<Iterable<FormWithProject>> watch(
-      {Iterable<int> projectIds = const {}}) {
+  Stream<Iterable<FormWithProject>> watch({
+    Iterable<int> projectIds = const {},
+    Iterable<FormStatus> statuses = const {},
+  }) {
     final query = select(form);
     if (projectIds.isNotEmpty) {
       query.where((t) => t.projectId.isIn(projectIds));
+    }
+    if (statuses.isNotEmpty) {
+      query.where((p) => p.status.isIn(statuses.map((s) => s.index)));
     }
 
     final joinQuery = query.join([

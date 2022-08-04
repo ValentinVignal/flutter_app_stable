@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_stable/database/database.dart';
-import 'package:flutter_app_stable/database/entities/form/form_provider.dart';
 import 'package:flutter_app_stable/database/entities/form/form_status.dart';
+import 'package:flutter_app_stable/filters/global/project/project_applied_filter.dart';
 import 'package:flutter_app_stable/router/pages.dart';
 import 'package:flutter_app_stable/router/router.dart';
+import 'package:flutter_app_stable/screens/forms/filters/form_status_filter.dart';
+import 'package:flutter_app_stable/screens/forms/forms_provider.dart';
+import 'package:flutter_app_stable/widgets/filter_bar.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class FormsScreen extends StatelessWidget {
@@ -11,24 +14,45 @@ class FormsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: const FormList(),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Database.instance.formDao.insert();
-        },
-        child: const Icon(Icons.add),
+    return ProviderScope(
+      overrides: [
+        formStatusAppliedFilterProvider,
+      ],
+      child: Scaffold(
+        body: const FormList(),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Database.instance.formDao.insert();
+          },
+          child: const Icon(Icons.add),
+        ),
       ),
     );
   }
 }
 
-class FormList extends ConsumerWidget {
+class FormList extends ConsumerStatefulWidget {
   const FormList({Key? key}) : super(key: key);
+
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<ConsumerStatefulWidget> createState() => _FormListState();
+}
+
+class _FormListState extends ConsumerState<FormList> {
+  @override
+  void initState() {
+    super.initState();
+    final uri = Uri.parse(router.location);
+    final formsFiltersParameters =
+        FormsFiltersParameters.fromJson(uri.queryParameters);
+    ref.read(formStatusAppliedFilterProvider.notifier).state =
+        formsFiltersParameters.parsedStatuses;
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final tasksAsyncValue = ref.watch(filteredFormsProvider);
-    return tasksAsyncValue.map(
+    final child = tasksAsyncValue.map(
         error: (error) => Center(child: ErrorWidget(error)),
         loading: (_) => const Center(child: CircularProgressIndicator()),
         data: (data) {
@@ -57,5 +81,28 @@ class FormList extends ConsumerWidget {
             },
           );
         });
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        FilterBar(
+          local: [formStatusFilterProvider],
+          global: [projectFilterProvider],
+          onChanged: () {
+            final parameters = FormsFiltersParameters.fromParsedData(
+                    statuses: ref.read(formStatusAppliedFilterProvider))
+                .status;
+            router.replace(
+              FormsRoute(
+                status: parameters,
+              ).location,
+            );
+          },
+        ),
+        Expanded(
+          child: child,
+        ),
+      ],
+    );
   }
 }

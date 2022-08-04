@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_stable/database/entities/form/form_status.dart';
 import 'package:flutter_app_stable/database/entities/project/project_status.dart';
 import 'package:flutter_app_stable/screens/forms/form_screen.dart';
 import 'package:flutter_app_stable/screens/forms/forms_screen.dart';
@@ -220,10 +221,65 @@ class TaskRoute extends AuthenticatedRoute {
   ],
 )
 class FormsRoute extends AuthenticatedRoute {
-  const FormsRoute();
+  const FormsRoute({
+    this.status,
+  });
+
+  final String? status;
 
   @override
   Widget buildScreen() => const FormsScreen();
+}
+
+@JsonSerializable(
+  fieldRename: FieldRename.kebab,
+)
+class FormsFiltersParameters {
+  const FormsFiltersParameters({
+    this.status,
+  });
+
+  factory FormsFiltersParameters.fromParsedData({
+    Set<FormStatus>? statuses,
+  }) {
+    final String? status;
+    if (statuses?.isNotEmpty ?? false) {
+      status = statuses!.map((status) => status.name).join(' ');
+    } else {
+      status = null;
+    }
+    return FormsFiltersParameters(status: status);
+  }
+
+  factory FormsFiltersParameters.fromJson(Json json) =>
+      _$FormsFiltersParametersFromJson(json);
+
+  final String? status;
+
+  Set<FormStatus> get parsedStatuses {
+    if (status == null || status!.isEmpty) return const {};
+    return status!
+        .split(' ')
+        .map((status) => FormStatus.fromName(status))
+        .toSet();
+  }
+
+  Json toJson() => _$FormsFiltersParametersToJson(this);
+
+  Json mergeJson(Json other) {
+    final newJson = {...other};
+    for (final entry in toJson().entries) {
+      if (entry.value == null) {
+        newJson.remove(entry.key);
+      } else {
+        newJson[entry.key] = entry.value;
+      }
+    }
+    return newJson;
+  }
+
+  bool get isEmpty => status == null || status!.isEmpty;
+  bool get isNotEmpty => !isEmpty;
 }
 
 class FormRoute extends AuthenticatedRoute {

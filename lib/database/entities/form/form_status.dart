@@ -1,9 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:json_annotation/json_annotation.dart';
 
+part 'form_status.g.dart';
+
+@JsonEnum(alwaysCreate: true)
 enum FormStatus {
   draft,
   wip,
-  closed,
+  closed;
+
+  factory FormStatus.fromName(String name) {
+    return _$FormStatusEnumMap.entries
+        .firstWhere((entry) => entry.value == name)
+        .key;
+  }
 }
 
 extension FormStatusX on FormStatus {
