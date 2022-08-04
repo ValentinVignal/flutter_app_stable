@@ -223,9 +223,11 @@ class TaskRoute extends AuthenticatedRoute {
 class FormsRoute extends AuthenticatedRoute {
   const FormsRoute({
     this.status,
+    this.id,
   });
 
   final String? status;
+  final String? id;
 
   @override
   Widget buildScreen() => const FormsScreen();
@@ -237,10 +239,12 @@ class FormsRoute extends AuthenticatedRoute {
 class FormsFiltersParameters {
   const FormsFiltersParameters({
     this.status,
+    this.id,
   });
 
   factory FormsFiltersParameters.fromParsedData({
     Set<FormStatus>? statuses,
+    Set<int>? ids,
   }) {
     final String? status;
     if (statuses?.isNotEmpty ?? false) {
@@ -248,13 +252,23 @@ class FormsFiltersParameters {
     } else {
       status = null;
     }
-    return FormsFiltersParameters(status: status);
+    final String? id;
+    if (ids?.isNotEmpty ?? false) {
+      id = ids!.join(' ');
+    } else {
+      id = null;
+    }
+    return FormsFiltersParameters(
+      status: status,
+      id: id,
+    );
   }
 
   factory FormsFiltersParameters.fromJson(Json json) =>
       _$FormsFiltersParametersFromJson(json);
 
   final String? status;
+  final String? id;
 
   Set<FormStatus> get parsedStatuses {
     if (status == null || status!.isEmpty) return const {};
@@ -262,6 +276,11 @@ class FormsFiltersParameters {
         .split(' ')
         .map((status) => FormStatus.fromName(status))
         .toSet();
+  }
+
+  Set<String> get parsedIds {
+    if (id == null || id!.isEmpty) return const {};
+    return id!.split(' ').toSet();
   }
 
   Json toJson() => _$FormsFiltersParametersToJson(this);
@@ -278,7 +297,8 @@ class FormsFiltersParameters {
     return newJson;
   }
 
-  bool get isEmpty => status == null || status!.isEmpty;
+  bool get isEmpty =>
+      (status == null || status!.isEmpty) && (id == null || id!.isEmpty);
   bool get isNotEmpty => !isEmpty;
 }
 

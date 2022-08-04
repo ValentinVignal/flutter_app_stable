@@ -4,6 +4,7 @@ import 'package:flutter_app_stable/database/entities/form/form_status.dart';
 import 'package:flutter_app_stable/filters/global/project/project_applied_filter.dart';
 import 'package:flutter_app_stable/router/pages.dart';
 import 'package:flutter_app_stable/router/router.dart';
+import 'package:flutter_app_stable/screens/forms/filters/form_filter.dart';
 import 'package:flutter_app_stable/screens/forms/filters/form_status_filter.dart';
 import 'package:flutter_app_stable/screens/forms/forms_provider.dart';
 import 'package:flutter_app_stable/widgets/filter_bar.dart';
@@ -17,6 +18,7 @@ class FormsScreen extends StatelessWidget {
     return ProviderScope(
       overrides: [
         formStatusAppliedFilterProvider,
+        formFilterProvider,
       ],
       child: Scaffold(
         body: const FormList(),
@@ -86,15 +88,17 @@ class _FormListState extends ConsumerState<FormList> {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         FilterBar(
-          local: [formStatusFilterProvider],
+          local: [formStatusFilterProvider, formFilterProvider],
           global: [projectFilterProvider],
           onChanged: () {
             final parameters = FormsFiltersParameters.fromParsedData(
-                    statuses: ref.read(formStatusAppliedFilterProvider))
-                .status;
+              statuses: ref.read(formStatusAppliedFilterProvider),
+              ids: ref.read(formAppliedFilterProvider),
+            );
             router.replace(
               FormsRoute(
-                status: parameters,
+                status: parameters.status,
+                id: parameters.id,
               ).location,
             );
           },

@@ -159,12 +159,14 @@ GoRoute get $formsRoute => GoRouteData.$route(
 extension $FormsRouteExtension on FormsRoute {
   static FormsRoute _fromState(GoRouterState state) => FormsRoute(
         status: state.queryParams['status'],
+        id: state.queryParams['id'],
       );
 
   String get location => GoRouteData.$location(
         '/forms',
         queryParams: {
           if (status != null) 'status': status!,
+          if (id != null) 'id': id!,
         },
       );
 
@@ -207,10 +209,12 @@ FormsFiltersParameters _$FormsFiltersParametersFromJson(
         Map<String, dynamic> json) =>
     FormsFiltersParameters(
       status: json['status'] as String?,
+      id: json['id'] as String?,
     );
 
 Map<String, dynamic> _$FormsFiltersParametersToJson(
         FormsFiltersParameters instance) =>
     <String, dynamic>{
       'status': instance.status,
+      'id': instance.id,
     };
