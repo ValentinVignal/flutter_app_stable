@@ -1,3 +1,4 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_stable/database/entities/form/form_status.dart';
 import 'package:flutter_app_stable/database/entities/project/project_status.dart';
@@ -109,7 +110,7 @@ class SignUpRoute extends GoRouteData {
 @TypedGoRoute<ProjectsRoute>(
   path: '/projects',
   routes: [
-    TypedGoRoute<ProjectRoute>(path: ':id'),
+    TypedGoRoute<ProjectRoute>(path: ':projectId'),
   ],
 )
 class ProjectsRoute extends AuthenticatedRoute {
@@ -131,19 +132,26 @@ class ProjectsRoute extends AuthenticatedRoute {
 // [TypedGoRoute<RootRoute>]s.
 class ProjectRoute extends AuthenticatedRoute {
   const ProjectRoute({
-    required this.id,
+    required this.projectId,
+    this.status,
   });
 
-  final String id;
+  final String projectId;
+  final String? status;
 
   @override
-  Widget buildScreen() => ProjectScreen(id: id);
+  Widget buildScreen() => ProjectScreen(
+        id: projectId,
+        projectsFilters: ProjectsFiltersParameters(
+          status: status,
+        ),
+      );
 }
 
 @JsonSerializable(
   fieldRename: FieldRename.kebab,
 )
-class ProjectsFiltersParameters {
+class ProjectsFiltersParameters with EquatableMixin {
   const ProjectsFiltersParameters({
     this.status,
   });
@@ -189,6 +197,9 @@ class ProjectsFiltersParameters {
 
   bool get isEmpty => status == null || status!.isEmpty;
   bool get isNotEmpty => !isEmpty;
+
+  @override
+  List<Object?> get props => [status];
 }
 
 @TypedGoRoute<TasksRoute>(

@@ -77,7 +77,12 @@ class _ProjectListState extends ConsumerState<ProjectList> {
               title: Text(project.name),
               subtitle: Text('${project.id} - ${project.status.name}'),
               onTap: () {
-                final page = ProjectRoute(id: project.id.toString());
+                final parameters = ProjectsFiltersParameters.fromParsedData(
+                    statuses: ref.read(projectStatusAppliedFilterProvider));
+                final page = ProjectRoute(
+                  projectId: project.id.toString(),
+                  status: parameters.status,
+                );
                 router.push(page.location, extra: page);
               },
             );
@@ -93,11 +98,10 @@ class _ProjectListState extends ConsumerState<ProjectList> {
           global: [projectFilterProvider],
           onChanged: () {
             final parameters = ProjectsFiltersParameters.fromParsedData(
-                    statuses: ref.read(projectStatusAppliedFilterProvider))
-                .status;
+                statuses: ref.read(projectStatusAppliedFilterProvider));
             router.replace(
               ProjectsRoute(
-                status: parameters,
+                status: parameters.status,
               ).location,
             );
           },

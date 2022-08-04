@@ -71,7 +71,7 @@ GoRoute get $projectsRoute => GoRouteData.$route(
       factory: $ProjectsRouteExtension._fromState,
       routes: [
         GoRouteData.$route(
-          path: ':id',
+          path: ':projectId',
           factory: $ProjectRouteExtension._fromState,
         ),
       ],
@@ -96,11 +96,15 @@ extension $ProjectsRouteExtension on ProjectsRoute {
 
 extension $ProjectRouteExtension on ProjectRoute {
   static ProjectRoute _fromState(GoRouterState state) => ProjectRoute(
-        id: state.params['id']!,
+        projectId: state.params['projectId']!,
+        status: state.queryParams['status'],
       );
 
   String get location => GoRouteData.$location(
-        '/projects/${Uri.encodeComponent(id)}',
+        '/projects/${Uri.encodeComponent(projectId)}',
+        queryParams: {
+          if (status != null) 'status': status!,
+        },
       );
 
   void go(BuildContext context) => context.go(location, extra: this);
