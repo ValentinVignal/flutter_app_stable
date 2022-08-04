@@ -7,8 +7,8 @@ final filteredFormsProvider = StreamProvider.autoDispose(
     final formsFilters = ref.watch(formsFiltersProvider);
     return Database.instance.formDao.watch(
       projectIds: formsFilters.projectFilter.selected,
-      statuses: formsFilters.formStatusFilter.selected,
-      formIds: formsFilters.formFilter.selected,
+      statuses: formsFilters.statusFilter.selected,
+      ids: formsFilters.formFilter.selected,
     );
   },
   dependencies: [

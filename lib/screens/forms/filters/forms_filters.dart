@@ -9,12 +9,12 @@ import 'package:riverpod/riverpod.dart';
 class FormsFilters extends Filters {
   const FormsFilters({
     required this.projectFilter,
-    required this.formStatusFilter,
+    required this.statusFilter,
     required this.formFilter,
   });
 
   final Filter<int> projectFilter;
-  final Filter<FormStatus> formStatusFilter;
+  final Filter<FormStatus> statusFilter;
   final Filter<int> formFilter;
 
   @override
@@ -22,18 +22,18 @@ class FormsFilters extends Filters {
   Iterable<Filter> get global => [projectFilter];
 
   @override
-  Iterable<Filter> get local => [formStatusFilter, formFilter];
+  Iterable<Filter> get local => [statusFilter, formFilter];
 }
 
 final formsFiltersProvider = Provider.autoDispose<FormsFilters>(
   (ref) {
     final projectFilter = ref.watch(projectFilterProvider);
-    final formStatusFilter = ref.watch(formStatusFilterProvider);
+    final statusFilter = ref.watch(formStatusFilterProvider);
     final formFilter = ref.watch(formFilterProvider);
 
     return FormsFilters(
       projectFilter: projectFilter,
-      formStatusFilter: formStatusFilter,
+      statusFilter: statusFilter,
       formFilter: formFilter,
     );
   },

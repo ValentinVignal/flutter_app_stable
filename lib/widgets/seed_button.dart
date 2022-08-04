@@ -7,6 +7,7 @@ class SeedButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IconButton(
+      tooltip: 'Seed some data',
       onPressed: () async {
         await Database.instance.projectDao.seed();
         await Database.instance.taskDao.seed();

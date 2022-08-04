@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_stable/database/database.dart';
-import 'package:flutter_app_stable/database/entities/task/task_provider.dart';
 import 'package:flutter_app_stable/database/entities/task/task_status.dart';
+import 'package:flutter_app_stable/filters/global/project/project_applied_filter.dart';
 import 'package:flutter_app_stable/router/pages.dart';
 import 'package:flutter_app_stable/router/router.dart';
+import 'package:flutter_app_stable/screens/tasks/filters/task_filter.dart';
+import 'package:flutter_app_stable/screens/tasks/filters/task_status_filter.dart';
+import 'package:flutter_app_stable/screens/tasks/task_provider.dart';
+import 'package:flutter_app_stable/widgets/filter_bar.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class TasksScreen extends StatelessWidget {
@@ -11,25 +15,48 @@ class TasksScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: const TaskList(),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Database.instance.taskDao.insert();
-        },
-        child: const Icon(Icons.add),
+    return ProviderScope(
+      overrides: [
+        taskStatusAppliedFilterProvider,
+        taskFilterProvider,
+      ],
+      child: Scaffold(
+        body: const TaskList(),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Database.instance.taskDao.insert();
+          },
+          child: const Icon(Icons.add),
+        ),
       ),
     );
   }
 }
 
-class TaskList extends ConsumerWidget {
+class TaskList extends ConsumerStatefulWidget {
   const TaskList({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<ConsumerStatefulWidget> createState() => _TaskListState();
+}
+
+class _TaskListState extends ConsumerState<TaskList> {
+  @override
+  void initState() {
+    super.initState();
+    final uri = Uri.parse(router.location);
+    final tasksFiltersParameters =
+        TasksFiltersParameters.fromJson(uri.queryParameters);
+    ref.read(taskStatusAppliedFilterProvider.notifier).state =
+        tasksFiltersParameters.parsedStatuses;
+    ref.read(taskAppliedFilterProvider.notifier).state =
+        tasksFiltersParameters.parsedIds;
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final tasksAsyncValue = ref.watch(filteredTasksProvider);
-    return tasksAsyncValue.map(
+    final child = tasksAsyncValue.map(
       error: (error) => Center(child: ErrorWidget(error)),
       loading: (_) => const Center(child: CircularProgressIndicator()),
       data: (data) {
@@ -57,6 +84,31 @@ class TaskList extends ConsumerWidget {
           },
         );
       },
+    );
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        FilterBar(
+          local: [taskStatusFilterProvider, taskFilterProvider],
+          global: [projectFilterProvider],
+          onChanged: () {
+            final parameters = TasksFiltersParameters.fromParsedData(
+              statuses: ref.read(taskStatusAppliedFilterProvider),
+              ids: ref.read(taskAppliedFilterProvider),
+            );
+            router.replace(
+              TasksRoute(
+                status: parameters.status,
+                id: parameters.id,
+              ).location,
+            );
+          },
+        ),
+        Expanded(
+          child: child,
+        ),
+      ],
     );
   }
 }

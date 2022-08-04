@@ -26,6 +26,7 @@ class TopBar extends ConsumerWidget {
             const SeedButton(),
             const NotificationBell(),
             IconButton(
+              tooltip: 'Sign out',
               onPressed: () {
                 Cache.box.clear();
                 // The redirection should be handled automatically with the refresh.

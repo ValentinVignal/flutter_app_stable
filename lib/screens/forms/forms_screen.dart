@@ -49,40 +49,42 @@ class _FormListState extends ConsumerState<FormList> {
         FormsFiltersParameters.fromJson(uri.queryParameters);
     ref.read(formStatusAppliedFilterProvider.notifier).state =
         formsFiltersParameters.parsedStatuses;
+    ref.read(formAppliedFilterProvider.notifier).state =
+        formsFiltersParameters.parsedIds;
   }
 
   @override
   Widget build(BuildContext context) {
     final tasksAsyncValue = ref.watch(filteredFormsProvider);
     final child = tasksAsyncValue.map(
-        error: (error) => Center(child: ErrorWidget(error)),
-        loading: (_) => const Center(child: CircularProgressIndicator()),
-        data: (data) {
-          return ListView.builder(
-            itemCount: data.value.length,
-            itemBuilder: (context, index) {
-              final formWithProject = data.value.elementAt(index);
-              final theme = Theme.of(context);
-              return ListTile(
-                leading: DecoratedBox(
-                  decoration: BoxDecoration(
-                    color: formWithProject.form.status.color(theme),
-                    shape: BoxShape.circle,
-                  ),
-                  child: const SizedBox.square(dimension: 8),
+      error: (error) => Center(child: ErrorWidget(error)),
+      loading: (_) => const Center(child: CircularProgressIndicator()),
+      data: (data) {
+        return ListView.builder(
+          itemCount: data.value.length,
+          itemBuilder: (context, index) {
+            final formWithProject = data.value.elementAt(index);
+            final theme = Theme.of(context);
+            return ListTile(
+              leading: DecoratedBox(
+                decoration: BoxDecoration(
+                  color: formWithProject.form.status.color(theme),
+                  shape: BoxShape.circle,
                 ),
-                title: Text(formWithProject.form.name),
-                subtitle: Text(
-                    '${formWithProject.form.id} - ${formWithProject.form.status.name} - Project: ${formWithProject.project.name} (${formWithProject.form.projectId})'),
-                onTap: () {
-                  final page =
-                      FormRoute(id: formWithProject.form.id.toString());
-                  router.push(page.location, extra: page);
-                },
-              );
-            },
-          );
-        });
+                child: const SizedBox.square(dimension: 8),
+              ),
+              title: Text(formWithProject.form.name),
+              subtitle: Text(
+                  '${formWithProject.form.id} - ${formWithProject.form.status.name} - Project: ${formWithProject.project.name} (${formWithProject.form.projectId})'),
+              onTap: () {
+                final page = FormRoute(id: formWithProject.form.id.toString());
+                router.push(page.location, extra: page);
+              },
+            );
+          },
+        );
+      },
+    );
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,

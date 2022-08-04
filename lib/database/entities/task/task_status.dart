@@ -1,9 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:json_annotation/json_annotation.dart';
 
+part 'task_status.g.dart';
+
+@JsonEnum(alwaysCreate: true)
 enum TaskStatus {
   open,
   inProgress,
-  done,
+  done;
+
+  factory TaskStatus.fromName(String name) {
+    return _$TaskStatusEnumMap.entries
+        .firstWhere((entry) => entry.value == name)
+        .key;
+  }
 }
 
 extension TaskStatusX on TaskStatus {

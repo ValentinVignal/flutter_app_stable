@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_stable/database/entities/form/form_status.dart';
 import 'package:flutter_app_stable/database/entities/project/project_status.dart';
+import 'package:flutter_app_stable/database/entities/task/task_status.dart';
 import 'package:flutter_app_stable/screens/forms/form_screen.dart';
 import 'package:flutter_app_stable/screens/forms/forms_screen.dart';
 import 'package:flutter_app_stable/screens/login.dart';
@@ -197,10 +198,85 @@ class ProjectsFiltersParameters {
   ],
 )
 class TasksRoute extends AuthenticatedRoute {
-  const TasksRoute();
+  const TasksRoute({
+    this.status,
+    this.id,
+  });
+
+  final String? status;
+  final String? id;
 
   @override
   Widget buildScreen() => const TasksScreen();
+}
+
+@JsonSerializable(
+  fieldRename: FieldRename.kebab,
+)
+class TasksFiltersParameters {
+  const TasksFiltersParameters({
+    this.status,
+    this.id,
+  });
+
+  factory TasksFiltersParameters.fromParsedData({
+    Set<TaskStatus>? statuses,
+    Set<int>? ids,
+  }) {
+    final String? status;
+    if (statuses?.isNotEmpty ?? false) {
+      status = statuses!.map((status) => status.name).join(' ');
+    } else {
+      status = null;
+    }
+    final String? id;
+    if (ids?.isNotEmpty ?? false) {
+      id = ids!.join(' ');
+    } else {
+      id = null;
+    }
+    return TasksFiltersParameters(
+      status: status,
+      id: id,
+    );
+  }
+
+  factory TasksFiltersParameters.fromJson(Json json) =>
+      _$TasksFiltersParametersFromJson(json);
+
+  final String? status;
+  final String? id;
+
+  Set<TaskStatus> get parsedStatuses {
+    if (status == null || status!.isEmpty) return const {};
+    return status!
+        .split(' ')
+        .map((status) => TaskStatus.fromName(status))
+        .toSet();
+  }
+
+  Set<int> get parsedIds {
+    if (id == null || id!.isEmpty) return const {};
+    return id!.split(' ').map((id) => int.parse(id)).toSet();
+  }
+
+  Json toJson() => _$TasksFiltersParametersToJson(this);
+
+  Json mergeJson(Json other) {
+    final newJson = {...other};
+    for (final entry in toJson().entries) {
+      if (entry.value == null) {
+        newJson.remove(entry.key);
+      } else {
+        newJson[entry.key] = entry.value;
+      }
+    }
+    return newJson;
+  }
+
+  bool get isEmpty =>
+      (status == null || status!.isEmpty) && (id == null || id!.isEmpty);
+  bool get isNotEmpty => !isEmpty;
 }
 
 class TaskRoute extends AuthenticatedRoute {
@@ -278,9 +354,9 @@ class FormsFiltersParameters {
         .toSet();
   }
 
-  Set<String> get parsedIds {
+  Set<int> get parsedIds {
     if (id == null || id!.isEmpty) return const {};
-    return id!.split(' ').toSet();
+    return id!.split(' ').map((id) => int.parse(id)).toSet();
   }
 
   Json toJson() => _$FormsFiltersParametersToJson(this);

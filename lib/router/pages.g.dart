@@ -120,10 +120,17 @@ GoRoute get $tasksRoute => GoRouteData.$route(
     );
 
 extension $TasksRouteExtension on TasksRoute {
-  static TasksRoute _fromState(GoRouterState state) => const TasksRoute();
+  static TasksRoute _fromState(GoRouterState state) => TasksRoute(
+        status: state.queryParams['status'],
+        id: state.queryParams['id'],
+      );
 
   String get location => GoRouteData.$location(
         '/tasks',
+        queryParams: {
+          if (status != null) 'status': status!,
+          if (id != null) 'id': id!,
+        },
       );
 
   void go(BuildContext context) => context.go(location, extra: this);
@@ -203,6 +210,20 @@ Map<String, dynamic> _$ProjectsFiltersParametersToJson(
         ProjectsFiltersParameters instance) =>
     <String, dynamic>{
       'status': instance.status,
+    };
+
+TasksFiltersParameters _$TasksFiltersParametersFromJson(
+        Map<String, dynamic> json) =>
+    TasksFiltersParameters(
+      status: json['status'] as String?,
+      id: json['id'] as String?,
+    );
+
+Map<String, dynamic> _$TasksFiltersParametersToJson(
+        TasksFiltersParameters instance) =>
+    <String, dynamic>{
+      'status': instance.status,
+      'id': instance.id,
     };
 
 FormsFiltersParameters _$FormsFiltersParametersFromJson(

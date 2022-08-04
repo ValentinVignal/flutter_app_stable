@@ -14,7 +14,7 @@ class FormDao extends DatabaseAccessor<Database> with _$FormDaoMixin {
   Stream<Iterable<FormWithProject>> watch({
     Iterable<int> projectIds = const {},
     Iterable<FormStatus> statuses = const {},
-    Iterable<int> formIds = const {},
+    Iterable<int> ids = const {},
   }) {
     final query = select(form);
     if (projectIds.isNotEmpty) {
@@ -23,8 +23,8 @@ class FormDao extends DatabaseAccessor<Database> with _$FormDaoMixin {
     if (statuses.isNotEmpty) {
       query.where((p) => p.status.isIn(statuses.map((s) => s.index)));
     }
-    if (formIds.isNotEmpty) {
-      query.where((p) => p.id.isIn(formIds));
+    if (ids.isNotEmpty) {
+      query.where((p) => p.id.isIn(ids));
     }
 
     final joinQuery = query.join([
