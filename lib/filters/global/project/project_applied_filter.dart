@@ -11,6 +11,13 @@ final projectAppliedFilterProvider = StateProvider<Set<int>>(
 /// The global project filters with the selected IDs and the projects available.
 final projectFilterProvider = Provider.autoDispose<Filter<int>>(
   (ref) {
+    // Here we listen to `.state` (and not `.notifier`) to get updates when the
+    // state changes. This will lead to more rebuild at the top of the filters
+    // bar/widget tree. If there are too many rebuilds, we could use `.notifier`
+    // instead a use the `flutter_state_notifier` package with its
+    // `StateNotifierBuilder` to listen to the `StateController` inside the
+    // leafs of our widget tree.
+    // https://github.com/rrousselGit/riverpod/issues/1523#issuecomment-1204063859
     final appliedFiltersNotifier =
         ref.watch(projectAppliedFilterProvider.state);
     final projects = ref.watch(projectsProvider);

@@ -115,6 +115,9 @@ class ProjectsRoute extends AuthenticatedRoute {
     this.status,
   });
 
+  factory ProjectsRoute.fromState(GoRouterState state) =>
+      $ProjectsRouteExtension._fromState(state);
+
   final String? status;
 
   @override

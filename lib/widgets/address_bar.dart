@@ -12,10 +12,15 @@ class AddressBar extends StatefulWidget {
 class _AddressBarState extends State<AddressBar> {
   final _controller = TextEditingController();
 
+  static final _listener = Listenable.merge([
+    router.routeInformationProvider,
+    router.routerDelegate,
+  ]);
+
   @override
   void initState() {
     super.initState();
-    router.routeInformationProvider.addListener(_onPageChange);
+    _listener.addListener(_onPageChange);
     _onPageChange();
   }
 
@@ -26,7 +31,7 @@ class _AddressBarState extends State<AddressBar> {
   @override
   void dispose() {
     _controller.dispose();
-    router.routeInformationProvider.removeListener(_onPageChange);
+    _listener.removeListener(_onPageChange);
     super.dispose();
   }
 

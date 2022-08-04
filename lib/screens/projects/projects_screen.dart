@@ -33,11 +33,26 @@ class ProjectsScreen extends StatelessWidget {
   }
 }
 
-class ProjectList extends ConsumerWidget {
+class ProjectList extends ConsumerStatefulWidget {
   const ProjectList({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<ConsumerStatefulWidget> createState() => _ProjectListState();
+}
+
+class _ProjectListState extends ConsumerState<ProjectList> {
+  @override
+  void initState() {
+    super.initState();
+    final uri = Uri.parse(router.location);
+    final projectsFiltersParameters =
+        ProjectsFiltersParameters.fromJson(uri.queryParameters);
+    ref.read(projectStatusAppliedFilterProvider.notifier).state =
+        projectsFiltersParameters.parsedStatuses;
+  }
+
+  @override
+  Widget build(BuildContext context) {
     ref.watch(projectStatusAppliedFilterProvider);
     final projectsAsyncValue = ref.watch(filteredProjectsProvider);
     final child = projectsAsyncValue.map<Widget>(

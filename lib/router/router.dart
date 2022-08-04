@@ -70,7 +70,3 @@ redirect
   routes: $appRoutes,
   errorBuilder: (context, state) => const Screen404(),
 );
-
-void main() {
-  router.location;
-}
