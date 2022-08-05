@@ -3,12 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app_stable/database/entities/form/form_status.dart';
 import 'package:flutter_app_stable/database/entities/project/project_status.dart';
 import 'package:flutter_app_stable/database/entities/task/task_status.dart';
+import 'package:flutter_app_stable/router/drawer_page.dart';
 import 'package:flutter_app_stable/screens/forms/form_screen.dart';
 import 'package:flutter_app_stable/screens/forms/forms_screen.dart';
 import 'package:flutter_app_stable/screens/login.dart';
 import 'package:flutter_app_stable/screens/projects/project_screen.dart';
 import 'package:flutter_app_stable/screens/projects/projects_screen.dart';
 import 'package:flutter_app_stable/screens/sign_up.dart';
+import 'package:flutter_app_stable/screens/tasks/task_screen.dart';
 import 'package:flutter_app_stable/screens/tasks/tasks_screen.dart';
 import 'package:flutter_app_stable/services/auth_service.dart';
 import 'package:flutter_app_stable/utils/utils.dart';
@@ -48,9 +50,7 @@ class _AuthenticatedScreen extends StatelessWidget {
   }
 }
 
-abstract class AuthenticatedRoute extends GoRouteData {
-  const AuthenticatedRoute();
-
+mixin AuthenticatedRoute on GoRouteData {
   @override
   Page<void> buildPage(BuildContext context) {
     return CustomTransitionPage<void>(
@@ -64,11 +64,14 @@ abstract class AuthenticatedRoute extends GoRouteData {
         opacity: animation,
         child: child,
       ),
-      child: _AuthenticatedScreen(
-        child: buildScreen(),
-      ),
+      child: build(context),
     );
   }
+
+  @override
+  Widget build(BuildContext context) => _AuthenticatedScreen(
+        child: buildScreen(),
+      );
 
   Widget buildScreen();
 }
@@ -113,7 +116,7 @@ class SignUpRoute extends GoRouteData {
     TypedGoRoute<ProjectRoute>(path: ':projectId'),
   ],
 )
-class ProjectsRoute extends AuthenticatedRoute {
+class ProjectsRoute extends GoRouteData with AuthenticatedRoute {
   const ProjectsRoute({
     this.status,
   });
@@ -130,13 +133,13 @@ class ProjectsRoute extends AuthenticatedRoute {
 // Nested route don't need to be decorated as the [TypedGoRoute<NestedRoute>] is
 // already instantiated in the `routes` parameter of the
 // [TypedGoRoute<RootRoute>]s.
-class ProjectRoute extends AuthenticatedRoute {
+class ProjectRoute extends GoRouteData with AuthenticatedRoute {
   const ProjectRoute({
     required this.projectId,
     this.status,
   });
 
-  final String projectId;
+  final int projectId;
   final String? status;
 
   @override
@@ -208,7 +211,7 @@ class ProjectsFiltersParameters with EquatableMixin {
     TypedGoRoute<TaskRoute>(path: ':id'),
   ],
 )
-class TasksRoute extends AuthenticatedRoute {
+class TasksRoute extends GoRouteData with AuthenticatedRoute {
   const TasksRoute({
     this.status,
     this.id,
@@ -290,15 +293,22 @@ class TasksFiltersParameters {
   bool get isNotEmpty => !isEmpty;
 }
 
-class TaskRoute extends AuthenticatedRoute {
+class TaskRoute extends GoRouteData with AuthenticatedRoute {
   const TaskRoute({
     required this.id,
   });
 
-  final String id;
+  final int id;
 
   @override
-  Widget buildScreen() => const TasksScreen();
+  Page<void> buildPage(BuildContext context) {
+    return DrawerPage(
+      child: buildScreen(),
+    );
+  }
+
+  @override
+  Widget buildScreen() => TaskScreen(id: id);
 }
 
 @TypedGoRoute<FormsRoute>(
@@ -307,7 +317,7 @@ class TaskRoute extends AuthenticatedRoute {
     TypedGoRoute<FormRoute>(path: ':formId'),
   ],
 )
-class FormsRoute extends AuthenticatedRoute {
+class FormsRoute extends GoRouteData with AuthenticatedRoute {
   const FormsRoute({
     this.status,
     this.id,
@@ -392,14 +402,14 @@ class FormsFiltersParameters with EquatableMixin {
   List<Object?> get props => [status, id];
 }
 
-class FormRoute extends AuthenticatedRoute {
+class FormRoute extends GoRouteData with AuthenticatedRoute {
   const FormRoute({
     required this.formId,
     this.id,
     this.status,
   });
 
-  final String formId;
+  final int formId;
 
   final String? id;
   final String? status;

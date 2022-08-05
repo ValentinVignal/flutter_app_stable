@@ -81,7 +81,7 @@ class _ProjectListState extends ConsumerState<ProjectList> {
                   statuses: ref.read(projectStatusAppliedFilterProvider),
                 );
                 final page = ProjectRoute(
-                  projectId: project.id.toString(),
+                  projectId: project.id,
                   status: parameters.status,
                 );
                 router.push(page.location, extra: page);

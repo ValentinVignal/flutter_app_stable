@@ -16,7 +16,7 @@ class FormScreen extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
-  final String id;
+  final int id;
 
   final FormsFiltersParameters filters;
 
@@ -42,7 +42,7 @@ class FormScreenContent extends ConsumerStatefulWidget {
     Key? key,
   }) : super(key: key);
 
-  final String id;
+  final int id;
 
   final FormsFiltersParameters filters;
 
@@ -65,7 +65,7 @@ class _FormScreenContentState extends ConsumerState<FormScreenContent> {
     }
     if (oldWidget.id != widget.id) {
       formStream = Database.instance.formDao.watchSingle(
-        int.parse(widget.id),
+        widget.id,
       );
     }
   }
@@ -80,7 +80,7 @@ class _FormScreenContentState extends ConsumerState<FormScreenContent> {
   }
 
   late var formStream = Database.instance.formDao.watchSingle(
-    int.parse(widget.id),
+    widget.id,
   );
   @override
   Widget build(BuildContext context) {
@@ -88,7 +88,7 @@ class _FormScreenContentState extends ConsumerState<FormScreenContent> {
       body: Row(
         children: [
           _PreviousNextButton(
-            id: int.parse(widget.id),
+            id: widget.id,
             type: _PreviousNext.previous,
           ),
           Expanded(
@@ -133,7 +133,7 @@ class _FormScreenContentState extends ConsumerState<FormScreenContent> {
             ),
           ),
           _PreviousNextButton(
-            id: int.parse(widget.id),
+            id: widget.id,
             type: _PreviousNext.next,
           ),
         ],
@@ -199,7 +199,7 @@ class _PreviousNextButton extends ConsumerWidget {
               );
               router.replace(
                 FormRoute(
-                  formId: forms[index + delta].form.id.toString(),
+                  formId: forms[index + delta].form.id,
                   status: parameters.status,
                   id: parameters.id,
                 ).location,

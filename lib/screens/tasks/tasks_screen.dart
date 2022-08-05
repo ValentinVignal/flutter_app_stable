@@ -77,7 +77,7 @@ class _TaskListState extends ConsumerState<TaskList> {
               subtitle: Text(
                   '${taskWithProject.task.id} - ${taskWithProject.task.status.name} - Project: ${taskWithProject.project.name} (${taskWithProject.task.projectId})'),
               onTap: () {
-                final page = TaskRoute(id: taskWithProject.task.id.toString());
+                final page = TaskRoute(id: taskWithProject.task.id);
                 router.push(page.location, extra: page);
               },
             );

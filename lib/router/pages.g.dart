@@ -96,12 +96,12 @@ extension $ProjectsRouteExtension on ProjectsRoute {
 
 extension $ProjectRouteExtension on ProjectRoute {
   static ProjectRoute _fromState(GoRouterState state) => ProjectRoute(
-        projectId: state.params['projectId']!,
+        projectId: int.parse(state.params['projectId']!),
         status: state.queryParams['status'],
       );
 
   String get location => GoRouteData.$location(
-        '/projects/${Uri.encodeComponent(projectId)}',
+        '/projects/${Uri.encodeComponent(projectId.toString())}',
         queryParams: {
           if (status != null) 'status': status!,
         },
@@ -144,11 +144,11 @@ extension $TasksRouteExtension on TasksRoute {
 
 extension $TaskRouteExtension on TaskRoute {
   static TaskRoute _fromState(GoRouterState state) => TaskRoute(
-        id: state.params['id']!,
+        id: int.parse(state.params['id']!),
       );
 
   String get location => GoRouteData.$location(
-        '/tasks/${Uri.encodeComponent(id)}',
+        '/tasks/${Uri.encodeComponent(id.toString())}',
       );
 
   void go(BuildContext context) => context.go(location, extra: this);
@@ -188,13 +188,13 @@ extension $FormsRouteExtension on FormsRoute {
 
 extension $FormRouteExtension on FormRoute {
   static FormRoute _fromState(GoRouterState state) => FormRoute(
-        formId: state.params['formId']!,
+        formId: int.parse(state.params['formId']!),
         id: state.queryParams['id'],
         status: state.queryParams['status'],
       );
 
   String get location => GoRouteData.$location(
-        '/forms/${Uri.encodeComponent(formId)}',
+        '/forms/${Uri.encodeComponent(formId.toString())}',
         queryParams: {
           if (id != null) 'id': id!,
           if (status != null) 'status': status!,

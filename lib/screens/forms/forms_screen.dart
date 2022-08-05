@@ -82,7 +82,7 @@ class _FormListState extends ConsumerState<FormList> {
                   ids: ref.read(formAppliedFilterProvider),
                 );
                 final page = FormRoute(
-                  formId: formWithProject.form.id.toString(),
+                  formId: formWithProject.form.id,
                   id: parameters.id,
                   status: parameters.status,
                 );

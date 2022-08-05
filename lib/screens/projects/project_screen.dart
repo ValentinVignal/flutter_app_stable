@@ -14,7 +14,7 @@ class ProjectScreen extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
-  final String id;
+  final int id;
 
   final ProjectsFiltersParameters projectsFilters;
 
@@ -39,7 +39,7 @@ class _AppliedUrlFiltersProjectScreen extends ConsumerStatefulWidget {
     Key? key,
   }) : super(key: key);
 
-  final String id;
+  final int id;
   final ProjectsFiltersParameters projectsFilters;
 
   @override
@@ -82,21 +82,19 @@ class _ProjectScreenContent extends StatefulWidget {
     Key? key,
   }) : super(key: key);
 
-  final String id;
+  final int id;
 
   @override
   State<_ProjectScreenContent> createState() => __ProjectScreenContentState();
 }
 
 class __ProjectScreenContentState extends State<_ProjectScreenContent> {
-  late var projectStream =
-      Database.instance.projectDao.watchSingle(int.parse(widget.id));
+  late var projectStream = Database.instance.projectDao.watchSingle(widget.id);
 
   @override
   void didUpdateWidget(covariant _ProjectScreenContent oldWidget) {
     super.didUpdateWidget(oldWidget);
-    projectStream =
-        Database.instance.projectDao.watchSingle(int.parse(widget.id));
+    projectStream = Database.instance.projectDao.watchSingle(widget.id);
   }
 
   @override
@@ -105,7 +103,7 @@ class __ProjectScreenContentState extends State<_ProjectScreenContent> {
       body: Row(
         children: [
           _PreviousNextButton(
-            id: int.parse(widget.id),
+            id: widget.id,
             type: _PreviousNext.previous,
           ),
           Expanded(
@@ -144,7 +142,7 @@ class __ProjectScreenContentState extends State<_ProjectScreenContent> {
             ),
           ),
           _PreviousNextButton(
-            id: int.parse(widget.id),
+            id: widget.id,
             type: _PreviousNext.next,
           ),
         ],
@@ -209,7 +207,7 @@ class _PreviousNextButton extends ConsumerWidget {
                   statuses: ref.read(projectStatusAppliedFilterProvider));
               router.replace(
                 ProjectRoute(
-                  projectId: projects[index + delta].id.toString(),
+                  projectId: projects[index + delta].id,
                   status: parameters.status,
                 ).location,
               );
