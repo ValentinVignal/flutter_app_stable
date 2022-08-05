@@ -161,7 +161,7 @@ GoRoute get $formsRoute => GoRouteData.$route(
       factory: $FormsRouteExtension._fromState,
       routes: [
         GoRouteData.$route(
-          path: ':id',
+          path: ':formId',
           factory: $FormRouteExtension._fromState,
         ),
       ],
@@ -188,11 +188,17 @@ extension $FormsRouteExtension on FormsRoute {
 
 extension $FormRouteExtension on FormRoute {
   static FormRoute _fromState(GoRouterState state) => FormRoute(
-        id: state.params['id']!,
+        formId: state.params['formId']!,
+        id: state.queryParams['id'],
+        status: state.queryParams['status'],
       );
 
   String get location => GoRouteData.$location(
-        '/forms/${Uri.encodeComponent(id)}',
+        '/forms/${Uri.encodeComponent(formId)}',
+        queryParams: {
+          if (id != null) 'id': id!,
+          if (status != null) 'status': status!,
+        },
       );
 
   void go(BuildContext context) => context.go(location, extra: this);

@@ -78,7 +78,8 @@ class _ProjectListState extends ConsumerState<ProjectList> {
               subtitle: Text('${project.id} - ${project.status.name}'),
               onTap: () {
                 final parameters = ProjectsFiltersParameters.fromParsedData(
-                    statuses: ref.read(projectStatusAppliedFilterProvider));
+                  statuses: ref.read(projectStatusAppliedFilterProvider),
+                );
                 final page = ProjectRoute(
                   projectId: project.id.toString(),
                   status: parameters.status,

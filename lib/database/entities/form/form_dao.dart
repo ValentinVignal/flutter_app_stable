@@ -11,7 +11,7 @@ part 'form_dao.g.dart';
 class FormDao extends DatabaseAccessor<Database> with _$FormDaoMixin {
   FormDao(Database database) : super(database);
 
-  Stream<Iterable<FormWithProject>> watch({
+  Stream<List<FormWithProject>> watch({
     Iterable<int> projectIds = const {},
     Iterable<FormStatus> statuses = const {},
     Iterable<int> ids = const {},
@@ -39,7 +39,7 @@ class FormDao extends DatabaseAccessor<Database> with _$FormDaoMixin {
           form: row.readTable(form),
           project: row.readTable(project),
         );
-      });
+      }).toList();
     });
   }
 

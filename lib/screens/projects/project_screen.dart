@@ -7,7 +7,7 @@ import 'package:flutter_app_stable/screens/projects/filters/project_status_filte
 import 'package:flutter_app_stable/screens/projects/projects_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class ProjectScreen extends StatefulWidget {
+class ProjectScreen extends StatelessWidget {
   const ProjectScreen({
     required this.id,
     required this.projectsFilters,
@@ -19,19 +19,14 @@ class ProjectScreen extends StatefulWidget {
   final ProjectsFiltersParameters projectsFilters;
 
   @override
-  State<ProjectScreen> createState() => _ProjectScreenState();
-}
-
-class _ProjectScreenState extends State<ProjectScreen> {
-  @override
   Widget build(BuildContext context) {
     return ProviderScope(
       overrides: [
         projectStatusAppliedFilterProvider,
       ],
       child: _AppliedUrlFiltersProjectScreen(
-        id: widget.id,
-        projectsFilters: widget.projectsFilters,
+        id: id,
+        projectsFilters: projectsFilters,
       ),
     );
   }

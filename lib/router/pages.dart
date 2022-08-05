@@ -304,7 +304,7 @@ class TaskRoute extends AuthenticatedRoute {
 @TypedGoRoute<FormsRoute>(
   path: '/forms',
   routes: [
-    TypedGoRoute<FormRoute>(path: ':id'),
+    TypedGoRoute<FormRoute>(path: ':formId'),
   ],
 )
 class FormsRoute extends AuthenticatedRoute {
@@ -323,7 +323,7 @@ class FormsRoute extends AuthenticatedRoute {
 @JsonSerializable(
   fieldRename: FieldRename.kebab,
 )
-class FormsFiltersParameters {
+class FormsFiltersParameters with EquatableMixin {
   const FormsFiltersParameters({
     this.status,
     this.id,
@@ -387,15 +387,29 @@ class FormsFiltersParameters {
   bool get isEmpty =>
       (status == null || status!.isEmpty) && (id == null || id!.isEmpty);
   bool get isNotEmpty => !isEmpty;
+
+  @override
+  List<Object?> get props => [status, id];
 }
 
 class FormRoute extends AuthenticatedRoute {
   const FormRoute({
-    required this.id,
+    required this.formId,
+    this.id,
+    this.status,
   });
 
-  final String id;
+  final String formId;
+
+  final String? id;
+  final String? status;
 
   @override
-  Widget buildScreen() => FormScreen(id: id);
+  Widget buildScreen() => FormScreenContent(
+        id: formId,
+        filters: FormsFiltersParameters(
+          status: status,
+          id: id,
+        ),
+      );
 }

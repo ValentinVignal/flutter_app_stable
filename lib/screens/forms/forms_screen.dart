@@ -77,7 +77,15 @@ class _FormListState extends ConsumerState<FormList> {
               subtitle: Text(
                   '${formWithProject.form.id} - ${formWithProject.form.status.name} - Project: ${formWithProject.project.name} (${formWithProject.form.projectId})'),
               onTap: () {
-                final page = FormRoute(id: formWithProject.form.id.toString());
+                final parameters = FormsFiltersParameters.fromParsedData(
+                  statuses: ref.read(formStatusAppliedFilterProvider),
+                  ids: ref.read(formAppliedFilterProvider),
+                );
+                final page = FormRoute(
+                  formId: formWithProject.form.id.toString(),
+                  id: parameters.id,
+                  status: parameters.status,
+                );
                 router.push(page.location, extra: page);
               },
             );
