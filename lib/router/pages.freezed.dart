@@ -97,7 +97,8 @@ class __$$_ProjectsFiltersParametersCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(fieldRename: FieldRename.kebab)
 class _$_ProjectsFiltersParameters extends _ProjectsFiltersParameters {
   const _$_ProjectsFiltersParameters({this.status}) : super._();
 
@@ -247,7 +248,8 @@ class __$$_TasksFiltersParametersCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(fieldRename: FieldRename.kebab)
 class _$_TasksFiltersParameters extends _TasksFiltersParameters {
   const _$_TasksFiltersParameters({this.status, this.id}) : super._();
 
@@ -404,7 +406,8 @@ class __$$_FormsFiltersParametersCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(fieldRename: FieldRename.kebab)
 class _$_FormsFiltersParameters extends _FormsFiltersParameters {
   const _$_FormsFiltersParameters({this.status, this.id}) : super._();
 

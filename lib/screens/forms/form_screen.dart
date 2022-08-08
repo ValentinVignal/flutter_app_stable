@@ -189,7 +189,7 @@ class _PreviousNextButton extends ConsumerWidget {
         break;
     }
     return IconButton(
-      tooltip: '$_text project',
+      tooltip: '$_text form',
       onPressed: enabled
           ? () {
               final delta = type == _PreviousNext.previous ? -1 : 1;

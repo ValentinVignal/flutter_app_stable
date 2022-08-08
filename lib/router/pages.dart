@@ -157,6 +157,9 @@ class ProjectRoute extends GoRouteData with AuthenticatedRoute {
 @freezed
 class ProjectsFiltersParameters with _$ProjectsFiltersParameters {
   const ProjectsFiltersParameters._();
+
+  // ignore: invalid_annotation_target
+  @JsonSerializable(fieldRename: FieldRename.kebab)
   const factory ProjectsFiltersParameters({
     String? status,
   }) = _ProjectsFiltersParameters;
@@ -228,6 +231,8 @@ class TasksRoute extends GoRouteData with AuthenticatedRoute {
 class TasksFiltersParameters with _$TasksFiltersParameters {
   const TasksFiltersParameters._();
 
+  // ignore: invalid_annotation_target
+  @JsonSerializable(fieldRename: FieldRename.kebab)
   const factory TasksFiltersParameters({
     String? status,
     String? id,
@@ -344,6 +349,8 @@ class FormsRoute extends GoRouteData with AuthenticatedRoute {
 class FormsFiltersParameters with _$FormsFiltersParameters {
   const FormsFiltersParameters._();
 
+  // ignore: invalid_annotation_target
+  @JsonSerializable(fieldRename: FieldRename.kebab)
   const factory FormsFiltersParameters({
     String? status,
     String? id,
