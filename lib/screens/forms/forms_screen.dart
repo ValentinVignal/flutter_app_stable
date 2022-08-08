@@ -11,7 +11,12 @@ import 'package:flutter_app_stable/widgets/filter_bar.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class FormsScreen extends StatelessWidget {
-  const FormsScreen({Key? key}) : super(key: key);
+  const FormsScreen({
+    required this.filters,
+    Key? key,
+  }) : super(key: key);
+
+  final FormsFiltersParameters filters;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +26,9 @@ class FormsScreen extends StatelessWidget {
         formFilterProvider,
       ],
       child: Scaffold(
-        body: const FormList(),
+        body: FormList(
+          filters: filters,
+        ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             Database.instance.formDao.insert();
@@ -34,7 +41,12 @@ class FormsScreen extends StatelessWidget {
 }
 
 class FormList extends ConsumerStatefulWidget {
-  const FormList({Key? key}) : super(key: key);
+  const FormList({
+    required this.filters,
+    Key? key,
+  }) : super(key: key);
+
+  final FormsFiltersParameters filters;
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _FormListState();
@@ -44,13 +56,24 @@ class _FormListState extends ConsumerState<FormList> {
   @override
   void initState() {
     super.initState();
-    final uri = Uri.parse(router.location);
-    final formsFiltersParameters =
-        FormsFiltersParameters.fromJson(uri.queryParameters);
-    ref.read(formStatusAppliedFilterProvider.notifier).state =
-        formsFiltersParameters.parsedStatuses;
-    ref.read(formAppliedFilterProvider.notifier).state =
-        formsFiltersParameters.parsedIds;
+    _applyFormFilters();
+  }
+
+  @override
+  void didUpdateWidget(covariant FormList oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.filters != widget.filters) {
+      _applyFormFilters();
+    }
+  }
+
+  void _applyFormFilters() {
+    Future.microtask(() {
+      ref.read(formStatusAppliedFilterProvider.notifier).state =
+          widget.filters.parsedStatuses;
+      ref.read(formAppliedFilterProvider.notifier).state =
+          widget.filters.parsedIds;
+    });
   }
 
   @override

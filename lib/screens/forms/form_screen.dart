@@ -54,14 +54,14 @@ class _FormScreenContentState extends ConsumerState<FormScreenContent> {
   @override
   void initState() {
     super.initState();
-    _applyProjectFilters();
+    _applyFormFilters();
   }
 
   @override
   void didUpdateWidget(covariant FormScreenContent oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.filters != widget.filters) {
-      _applyProjectFilters();
+      _applyFormFilters();
     }
     if (oldWidget.id != widget.id) {
       formStream = Database.instance.formDao.watchSingle(
@@ -70,7 +70,7 @@ class _FormScreenContentState extends ConsumerState<FormScreenContent> {
     }
   }
 
-  void _applyProjectFilters() {
+  void _applyFormFilters() {
     Future.microtask(() {
       ref.read(formStatusAppliedFilterProvider.notifier).state =
           widget.filters.parsedStatuses;

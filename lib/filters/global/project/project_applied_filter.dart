@@ -21,6 +21,7 @@ final projectFilterProvider = Provider.autoDispose<Filter<int>>(
     final appliedFiltersNotifier =
         ref.watch(projectAppliedFilterProvider.state);
     final projects = ref.watch(projectsProvider);
+
     return Filter(
       appliedFilterStateController: appliedFiltersNotifier,
       options: projects.asData?.value.map(

@@ -327,7 +327,12 @@ class FormsRoute extends GoRouteData with AuthenticatedRoute {
   final String? id;
 
   @override
-  Widget buildScreen() => const FormsScreen();
+  Widget buildScreen() => FormsScreen(
+        filters: FormsFiltersParameters(
+          id: id,
+          status: status,
+        ),
+      );
 }
 
 @JsonSerializable(
