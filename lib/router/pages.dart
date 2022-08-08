@@ -1,4 +1,3 @@
-import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_stable/database/entities/form/form_status.dart';
 import 'package:flutter_app_stable/database/entities/project/project_status.dart';
@@ -16,10 +15,14 @@ import 'package:flutter_app_stable/services/auth_service.dart';
 import 'package:flutter_app_stable/utils/utils.dart';
 import 'package:flutter_app_stable/widgets/left_pane.dart';
 import 'package:flutter_app_stable/widgets/top_bar.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:go_router/go_router.dart';
-import 'package:json_annotation/json_annotation.dart';
+import 'package:logging/logging.dart';
 
+part 'pages.freezed.dart';
 part 'pages.g.dart';
+
+final _logger = Logger('Pages');
 
 // TODO: Find a better way to classify pages.
 const authenticatedRootSegments = {'projects', 'tasks', 'forms'};
@@ -151,13 +154,12 @@ class ProjectRoute extends GoRouteData with AuthenticatedRoute {
       );
 }
 
-@JsonSerializable(
-  fieldRename: FieldRename.kebab,
-)
-class ProjectsFiltersParameters with EquatableMixin {
-  const ProjectsFiltersParameters({
-    this.status,
-  });
+@freezed
+class ProjectsFiltersParameters with _$ProjectsFiltersParameters {
+  const ProjectsFiltersParameters._();
+  const factory ProjectsFiltersParameters({
+    String? status,
+  }) = _ProjectsFiltersParameters;
 
   factory ProjectsFiltersParameters.fromParsedData({
     Set<ProjectStatus>? statuses,
@@ -174,8 +176,6 @@ class ProjectsFiltersParameters with EquatableMixin {
   factory ProjectsFiltersParameters.fromJson(Json json) =>
       _$ProjectsFiltersParametersFromJson(json);
 
-  final String? status;
-
   Set<ProjectStatus> get parsedStatuses {
     if (status == null || status!.isEmpty) return const {};
     return status!
@@ -183,8 +183,6 @@ class ProjectsFiltersParameters with EquatableMixin {
         .map((status) => ProjectStatus.fromName(status))
         .toSet();
   }
-
-  Json toJson() => _$ProjectsFiltersParametersToJson(this);
 
   Json mergeJson(Json other) {
     final newJson = {...other};
@@ -200,9 +198,6 @@ class ProjectsFiltersParameters with EquatableMixin {
 
   bool get isEmpty => status == null || status!.isEmpty;
   bool get isNotEmpty => !isEmpty;
-
-  @override
-  List<Object?> get props => [status];
 }
 
 @TypedGoRoute<TasksRoute>(
@@ -224,14 +219,17 @@ class TasksRoute extends GoRouteData with AuthenticatedRoute {
   Widget buildScreen() => const TasksScreen();
 }
 
-@JsonSerializable(
-  fieldRename: FieldRename.kebab,
-)
-class TasksFiltersParameters {
-  const TasksFiltersParameters({
-    this.status,
-    this.id,
-  });
+@freezed
+class TasksFiltersParameters with _$TasksFiltersParameters {
+  const TasksFiltersParameters._();
+
+  const factory TasksFiltersParameters({
+    String? status,
+    String? id,
+  }) = _TasksFiltersParameters;
+
+  factory TasksFiltersParameters.fromJson(Json json) =>
+      _$TasksFiltersParametersFromJson(json);
 
   factory TasksFiltersParameters.fromParsedData({
     Set<TaskStatus>? statuses,
@@ -255,12 +253,6 @@ class TasksFiltersParameters {
     );
   }
 
-  factory TasksFiltersParameters.fromJson(Json json) =>
-      _$TasksFiltersParametersFromJson(json);
-
-  final String? status;
-  final String? id;
-
   Set<TaskStatus> get parsedStatuses {
     if (status == null || status!.isEmpty) return const {};
     return status!
@@ -273,8 +265,6 @@ class TasksFiltersParameters {
     if (id == null || id!.isEmpty) return const {};
     return id!.split(' ').map((id) => int.parse(id)).toSet();
   }
-
-  Json toJson() => _$TasksFiltersParametersToJson(this);
 
   Json mergeJson(Json other) {
     final newJson = {...other};
@@ -335,14 +325,14 @@ class FormsRoute extends GoRouteData with AuthenticatedRoute {
       );
 }
 
-@JsonSerializable(
-  fieldRename: FieldRename.kebab,
-)
-class FormsFiltersParameters with EquatableMixin {
-  const FormsFiltersParameters({
-    this.status,
-    this.id,
-  });
+@freezed
+class FormsFiltersParameters with _$FormsFiltersParameters {
+  const FormsFiltersParameters._();
+
+  const factory FormsFiltersParameters({
+    String? status,
+    String? id,
+  }) = _FormsFiltersParameters;
 
   factory FormsFiltersParameters.fromParsedData({
     Set<FormStatus>? statuses,
@@ -369,9 +359,6 @@ class FormsFiltersParameters with EquatableMixin {
   factory FormsFiltersParameters.fromJson(Json json) =>
       _$FormsFiltersParametersFromJson(json);
 
-  final String? status;
-  final String? id;
-
   Set<FormStatus> get parsedStatuses {
     if (status == null || status!.isEmpty) return const {};
     return status!
@@ -384,8 +371,6 @@ class FormsFiltersParameters with EquatableMixin {
     if (id == null || id!.isEmpty) return const {};
     return id!.split(' ').map((id) => int.parse(id)).toSet();
   }
-
-  Json toJson() => _$FormsFiltersParametersToJson(this);
 
   Json mergeJson(Json other) {
     final newJson = {...other};
@@ -402,9 +387,6 @@ class FormsFiltersParameters with EquatableMixin {
   bool get isEmpty =>
       (status == null || status!.isEmpty) && (id == null || id!.isEmpty);
   bool get isNotEmpty => !isEmpty;
-
-  @override
-  List<Object?> get props => [status, id];
 }
 
 class FormRoute extends GoRouteData with AuthenticatedRoute {
@@ -420,11 +402,14 @@ class FormRoute extends GoRouteData with AuthenticatedRoute {
   final String? status;
 
   @override
-  Widget buildScreen() => FormScreen(
-        id: formId,
-        filters: FormsFiltersParameters(
-          status: status,
-          id: id,
-        ),
-      );
+  Widget buildScreen() {
+    _logger.finest('Build FormRoute()');
+    return FormScreen(
+      id: formId,
+      filters: FormsFiltersParameters(
+        status: status,
+        id: id,
+      ),
+    );
+  }
 }

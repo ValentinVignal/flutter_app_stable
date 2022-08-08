@@ -210,41 +210,41 @@ extension $FormRouteExtension on FormRoute {
 // JsonSerializableGenerator
 // **************************************************************************
 
-ProjectsFiltersParameters _$ProjectsFiltersParametersFromJson(
+_$_ProjectsFiltersParameters _$$_ProjectsFiltersParametersFromJson(
         Map<String, dynamic> json) =>
-    ProjectsFiltersParameters(
+    _$_ProjectsFiltersParameters(
       status: json['status'] as String?,
     );
 
-Map<String, dynamic> _$ProjectsFiltersParametersToJson(
-        ProjectsFiltersParameters instance) =>
+Map<String, dynamic> _$$_ProjectsFiltersParametersToJson(
+        _$_ProjectsFiltersParameters instance) =>
     <String, dynamic>{
       'status': instance.status,
     };
 
-TasksFiltersParameters _$TasksFiltersParametersFromJson(
+_$_TasksFiltersParameters _$$_TasksFiltersParametersFromJson(
         Map<String, dynamic> json) =>
-    TasksFiltersParameters(
+    _$_TasksFiltersParameters(
       status: json['status'] as String?,
       id: json['id'] as String?,
     );
 
-Map<String, dynamic> _$TasksFiltersParametersToJson(
-        TasksFiltersParameters instance) =>
+Map<String, dynamic> _$$_TasksFiltersParametersToJson(
+        _$_TasksFiltersParameters instance) =>
     <String, dynamic>{
       'status': instance.status,
       'id': instance.id,
     };
 
-FormsFiltersParameters _$FormsFiltersParametersFromJson(
+_$_FormsFiltersParameters _$$_FormsFiltersParametersFromJson(
         Map<String, dynamic> json) =>
-    FormsFiltersParameters(
+    _$_FormsFiltersParameters(
       status: json['status'] as String?,
       id: json['id'] as String?,
     );
 
-Map<String, dynamic> _$FormsFiltersParametersToJson(
-        FormsFiltersParameters instance) =>
+Map<String, dynamic> _$$_FormsFiltersParametersToJson(
+        _$_FormsFiltersParameters instance) =>
     <String, dynamic>{
       'status': instance.status,
       'id': instance.id,
