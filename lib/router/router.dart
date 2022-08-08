@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_app_stable/filters/global/project/project_applied_filter.dart';
+import 'package:flutter_app_stable/router/drawer_page.dart';
 import 'package:flutter_app_stable/router/pages.dart';
 import 'package:flutter_app_stable/screens/screen_404.dart';
 import 'package:flutter_app_stable/services/auth_service.dart';
@@ -13,6 +14,7 @@ final _logger = Logger('Router');
 bool _isFirstRedirect = true;
 
 final router = GoRouter(
+  observers: [GoRouterDrawerPageExtension.navigatorObserver],
   urlPathStrategy: UrlPathStrategy.path,
   refreshListenable: Listenable.merge([
     AuthService.isAuthenticatedValueListenable,

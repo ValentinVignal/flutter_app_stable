@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app_stable/database/database.dart';
 import 'package:flutter_app_stable/database/entities/task/task_status.dart';
 import 'package:flutter_app_stable/filters/global/project/project_applied_filter.dart';
+import 'package:flutter_app_stable/router/drawer_page.dart';
 import 'package:flutter_app_stable/router/pages.dart';
 import 'package:flutter_app_stable/router/router.dart';
 import 'package:flutter_app_stable/screens/tasks/filters/task_filter.dart';
@@ -109,7 +110,7 @@ class _TaskListState extends ConsumerState<TaskList> {
                   status: parameters.status,
                   id: parameters.id,
                 );
-                router.push(page.location, extra: page);
+                router.pushDrawer(page.location);
               },
             );
           },
