@@ -420,7 +420,7 @@ class FormRoute extends GoRouteData with AuthenticatedRoute {
   final String? status;
 
   @override
-  Widget buildScreen() => FormScreenContent(
+  Widget buildScreen() => FormScreen(
         id: formId,
         filters: FormsFiltersParameters(
           status: status,
