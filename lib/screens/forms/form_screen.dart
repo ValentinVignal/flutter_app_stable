@@ -103,30 +103,56 @@ class _FormScreenContentState extends ConsumerState<FormScreenContent> {
                 final formWithProject = snapshot.data!;
                 final theme = Theme.of(context);
                 return Center(
-                  child: DecoratedBox(
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                          color: formWithProject.form.status.color(theme)),
-                      borderRadius: const BorderRadius.all(Radius.circular(8)),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Text(
-                            'Form - ${formWithProject.form.name}',
-                            style: theme.textTheme.displaySmall,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      DecoratedBox(
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                              color: formWithProject.form.status.color(theme)),
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(8)),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(
+                                'Form - ${formWithProject.form.name}',
+                                style: theme.textTheme.displaySmall,
+                              ),
+                              Text(
+                                '${formWithProject.form.id} - ${formWithProject.form.status.name}',
+                              ),
+                              Text(
+                                '${formWithProject.project.id} - ${formWithProject.project.name} - ${formWithProject.project.status.name}',
+                              ),
+                            ],
                           ),
-                          Text(
-                            '${formWithProject.form.id} - ${formWithProject.form.status.name}',
-                          ),
-                          Text(
-                            '${formWithProject.project.id} - ${formWithProject.project.name} - ${formWithProject.project.status.name}',
-                          ),
-                        ],
+                        ),
                       ),
-                    ),
+                      const SizedBox(height: 16),
+                      IconButton(
+                        tooltip: 'Open task of same id and equivalent status',
+                        icon: const Icon(Icons.task),
+                        onPressed: () async {
+                          final relatedTask = await Database.instance.taskDao
+                              .watchSingle(formWithProject.form.id)
+                              .first;
+                          final parameters =
+                              TasksFiltersParameters.fromParsedData(
+                            statuses: {relatedTask.task.status},
+                          );
+                          router.push(
+                            TaskRoute(
+                                    taskId: formWithProject.form.id,
+                                    status: parameters.status)
+                                .location,
+                          );
+                        },
+                      ),
+                    ],
                   ),
                 );
               },

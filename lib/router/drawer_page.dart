@@ -30,8 +30,15 @@ class _DrawerPageRoute extends TransitionRoute {
             children: [
               const Spacer(flex: 2),
               Expanded(
+                  child: SlideTransition(
+                position: animation!.drive(
+                  Tween(
+                    begin: const Offset(1, 0),
+                    end: const Offset(0, 0),
+                  ),
+                ),
                 child: (settings as DrawerPage).child,
-              ),
+              )),
             ],
           );
         },
@@ -40,18 +47,16 @@ class _DrawerPageRoute extends TransitionRoute {
   }
 
   @override
+  bool canTransitionTo(TransitionRoute<dynamic> nextRoute) =>
+      nextRoute is! _DrawerPageRoute;
+
+  @override
+  bool canTransitionFrom(TransitionRoute<dynamic> previousRoute) =>
+      previousRoute is! _DrawerPageRoute;
+
+  @override
   bool get opaque => false;
 
   @override
   Duration get transitionDuration => const Duration(milliseconds: 200);
-
-  @override
-  Widget buildTransitions(
-    BuildContext context,
-    Animation<double> animation,
-    Animation<double> secondaryAnimation,
-    Widget child,
-  ) {
-    return Container();
-  }
 }

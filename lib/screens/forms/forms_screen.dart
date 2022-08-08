@@ -111,6 +111,15 @@ class _FormListState extends ConsumerState<FormList> {
                 );
                 router.push(page.location, extra: page);
               },
+              trailing: IconButton(
+                tooltip: 'Open task of same id',
+                icon: const Icon(Icons.task),
+                onPressed: () {
+                  router.push(
+                    TaskRoute(taskId: formWithProject.form.id).location,
+                  );
+                },
+              ),
             );
           },
         );
