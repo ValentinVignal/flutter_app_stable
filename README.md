@@ -13,26 +13,32 @@ It needs to be able to:
 - [x] Rebuild the app when the user changes the URL
   - It looks like it works out of the box from the routes
 - [x] Work with the internet navigator arrows.
-- [ ] Updates the URL without triggering the rebuild of the UI (ex: URL parameter)
+- :x: Updates the URL without triggering the rebuild of the UI (ex: URL parameter)
+  - Not possible, I tried with `html.window.history.pushState(null, 'home', '#/home/other');` or `html.window.location.href = myPath;`, but then it is out of sync with go router and things get messy.
 - :x: Create "shells": Stateful widgets that queries data and provide it with [provider](https://pub.dev/packages/provider). 
   Maybe there is a workaround possible with [riverpod](https://pub.dev/packages/riverpod)
   - This also means that the routing might need to be nested.
-- [ ] Force reload the UI (This might be need when data are cleared)
+- [x] Force reload the UI (This might be need when data are cleared)
+  - Do a `router.refresh()`
 - [ ] Add security/checks when a page is pushed/an URL is loaded if the user doesn't have access to the page.
 - [ ] Animate between pages.
 - [x] Access the root router without the `context`.
   - Store `router` in a global variable and call the methods on it.
-- [ ] Allow to change the URL of the pages in history (ex: parameters linked to a singleton/shared state of the app).
+- :x: Allow to change the URL of the pages in history (ex: parameters linked to a singleton/shared state of the app).
+  - Not possible, but the redirect can correct them when the user go back to apply the global filters.
+  - This kind of screw up the back/forward browser's history button though. (https://github.com/flutter/flutter/issues/108714)
 - [x] Replace all method.
   - This is done with `go` or `goNamed`.
-- [ ] Replace the current page. 
+- [x] Replace the current page. 
   https://github.com/flutter/flutter/issues/106402
 - [ ] Ability to pop several pages at once.
+  https://github.com/flutter/flutter/issues/109128 
   https://github.com/flutter/flutter/issues/107052 
-- [ ] Being able to implement a custom address bar (desktop).
-- [ ] Being able to have the same page in the history several times.
+- [x] Being able to implement a custom address bar (desktop).
+- [x] Being able to have the same page in the history several times.
   https://github.com/flutter/flutter/issues/107045
-- [ ] When in a single object screen, be able to switch to next / previous according to the applied filters.
+- [x] When in a single object screen, be able to switch to next / previous according to the applied filters.
+- [ ] Handle drawer that acts as a page.
 
 
 # Comments
