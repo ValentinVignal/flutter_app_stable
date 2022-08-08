@@ -9,14 +9,14 @@ class DrawerPage extends Page {
 
   @override
   Route createRoute(BuildContext context) {
-    return _DrawerPageRouter(
+    return _DrawerPageRoute(
       settings: this,
     );
   }
 }
 
-class _DrawerPageRouter extends TransitionRoute {
-  _DrawerPageRouter({
+class _DrawerPageRoute extends TransitionRoute {
+  _DrawerPageRoute({
     required DrawerPage settings,
   }) : super(
           settings: settings,
@@ -44,4 +44,14 @@ class _DrawerPageRouter extends TransitionRoute {
 
   @override
   Duration get transitionDuration => const Duration(milliseconds: 200);
+
+  @override
+  Widget buildTransitions(
+    BuildContext context,
+    Animation<double> animation,
+    Animation<double> secondaryAnimation,
+    Widget child,
+  ) {
+    return Container();
+  }
 }

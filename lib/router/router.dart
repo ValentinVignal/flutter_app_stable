@@ -70,3 +70,9 @@ redirect
   routes: $appRoutes,
   errorBuilder: (context, state) => const Screen404(),
 );
+
+final routerListenable = Listenable.merge([
+  router,
+  router.routerDelegate,
+  router.routeInformationProvider,
+]);

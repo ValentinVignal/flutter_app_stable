@@ -203,7 +203,7 @@ class ProjectsFiltersParameters with _$ProjectsFiltersParameters {
 @TypedGoRoute<TasksRoute>(
   path: '/tasks',
   routes: [
-    TypedGoRoute<TaskRoute>(path: ':id'),
+    TypedGoRoute<TaskRoute>(path: ':taskId'),
   ],
 )
 class TasksRoute extends GoRouteData with AuthenticatedRoute {
@@ -216,7 +216,12 @@ class TasksRoute extends GoRouteData with AuthenticatedRoute {
   final String? id;
 
   @override
-  Widget buildScreen() => const TasksScreen();
+  Widget buildScreen() => TasksScreen(
+        filters: TasksFiltersParameters(
+          status: status,
+          id: id,
+        ),
+      );
 }
 
 @freezed
@@ -285,10 +290,14 @@ class TasksFiltersParameters with _$TasksFiltersParameters {
 
 class TaskRoute extends GoRouteData with AuthenticatedRoute {
   const TaskRoute({
-    required this.id,
+    required this.taskId,
+    this.status,
+    this.id,
   });
 
-  final int id;
+  final int taskId;
+  final String? status;
+  final String? id;
 
   @override
   Page<void> buildPage(BuildContext context) {
@@ -298,7 +307,13 @@ class TaskRoute extends GoRouteData with AuthenticatedRoute {
   }
 
   @override
-  Widget buildScreen() => TaskScreen(id: id);
+  Widget buildScreen() => TaskScreen(
+        id: taskId,
+        filters: TasksFiltersParameters(
+          id: id,
+          status: status,
+        ),
+      );
 }
 
 @TypedGoRoute<FormsRoute>(

@@ -11,7 +11,12 @@ import 'package:flutter_app_stable/widgets/filter_bar.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class TasksScreen extends StatelessWidget {
-  const TasksScreen({Key? key}) : super(key: key);
+  const TasksScreen({
+    required this.filters,
+    Key? key,
+  }) : super(key: key);
+
+  final TasksFiltersParameters filters;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +26,9 @@ class TasksScreen extends StatelessWidget {
         taskFilterProvider,
       ],
       child: Scaffold(
-        body: const TaskList(),
+        body: TaskList(
+          filters: filters,
+        ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             Database.instance.taskDao.insert();
@@ -34,7 +41,12 @@ class TasksScreen extends StatelessWidget {
 }
 
 class TaskList extends ConsumerStatefulWidget {
-  const TaskList({Key? key}) : super(key: key);
+  const TaskList({
+    required this.filters,
+    Key? key,
+  }) : super(key: key);
+
+  final TasksFiltersParameters filters;
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _TaskListState();
@@ -44,13 +56,24 @@ class _TaskListState extends ConsumerState<TaskList> {
   @override
   void initState() {
     super.initState();
-    final uri = Uri.parse(router.location);
-    final tasksFiltersParameters =
-        TasksFiltersParameters.fromJson(uri.queryParameters);
-    ref.read(taskStatusAppliedFilterProvider.notifier).state =
-        tasksFiltersParameters.parsedStatuses;
-    ref.read(taskAppliedFilterProvider.notifier).state =
-        tasksFiltersParameters.parsedIds;
+    _applyTaskFilters();
+  }
+
+  @override
+  void didUpdateWidget(covariant TaskList oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.filters != widget.filters) {
+      _applyTaskFilters();
+    }
+  }
+
+  void _applyTaskFilters() {
+    Future.microtask(() {
+      ref.read(taskStatusAppliedFilterProvider.notifier).state =
+          widget.filters.parsedStatuses;
+      ref.read(taskAppliedFilterProvider.notifier).state =
+          widget.filters.parsedIds;
+    });
   }
 
   @override
@@ -77,7 +100,15 @@ class _TaskListState extends ConsumerState<TaskList> {
               subtitle: Text(
                   '${taskWithProject.task.id} - ${taskWithProject.task.status.name} - Project: ${taskWithProject.project.name} (${taskWithProject.task.projectId})'),
               onTap: () {
-                final page = TaskRoute(id: taskWithProject.task.id);
+                final parameters = TasksFiltersParameters.fromParsedData(
+                  statuses: ref.read(taskStatusAppliedFilterProvider),
+                  ids: ref.read(taskAppliedFilterProvider),
+                );
+                final page = TaskRoute(
+                  taskId: taskWithProject.task.id,
+                  status: parameters.status,
+                  id: parameters.id,
+                );
                 router.push(page.location, extra: page);
               },
             );

@@ -117,7 +117,7 @@ GoRoute get $tasksRoute => GoRouteData.$route(
       factory: $TasksRouteExtension._fromState,
       routes: [
         GoRouteData.$route(
-          path: ':id',
+          path: ':taskId',
           factory: $TaskRouteExtension._fromState,
         ),
       ],
@@ -144,11 +144,17 @@ extension $TasksRouteExtension on TasksRoute {
 
 extension $TaskRouteExtension on TaskRoute {
   static TaskRoute _fromState(GoRouterState state) => TaskRoute(
-        id: int.parse(state.params['id']!),
+        taskId: int.parse(state.params['taskId']!),
+        status: state.queryParams['status'],
+        id: state.queryParams['id'],
       );
 
   String get location => GoRouteData.$location(
-        '/tasks/${Uri.encodeComponent(id.toString())}',
+        '/tasks/${Uri.encodeComponent(taskId.toString())}',
+        queryParams: {
+          if (status != null) 'status': status!,
+          if (id != null) 'id': id!,
+        },
       );
 
   void go(BuildContext context) => context.go(location, extra: this);
