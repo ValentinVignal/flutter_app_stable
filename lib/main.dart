@@ -7,6 +7,10 @@ void main() {
 
 final countProvider = StateProvider.autoDispose((ref) => 0);
 
+final streamProvider = StreamProvider.autoDispose((ref) {
+  return Stream.periodic(const Duration(milliseconds: 100), (index) => index);
+});
+
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
@@ -39,6 +43,13 @@ class FirstPage extends StatelessWidget {
               builder: (context, ref, child) {
                 return Text(
                   'Count: ${ref.watch(countProvider)}',
+                );
+              },
+            ),
+            Consumer(
+              builder: (context, ref, child) {
+                return Text(
+                  'Stream: ${ref.watch(streamProvider).asData?.value ?? 0}',
                 );
               },
             ),
@@ -78,6 +89,7 @@ class SecondPage extends StatelessWidget {
     return ProviderScope(
       overrides: [
         countProvider,
+        streamProvider,
       ],
       child: Scaffold(
         appBar: AppBar(
@@ -92,6 +104,13 @@ class SecondPage extends StatelessWidget {
                 builder: (context, ref, child) {
                   return Text(
                     'Count: ${ref.watch(countProvider)}',
+                  );
+                },
+              ),
+              Consumer(
+                builder: (context, ref, child) {
+                  return Text(
+                    'Stream: ${ref.watch(streamProvider).asData?.value ?? 0}',
                   );
                 },
               ),
