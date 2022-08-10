@@ -24,7 +24,7 @@ class TasksScreen extends StatelessWidget {
     return ProviderScope(
       overrides: [
         taskStatusAppliedFilterProvider,
-        taskFilterProvider,
+        taskAppliedFilterProvider,
       ],
       child: Scaffold(
         body: TaskList(

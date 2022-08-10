@@ -23,7 +23,7 @@ class FormsScreen extends StatelessWidget {
     return ProviderScope(
       overrides: [
         formStatusAppliedFilterProvider,
-        formFilterProvider,
+        formAppliedFilterProvider,
       ],
       child: Scaffold(
         body: FormList(
