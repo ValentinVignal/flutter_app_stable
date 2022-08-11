@@ -1,0 +1,17 @@
+builders:
+  typed_routes:
+    import: "package:flutter_app_stable/builders/typed_routes/builder.dart"
+    builder_factories: ["typedRoutes"]
+    build_extensions: { ".dart": ["typed_routes.g.dart"] }
+    auto_apply: dependents
+    build_to: cache
+    applies_builders: ["source_gen|combining_builder"]
+
+targets:
+  $default:
+    sources:
+      include:
+        - "lib/**/*.dart"
+    builders:
+      flutter_app_stable|typed_routes:
+        enabled: true

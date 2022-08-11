@@ -255,3 +255,19 @@ Map<String, dynamic> _$$_FormsFiltersParametersToJson(
       'status': instance.status,
       'id': instance.id,
     };
+
+// **************************************************************************
+// TypedRouteGenerator
+// **************************************************************************
+
+// test for element HomeRoute
+
+// test for element LoginRoute
+
+// test for element SignUpRoute
+
+// test for element ProjectsRoute
+
+// test for element TasksRoute
+
+// test for element FormsRoute
