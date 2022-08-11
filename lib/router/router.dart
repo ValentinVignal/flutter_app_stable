@@ -58,14 +58,13 @@ redirect
 
     _logger.finest('router.redirect: ${state.location}');
     final rootSegment =
-        uri.pathSegments.isNotEmpty ? uri.pathSegments.first : '/';
-    // TODO: Find a better way to know what page is pushed
+        uri.pathSegments.isNotEmpty ? uri.pathSegments.first : '';
     if (authenticatedRootSegments.contains(rootSegment) &&
         !AuthService.isAuthenticatedValueListenable.value) {
-      return '/login';
+      return '/';
     } else if (unauthenticatedRootSegments.contains(rootSegment) &&
         AuthService.isAuthenticatedValueListenable.value) {
-      return '/projects';
+      return '/';
     }
     return null;
   },

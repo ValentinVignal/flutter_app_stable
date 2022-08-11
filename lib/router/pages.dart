@@ -17,16 +17,19 @@ import 'package:flutter_app_stable/widgets/left_pane.dart';
 import 'package:flutter_app_stable/widgets/top_bar.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:go_router/go_router.dart';
-import 'package:logging/logging.dart';
 
 part 'pages.freezed.dart';
 part 'pages.g.dart';
 
-final _logger = Logger('Pages');
-
-// TODO: Find a better way to classify pages.
-const authenticatedRootSegments = {'projects', 'tasks', 'forms'};
-const unauthenticatedRootSegments = {'sign-up', 'login'};
+const authenticatedRootSegments = {
+  ProjectsRoute.urlSegment,
+  TasksRoute.urlSegment,
+  FormsRoute.urlSegment,
+};
+const unauthenticatedRootSegments = {
+  LoginRoute.urlSegment,
+  SignUpRoute.urlSegment,
+};
 
 class _AuthenticatedScreen extends StatelessWidget {
   const _AuthenticatedScreen({required this.child, Key? key}) : super(key: key);
@@ -87,34 +90,36 @@ class HomeRoute extends GoRouteData {
 
   @override
   String? redirect() {
-    // TODO: If logged in, go to projects
-    // TODO: Looks how to know manipulate URI. (look at named location).
     if (AuthService.isAuthenticatedValueListenable.value) {
-      return '/projects';
+      return '/${ProjectsRoute.urlSegment}';
     } else {
-      return '/login';
+      return '/${LoginRoute.urlSegment}';
     }
   }
 }
 
-@TypedGoRoute<LoginRoute>(path: '/login')
+@TypedGoRoute<LoginRoute>(path: '/${LoginRoute.urlSegment}')
 class LoginRoute extends GoRouteData {
   const LoginRoute();
+
+  static const urlSegment = 'login';
 
   @override
   Widget build(BuildContext context) => const LoginScreen();
 }
 
-@TypedGoRoute<SignUpRoute>(path: '/sign-up')
+@TypedGoRoute<SignUpRoute>(path: '/${SignUpRoute.urlSegment}')
 class SignUpRoute extends GoRouteData {
   const SignUpRoute();
+
+  static const urlSegment = 'sign-up';
 
   @override
   Widget build(BuildContext context) => const SignUpScreen();
 }
 
 @TypedGoRoute<ProjectsRoute>(
-  path: '/projects',
+  path: '/${ProjectsRoute.urlSegment}',
   routes: [
     TypedGoRoute<ProjectRoute>(path: ':projectId'),
   ],
@@ -123,6 +128,8 @@ class ProjectsRoute extends GoRouteData with AuthenticatedRoute {
   const ProjectsRoute({
     this.status,
   });
+
+  static const urlSegment = 'projects';
 
   factory ProjectsRoute.fromState(GoRouterState state) =>
       $ProjectsRouteExtension._fromState(state);
@@ -204,7 +211,7 @@ class ProjectsFiltersParameters with _$ProjectsFiltersParameters {
 }
 
 @TypedGoRoute<TasksRoute>(
-  path: '/tasks',
+  path: '/${TasksRoute.urlSegment}',
   routes: [
     TypedGoRoute<TaskRoute>(path: ':taskId'),
   ],
@@ -215,6 +222,7 @@ class TasksRoute extends GoRouteData with AuthenticatedRoute {
     this.id,
   });
 
+  static const urlSegment = 'tasks';
   final String? status;
   final String? id;
 
@@ -322,7 +330,7 @@ class TaskRoute extends GoRouteData with AuthenticatedRoute {
 }
 
 @TypedGoRoute<FormsRoute>(
-  path: '/forms',
+  path: '/${FormsRoute.urlSegment}',
   routes: [
     TypedGoRoute<FormRoute>(path: ':formId'),
   ],
@@ -332,6 +340,8 @@ class FormsRoute extends GoRouteData with AuthenticatedRoute {
     this.status,
     this.id,
   });
+
+  static const urlSegment = 'forms';
 
   final String? status;
   final String? id;
@@ -425,7 +435,6 @@ class FormRoute extends GoRouteData with AuthenticatedRoute {
 
   @override
   Widget buildScreen() {
-    _logger.finest('Build FormRoute()');
     return FormScreen(
       id: formId,
       filters: FormsFiltersParameters(

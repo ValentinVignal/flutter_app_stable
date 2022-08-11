@@ -20,7 +20,7 @@ It needs to be able to:
   - This also means that the routing might need to be nested.
 - [x] Force reload the UI (This might be need when data are cleared)
   - Do a `router.refresh()`
-- [ ] Add security/checks when a page is pushed/an URL is loaded if the user doesn't have access to the page.
+- [x] Add security/checks when a page is pushed/an URL is loaded if the user doesn't have access to the page.
 - [ ] Animate between pages.
 - [x] Access the root router without the `context`.
   - Store `router` in a global variable and call the methods on it.
@@ -38,7 +38,7 @@ It needs to be able to:
 - [x] Being able to have the same page in the history several times.
   https://github.com/flutter/flutter/issues/107045
 - [x] When in a single object screen, be able to switch to next / previous according to the applied filters.
-- [ ] Handle drawer that acts as a page.
+- [x] Handle drawer that acts as a page.
 
 
 # Comments
