@@ -7,9 +7,18 @@ void main() {
 
 final countProvider = StateProvider.autoDispose((ref) => 0);
 
-final streamProvider = StreamProvider.autoDispose((ref) {
-  return Stream.periodic(const Duration(milliseconds: 100), (index) => index);
-});
+final streamProvider = StreamProvider.autoDispose(
+  (ref) {
+    final count = ref.watch(countProvider);
+    return Stream.periodic(
+      const Duration(milliseconds: 100),
+      (index) => index * count,
+    );
+  },
+  dependencies: [
+    countProvider,
+  ],
+);
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -88,7 +97,6 @@ class SecondPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return ProviderScope(
       overrides: [
-        countProvider,
         streamProvider,
       ],
       child: Scaffold(
@@ -125,6 +133,16 @@ class SecondPage extends StatelessWidget {
                 },
                 child: const Text('First page'),
               ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const EmptyPage(),
+                    ),
+                  );
+                },
+                child: const Text('Empty page'),
+              ),
             ],
           ),
         ),
@@ -138,6 +156,47 @@ class SecondPage extends StatelessWidget {
             );
           },
           child: const Icon(Icons.add),
+        ),
+      ),
+    );
+  }
+}
+
+class EmptyPage extends StatelessWidget {
+  const EmptyPage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Empty Page'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const FirstPage(),
+                  ),
+                );
+              },
+              child: const Text('First page'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const SecondPage(),
+                  ),
+                );
+              },
+              child: const Text('Second page'),
+            ),
+          ],
         ),
       ),
     );

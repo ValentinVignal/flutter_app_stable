@@ -15,15 +15,16 @@ void main() {
     await tester.pumpWidget(const MyApp());
 
     // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    expect(find.text('First Page'), findsOneWidget);
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+    final w = tester.widget(find.text('First Page'));
+    final e = tester.element(find.text('First Page'));
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    final r = tester.renderObject(find.text('First Page'));
+    expect(
+        r.constraints,
+        const BoxConstraints(
+          maxWidth: 768.0,
+        ));
   });
 }
