@@ -27,7 +27,6 @@ class App extends StatelessWidget {
       GoRoute(
         path: '/family/:fid',
         builder: (context, state) => FamilyTabsScreen(
-          // key: state.pageKey,
           selectedFamily: Families.family(state.params['fid']!),
         ),
         routes: [
@@ -43,21 +42,6 @@ class App extends StatelessWidget {
         ],
       ),
     ],
-
-    // show the current router location as the user navigates page to page; note
-    // that this is not required for nested navigation but it is useful to show
-    // the location as it changes
-    // navigatorBuilder: (context, state, child) => Material(
-    //   child: Column(
-    //     children: [
-    //       Expanded(child: child),
-    //       Padding(
-    //         padding: const EdgeInsets.all(8),
-    //         child: Text(state.location),
-    //       ),
-    //     ],
-    //   ),
-    // ),
   );
 }
 
@@ -74,87 +58,47 @@ class FamilyTabsScreen extends StatefulWidget {
   _FamilyTabsScreenState createState() => _FamilyTabsScreenState();
 }
 
-class _FamilyTabsScreenState extends State<FamilyTabsScreen>
-    with TickerProviderStateMixin {
-  late final TabController _controller;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = TabController(
-      length: Families.data.length,
-      vsync: this,
-      initialIndex: widget.index,
-    );
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  @override
-  void didUpdateWidget(FamilyTabsScreen oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    _controller.index = widget.index;
-  }
-
+class _FamilyTabsScreenState extends State<FamilyTabsScreen> {
   @override
   Widget build(BuildContext context) => Scaffold(
         body: Column(
           children: [
-            const Text(App.title),
-            TabBar(
-              controller: _controller,
-              tabs: [for (final f in Families.data) Tab(text: f.name)],
-              onTap: (index) => _tap(context, index),
+            const ColoredBox(
+              color: Colors.blue,
+              child: Text(App.title),
+            ),
+            Row(
+              children: [
+                for (final f in Families.data)
+                  Expanded(
+                    child: InkWell(
+                      onTap: () => _tap(context, f.id),
+                      child: Text(f.name),
+                    ),
+                  ),
+              ],
             ),
             Expanded(
-              child: TabBarView(
-                controller: _controller,
-                children: [
-                  for (final f in Families.data) FamilyView(family: f)
-                ],
-              ),
+              child: FamilyView(family: Families.data[widget.index]),
             ),
           ],
         ),
       );
 
-  void _tap(BuildContext context, int index) =>
-      context.go('/family/${Families.data[index].id}');
+  void _tap(BuildContext context, String id) => context.go('/family/$id');
 }
 
-class FamilyView extends StatefulWidget {
+class FamilyView extends StatelessWidget {
   const FamilyView({required this.family, Key? key}) : super(key: key);
   final Family family;
-
-  @override
-  State<FamilyView> createState() => _FamilyViewState();
-}
-
-/// Use the [AutomaticKeepAliveClientMixin] to keep the state, like scroll
-/// position and text fields when switching tabs, as well as when popping back
-/// from sub screens. To use the mixin override [wantKeepAlive] and call
-/// `super.build(context)` in build.
-///
-/// In this example if you make a web build and make the browser window so low
-/// that you have to scroll to see the last person on each family tab, you will
-/// see that state is kept when you switch tabs and when you open a person
-/// screen and pop back to the family.
-class _FamilyViewState extends State<FamilyView> {
-  // Override `wantKeepAlive` when using `AutomaticKeepAliveClientMixin`.
-  @override
   @override
   Widget build(BuildContext context) {
     return ListView(
       children: [
-        for (final p in widget.family.people)
+        for (final p in family.people)
           ListTile(
             title: Text(p.name),
-            onTap: () =>
-                context.go('/family/${widget.family.id}/person/${p.id}'),
+            onTap: () => context.go('/family/${family.id}/person/${p.id}'),
           ),
       ],
     );
