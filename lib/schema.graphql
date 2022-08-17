@@ -1,0 +1,13 @@
+interface PokemonInterface {
+  id: ID!
+  name: String!
+}
+
+type Pokemon implements PokemonInterface {
+  id: ID!
+  name: String!
+}
+
+type Query {
+  pokemons: [Pokemon!]!
+}
