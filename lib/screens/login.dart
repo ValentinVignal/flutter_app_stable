@@ -28,7 +28,7 @@ class LoginScreen extends StatelessWidget {
             TextButton(
               onPressed: () {
                 const page = SignUpRoute();
-                router.go(page.location, extra: page);
+                router.go(page.location);
               },
               child: const Text('Sign up'),
             ),
