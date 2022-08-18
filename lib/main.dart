@@ -29,7 +29,7 @@ class _MyAppState extends State<MyApp> {
       animation: useRouteInformationProvider,
       builder: (context, _) {
         return MaterialApp.router(
-          // key: ValueKey(useRouteInformationProvider.value),
+          // key: ValueKey(useRouteInformationProvider.value), // <- This fixes the issue.
           routerDelegate: routeDelegate,
           routeInformationParser: routeInformationParser,
           routeInformationProvider: useRouteInformationProvider.value
