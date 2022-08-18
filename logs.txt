@@ -1,0 +1,725 @@
+➜  flutter_app_stable git:(flutter/material-app-router-route-information-provider-crash) flutter run -d chrome -v
+[  +97 ms] executing: sysctl hw.optional.arm64
+[  +18 ms] Exit code 1 from: sysctl hw.optional.arm64
+[        ] sysctl: unknown oid 'hw.optional.arm64'
+[   +9 ms] executing: [/Users/valentin/flutter/flutter/] git -c log.showSignature=false log -n 1 --pretty=format:%H
+[  +35 ms] Exit code 0 from: git -c log.showSignature=false log -n 1 --pretty=format:%H
+[        ] f1875d570e39de09040c8f79aa13cc56baab8db1
+[        ] executing: [/Users/valentin/flutter/flutter/] git tag --points-at f1875d570e39de09040c8f79aa13cc56baab8db1
+[ +178 ms] Exit code 0 from: git tag --points-at f1875d570e39de09040c8f79aa13cc56baab8db1
+[   +2 ms] 3.0.5
+[   +8 ms] executing: [/Users/valentin/flutter/flutter/] git rev-parse --abbrev-ref --symbolic @{u}
+[  +18 ms] Exit code 0 from: git rev-parse --abbrev-ref --symbolic @{u}
+[        ] origin/stable
+[        ] executing: [/Users/valentin/flutter/flutter/] git ls-remote --get-url origin
+[  +19 ms] Exit code 0 from: git ls-remote --get-url origin
+[        ] https://github.com/flutter/flutter.git
+[ +124 ms] executing: [/Users/valentin/flutter/flutter/] git rev-parse --abbrev-ref HEAD
+[  +25 ms] Exit code 0 from: git rev-parse --abbrev-ref HEAD
+[        ] stable
+[   +7 ms] executing: sw_vers -productName
+[  +23 ms] Exit code 0 from: sw_vers -productName
+[        ] macOS
+[        ] executing: sw_vers -productVersion
+[  +19 ms] Exit code 0 from: sw_vers -productVersion
+[        ] 11.6.8
+[        ] executing: sw_vers -buildVersion
+[  +19 ms] Exit code 0 from: sw_vers -buildVersion
+[        ] 20G730
+[        ] executing: uname -m
+[   +8 ms] Exit code 0 from: uname -m
+[        ] x86_64
+[  +77 ms] Artifact Instance of 'AndroidGenSnapshotArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'AndroidInternalBuildArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IOSEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterWebSdk' is not required, skipping update.
+[   +7 ms] Artifact Instance of 'WindowsEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'WindowsUwpEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'MacOSEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'LinuxEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'LinuxFuchsiaSDKArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'MacOSFuchsiaSDKArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterRunnerSDKArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterRunnerDebugSymbols' is not required, skipping update.
+[ +166 ms] Artifact Instance of 'AndroidGenSnapshotArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'AndroidInternalBuildArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IOSEngineArtifacts' is not required, skipping update.
+[   +9 ms] Artifact Instance of 'WindowsEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'WindowsUwpEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'MacOSEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'LinuxEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'LinuxFuchsiaSDKArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'MacOSFuchsiaSDKArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterRunnerSDKArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterRunnerDebugSymbols' is not required, skipping update.
+[ +104 ms] executing: sysctl hw.optional.arm64
+[  +12 ms] Exit code 1 from: sysctl hw.optional.arm64
+[        ] sysctl: unknown oid 'hw.optional.arm64'
+[        ] executing: xcrun xcodebuild -version
+[ +299 ms] Exit code 0 from: xcrun xcodebuild -version
+[        ] Xcode 13.2.1
+           Build version 13C100
+[ +115 ms] Skipping pub get: version match.
+[ +260 ms] Generating /Users/valentin/Perso/Projects/flutter_app_stable/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java
+[ +341 ms] Launching lib/main.dart on Chrome in debug mode...
+[ +141 ms] Updating assets
+[ +126 ms] Waiting for connection from debug service on Chrome...
+[ +134 ms] <- reset
+[   +9 ms] /Users/valentin/flutter/flutter/bin/cache/dart-sdk/bin/dart --disable-dart-dev /Users/valentin/flutter/flutter/bin/cache/dart-sdk/bin/snapshots/frontend_server.dart.snapshot --sdk-root /Users/valentin/flutter/flutter/bin/cache/flutter_web_sdk/ --incremental
+--target=dartdevc --debugger-module-names --experimental-emit-debug-metadata -DFLUTTER_WEB_AUTO_DETECT=true --output-dill /var/folders/pl/d95zgbzd4hbb3z0rt9bl02z40000gn/T/flutter_tools.s1bhcu/flutter_tool.UPXQoW/app.dill --libraries-spec
+file:///Users/valentin/flutter/flutter/bin/cache/flutter_web_sdk/libraries.json --packages /Users/valentin/Perso/Projects/flutter_app_stable/.dart_tool/package_config.json -Ddart.vm.profile=false -Ddart.vm.product=false --enable-asserts --track-widget-creation --filesystem-root
+/var/folders/pl/d95zgbzd4hbb3z0rt9bl02z40000gn/T/flutter_tools.s1bhcu/flutter_tools.y1M2tR --filesystem-scheme org-dartlang-app --initialize-from-dill build/b1b715402d823b7fd5c2b68d2edcb2ce.cache.dill.track.dill --platform
+file:///Users/valentin/flutter/flutter/bin/cache/flutter_web_sdk/kernel/flutter_ddc_sdk_sound.dill --sound-null-safety
+[  +18 ms] <- compile org-dartlang-app:/web_entrypoint.dart
+[+19449 ms] Waiting for connection from debug service on Chrome... (completed in 19.6s)
+[        ] Synced 29.9MB.
+[        ] <- accept
+[        ] Caching compiled dill
+[ +156 ms] Using Google Chrome 104.0.5112.79 
+
+[+1720 ms] executing: sysctl hw.optional.arm64
+[   +8 ms] Exit code 1 from: sysctl hw.optional.arm64
+[        ] sysctl: unknown oid 'hw.optional.arm64'
+[ +536 ms] [CHROME]: 
+[        ] [CHROME]: DevTools listening on ws://127.0.0.1:51145/devtools/browser/bc74b6a4-c1c0-4993-80c3-608c6227ca8a
+[+1360 ms] DwdsInjector: Received request for entrypoint at http://localhost:51131/main_module.bootstrap.js
+[   +6 ms] MetadataProvider: Loading debug metadata...
+[   +4 ms] MetadataProvider: Loaded debug metadata for module: web_entrypoint.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter_app_stable/main.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/material.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/widgets.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/will_pop_scope.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/title.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/rendering.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/rendering/wrap.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/rendering/layer.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/painting.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/painting/placeholder_span.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/services/text_formatter.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/services/text_layout_metrics.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/services/text_editing.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/foundation.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/foundation/unicode.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/foundation/synchronous_future.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/foundation/stack_frame.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/foundation/object.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/foundation/constants.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/meta/meta.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/meta/meta_meta.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/foundation/serialization.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/foundation/print.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/foundation/_platform_web.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/foundation/observer_list.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/foundation/node.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/foundation/licenses.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/foundation/key.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/foundation/debug.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/foundation/basic_types.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/foundation/_isolates_web.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/foundation/consolidate_response.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/foundation/collections.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/foundation/change_notifier.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/foundation/_bitfield_web.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/foundation/binding.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/foundation/annotations.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/services/system_chrome.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/services/restoration.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/scheduler.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/scheduler/ticker.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/scheduler/binding.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/scheduler/priority.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/scheduler/debug.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/collection/src/union_set_controller.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/collection/src/queue_list.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/collection/src/priority_queue.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/collection/src/utils.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/collection/src/list_extensions.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/collection/src/equality.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/collection/src/comparators.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/collection/src/algorithms.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/collection/src/iterable_zip.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/collection/src/iterable_extensions.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/collection/src/functions.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/collection/src/combined_wrappers/combined_map.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/collection/src/combined_wrappers/combined_iterable.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/collection/src/combined_wrappers/combined_iterator.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/collection/src/combined_wrappers/combined_list.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/collection/src/canonicalized_map.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/services/keyboard_maps.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/services/keyboard_key.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/services/binary_messenger.dart
+[   +1 ms] MetadataProvider: Loaded debug metadata for module: packages/vector_math/vector_math_64.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/characters/characters.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/characters/src/extensions.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/characters/src/characters_impl.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/characters/src/grapheme_clusters/breaks.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/characters/src/grapheme_clusters/table.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/characters/src/grapheme_clusters/constants.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/services/system_sound.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/services/system_navigator.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/services/platform_views.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/gestures.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/gestures/velocity_tracker.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/gestures/lsq_solver.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/gestures/events.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/gestures/gesture_settings.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/gestures/constants.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/gestures/team.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/gestures/binding.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/gestures/resampler.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/gestures/pointer_signal_resolver.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/gestures/pointer_router.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/gestures/hit_test.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/gestures/debug.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/gestures/converter.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/gestures/arena.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/gestures/tap.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/gestures/recognizer.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/gestures/scale.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/gestures/multitap.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/gestures/multidrag.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/gestures/drag_details.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/gestures/drag.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/gestures/monodrag.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/gestures/long_press.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/gestures/force_press.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/gestures/eager.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/services/mouse_tracking.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/services/mouse_cursor.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/services/haptic_feedback.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/services/font_loader.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/services/deferred_component.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/services/debug.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/services/clipboard.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/painting/basic_types.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/painting/colors.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/painting/stadium_border.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/painting/rounded_rectangle_border.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/painting/edge_insets.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/painting/circle_border.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/painting/borders.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/painting/border_radius.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/painting/shape_decoration.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/painting/_network_image_web.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/painting/image_stream.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/painting/image_cache.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/painting/binding.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/painting/shader_warm_up.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/painting/debug.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/painting/gradient.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/painting/alignment.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/painting/decoration_image.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/painting/box_fit.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/painting/decoration.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/painting/box_shadow.dart
+[   +1 ms] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/painting/box_decoration.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/painting/box_border.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/painting/paint_utilities.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/painting/notched_shapes.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/painting/matrix_utils.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/painting/image_resolution.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/painting/image_decoder.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/painting/geometry.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/painting/fractional_offset.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/painting/flutter_logo.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/painting/continuous_rectangle_border.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/painting/clip.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/painting/beveled_rectangle_border.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/semantics.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/semantics/semantics_service.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/semantics/semantics_event.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/semantics/semantics.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/semantics/binding.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/semantics/debug.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/animation.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/animation/tween_sequence.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/animation/listener_helpers.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/animation/curves.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/animation/animation_controller.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/physics.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/physics/utils.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/physics/tolerance.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/physics/spring_simulation.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/physics/simulation.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/physics/gravity_simulation.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/physics/friction_simulation.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/physics/clamped_simulation.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/rendering/layout_helper.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/rendering/viewport_offset.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/rendering/sliver.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/rendering/tweens.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/rendering/texture.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/rendering/table_border.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/rendering/table.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/rendering/stack.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/rendering/sliver_persistent_header.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/rendering/sliver_padding.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/rendering/sliver_multi_box_adaptor.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/rendering/sliver_list.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/rendering/sliver_grid.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/rendering/sliver_fixed_extent_list.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/rendering/sliver_fill.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/rendering/shifted_box.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/rendering/debug_overflow_indicator.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/rendering/rotated_box.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/rendering/proxy_sliver.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/rendering/proxy_box.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/rendering/platform_view.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/rendering/performance_overlay.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/rendering/paragraph.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/rendering/list_wheel_viewport.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/rendering/list_body.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/rendering/image.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/rendering/flow.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/rendering/flex.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/rendering/error.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/rendering/editable.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/rendering/custom_paint.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/rendering/custom_layout.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/rendering/animated_size.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/scroll_metrics.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/scroll_simulation.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/constants.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/visibility.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/value_listenable_builder.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/unique_widget.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/tween_animation_builder.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/implicit_animations.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/texture.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/text_selection_toolbar_layout_delegate.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/status_transitions.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/spacer.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/slotted_render_object_widget.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/sliver_prototype_extent_list.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/sliver_persistent_header.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/sliver_layout_builder.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/layout_builder.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/sliver_fill.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/size_changed_layout_notifier.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/single_child_scroll_view.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/scroll_view.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/scroll_notification_observer.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/safe_area.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/reorderable_list.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/raw_keyboard_listener.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/preferred_size.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/platform_view.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/page_view.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/overflow_bar.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/orientation_builder.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/nested_scroll_view.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/navigation_toolbar.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/list_wheel_scroll_view.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/keyboard_listener.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/interactive_viewer.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/image_icon.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/icon_theme_data.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/icon_theme.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/icon.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/icon_data.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/image_filter.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/grid_paper.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/form.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/fade_in_image.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/dual_transition_builder.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/draggable_scrollable_sheet.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/drag_target.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/dismissible.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/desktop_text_selection_toolbar_layout_delegate.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/color_filter.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/bottom_navigation_bar_item.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/autocomplete.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/async.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/annotated_region.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/animated_switcher.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/animated_size.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/animated_list.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/widgets/animated_cross_fade.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/user_accounts_drawer_header.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/icon_button.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/typography.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/colors.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/material_state.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/input_border.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/constants.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/material_color_utilities/material_color_utilities.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/material_color_utilities/score/score.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/material_color_utilities/utils/math_utils.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/material_color_utilities/utils/color_utils.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/material_color_utilities/hct/cam16.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/material_color_utilities/hct/viewing_conditions.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/material_color_utilities/scheme/scheme.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/material_color_utilities/palettes/core_palette.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/material_color_utilities/palettes/tonal_palette.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/material_color_utilities/hct/hct.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/material_color_utilities/quantize/quantizer_wu.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/material_color_utilities/quantize/quantizer_map.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/material_color_utilities/quantize/quantizer.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/material_color_utilities/quantize/quantizer_wsmeans.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/material_color_utilities/quantize/point_provider_lab.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/material_color_utilities/quantize/point_provider.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/material_color_utilities/quantize/quantizer_celebi.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/material_color_utilities/blend/blend.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/material_state_mixin.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/tooltip_visibility.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/floating_action_button_theme.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/curves.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/bottom_sheet_theme.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/tab_indicator.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/tab_controller.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/icons.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/cupertino.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/cupertino/thumb_painter.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/cupertino/text_theme.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/cupertino/interface_level.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/cupertino/text_selection_toolbar_button.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/cupertino/button.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/cupertino/constants.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/cupertino/text_selection_toolbar.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/cupertino/text_selection.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/cupertino/debug.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/cupertino/text_form_field_row.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/cupertino/text_field.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/cupertino/icons.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/cupertino/desktop_text_selection.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/cupertino/form_row.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/cupertino/tab_view.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/cupertino/route.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/cupertino/app.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/cupertino/scrollbar.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/cupertino/tab_scaffold.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/cupertino/bottom_tab_bar.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/cupertino/switch.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/cupertino/sliding_segmented_control.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/cupertino/slider.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/cupertino/segmented_control.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/cupertino/search_field.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/cupertino/refresh.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/cupertino/activity_indicator.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/cupertino/picker.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/cupertino/page_scaffold.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/cupertino/nav_bar.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/cupertino/form_section.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/cupertino/dialog.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/cupertino/date_picker.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/cupertino/context_menu_action.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/cupertino/context_menu.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/drawer_header.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/toggleable.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/toggle_buttons.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/time_picker.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/text_form_field.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/text_field.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/text_selection.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/text_selection_toolbar_text_button.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/text_selection_toolbar.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/selectable_text.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/desktop_text_selection.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/dialog.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/switch_list_tile.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/switch.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/shadows.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/stepper.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/slider.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/search.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/scrollbar.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/reorderable_list.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/refresh_indicator.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/progress_indicator.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/range_slider.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/radio_list_tile.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/radio.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/popup_menu.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/paginated_data_table.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/dropdown.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/data_table_source.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/data_table.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/checkbox.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/card.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/page.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/outlined_button.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/no_splash.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/mergeable_material.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/input_date_picker_form_field.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/date.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/grid_tile_bar.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/grid_tile.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/flutter_logo.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/expansion_tile.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/expansion_panel.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/expand_icon.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/elevated_button.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/date_picker.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/calendar_date_picker.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/circle_avatar.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/chip.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/checkbox_list_tile.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/button_bar.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/bottom_app_bar.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/autocomplete.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/arc.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/app.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/animated_icons.dart
+[        ] MetadataProvider: Loaded debug metadata for module: packages/flutter/src/material/about.dart
+[        ] MetadataProvider: Loaded debug metadata (sound null safety)
+[   +7 ms] DwdsInjector: Injected debugging metadata for entrypoint at http://localhost:51131/main_module.bootstrap.js
+[+2753 ms] ChromeProxyService: Initializing expression compiler for main_module.bootstrap.js with sound null safety: true
+[  +80 ms] DevHandler: Debug service listening on ws://127.0.0.1:51165/z3jyVDNTnTk=/ws
+
+[  +77 ms] DevHandler: VmService proxy responded with an error:
+           {jsonrpc: 2.0, id: 9, error: {code: -32601, message: Method not found, data: {jsonrpc: 2.0, method: _setStreamIncludePrivateMembers, id: 9, params: {streamId: Stdout, includePrivateMembers: false}}}}
+[   +5 ms] This app is linked to the debug service: ws://127.0.0.1:51165/z3jyVDNTnTk=/ws
+[   +2 ms] DevHandler: VmService proxy responded with an error:
+           {jsonrpc: 2.0, id: 10, error: {code: -32601, message: Method not found, data: {jsonrpc: 2.0, method: _setStreamIncludePrivateMembers, id: 10, params: {streamId: Stderr, includePrivateMembers: false}}}}
+[   +2 ms] DevHandler: VmService proxy responded with an error:
+           {jsonrpc: 2.0, id: 11, error: {code: -32601, message: Method not found, data: {jsonrpc: 2.0, method: _setStreamIncludePrivateMembers, id: 11, params: {streamId: Isolate, includePrivateMembers: false}}}}
+[   +8 ms] DevHandler: VmService proxy responded with an error:
+           {jsonrpc: 2.0, id: 12, error: {code: -32601, message: Method not found, data: {jsonrpc: 2.0, method: _setStreamIncludePrivateMembers, id: 12, params: {streamId: Extension, includePrivateMembers: false}}}}
+[   +6 ms] Debug service listening on ws://127.0.0.1:51165/z3jyVDNTnTk=/ws
+[        ] 💪 Running with sound null safety 💪
+[   +7 ms] 🔥  To hot restart changes while running, press "r" or "R".
+[        ] For a more detailed help message, press "h". To quit, press "q".
+[   +1 ms] An Observatory debugger and profiler on Chrome is available at: http://127.0.0.1:51165/z3jyVDNTnTk=
+[  +20 ms] Flutter Web Bootstrap: Auto
+[ +875 ms] The Flutter DevTools debugger and profiler on Chrome is available at: http://127.0.0.1:9101?uri=http://127.0.0.1:51165/z3jyVDNTnTk=
+[+3904 ms] ══╡ EXCEPTION CAUGHT BY WIDGETS LIBRARY ╞═══════════════════════════════════════════════════════════
+[        ] The following assertion was thrown building IconTheme(color: Color(0xdd000000)):
+[        ] A PlatformRouteInformationProvider was used after being disposed.
+[        ] Once you have called dispose() on a PlatformRouteInformationProvider, it can no longer be used.
+[        ] The relevant error-causing widget was:
+[        ]   MaterialApp MaterialApp:file:///Users/valentin/Perso/Projects/flutter_app_stable/lib/main.dart:31:28
+[        ] When the exception was thrown, this was the stack:
+[        ] dart-sdk/lib/_internal/js_dev_runtime/private/ddc_runtime/errors.dart 251:49  throw_
+[        ] packages/flutter/src/foundation/change_notifier.dart 125:9                    <fn>
+[ +179 ms] packages/flutter/src/foundation/change_notifier.dart 130:14                   [_debugAssertNotDisposed]
+[        ] packages/flutter/src/foundation/change_notifier.dart 152:12                   get hasListeners
+[        ] packages/flutter/src/widgets/router.dart 1361:10                              removeListener
+[        ] packages/flutter/src/widgets/router.dart 598:43                               didUpdateWidget
+[        ] packages/flutter/src/widgets/framework.dart 4992:57                           update
+[        ] packages/flutter/src/widgets/framework.dart 3530:14                           updateChild
+[        ] packages/flutter/src/widgets/framework.dart 4832:16                           performRebuild
+[        ] packages/flutter/src/widgets/framework.dart 4529:5                            rebuild
+[        ] packages/flutter/src/widgets/framework.dart 5154:5                            update
+[        ] packages/flutter/src/widgets/framework.dart 3530:14                           updateChild
+[        ] packages/flutter/src/widgets/framework.dart 4832:16                           performRebuild
+[        ] packages/flutter/src/widgets/framework.dart 4529:5                            rebuild
+[        ] packages/flutter/src/widgets/framework.dart 5154:5                            update
+[        ] packages/flutter/src/widgets/framework.dart 3530:14                           updateChild
+[        ] packages/flutter/src/widgets/framework.dart 4832:16                           performRebuild
+[        ] packages/flutter/src/widgets/framework.dart 4529:5                            rebuild
+[        ] packages/flutter/src/widgets/framework.dart 5154:5                            update
+[        ] packages/flutter/src/widgets/framework.dart 3530:14                           updateChild
+[        ] packages/flutter/src/widgets/framework.dart 4832:16                           performRebuild
+[        ] packages/flutter/src/widgets/framework.dart 4529:5                            rebuild
+[   +1 ms] packages/flutter/src/widgets/framework.dart 4883:5                            update
+[        ] packages/flutter/src/widgets/framework.dart 3530:14                           updateChild
+[        ] packages/flutter/src/widgets/framework.dart 4832:16                           performRebuild
+[  +16 ms] packages/flutter/src/widgets/framework.dart 4529:5                            rebuild
+[   +1 ms] packages/flutter/src/widgets/framework.dart 5154:5                            update
+[   +1 ms] packages/flutter/src/widgets/framework.dart 3530:14                           updateChild
+[   +4 ms] packages/flutter/src/widgets/framework.dart 4832:16                           performRebuild
+[        ] packages/flutter/src/widgets/framework.dart 4529:5                            rebuild
+[        ] packages/flutter/src/widgets/framework.dart 4883:5                            update
+[        ] packages/flutter/src/widgets/framework.dart 3530:14                           updateChild
+[        ] packages/flutter/src/widgets/framework.dart 4832:16                           performRebuild
+[        ] packages/flutter/src/widgets/framework.dart 4977:11                           performRebuild
+[        ] packages/flutter/src/widgets/framework.dart 4529:5                            rebuild
+[        ] packages/flutter/src/widgets/framework.dart 5009:5                            update
+[        ] packages/flutter/src/widgets/framework.dart 3530:14                           updateChild
+[        ] packages/flutter/src/widgets/framework.dart 4832:16                           performRebuild
+[        ] packages/flutter/src/widgets/framework.dart 4529:5                            rebuild
+[        ] packages/flutter/src/widgets/framework.dart 5154:5                            update
+[        ] packages/flutter/src/widgets/framework.dart 3530:14                           updateChild
+[        ] packages/flutter/src/widgets/framework.dart 4832:16                           performRebuild
+[        ] packages/flutter/src/widgets/framework.dart 4977:11                           performRebuild
+[        ] packages/flutter/src/widgets/framework.dart 4529:5                            rebuild
+[        ] packages/flutter/src/widgets/framework.dart 5009:5                            update
+[        ] packages/flutter/src/widgets/framework.dart 3530:14                           updateChild
+[        ] packages/flutter/src/widgets/framework.dart 4832:16                           performRebuild
+[        ] packages/flutter/src/widgets/framework.dart 4529:5                            rebuild
+[        ] packages/flutter/src/widgets/framework.dart 4883:5                            update
+[        ] packages/flutter/src/widgets/framework.dart 3530:14                           updateChild
+[        ] packages/flutter/src/widgets/framework.dart 4832:16                           performRebuild
+[        ] packages/flutter/src/widgets/framework.dart 4529:5                            rebuild
+[        ] packages/flutter/src/widgets/framework.dart 5154:5                            update
+[        ] packages/flutter/src/widgets/framework.dart 3530:14                           updateChild
+[        ] packages/flutter/src/widgets/framework.dart 6222:14                           update
+[        ] packages/flutter/src/widgets/framework.dart 3530:14                           updateChild
+[        ] packages/flutter/src/widgets/framework.dart 4832:16                           performRebuild
+[        ] packages/flutter/src/widgets/framework.dart 4529:5                            rebuild
+[        ] packages/flutter/src/widgets/framework.dart 4883:5                            update
+[        ] packages/flutter/src/widgets/framework.dart 3530:14                           updateChild
+[        ] packages/flutter/src/widgets/framework.dart 4832:16                           performRebuild
+[        ] packages/flutter/src/widgets/framework.dart 4529:5                            rebuild
+[        ] packages/flutter/src/widgets/framework.dart 4883:5                            update
+[        ] packages/flutter/src/widgets/framework.dart 3530:14                           updateChild
+[        ] packages/flutter/src/widgets/framework.dart 4832:16                           performRebuild
+[        ] packages/flutter/src/widgets/framework.dart 4529:5                            rebuild
+[        ] packages/flutter/src/widgets/framework.dart 4883:5                            update
+[        ] packages/flutter/src/widgets/framework.dart 3530:14                           updateChild
+[        ] packages/flutter/src/widgets/framework.dart 4832:16                           performRebuild
+[        ] packages/flutter/src/widgets/framework.dart 4529:5                            rebuild
+[        ] packages/flutter/src/widgets/framework.dart 5154:5                            update
+[        ] packages/flutter/src/widgets/framework.dart 3530:14                           updateChild
+[        ] packages/flutter/src/widgets/framework.dart 4832:16                           performRebuild
+[        ] packages/flutter/src/widgets/framework.dart 4529:5                            rebuild
+[        ] packages/flutter/src/widgets/framework.dart 5154:5                            update
+[        ] packages/flutter/src/widgets/framework.dart 3530:14                           updateChild
+[        ] packages/flutter/src/widgets/framework.dart 6222:14                           update
+[        ] packages/flutter/src/widgets/framework.dart 3530:14                           updateChild
+[        ] packages/flutter/src/widgets/framework.dart 4832:16                           performRebuild
+[        ] packages/flutter/src/widgets/framework.dart 4977:11                           performRebuild
+[        ] packages/flutter/src/widgets/framework.dart 4529:5                            rebuild
+[        ] packages/flutter/src/widgets/framework.dart 5009:5                            update
+[        ] packages/flutter/src/widgets/framework.dart 3530:14                           updateChild
+[        ] packages/flutter/src/widgets/framework.dart 4832:16                           performRebuild
+[        ] packages/flutter/src/widgets/framework.dart 4529:5                            rebuild
+[        ] packages/flutter/src/widgets/framework.dart 5154:5                            update
+[        ] packages/flutter/src/widgets/framework.dart 3530:14                           updateChild
+[        ] packages/flutter/src/widgets/framework.dart 4832:16                           performRebuild
+[        ] packages/flutter/src/widgets/framework.dart 4977:11                           performRebuild
+[        ] packages/flutter/src/widgets/framework.dart 4529:5                            rebuild
+[        ] packages/flutter/src/widgets/framework.dart 5009:5                            update
+[        ] packages/flutter/src/widgets/framework.dart 3530:14                           updateChild
+[        ] packages/flutter/src/widgets/framework.dart 4832:16                           performRebuild
+[        ] packages/flutter/src/widgets/framework.dart 4529:5                            rebuild
+[        ] packages/flutter/src/widgets/framework.dart 5154:5                            update
+[        ] packages/flutter/src/widgets/inherited_notifier.dart 108:11                   update
+[        ] packages/flutter/src/widgets/framework.dart 3530:14                           updateChild
+[        ] packages/flutter/src/widgets/framework.dart 4832:16                           performRebuild
+[        ] packages/flutter/src/widgets/framework.dart 4977:11                           performRebuild
+[        ] packages/flutter/src/widgets/framework.dart 4529:5                            rebuild
+[        ] packages/flutter/src/widgets/framework.dart 5009:5                            update
+[        ] packages/flutter/src/widgets/framework.dart 3530:14                           updateChild
+[        ] packages/flutter/src/widgets/framework.dart 4832:16                           performRebuild
+[        ] packages/flutter/src/widgets/framework.dart 4529:5                            rebuild
+[        ] packages/flutter/src/widgets/framework.dart 5154:5                            update
+[        ] packages/flutter/src/widgets/framework.dart 3530:14                           updateChild
+[        ] packages/flutter/src/widgets/framework.dart 4832:16                           performRebuild
+[        ] packages/flutter/src/widgets/framework.dart 4977:11                           performRebuild
+[        ] packages/flutter/src/widgets/framework.dart 4529:5                            rebuild
+[        ] packages/flutter/src/widgets/framework.dart 5009:5                            update
+[        ] packages/flutter/src/widgets/framework.dart 3530:14                           updateChild
+[        ] packages/flutter/src/widgets/framework.dart 4832:16                           performRebuild
+[        ] packages/flutter/src/widgets/framework.dart 4529:5                            rebuild
+[   +2 ms] packages/flutter/src/widgets/framework.dart 5154:5                            update
+[        ] packages/flutter/src/widgets/framework.dart 3530:14                           updateChild
+[        ] packages/flutter/src/widgets/framework.dart 4832:16                           performRebuild
+[        ] packages/flutter/src/widgets/framework.dart 4977:11                           performRebuild
+[        ] packages/flutter/src/widgets/framework.dart 4529:5                            rebuild
+[        ] packages/flutter/src/widgets/framework.dart 5009:5                            update
+[        ] packages/flutter/src/widgets/framework.dart 3530:14                           updateChild
+[        ] packages/flutter/src/widgets/framework.dart 4832:16                           performRebuild
+[        ] packages/flutter/src/widgets/framework.dart 4529:5                            rebuild
+[        ] packages/flutter/src/widgets/framework.dart 5154:5                            update
+[        ] packages/flutter/src/widgets/inherited_notifier.dart 108:11                   update
+[        ] packages/flutter/src/widgets/framework.dart 3530:14                           updateChild
+[        ] packages/flutter/src/widgets/framework.dart 6222:14                           update
+[        ] packages/flutter/src/widgets/framework.dart 3530:14                           updateChild
+[        ] packages/flutter/src/widgets/framework.dart 4832:16                           performRebuild
+[        ] packages/flutter/src/widgets/framework.dart 4529:5                            rebuild
+[        ] packages/flutter/src/widgets/framework.dart 5154:5                            update
+[        ] packages/flutter/src/widgets/inherited_notifier.dart 108:11                   update
+[        ] packages/flutter/src/widgets/framework.dart 3530:14                           updateChild
+[        ] packages/flutter/src/widgets/framework.dart 4832:16                           performRebuild
+[        ] packages/flutter/src/widgets/framework.dart 4977:11                           performRebuild
+[ +894 ms] packages/flutter/src/widgets/framework.dart 4529:5                            rebuild
+[        ] packages/flutter/src/widgets/framework.dart 5009:5                            update
+[        ] packages/flutter/src/widgets/framework.dart 3530:14                           updateChild
+[        ] packages/flutter/src/widgets/framework.dart 4832:16                           performRebuild
+[        ] packages/flutter/src/widgets/framework.dart 4977:11                           performRebuild
+[        ] packages/flutter/src/widgets/framework.dart 4529:5                            rebuild
+[        ] packages/flutter/src/widgets/framework.dart 5009:5                            update
+[        ] packages/flutter/src/widgets/framework.dart 3530:14                           updateChild
+[        ] packages/flutter/src/widgets/framework.dart 4832:16                           performRebuild
+[        ] packages/flutter/src/widgets/framework.dart 4529:5                            rebuild
+[        ] packages/flutter/src/widgets/framework.dart 5154:5                            update
+[        ] packages/flutter/src/widgets/inherited_notifier.dart 108:11                   update
+[        ] packages/flutter/src/widgets/framework.dart 3530:14                           updateChild
+[        ] packages/flutter/src/widgets/framework.dart 6222:14                           update
+[        ] packages/flutter/src/widgets/framework.dart 3530:14                           updateChild
+[        ] packages/flutter/src/widgets/framework.dart 4832:16                           performRebuild
+[        ] packages/flutter/src/widgets/framework.dart 4529:5                            rebuild
+[        ] packages/flutter/src/widgets/framework.dart 5154:5                            update
+[        ] packages/flutter/src/widgets/inherited_notifier.dart 108:11                   update
+[        ] packages/flutter/src/widgets/framework.dart 3530:14                           updateChild
+[        ] packages/flutter/src/widgets/framework.dart 4832:16                           performRebuild
+[        ] packages/flutter/src/widgets/framework.dart 4977:11                           performRebuild
+[        ] packages/flutter/src/widgets/framework.dart 4529:5                            rebuild
+[        ] packages/flutter/src/widgets/framework.dart 5009:5                            update
+[        ] packages/flutter/src/widgets/framework.dart 3530:14                           updateChild
+[        ] packages/flutter/src/widgets/framework.dart 4832:16                           performRebuild
+[        ] packages/flutter/src/widgets/framework.dart 4977:11                           performRebuild
+[        ] packages/flutter/src/widgets/framework.dart 4529:5                            rebuild
+[        ] packages/flutter/src/widgets/framework.dart 5009:5                            update
+[        ] packages/flutter/src/widgets/framework.dart 3530:14                           updateChild
+[        ] packages/flutter/src/widgets/framework.dart 4832:16                           performRebuild
+[        ] packages/flutter/src/widgets/framework.dart 4529:5                            rebuild
+[        ] packages/flutter/src/widgets/framework.dart 5154:5                            update
+[        ] packages/flutter/src/widgets/framework.dart 3530:14                           updateChild
+[        ] packages/flutter/src/widgets/framework.dart 4832:16                           performRebuild
+[        ] packages/flutter/src/widgets/framework.dart 4977:11                           performRebuild
+[        ] packages/flutter/src/widgets/framework.dart 4529:5                            rebuild
+[        ] packages/flutter/src/widgets/framework.dart 5009:5                            update
+[        ] packages/flutter/src/widgets/framework.dart 3530:14                           updateChild
+[        ] packages/flutter/src/widgets/framework.dart 4832:16                           performRebuild
+[        ] packages/flutter/src/widgets/framework.dart 4529:5                            rebuild
+[        ] packages/flutter/src/widgets/framework.dart 5154:5                            update
+[        ] packages/flutter/src/widgets/framework.dart 3530:14                           updateChild
+[        ] packages/flutter/src/widgets/framework.dart 4832:16                           performRebuild
+[        ] packages/flutter/src/widgets/framework.dart 4977:11                           performRebuild
+[        ] packages/flutter/src/widgets/framework.dart 4529:5                            rebuild
+[        ] packages/flutter/src/widgets/framework.dart 5009:5                            update
+[        ] packages/flutter/src/widgets/framework.dart 3530:14                           updateChild
+[        ] packages/flutter/src/widgets/framework.dart 4832:16                           performRebuild
+[        ] packages/flutter/src/widgets/framework.dart 4529:5                            rebuild
+[        ] packages/flutter/src/widgets/framework.dart 5154:5                            update
+[        ] packages/flutter/src/widgets/framework.dart 3530:14                           updateChild
+[        ] packages/flutter/src/widgets/framework.dart 4832:16                           performRebuild
+[        ] packages/flutter/src/widgets/framework.dart 4977:11                           performRebuild
+[        ] packages/flutter/src/widgets/framework.dart 4529:5                            rebuild
+[        ] packages/flutter/src/widgets/framework.dart 5009:5                            update
+[        ] packages/flutter/src/widgets/framework.dart 3530:14                           updateChild
+[        ] packages/flutter/src/widgets/framework.dart 4832:16                           performRebuild
+[        ] packages/flutter/src/widgets/framework.dart 4977:11                           performRebuild
+[        ] packages/flutter/src/widgets/framework.dart 4529:5                            rebuild
+[        ] packages/flutter/src/widgets/framework.dart 5009:5                            update
+[        ] packages/flutter/src/widgets/framework.dart 3530:14                           updateChild
+[        ] packages/flutter/src/widgets/framework.dart 6222:14                           update
+[        ] packages/flutter/src/widgets/framework.dart 3530:14                           updateChild
+[        ] packages/flutter/src/widgets/framework.dart 4832:16                           performRebuild
+[        ] packages/flutter/src/widgets/framework.dart 4529:5                            rebuild
+[        ] packages/flutter/src/widgets/framework.dart 5154:5                            update
+[        ] packages/flutter/src/widgets/inherited_notifier.dart 108:11                   update
+[        ] packages/flutter/src/widgets/framework.dart 3530:14                           updateChild
+[        ] packages/flutter/src/widgets/framework.dart 4832:16                           performRebuild
+[        ] packages/flutter/src/widgets/framework.dart 4977:11                           performRebuild
+[        ] packages/flutter/src/widgets/framework.dart 4529:5                            rebuild
+[        ] packages/flutter/src/widgets/framework.dart 5009:5                            update
+[        ] packages/flutter/src/widgets/framework.dart 3530:14                           updateChild
+[        ] packages/flutter/src/widgets/framework.dart 4832:16                           performRebuild
+[        ] packages/flutter/src/widgets/framework.dart 4529:5                            rebuild
+[        ] packages/flutter/src/widgets/framework.dart 5154:5                            update
+[        ] packages/flutter/src/widgets/framework.dart 3530:14                           updateChild
+[        ] packages/flutter/src/widgets/framework.dart 4832:16                           performRebuild
+[        ] packages/flutter/src/widgets/framework.dart 4529:5                            rebuild
+[        ] packages/flutter/src/widgets/framework.dart 5154:5                            update
+[        ] packages/flutter/src/widgets/framework.dart 3530:14                           updateChild
+[        ] packages/flutter/src/widgets/framework.dart 4832:16                           performRebuild
+[        ] packages/flutter/src/widgets/framework.dart 4977:11                           performRebuild
+[        ] packages/flutter/src/widgets/framework.dart 4529:5                            rebuild
+[        ] packages/flutter/src/widgets/framework.dart 5009:5                            update
+[        ] packages/flutter/src/widgets/framework.dart 3530:14                           updateChild
+[        ] packages/flutter/src/widgets/framework.dart 4832:16                           performRebuild
+[        ] packages/flutter/src/widgets/framework.dart 4977:11                           performRebuild
+[        ] packages/flutter/src/widgets/framework.dart 4529:5                            rebuild
+[        ] packages/flutter/src/widgets/framework.dart 2659:18                           buildScope
+[        ] packages/flutter/src/widgets/binding.dart 891:9                               drawFrame
+[        ] packages/flutter/src/rendering/binding.dart 370:5                             [_handlePersistentFrameCallback]
+[        ] packages/flutter/src/scheduler/binding.dart 1146:15                           [_invokeFrameCallback]
+[        ] packages/flutter/src/scheduler/binding.dart 1083:9                            handleDrawFrame
+[        ] packages/flutter/src/scheduler/binding.dart 997:5                             [_handleDrawFrame]
+[        ] lib/_engine/engine/platform_dispatcher.dart 1090:13                           invoke
+[        ] lib/_engine/engine/platform_dispatcher.dart 160:5                             invokeOnDrawFrame
+[        ] lib/_engine/engine/initialization.dart 194:45                                 <fn>
+[        ] ════════════════════════════════════════════════════════════════════════════════════════════════════
