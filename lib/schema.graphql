@@ -11,3 +11,7 @@ type Pokemon implements PokemonInterface {
 type Query {
   pokemons: [Pokemon!]!
 }
+
+input PokemonInput {
+  name: String!
+}

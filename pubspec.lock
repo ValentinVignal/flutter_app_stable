@@ -184,11 +184,13 @@ packages:
     source: hosted
     version: "0.10.5"
   ferry_cache:
-    dependency: transitive
+    dependency: "direct overridden"
     description:
-      name: ferry_cache
-      url: "https://pub.dartlang.org"
-    source: hosted
+      path: "packages/ferry_cache"
+      ref: "fix/cache_possible_types_fix"
+      resolved-ref: "6c06ffe05112ab6668a33f7a6fdde67c128d29d4"
+      url: "https://github.com/gql-dart/ferry.git"
+    source: git
     version: "0.6.0"
   ferry_exec:
     dependency: transitive

@@ -4,6 +4,8 @@ import 'package:built_collection/built_collection.dart';
 import 'package:built_value/serializer.dart';
 import 'package:built_value/standard_json_plugin.dart' show StandardJsonPlugin;
 import 'package:ferry_exec/ferry_exec.dart';
+import 'package:flutter_app_stable/__generated__/schema.schema.gql.dart'
+    show GPokemonInput;
 import 'package:flutter_app_stable/graphql/__generated__/pokemon_fragment.data.gql.dart'
     show GPokemonFragmentData;
 import 'package:flutter_app_stable/graphql/__generated__/pokemon_fragment.req.gql.dart'
@@ -28,6 +30,7 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GPokemonFragmentData,
   GPokemonFragmentReq,
   GPokemonFragmentVars,
+  GPokemonInput,
   GPokemonsData,
   GPokemonsData_pokemons,
   GPokemonsReq,

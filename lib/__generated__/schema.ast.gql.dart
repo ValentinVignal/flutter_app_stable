@@ -56,5 +56,16 @@ const Query = _i1.ObjectTypeDefinitionNode(
                   name: _i1.NameNode(value: 'Pokemon'), isNonNull: true),
               isNonNull: true))
     ]);
-const document =
-    _i1.DocumentNode(definitions: [PokemonInterface, Pokemon, Query]);
+const PokemonInput = _i1.InputObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'PokemonInput'),
+    directives: [],
+    fields: [
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'name'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'String'), isNonNull: true),
+          defaultValue: null)
+    ]);
+const document = _i1.DocumentNode(
+    definitions: [PokemonInterface, Pokemon, Query, PokemonInput]);
