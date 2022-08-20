@@ -182,16 +182,14 @@ packages:
       name: ferry
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.10.5"
+    version: "0.11.0"
   ferry_cache:
-    dependency: "direct overridden"
+    dependency: transitive
     description:
-      path: "packages/ferry_cache"
-      ref: "fix/cache_possible_types_fix"
-      resolved-ref: "6c06ffe05112ab6668a33f7a6fdde67c128d29d4"
-      url: "https://github.com/gql-dart/ferry.git"
-    source: git
-    version: "0.6.0"
+      name: ferry_cache
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.6.1"
   ferry_exec:
     dependency: transitive
     description:
@@ -279,13 +277,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.4.1"
-  gql_http_link:
-    dependency: "direct main"
-    description:
-      name: gql_http_link
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.4.4+1"
   gql_link:
     dependency: transitive
     description:
@@ -307,13 +298,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.2.3"
-  http:
-    dependency: transitive
-    description:
-      name: http
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.13.5"
   http_multi_server:
     dependency: transitive
     description:
