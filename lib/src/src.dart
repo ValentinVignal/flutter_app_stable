@@ -19,12 +19,28 @@ class Person extends SuperPerson with _$Person {
   String get nameLowercase => name.toLowerCase();
 }
 
-@immutable
+@freezed
+class OtherPerson extends SuperPerson with _$OtherPerson {
+  const factory OtherPerson({
+    required String name,
+    required String otherEmail,
+    required String otherPhone,
+  }) = _OtherPerson;
+
+  const OtherPerson._();
+
+  factory OtherPerson.fromJson(Map<String, dynamic> json) =>
+      _$OtherPersonFromJson(json);
+
+  @override
+  String get nameLowercase => name.toLowerCase();
+}
+
 abstract class SuperPerson {
   const SuperPerson();
-
   String get name;
-
   String get nameUppercase => name.toUpperCase();
   String get nameLowercase;
+
+  SuperPerson copyWith({String name});
 }

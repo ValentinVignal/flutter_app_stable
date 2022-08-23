@@ -17,3 +17,17 @@ Map<String, dynamic> _$$_PersonToJson(_$_Person instance) => <String, dynamic>{
       'email': instance.email,
       'phone': instance.phone,
     };
+
+_$_OtherPerson _$$_OtherPersonFromJson(Map<String, dynamic> json) =>
+    _$_OtherPerson(
+      name: json['name'] as String,
+      otherEmail: json['otherEmail'] as String,
+      otherPhone: json['otherPhone'] as String,
+    );
+
+Map<String, dynamic> _$$_OtherPersonToJson(_$_OtherPerson instance) =>
+    <String, dynamic>{
+      'name': instance.name,
+      'otherEmail': instance.otherEmail,
+      'otherPhone': instance.otherPhone,
+    };

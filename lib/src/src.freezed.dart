@@ -180,3 +180,178 @@ abstract class _Person extends Person {
   _$$_PersonCopyWith<_$_Person> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+OtherPerson _$OtherPersonFromJson(Map<String, dynamic> json) {
+  return _OtherPerson.fromJson(json);
+}
+
+/// @nodoc
+mixin _$OtherPerson {
+  String get name => throw _privateConstructorUsedError;
+  String get otherEmail => throw _privateConstructorUsedError;
+  String get otherPhone => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $OtherPersonCopyWith<OtherPerson> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $OtherPersonCopyWith<$Res> {
+  factory $OtherPersonCopyWith(
+          OtherPerson value, $Res Function(OtherPerson) then) =
+      _$OtherPersonCopyWithImpl<$Res>;
+  $Res call({String name, String otherEmail, String otherPhone});
+}
+
+/// @nodoc
+class _$OtherPersonCopyWithImpl<$Res> implements $OtherPersonCopyWith<$Res> {
+  _$OtherPersonCopyWithImpl(this._value, this._then);
+
+  final OtherPerson _value;
+  // ignore: unused_field
+  final $Res Function(OtherPerson) _then;
+
+  @override
+  $Res call({
+    Object? name = freezed,
+    Object? otherEmail = freezed,
+    Object? otherPhone = freezed,
+  }) {
+    return _then(_value.copyWith(
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      otherEmail: otherEmail == freezed
+          ? _value.otherEmail
+          : otherEmail // ignore: cast_nullable_to_non_nullable
+              as String,
+      otherPhone: otherPhone == freezed
+          ? _value.otherPhone
+          : otherPhone // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$$_OtherPersonCopyWith<$Res>
+    implements $OtherPersonCopyWith<$Res> {
+  factory _$$_OtherPersonCopyWith(
+          _$_OtherPerson value, $Res Function(_$_OtherPerson) then) =
+      __$$_OtherPersonCopyWithImpl<$Res>;
+  @override
+  $Res call({String name, String otherEmail, String otherPhone});
+}
+
+/// @nodoc
+class __$$_OtherPersonCopyWithImpl<$Res> extends _$OtherPersonCopyWithImpl<$Res>
+    implements _$$_OtherPersonCopyWith<$Res> {
+  __$$_OtherPersonCopyWithImpl(
+      _$_OtherPerson _value, $Res Function(_$_OtherPerson) _then)
+      : super(_value, (v) => _then(v as _$_OtherPerson));
+
+  @override
+  _$_OtherPerson get _value => super._value as _$_OtherPerson;
+
+  @override
+  $Res call({
+    Object? name = freezed,
+    Object? otherEmail = freezed,
+    Object? otherPhone = freezed,
+  }) {
+    return _then(_$_OtherPerson(
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      otherEmail: otherEmail == freezed
+          ? _value.otherEmail
+          : otherEmail // ignore: cast_nullable_to_non_nullable
+              as String,
+      otherPhone: otherPhone == freezed
+          ? _value.otherPhone
+          : otherPhone // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_OtherPerson extends _OtherPerson {
+  const _$_OtherPerson(
+      {required this.name, required this.otherEmail, required this.otherPhone})
+      : super._();
+
+  factory _$_OtherPerson.fromJson(Map<String, dynamic> json) =>
+      _$$_OtherPersonFromJson(json);
+
+  @override
+  final String name;
+  @override
+  final String otherEmail;
+  @override
+  final String otherPhone;
+
+  @override
+  String toString() {
+    return 'OtherPerson(name: $name, otherEmail: $otherEmail, otherPhone: $otherPhone)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_OtherPerson &&
+            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality()
+                .equals(other.otherEmail, otherEmail) &&
+            const DeepCollectionEquality()
+                .equals(other.otherPhone, otherPhone));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(otherEmail),
+      const DeepCollectionEquality().hash(otherPhone));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_OtherPersonCopyWith<_$_OtherPerson> get copyWith =>
+      __$$_OtherPersonCopyWithImpl<_$_OtherPerson>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_OtherPersonToJson(
+      this,
+    );
+  }
+}
+
+abstract class _OtherPerson extends OtherPerson {
+  const factory _OtherPerson(
+      {required final String name,
+      required final String otherEmail,
+      required final String otherPhone}) = _$_OtherPerson;
+  const _OtherPerson._() : super._();
+
+  factory _OtherPerson.fromJson(Map<String, dynamic> json) =
+      _$_OtherPerson.fromJson;
+
+  @override
+  String get name;
+  @override
+  String get otherEmail;
+  @override
+  String get otherPhone;
+  @override
+  @JsonKey(ignore: true)
+  _$$_OtherPersonCopyWith<_$_OtherPerson> get copyWith =>
+      throw _privateConstructorUsedError;
+}
