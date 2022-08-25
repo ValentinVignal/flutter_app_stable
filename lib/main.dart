@@ -12,12 +12,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final boolean = MediaQuery.of(context).size.width > 300;
     final color = boolean ? Colors.red : Colors.black;
-    final double radius = boolean ? 8 : 4;
     return MaterialApp(
       home: Container(
         decoration: BoxDecoration(
           border: Border.all(color: color),
-          borderRadius: BorderRadius.circular(radius),
         ),
       ),
     );
