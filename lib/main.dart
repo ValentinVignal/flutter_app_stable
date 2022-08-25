@@ -27,7 +27,7 @@ class MyHomePage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final asyncValue = ref.watch(streamProvider);
     final Widget body = asyncValue.map(
-      data: (data) => Text('data: ${data.value}'),
+      data: (data) => Text('Data: ${data.value}'),
       loading: (_) => const CircularProgressIndicator(),
       error: (error) => Text(
         'Error: $error',
