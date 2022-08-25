@@ -53,7 +53,6 @@ class _ProjectListState extends ConsumerState<ProjectList> {
 
   @override
   Widget build(BuildContext context) {
-    ref.watch(projectStatusAppliedFilterProvider);
     final projectsAsyncValue = ref.watch(filteredProjectsProvider);
     final child = projectsAsyncValue.map<Widget>(
       error: (error) {
