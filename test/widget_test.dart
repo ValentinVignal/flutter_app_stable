@@ -35,7 +35,7 @@ class __MyWidgetState extends State<_MyWidget> {
 }
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
+  testWidgets('Pending timers test', (WidgetTester tester) async {
     await tester.pumpWidget(const _MyWidget());
   });
 }
