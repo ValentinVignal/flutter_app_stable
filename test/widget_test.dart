@@ -5,25 +5,37 @@
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
 
+import 'package:ferry/ferry.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app_stable/main.dart';
+import 'package:flutter_app_stable/graphql/__generated__/pokemon_query.req.gql.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:gql_http_link/gql_http_link.dart';
+
+final _client = Client(link: HttpLink('http'));
+
+class _MyWidget extends StatefulWidget {
+  const _MyWidget({Key? key}) : super(key: key);
+
+  @override
+  State<_MyWidget> createState() => __MyWidgetState();
+}
+
+class __MyWidgetState extends State<_MyWidget> {
+  late final _stream = _client.request(GPokemonsReq());
+
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder(
+      stream: _stream,
+      builder: (context, snapshot) {
+        return const SizedBox();
+      },
+    );
+  }
+}
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
-
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
-
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
-
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    await tester.pumpWidget(const _MyWidget());
   });
 }
