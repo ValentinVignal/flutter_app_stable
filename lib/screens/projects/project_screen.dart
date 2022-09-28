@@ -22,57 +22,13 @@ class ProjectScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return ProviderScope(
       overrides: [
-        projectStatusAppliedFilterProvider,
+        projectStatusAppliedFilterProvider
+            .overrideWithValue(projectsFilters.parsedStatuses),
       ],
-      child: _AppliedUrlFiltersProjectScreen(
+      child: _ProjectScreenContent(
         id: id,
-        projectsFilters: projectsFilters,
       ),
     );
-  }
-}
-
-class _AppliedUrlFiltersProjectScreen extends ConsumerStatefulWidget {
-  const _AppliedUrlFiltersProjectScreen({
-    required this.id,
-    required this.projectsFilters,
-    Key? key,
-  }) : super(key: key);
-
-  final int id;
-  final ProjectsFiltersParameters projectsFilters;
-
-  @override
-  ConsumerState<ConsumerStatefulWidget> createState() =>
-      _AppliedUrlFiltersProjectScreenState();
-}
-
-class _AppliedUrlFiltersProjectScreenState
-    extends ConsumerState<_AppliedUrlFiltersProjectScreen> {
-  @override
-  void initState() {
-    super.initState();
-    _applyProjectFilters();
-  }
-
-  @override
-  void didUpdateWidget(covariant _AppliedUrlFiltersProjectScreen oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (oldWidget.projectsFilters != widget.projectsFilters) {
-      _applyProjectFilters();
-    }
-  }
-
-  void _applyProjectFilters() {
-    Future.microtask(() {
-      ref.read(projectStatusAppliedFilterProvider.notifier).state =
-          widget.projectsFilters.parsedStatuses;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return _ProjectScreenContent(id: widget.id);
   }
 }
 

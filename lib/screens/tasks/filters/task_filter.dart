@@ -3,16 +3,16 @@ import 'package:flutter_app_stable/screens/tasks/filters/task_filter_options.dar
 import 'package:flutter_app_stable/utils/option.dart';
 import 'package:riverpod/riverpod.dart';
 
-final taskAppliedFilterProvider = StateProvider.autoDispose<Set<int>>(
+final taskAppliedFilterProvider = Provider.autoDispose<Set<int>>(
   (ref) => const {},
 );
 
-final taskFilterProvider = Provider.autoDispose<Filter<int>>(
+final taskFilterProvider = Provider.autoDispose<LocalFilter<int>>(
   (ref) {
-    final appliedFiltersNotifier = ref.watch(taskAppliedFilterProvider.state);
+    final appliedFilters = ref.watch(taskAppliedFilterProvider);
     final tasks = ref.watch(tasksProvider);
-    return Filter(
-      appliedFilterStateController: appliedFiltersNotifier,
+    return LocalFilter(
+      selected: appliedFilters,
       options: tasks.asData?.value.map(
             (task) => Option(id: task.task.id, name: task.task.name),
           ) ??
@@ -22,6 +22,6 @@ final taskFilterProvider = Provider.autoDispose<Filter<int>>(
   },
   dependencies: [
     tasksProvider,
-    taskAppliedFilterProvider.state,
+    taskAppliedFilterProvider,
   ],
 );

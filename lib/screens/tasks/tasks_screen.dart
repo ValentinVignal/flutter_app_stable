@@ -23,8 +23,12 @@ class TasksScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return ProviderScope(
       overrides: [
-        taskStatusAppliedFilterProvider,
-        taskAppliedFilterProvider,
+        taskStatusAppliedFilterProvider.overrideWithValue(
+          filters.parsedStatuses,
+        ),
+        taskAppliedFilterProvider.overrideWithValue(
+          filters.parsedIds,
+        ),
       ],
       child: Scaffold(
         body: TaskList(
@@ -41,7 +45,7 @@ class TasksScreen extends StatelessWidget {
   }
 }
 
-class TaskList extends ConsumerStatefulWidget {
+class TaskList extends ConsumerWidget {
   const TaskList({
     required this.filters,
     Key? key,
@@ -50,35 +54,7 @@ class TaskList extends ConsumerStatefulWidget {
   final TasksFiltersParameters filters;
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _TaskListState();
-}
-
-class _TaskListState extends ConsumerState<TaskList> {
-  @override
-  void initState() {
-    super.initState();
-    _applyTaskFilters();
-  }
-
-  @override
-  void didUpdateWidget(covariant TaskList oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (oldWidget.filters != widget.filters) {
-      _applyTaskFilters();
-    }
-  }
-
-  void _applyTaskFilters() {
-    Future.microtask(() {
-      ref.read(taskStatusAppliedFilterProvider.notifier).state =
-          widget.filters.parsedStatuses;
-      ref.read(taskAppliedFilterProvider.notifier).state =
-          widget.filters.parsedIds;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final tasksAsyncValue = ref.watch(filteredTasksProvider);
     final child = tasksAsyncValue.map(
       error: (error) => Center(child: ErrorWidget(error)),
@@ -122,25 +98,43 @@ class _TaskListState extends ConsumerState<TaskList> {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         FilterBar(
-          local: [taskStatusFilterProvider, taskFilterProvider],
+          local: [
+            FilterBarLocalFilterParameter<TaskStatus>(
+              filter: taskStatusFilterProvider,
+              onChanged: (statuses) {
+                _onLocalFilterChange(ref: ref, statuses: statuses);
+              },
+            ),
+            FilterBarLocalFilterParameter<int>(
+              filter: taskFilterProvider,
+              onChanged: (ids) {
+                _onLocalFilterChange(ref: ref, ids: ids);
+              },
+            ),
+          ],
           global: [projectFilterProvider],
-          onChanged: () {
-            final parameters = TasksFiltersParameters.fromParsedData(
-              statuses: ref.read(taskStatusAppliedFilterProvider),
-              ids: ref.read(taskAppliedFilterProvider),
-            );
-            router.replace(
-              TasksRoute(
-                status: parameters.status,
-                id: parameters.id,
-              ).location,
-            );
-          },
         ),
         Expanded(
           child: child,
         ),
       ],
+    );
+  }
+
+  void _onLocalFilterChange({
+    required WidgetRef ref,
+    Set<TaskStatus>? statuses,
+    Set<int>? ids,
+  }) {
+    final parameters = TasksFiltersParameters.fromParsedData(
+      statuses: statuses ?? ref.read(taskStatusAppliedFilterProvider),
+      ids: ids ?? ref.read(taskAppliedFilterProvider),
+    );
+    router.replace(
+      TasksRoute(
+        status: parameters.status,
+        id: parameters.id,
+      ).location,
     );
   }
 }

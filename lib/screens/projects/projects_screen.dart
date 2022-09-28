@@ -11,14 +11,18 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class ProjectsScreen extends StatelessWidget {
   const ProjectsScreen({
+    required this.filters,
     Key? key,
   }) : super(key: key);
+
+  final ProjectsFiltersParameters filters;
 
   @override
   Widget build(BuildContext context) {
     return ProviderScope(
       overrides: [
-        projectStatusAppliedFilterProvider,
+        projectStatusAppliedFilterProvider
+            .overrideWithValue(filters.parsedStatuses),
       ],
       child: Scaffold(
         body: const ProjectList(),
@@ -41,16 +45,6 @@ class ProjectList extends ConsumerStatefulWidget {
 }
 
 class _ProjectListState extends ConsumerState<ProjectList> {
-  @override
-  void initState() {
-    super.initState();
-    final uri = Uri.parse(router.location);
-    final projectsFiltersParameters =
-        ProjectsFiltersParameters.fromJson(uri.queryParameters);
-    ref.read(projectStatusAppliedFilterProvider.notifier).state =
-        projectsFiltersParameters.parsedStatuses;
-  }
-
   @override
   Widget build(BuildContext context) {
     final projectsAsyncValue = ref.watch(filteredProjectsProvider);
@@ -94,17 +88,22 @@ class _ProjectListState extends ConsumerState<ProjectList> {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         FilterBar(
-          local: [projectStatusFilterProvider],
+          local: [
+            FilterBarLocalFilterParameter<ProjectStatus>(
+              filter: projectStatusFilterProvider,
+              onChanged: (statuses) {
+                final parameters = ProjectsFiltersParameters.fromParsedData(
+                  statuses: statuses,
+                );
+                router.replace(
+                  ProjectsRoute(
+                    status: parameters.status,
+                  ).location,
+                );
+              },
+            ),
+          ],
           global: [projectFilterProvider],
-          onChanged: () {
-            final parameters = ProjectsFiltersParameters.fromParsedData(
-                statuses: ref.read(projectStatusAppliedFilterProvider));
-            router.replace(
-              ProjectsRoute(
-                status: parameters.status,
-              ).location,
-            );
-          },
         ),
         Expanded(
           child: child,

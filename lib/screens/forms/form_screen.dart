@@ -24,8 +24,12 @@ class FormScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return ProviderScope(
       overrides: [
-        formStatusAppliedFilterProvider,
-        formAppliedFilterProvider,
+        formStatusAppliedFilterProvider.overrideWithValue(
+          filters.parsedStatuses,
+        ),
+        formAppliedFilterProvider.overrideWithValue(
+          filters.parsedIds,
+        ),
       ],
       child: FormScreenContent(
         id: id,
@@ -52,31 +56,13 @@ class FormScreenContent extends ConsumerStatefulWidget {
 
 class _FormScreenContentState extends ConsumerState<FormScreenContent> {
   @override
-  void initState() {
-    super.initState();
-    _applyFormFilters();
-  }
-
-  @override
   void didUpdateWidget(covariant FormScreenContent oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (oldWidget.filters != widget.filters) {
-      _applyFormFilters();
-    }
     if (oldWidget.id != widget.id) {
       formStream = Database.instance.formDao.watchSingle(
         widget.id,
       );
     }
-  }
-
-  void _applyFormFilters() {
-    Future.microtask(() {
-      ref.read(formStatusAppliedFilterProvider.notifier).state =
-          widget.filters.parsedStatuses;
-      ref.read(formAppliedFilterProvider.notifier).state =
-          widget.filters.parsedIds;
-    });
   }
 
   late var formStream = Database.instance.formDao.watchSingle(

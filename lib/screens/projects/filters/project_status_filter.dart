@@ -4,21 +4,21 @@ import 'package:flutter_app_stable/utils/option.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final projectStatusAppliedFilterProvider =
-    StateProvider.autoDispose<Set<ProjectStatus>>(
+    Provider.autoDispose<Set<ProjectStatus>>(
   (ref) => const {},
 );
 
-final projectStatusFilterProvider = Provider.autoDispose<Filter<ProjectStatus>>(
+final projectStatusFilterProvider =
+    Provider.autoDispose<LocalFilter<ProjectStatus>>(
   (ref) {
-    final appliedFiltersNotifier =
-        ref.watch(projectStatusAppliedFilterProvider.state);
-    return Filter(
-      appliedFilterStateController: appliedFiltersNotifier,
+    final appliedFilters = ref.watch(projectStatusAppliedFilterProvider);
+    return LocalFilter(
+      selected: appliedFilters,
       options: ProjectStatus.values.map(
         (projectStatus) => Option(id: projectStatus, name: projectStatus.name),
       ),
       name: 'Status',
     );
   },
-  dependencies: [projectStatusAppliedFilterProvider.state],
+  dependencies: [projectStatusAppliedFilterProvider],
 );

@@ -157,7 +157,9 @@ class ProjectsRoute extends GoRouteData with AuthenticatedRoute {
   final String? status;
 
   @override
-  Widget buildScreen() => const ProjectsScreen();
+  Widget buildScreen() => ProjectsScreen(
+        filters: ProjectsFiltersParameters(status: status),
+      );
 }
 
 // Nested route don't need to be decorated as the [TypedGoRoute<NestedRoute>] is

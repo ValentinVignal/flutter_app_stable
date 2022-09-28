@@ -3,17 +3,27 @@ import 'package:flutter_app_stable/filters/filter.dart';
 import 'package:flutter_app_stable/router/router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+class FilterBarLocalFilterParameter<T> {
+  FilterBarLocalFilterParameter({
+    required this.filter,
+    required void Function(Set<T>) onChanged,
+  }) : _onChanged = onChanged;
+
+  final ProviderBase<LocalFilter<T>> filter;
+  final void Function(Set<T>) _onChanged;
+
+  void onChanged(Set value) => _onChanged(value as Set<T>);
+}
+
 class FilterBar extends ConsumerWidget {
   const FilterBar({
-    required this.onChanged,
     this.local = const [],
     this.global = const [],
     Key? key,
   }) : super(key: key);
 
-  final Iterable<ProviderBase<Filter>> local;
-  final Iterable<ProviderBase<Filter>> global;
-  final VoidCallback onChanged;
+  final Iterable<FilterBarLocalFilterParameter> local;
+  final Iterable<ProviderBase<GlobalFilter>> global;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -28,7 +38,11 @@ class FilterBar extends ConsumerWidget {
               ...global.map(
                 (filter) => FilterWidget(
                   filterProvider: filter,
-                  onChanged: router.refresh,
+                  onSelected: (selected) {
+                    ref.read(filter).appliedFilterStateController.state =
+                        selected;
+                    router.refresh();
+                  },
                 ),
               ),
               const SizedBox(width: 16),
@@ -36,8 +50,8 @@ class FilterBar extends ConsumerWidget {
               const SizedBox(width: 16),
               ...local.map(
                 (filter) => FilterWidget(
-                  filterProvider: filter,
-                  onChanged: onChanged,
+                  filterProvider: filter.filter,
+                  onSelected: (set) => filter.onChanged(set),
                 ),
               ),
             ],
@@ -51,13 +65,13 @@ class FilterBar extends ConsumerWidget {
 class FilterWidget<T> extends ConsumerWidget {
   const FilterWidget({
     required this.filterProvider,
-    required this.onChanged,
+    required this.onSelected,
     Key? key,
   }) : super(key: key);
 
   final ProviderBase<Filter<T>> filterProvider;
 
-  final VoidCallback onChanged;
+  final void Function(Set<T>) onSelected;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -85,14 +99,13 @@ class FilterWidget<T> extends ConsumerWidget {
       onSelected: (id) {
         if (id == null) return;
         final filter = ref.read(filterProvider);
-        final newSet = filter.appliedFilterStateController.state.toSet();
+        final newSet = filter.selected.toSet();
         if (newSet.contains(id)) {
           newSet.remove(id);
         } else {
           newSet.add(id);
         }
-        filter.appliedFilterStateController.state = newSet;
-        onChanged();
+        onSelected(newSet);
       },
       child: Padding(
         padding: const EdgeInsets.all(8.0),

@@ -3,22 +3,22 @@ import 'package:flutter_app_stable/filters/filter.dart';
 import 'package:flutter_app_stable/utils/option.dart';
 import 'package:riverpod/riverpod.dart';
 
-final formStatusAppliedFilterProvider =
-    StateProvider.autoDispose<Set<FormStatus>>(
+final formStatusAppliedFilterProvider = Provider.autoDispose<Set<FormStatus>>(
   (ref) => const {},
 );
 
-final formStatusFilterProvider = Provider.autoDispose<Filter<FormStatus>>(
+final formStatusFilterProvider = Provider.autoDispose<LocalFilter<FormStatus>>(
   (ref) {
-    final appliedFiltersNotifier =
-        ref.watch(formStatusAppliedFilterProvider.state);
-    return Filter(
-      appliedFilterStateController: appliedFiltersNotifier,
+    final appliedFilters = ref.watch(formStatusAppliedFilterProvider);
+    return LocalFilter(
+      selected: appliedFilters,
       options: FormStatus.values.map(
         (formStatus) => Option(id: formStatus, name: formStatus.name),
       ),
       name: 'Status',
     );
   },
-  dependencies: [formStatusAppliedFilterProvider.state],
+  dependencies: [
+    formStatusAppliedFilterProvider,
+  ],
 );

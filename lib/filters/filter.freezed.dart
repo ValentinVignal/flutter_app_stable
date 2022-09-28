@@ -15,21 +15,185 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$Filter<T> {
+mixin _$LocalFilter<T> {
+  String get name => throw _privateConstructorUsedError;
+  Iterable<Option<T>> get options => throw _privateConstructorUsedError;
+  Set<T> get selected => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $LocalFilterCopyWith<T, LocalFilter<T>> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $LocalFilterCopyWith<T, $Res> {
+  factory $LocalFilterCopyWith(
+          LocalFilter<T> value, $Res Function(LocalFilter<T>) then) =
+      _$LocalFilterCopyWithImpl<T, $Res>;
+  $Res call({String name, Iterable<Option<T>> options, Set<T> selected});
+}
+
+/// @nodoc
+class _$LocalFilterCopyWithImpl<T, $Res>
+    implements $LocalFilterCopyWith<T, $Res> {
+  _$LocalFilterCopyWithImpl(this._value, this._then);
+
+  final LocalFilter<T> _value;
+  // ignore: unused_field
+  final $Res Function(LocalFilter<T>) _then;
+
+  @override
+  $Res call({
+    Object? name = freezed,
+    Object? options = freezed,
+    Object? selected = freezed,
+  }) {
+    return _then(_value.copyWith(
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      options: options == freezed
+          ? _value.options
+          : options // ignore: cast_nullable_to_non_nullable
+              as Iterable<Option<T>>,
+      selected: selected == freezed
+          ? _value.selected
+          : selected // ignore: cast_nullable_to_non_nullable
+              as Set<T>,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$$_LocalFilterCopyWith<T, $Res>
+    implements $LocalFilterCopyWith<T, $Res> {
+  factory _$$_LocalFilterCopyWith(
+          _$_LocalFilter<T> value, $Res Function(_$_LocalFilter<T>) then) =
+      __$$_LocalFilterCopyWithImpl<T, $Res>;
+  @override
+  $Res call({String name, Iterable<Option<T>> options, Set<T> selected});
+}
+
+/// @nodoc
+class __$$_LocalFilterCopyWithImpl<T, $Res>
+    extends _$LocalFilterCopyWithImpl<T, $Res>
+    implements _$$_LocalFilterCopyWith<T, $Res> {
+  __$$_LocalFilterCopyWithImpl(
+      _$_LocalFilter<T> _value, $Res Function(_$_LocalFilter<T>) _then)
+      : super(_value, (v) => _then(v as _$_LocalFilter<T>));
+
+  @override
+  _$_LocalFilter<T> get _value => super._value as _$_LocalFilter<T>;
+
+  @override
+  $Res call({
+    Object? name = freezed,
+    Object? options = freezed,
+    Object? selected = freezed,
+  }) {
+    return _then(_$_LocalFilter<T>(
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      options: options == freezed
+          ? _value.options
+          : options // ignore: cast_nullable_to_non_nullable
+              as Iterable<Option<T>>,
+      selected: selected == freezed
+          ? _value._selected
+          : selected // ignore: cast_nullable_to_non_nullable
+              as Set<T>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_LocalFilter<T> extends _LocalFilter<T> {
+  const _$_LocalFilter(
+      {required this.name,
+      required this.options,
+      required final Set<T> selected})
+      : _selected = selected,
+        super._();
+
+  @override
+  final String name;
+  @override
+  final Iterable<Option<T>> options;
+  final Set<T> _selected;
+  @override
+  Set<T> get selected {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableSetView(_selected);
+  }
+
+  @override
+  String toString() {
+    return 'LocalFilter<$T>(name: $name, options: $options, selected: $selected)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_LocalFilter<T> &&
+            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality().equals(other.options, options) &&
+            const DeepCollectionEquality().equals(other._selected, _selected));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(options),
+      const DeepCollectionEquality().hash(_selected));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_LocalFilterCopyWith<T, _$_LocalFilter<T>> get copyWith =>
+      __$$_LocalFilterCopyWithImpl<T, _$_LocalFilter<T>>(this, _$identity);
+}
+
+abstract class _LocalFilter<T> extends LocalFilter<T> {
+  const factory _LocalFilter(
+      {required final String name,
+      required final Iterable<Option<T>> options,
+      required final Set<T> selected}) = _$_LocalFilter<T>;
+  const _LocalFilter._() : super._();
+
+  @override
+  String get name;
+  @override
+  Iterable<Option<T>> get options;
+  @override
+  Set<T> get selected;
+  @override
+  @JsonKey(ignore: true)
+  _$$_LocalFilterCopyWith<T, _$_LocalFilter<T>> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$GlobalFilter<T> {
   String get name => throw _privateConstructorUsedError;
   Iterable<Option<T>> get options => throw _privateConstructorUsedError;
   StateController<Set<T>> get appliedFilterStateController =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $FilterCopyWith<T, Filter<T>> get copyWith =>
+  $GlobalFilterCopyWith<T, GlobalFilter<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $FilterCopyWith<T, $Res> {
-  factory $FilterCopyWith(Filter<T> value, $Res Function(Filter<T>) then) =
-      _$FilterCopyWithImpl<T, $Res>;
+abstract class $GlobalFilterCopyWith<T, $Res> {
+  factory $GlobalFilterCopyWith(
+          GlobalFilter<T> value, $Res Function(GlobalFilter<T>) then) =
+      _$GlobalFilterCopyWithImpl<T, $Res>;
   $Res call(
       {String name,
       Iterable<Option<T>> options,
@@ -37,12 +201,13 @@ abstract class $FilterCopyWith<T, $Res> {
 }
 
 /// @nodoc
-class _$FilterCopyWithImpl<T, $Res> implements $FilterCopyWith<T, $Res> {
-  _$FilterCopyWithImpl(this._value, this._then);
+class _$GlobalFilterCopyWithImpl<T, $Res>
+    implements $GlobalFilterCopyWith<T, $Res> {
+  _$GlobalFilterCopyWithImpl(this._value, this._then);
 
-  final Filter<T> _value;
+  final GlobalFilter<T> _value;
   // ignore: unused_field
-  final $Res Function(Filter<T>) _then;
+  final $Res Function(GlobalFilter<T>) _then;
 
   @override
   $Res call({
@@ -68,10 +233,11 @@ class _$FilterCopyWithImpl<T, $Res> implements $FilterCopyWith<T, $Res> {
 }
 
 /// @nodoc
-abstract class _$$_FilterCopyWith<T, $Res> implements $FilterCopyWith<T, $Res> {
-  factory _$$_FilterCopyWith(
-          _$_Filter<T> value, $Res Function(_$_Filter<T>) then) =
-      __$$_FilterCopyWithImpl<T, $Res>;
+abstract class _$$_GlobalFilterCopyWith<T, $Res>
+    implements $GlobalFilterCopyWith<T, $Res> {
+  factory _$$_GlobalFilterCopyWith(
+          _$_GlobalFilter<T> value, $Res Function(_$_GlobalFilter<T>) then) =
+      __$$_GlobalFilterCopyWithImpl<T, $Res>;
   @override
   $Res call(
       {String name,
@@ -80,14 +246,15 @@ abstract class _$$_FilterCopyWith<T, $Res> implements $FilterCopyWith<T, $Res> {
 }
 
 /// @nodoc
-class __$$_FilterCopyWithImpl<T, $Res> extends _$FilterCopyWithImpl<T, $Res>
-    implements _$$_FilterCopyWith<T, $Res> {
-  __$$_FilterCopyWithImpl(
-      _$_Filter<T> _value, $Res Function(_$_Filter<T>) _then)
-      : super(_value, (v) => _then(v as _$_Filter<T>));
+class __$$_GlobalFilterCopyWithImpl<T, $Res>
+    extends _$GlobalFilterCopyWithImpl<T, $Res>
+    implements _$$_GlobalFilterCopyWith<T, $Res> {
+  __$$_GlobalFilterCopyWithImpl(
+      _$_GlobalFilter<T> _value, $Res Function(_$_GlobalFilter<T>) _then)
+      : super(_value, (v) => _then(v as _$_GlobalFilter<T>));
 
   @override
-  _$_Filter<T> get _value => super._value as _$_Filter<T>;
+  _$_GlobalFilter<T> get _value => super._value as _$_GlobalFilter<T>;
 
   @override
   $Res call({
@@ -95,7 +262,7 @@ class __$$_FilterCopyWithImpl<T, $Res> extends _$FilterCopyWithImpl<T, $Res>
     Object? options = freezed,
     Object? appliedFilterStateController = freezed,
   }) {
-    return _then(_$_Filter<T>(
+    return _then(_$_GlobalFilter<T>(
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -114,8 +281,8 @@ class __$$_FilterCopyWithImpl<T, $Res> extends _$FilterCopyWithImpl<T, $Res>
 
 /// @nodoc
 
-class _$_Filter<T> extends _Filter<T> {
-  const _$_Filter(
+class _$_GlobalFilter<T> extends _GlobalFilter<T> {
+  const _$_GlobalFilter(
       {required this.name,
       required this.options,
       required this.appliedFilterStateController})
@@ -130,14 +297,14 @@ class _$_Filter<T> extends _Filter<T> {
 
   @override
   String toString() {
-    return 'Filter<$T>(name: $name, options: $options, appliedFilterStateController: $appliedFilterStateController)';
+    return 'GlobalFilter<$T>(name: $name, options: $options, appliedFilterStateController: $appliedFilterStateController)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Filter<T> &&
+            other is _$_GlobalFilter<T> &&
             const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality().equals(other.options, options) &&
             const DeepCollectionEquality().equals(
@@ -154,17 +321,17 @@ class _$_Filter<T> extends _Filter<T> {
 
   @JsonKey(ignore: true)
   @override
-  _$$_FilterCopyWith<T, _$_Filter<T>> get copyWith =>
-      __$$_FilterCopyWithImpl<T, _$_Filter<T>>(this, _$identity);
+  _$$_GlobalFilterCopyWith<T, _$_GlobalFilter<T>> get copyWith =>
+      __$$_GlobalFilterCopyWithImpl<T, _$_GlobalFilter<T>>(this, _$identity);
 }
 
-abstract class _Filter<T> extends Filter<T> {
-  const factory _Filter(
+abstract class _GlobalFilter<T> extends GlobalFilter<T> {
+  const factory _GlobalFilter(
       {required final String name,
       required final Iterable<Option<T>> options,
       required final StateController<Set<T>>
-          appliedFilterStateController}) = _$_Filter<T>;
-  const _Filter._() : super._();
+          appliedFilterStateController}) = _$_GlobalFilter<T>;
+  const _GlobalFilter._() : super._();
 
   @override
   String get name;
@@ -174,6 +341,6 @@ abstract class _Filter<T> extends Filter<T> {
   StateController<Set<T>> get appliedFilterStateController;
   @override
   @JsonKey(ignore: true)
-  _$$_FilterCopyWith<T, _$_Filter<T>> get copyWith =>
+  _$$_GlobalFilterCopyWith<T, _$_GlobalFilter<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }

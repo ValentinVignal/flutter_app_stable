@@ -23,8 +23,12 @@ class TaskScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return ProviderScope(
       overrides: [
-        taskStatusAppliedFilterProvider,
-        taskAppliedFilterProvider,
+        taskStatusAppliedFilterProvider.overrideWithValue(
+          filters.parsedStatuses,
+        ),
+        taskAppliedFilterProvider.overrideWithValue(
+          filters.parsedIds,
+        ),
       ],
       child: TaskScreenContent(
         id: id,
@@ -52,31 +56,13 @@ class TaskScreenContent extends ConsumerStatefulWidget {
 
 class _TaskScreenContentState extends ConsumerState<TaskScreenContent> {
   @override
-  void initState() {
-    super.initState();
-    _applyFormFilters();
-  }
-
-  @override
   void didUpdateWidget(covariant TaskScreenContent oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (oldWidget.filters != widget.filters) {
-      _applyFormFilters();
-    }
     if (oldWidget.id != widget.id) {
       taskStream = Database.instance.taskDao.watchSingle(
         widget.id,
       );
     }
-  }
-
-  void _applyFormFilters() {
-    Future.microtask(() {
-      ref.read(taskStatusAppliedFilterProvider.notifier).state =
-          widget.filters.parsedStatuses;
-      ref.read(taskAppliedFilterProvider.notifier).state =
-          widget.filters.parsedIds;
-    });
   }
 
   late var taskStream = Database.instance.taskDao.watchSingle(

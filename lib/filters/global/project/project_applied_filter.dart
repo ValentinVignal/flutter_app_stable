@@ -9,7 +9,7 @@ final projectAppliedFilterProvider = StateProvider<Set<int>>(
 );
 
 /// The global project filters with the selected IDs and the projects available.
-final projectFilterProvider = Provider.autoDispose<Filter<int>>(
+final projectFilterProvider = Provider.autoDispose<GlobalFilter<int>>(
   (ref) {
     // Here we listen to `.state` (and not `.notifier`) to get updates when the
     // state changes. This will lead to more rebuild at the top of the filters
@@ -22,7 +22,7 @@ final projectFilterProvider = Provider.autoDispose<Filter<int>>(
         ref.watch(projectAppliedFilterProvider.state);
     final projects = ref.watch(projectsProvider);
 
-    return Filter(
+    return GlobalFilter(
       appliedFilterStateController: appliedFiltersNotifier,
       options: projects.asData?.value.map(
             (project) => Option(id: project.id, name: project.name),
