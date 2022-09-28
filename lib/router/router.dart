@@ -15,13 +15,12 @@ bool _isFirstRedirect = true;
 
 final router = GoRouter(
   observers: [GoRouterDrawerPageExtension.navigatorObserver],
-  urlPathStrategy: UrlPathStrategy.path,
   refreshListenable: Listenable.merge([
     AuthService.isAuthenticatedValueListenable,
     // We can add other listenable here.
   ]),
   debugLogDiagnostics: true,
-  redirect: (state) {
+  redirect: (context, state) {
     final uri = Uri.parse(state.location);
     final globalFilters = GlobalFiltersParameters.fromJson(uri.queryParameters);
     final projectAppliedFiltersNotifier = RootConsumer.ref.read(

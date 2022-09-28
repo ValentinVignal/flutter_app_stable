@@ -5,9 +5,12 @@ import 'package:flutter_app_stable/services/auth_service.dart';
 import 'package:flutter_app_stable/services/cache.dart';
 import 'package:flutter_app_stable/widgets/root_consumer.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_web_plugins/url_strategy.dart';
 import 'package:logging/logging.dart';
 
 Future<void> main() async {
+  usePathUrlStrategy();
+
   Logger.root.level = Level.ALL;
   await Cache.init();
   await AuthService.init();
