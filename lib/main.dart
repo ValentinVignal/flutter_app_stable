@@ -1,4 +1,95 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+// Those 2 values are usually loaded from the url, they are not mutable in the
+// real app.
+//
+// They are the "applied filters" of the list. For example in a user list, `0`
+// could be the user id and `1` could be the user status:
+// ```
+// /users?user-id=0&user-id=1&user-status=2
+// ```
+var applied0 = const {0, 1};
+var applied1 = const {'2'};
+
+// We provide the applied filters on the user ids to the app. It is a provider
+// since it cannot be changed. This comes from the url.
+//
+// `a` is for "applied" (= the filters that are actually applied).
+final aProvider0 = Provider.autoDispose<Set<int>>((ref) {
+  return applied0.toSet();
+});
+//
+// We also provide the options for the filter. In this case (the user id), it
+// contains all the users of the app.
+//
+// `o` is for "options" (= the options for the filter).
+final oProvider0 = Provider.autoDispose<Iterable<int>>((ref) {
+  return List.generate(10, (index) => index);
+});
+
+// We do the same with the user status.
+final aProvider1 = Provider.autoDispose<Set<String>>((ref) {
+  return applied1.toSet();
+});
+final oProvider1 = Provider.autoDispose<Iterable<String>>((ref) {
+  return List.generate(10, (index) => index.toString());
+});
+
+// A some point, we end up manipulating a list of filters which are not of the
+// same type.
+final List<Filter<dynamic>> filters = [
+  Filter<int>(
+    aProvider: aProvider0,
+    oProvider: oProvider0,
+  ),
+  Filter<String>(
+    aProvider: aProvider1,
+    oProvider: oProvider1,
+  ),
+];
+
+/// This combines the "applied filter provider" (ex for the user ids: the actual
+/// user ids the list is filter by), and the "options filter provider" (ex for
+/// the user ids: all the users in the app).
+class Filter<T> {
+  const Filter({
+    required this.aProvider,
+    required this.oProvider,
+  });
+
+  final ProviderBase<Set<T>> aProvider;
+  final ProviderBase<Iterable<T>> oProvider;
+
+  /// Creates
+  /// - A state provider that is initialized with the current applied filters.
+  ///   The user will modify this provider in the "preview".
+  /// - A provider that returns the state of the state provider. This will
+  ///   override the "applied filter providers" (`aProviderX`) in the preview so
+  ///   it displays what the user modified.
+  FilterStateProviderAndOverride<T> _createStateProvider() {
+    final stateProvider = StateProvider.autoDispose<Set<T>>((ref) {
+      return ref.read(aProvider);
+    });
+    final override = Provider.autoDispose<Set<T>>((ref) {
+      return ref.watch(stateProvider);
+    });
+    return FilterStateProviderAndOverride(
+      stateProvider: stateProvider,
+      override: override,
+    );
+  }
+}
+
+/// Only store the created state providers and the overrides.
+class FilterStateProviderAndOverride<T> {
+  FilterStateProviderAndOverride({
+    required this.stateProvider,
+    required this.override,
+  });
+  final AutoDisposeStateProvider<Set<T>> stateProvider;
+  final AutoDisposeProvider<Set<T>> override;
+}
 
 void main() {
   runApp(const MyApp());
@@ -7,109 +98,203 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
+    return ProviderScope(
+      child: MaterialApp(
+        theme: ThemeData.dark(useMaterial3: true),
+        home: const Home(),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
+/// Contains
+/// - The actual applied filters (from the url) (most of the app).
+/// - The preview (the user modified filters before application).
+class Home extends StatelessWidget {
+  const Home({Key? key}) : super(key: key);
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        // The app using the correct provider. 95% of the app are in this use
+        // case.
+        Expanded(
+          child: Scaffold(
+            body: AppliedData(
+              filters: MutableFilters(
+                filters: filters,
+              ),
+            ),
+          ),
+        ),
+        // The preview using the overridden providers.
+        Expanded(
+          child: ModifiedData(
+            filters: filters,
+          ),
+        ),
+      ],
+    );
+  }
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+class MutableFilters {
+  const MutableFilters({
+    required this.filters,
+    this.states = const [],
+    this.onChanged,
+  })  : assert(filters.length > 0),
+        assert(states.length == 0 || states.length == filters.length);
 
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
+  final List<Filter> filters;
+  final List<AutoDisposeStateProvider<Set>> states;
+  final void Function(WidgetRef)? onChanged;
+}
+
+/// Displays the currently applied filters in the current provider scope.
+class AppliedData extends ConsumerWidget {
+  const AppliedData({
+    required this.filters,
+    Key? key,
+  }) : super(key: key);
+
+  final MutableFilters filters;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final length = filters.filters.fold<int>(
+        0,
+        (previousValue, filter) =>
+            previousValue + ref.watch(filter.oProvider).length);
+    final children = filters.filters.asMap().entries.expand((filterEntry) {
+      final set = ref.watch(filterEntry.value.aProvider);
+      return ref.watch(filterEntry.value.oProvider).map((option) {
+        return CheckboxListTile(
+          value: set.contains(option),
+          onChanged: filters.states.isNotEmpty
+              // If the state providers are created, we use them to modify the
+              // overridden providers.
+              ? (value) {
+                  final notifier = ref.read(
+                    filters.states[filterEntry.key].notifier,
+                  );
+                  final state = ref.read(filters.states[filterEntry.key]);
+                  final newState = state.update(option);
+                  notifier.state = newState;
+                }
+              : null,
+          title: Text(option.toString()),
+        );
+      });
     });
+    return ListView.builder(
+      itemCount: length,
+      itemBuilder: (context, index) {
+        return children.elementAt(index);
+      },
+    );
+  }
+}
+
+extension _SetX<T> on Set<T> {
+  Set<T> update(e) {
+    if (contains(e)) {
+      return toSet()..remove(e);
+    } else {
+      return toSet()..add(e);
+    }
+  }
+}
+
+/// This sets up the provider overrides and display the preview the user can
+/// modify and interact with.
+class ModifiedData extends ConsumerStatefulWidget {
+  const ModifiedData({
+    required this.filters,
+    Key? key,
+  }) : super(key: key);
+
+  final List<Filter> filters;
+
+  @override
+  ConsumerState<ModifiedData> createState() => _ModifiedDataState();
+}
+
+class _ModifiedDataState extends ConsumerState<ModifiedData> {
+  late final List<FilterStateProviderAndOverride> _states;
+
+  @override
+  void initState() {
+    super.initState();
+    // We create a state provider and an override for each given filters.
+    _states = widget.filters
+        .map(
+          (filter) => filter._createStateProvider(),
+        )
+        .toList();
   }
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
+    return ProviderScope(
+      // We pass the overrides so the nested widget trees uses with whatever the
+      // user modified.
+      overrides: widget.filters.asMap().entries.map(
+        (entry) {
+          return entry.value.aProvider
+              .overrideWithProvider(_states[entry.key].override);
+        },
+      ).toList(),
+      child: ModifiedDataContent(
+        filters: MutableFilters(
+          filters: widget.filters,
+          states: _states.map((state) => state.stateProvider).toList(),
+          onChanged: (nestedRef) {
+            // When the user wants to save, we
+            final new0 = nestedRef.read(aProvider0);
+            final new1 = nestedRef.read(aProvider1);
+            applied0 = new0;
+            applied1 = new1;
+            // Here we refresh to simulate a push, in reality, the user with be
+            // redirected to the correct url with the correct filter applied.
+            // ```
+            // /users?user-id=0&status=1&status=2
+            // ```
+            ref.refresh(aProvider0);
+            ref.refresh(aProvider1);
+          },
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+}
+
+class ModifiedDataContent extends ConsumerWidget {
+  const ModifiedDataContent({
+    required this.filters,
+    Key? key,
+  }) : super(key: key);
+
+  final MutableFilters filters;
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return Form(
+      child: Scaffold(
+        body: AppliedData(
+          filters: filters,
+        ),
+        floatingActionButton: FloatingActionButton(
+          child: const Icon(Icons.done),
+          onPressed: () {
+            // We pass the nested `ref` to the callback to give access to the
+            // overridden values.
+            filters.onChanged!(ref);
+          },
+        ),
+      ),
     );
   }
 }
