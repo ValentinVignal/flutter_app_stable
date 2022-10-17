@@ -5,19 +5,13 @@ void main() {
   runApp(const MyApp());
 }
 
-final countProvider = StateProvider.autoDispose((ref) => 0);
+final valueProvider = StateProvider.autoDispose<int>((ref) {
+  return 0;
+});
 
-final streamProvider = StreamProvider.autoDispose(
-  (ref) {
-    final count = ref.watch(countProvider);
-    return Stream.periodic(
-      const Duration(milliseconds: 100),
-      (index) => index * count,
-    );
-  },
-  dependencies: [
-    countProvider,
-  ],
+final countProvider = StateProvider.autoDispose<int>(
+  (ref) => ref.watch(valueProvider),
+  dependencies: [valueProvider],
 );
 
 class MyApp extends StatelessWidget {
@@ -28,176 +22,96 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const ProviderScope(
       child: MaterialApp(
-        home: FirstPage(),
-      ),
-    );
-  }
-}
-
-class FirstPage extends StatelessWidget {
-  const FirstPage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('First Page'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Consumer(
-              builder: (context, ref, child) {
-                return Text(
-                  'Count: ${ref.watch(countProvider)}',
-                );
-              },
-            ),
-            Consumer(
-              builder: (context, ref, child) {
-                return Text(
-                  'Stream: ${ref.watch(streamProvider).asData?.value ?? 0}',
-                );
-              },
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => const SecondPage(),
-                  ),
-                );
-              },
-              child: const Text('Second page'),
-            ),
-          ],
+        home: Home(
+          value: 0,
         ),
       ),
-      floatingActionButton: Consumer(
-        builder: (context, ref, child) {
-          return FloatingActionButton(
-            onPressed: () {
-              ref.read(countProvider.notifier).state++;
-            },
-            child: child!,
-          );
-        },
-        child: const Icon(Icons.add),
-      ),
     );
   }
 }
 
-class SecondPage extends StatelessWidget {
-  const SecondPage({Key? key}) : super(key: key);
+class Home extends StatelessWidget {
+  const Home({
+    required this.value,
+    super.key,
+  });
+
+  final int value;
 
   @override
   Widget build(BuildContext context) {
     return ProviderScope(
       overrides: [
-        streamProvider,
+        valueProvider.overrideWithValue(StateController(value)),
       ],
-      child: Scaffold(
-        appBar: AppBar(
-          title: const Text('Second Page'),
-        ),
-        body: Center(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Consumer(
-                builder: (context, ref, child) {
-                  return Text(
-                    'Count: ${ref.watch(countProvider)}',
-                  );
-                },
-              ),
-              Consumer(
-                builder: (context, ref, child) {
-                  return Text(
-                    'Stream: ${ref.watch(streamProvider).asData?.value ?? 0}',
-                  );
-                },
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.of(context).pushAndRemoveUntil(
-                    MaterialPageRoute(
-                      builder: (context) => const FirstPage(),
-                    ),
-                    (_) => false,
-                  );
-                },
-                child: const Text('First page'),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => const EmptyPage(),
-                    ),
-                  );
-                },
-                child: const Text('Empty page'),
-              ),
-            ],
+      child: const ScopedHome(),
+    );
+  }
+}
+
+class ScopedHome extends StatelessWidget {
+  const ScopedHome({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(),
+      body: ListView(
+        children: [
+          const Item(),
+          ProviderScope(
+            overrides: [countProvider],
+            child: const Item(),
           ),
-        ),
-        floatingActionButton: Consumer(
-          builder: (context, ref, child) {
-            return FloatingActionButton(
-              onPressed: () {
-                ref.read(countProvider.notifier).state++;
-              },
-              child: child!,
-            );
-          },
-          child: const Icon(Icons.add),
-        ),
+          ProviderScope(
+            overrides: [countProvider],
+            child: const Item(),
+          ),
+        ],
       ),
     );
   }
 }
 
-class EmptyPage extends StatelessWidget {
-  const EmptyPage({Key? key}) : super(key: key);
+class Item extends ConsumerWidget {
+  const Item({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Empty Page'),
+  Widget build(BuildContext context, WidgetRef ref) {
+    final value = ref.watch(valueProvider);
+    final count = ref.watch(countProvider);
+    return ListTile(
+      leading: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          IconButton(
+            tooltip: 'value',
+            icon: const Icon(Icons.add),
+            onPressed: () {
+              ref.read(valueProvider.notifier).state++;
+            },
+          ),
+          IconButton(
+            tooltip: 'count',
+            icon: const Icon(Icons.add),
+            onPressed: () {
+              ref.read(countProvider.notifier).state++;
+            },
+          ),
+        ],
       ),
-      body: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => const FirstPage(),
-                  ),
-                );
-              },
-              child: const Text('First page'),
+      title: Text('Value: $value - Count: $count'),
+      trailing: IconButton(
+        icon: const Icon(Icons.navigate_next),
+        onPressed: () {
+          Navigator.of(context).pushReplacement(
+            MaterialPageRoute(
+              builder: (context) => Home(
+                value: count,
+              ),
             ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => const SecondPage(),
-                  ),
-                );
-              },
-              child: const Text('Second page'),
-            ),
-          ],
-        ),
+          );
+        },
       ),
     );
   }
