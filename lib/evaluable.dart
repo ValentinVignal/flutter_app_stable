@@ -4,30 +4,15 @@ import 'package:json_annotation/json_annotation.dart';
 part 'evaluable.g.dart';
 part 'evaluable_text.dart';
 
-/// {@template nl.evaluable.evaluable}
-/// Item that can be evaluate with a [EvaluableInput].
-///
-/// The json of an evaluable has the following format:
-/// ```jsonc
-/// {
-///   "returnedType": returnedType, // <- The returned type of the Evaluable. It is an entry of the enum EvaluableReturnedType.
-///   "operator": operator, // <- The operator of the evaluable.
-/// }
-/// ```
-/// {@endtemplate}
 abstract class Evaluable<TReturnedType> {
-  /// {@macro nl.evaluable.evaluable}
   Evaluable();
 
-  /// {@macro nl.evaluable.evaluable}
   factory Evaluable.fromJson(Map<String, dynamic> json) {
     return FieldValueEvaluable<TReturnedType>.fromJson(json);
   }
 
-  /// Returns the json representation of the evaluable.
   Map<String, dynamic> toJson() => _toJson();
 
-  /// Returns the json representation without the meta data of the evaluable.
   Map<String, dynamic> _toJson();
 
   /// Evaluates the [Evaluable] with the given [input].
@@ -61,7 +46,6 @@ abstract class SingleEntryEvaluable<TReturnedType, TValueType>
 }
 
 /// {@template nl.evaluable.field_value}
-/// A evaluable that evaluates to the value of a field in the [EvaluableInput].
 /// {@endtemplate}
 abstract class FieldValueEvaluable<TReturnedType>
     extends SingleEntryEvaluable<TReturnedType, String> {
