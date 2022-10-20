@@ -1,10 +1,5 @@
-part 'evaluable_text.dart';
-
 abstract class Evaluable<TReturnedType> {
   Evaluable();
-
-  /// Evaluates the [Evaluable] with the given [input].
-  TReturnedType evaluate();
 }
 
 abstract class SingleEntryEvaluable<TReturnedType, TValueType>
@@ -21,4 +16,14 @@ abstract class FieldValueEvaluable<TReturnedType>
   FieldValueEvaluable({
     required super.value,
   });
+}
+
+/// {@template nl.evaluable.text_field_value}
+/// A evaluable that evaluates to the text of a field in the [EvaluableInput].
+/// {@endtemplate}
+class TextFieldValueEvaluable extends FieldValueEvaluable<String> {
+  /// {@macro nl.evaluable.text_field_value}
+  TextFieldValueEvaluable({
+    required super.value,
+  }) : super();
 }
