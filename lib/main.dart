@@ -1,9 +1,7 @@
 abstract class FirstClass<T> {
   FirstClass({
-    required this.value,
+    required String value,
   });
-
-  final String value;
 }
 
 abstract class SecondClass<T> extends FirstClass {
