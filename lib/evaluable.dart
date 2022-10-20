@@ -1,8 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-import 'json.dart';
-
 part 'evaluable.g.dart';
 part 'evaluable_text.dart';
 
@@ -22,15 +20,15 @@ abstract class Evaluable<TReturnedType> {
   Evaluable();
 
   /// {@macro nl.evaluable.evaluable}
-  factory Evaluable.fromJson(Json json) {
+  factory Evaluable.fromJson(Map<String, dynamic> json) {
     return FieldValueEvaluable<TReturnedType>.fromJson(json);
   }
 
   /// Returns the json representation of the evaluable.
-  Json toJson() => _toJson();
+  Map<String, dynamic> toJson() => _toJson();
 
   /// Returns the json representation without the meta data of the evaluable.
-  Json _toJson();
+  Map<String, dynamic> _toJson();
 
   /// Evaluates the [Evaluable] with the given [input].
   TReturnedType evaluate();
@@ -73,7 +71,7 @@ abstract class FieldValueEvaluable<TReturnedType>
   });
 
   /// {@macro nl.evaluable.field_value}
-  factory FieldValueEvaluable.fromJson(Json json) {
+  factory FieldValueEvaluable.fromJson(Map<String, dynamic> json) {
     return TextFieldValueEvaluable.fromJson(json)
         as FieldValueEvaluable<TReturnedType>;
   }

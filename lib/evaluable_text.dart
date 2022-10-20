@@ -11,12 +11,12 @@ class TextFieldValueEvaluable extends FieldValueEvaluable<String> {
   }) : super();
 
   /// {@macro nl.evaluable.text_field_value}
-  factory TextFieldValueEvaluable.fromJson(Json json) {
+  factory TextFieldValueEvaluable.fromJson(Map<String, dynamic> json) {
     return _$TextFieldValueEvaluableFromJson(json);
   }
 
   @override
-  Json _toJson() {
+  Map<String, dynamic> _toJson() {
     return _$TextFieldValueEvaluableToJson(this);
   }
 
