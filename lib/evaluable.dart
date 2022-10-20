@@ -1,9 +1,4 @@
-abstract class Evaluable<TReturnedType> {
-  Evaluable();
-}
-
-abstract class SingleEntryEvaluable<TReturnedType, TValueType>
-    extends Evaluable<TReturnedType> {
+abstract class SingleEntryEvaluable<TReturnedType, TValueType> {
   SingleEntryEvaluable({
     required this.value,
   });
@@ -25,5 +20,5 @@ class TextFieldValueEvaluable extends FieldValueEvaluable<String> {
   /// {@macro nl.evaluable.text_field_value}
   TextFieldValueEvaluable({
     required super.value,
-  }) : super();
+  });
 }
