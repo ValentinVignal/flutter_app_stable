@@ -21,8 +21,8 @@ class TextFieldValueEvaluable extends FieldValueEvaluable<String> {
   }
 
   @override
-  String evaluate(EvaluableInput input) {
-    return input.getText(value);
+  String evaluate() {
+    return '';
   }
 
   @override

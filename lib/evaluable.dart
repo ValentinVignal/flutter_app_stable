@@ -1,10 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-import 'evaluable_input.dart';
 import 'json.dart';
-
-export 'evaluable_operator.dart';
 
 part 'evaluable.g.dart';
 part 'evaluable_text.dart';
@@ -36,7 +33,7 @@ abstract class Evaluable<TReturnedType> {
   Json _toJson();
 
   /// Evaluates the [Evaluable] with the given [input].
-  TReturnedType evaluate(EvaluableInput input);
+  TReturnedType evaluate();
 }
 
 /// {@template nl.evaluable.single_entry}
