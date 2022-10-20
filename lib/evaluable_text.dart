@@ -16,17 +16,12 @@ class TextFieldValueEvaluable extends FieldValueEvaluable<String> {
   }
 
   @override
-  Map<String, dynamic> _toJson() {
+  Map<String, dynamic> toJson() {
     return _$TextFieldValueEvaluableToJson(this);
   }
 
   @override
   String evaluate() {
     return '';
-  }
-
-  @override
-  TextFieldValueEvaluable copyWith({String? value}) {
-    return TextFieldValueEvaluable(value: value ?? this.value);
   }
 }
