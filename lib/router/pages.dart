@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app_stable/database/entities/form/form_status.dart';
 import 'package:flutter_app_stable/database/entities/project/project_status.dart';
 import 'package:flutter_app_stable/database/entities/task/task_status.dart';
+import 'package:flutter_app_stable/router/dialog_page.dart';
 import 'package:flutter_app_stable/router/drawer_page.dart';
+import 'package:flutter_app_stable/screens/forms/form_dialog_screen.dart';
 import 'package:flutter_app_stable/screens/forms/form_screen.dart';
 import 'package:flutter_app_stable/screens/forms/forms_screen.dart';
 import 'package:flutter_app_stable/screens/login.dart';
@@ -335,8 +337,9 @@ class TaskRoute extends GoRouteData with AuthenticatedRoute {
   final String? id;
 
   @override
-  Page<void> buildPage(BuildContext context) {
+  Page<void> buildPageWithState(BuildContext context, GoRouterState state) {
     return DrawerPage(
+      key: state.pageKey,
       child: buildScreen(),
     );
   }
@@ -354,6 +357,7 @@ class TaskRoute extends GoRouteData with AuthenticatedRoute {
 @TypedGoRoute<FormsRoute>(
   path: '/${FormsRoute.urlSegment}',
   routes: [
+    TypedGoRoute<FormDialogRoute>(path: 'dialog/:formId'),
     TypedGoRoute<FormRoute>(path: ':formId'),
   ],
 )
@@ -458,6 +462,37 @@ class FormRoute extends GoRouteData with AuthenticatedRoute {
   @override
   Widget buildScreen() {
     return FormScreen(
+      id: formId,
+      filters: FormsFiltersParameters(
+        status: status,
+        id: id,
+      ),
+    );
+  }
+}
+
+class FormDialogRoute extends GoRouteData with AuthenticatedRoute {
+  const FormDialogRoute({
+    required this.formId,
+    this.id,
+    this.status,
+  });
+
+  final int formId;
+
+  final String? id;
+  final String? status;
+  @override
+  Page<void> buildPageWithState(context, state) {
+    return DialogPage(
+      key: ValueKey(DateTime.now()),
+      child: buildScreen(),
+    );
+  }
+
+  @override
+  Widget buildScreen() {
+    return FormDialogScreen(
       id: formId,
       filters: FormsFiltersParameters(
         status: status,

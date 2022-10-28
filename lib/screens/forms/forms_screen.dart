@@ -86,14 +86,35 @@ class FormList extends ConsumerWidget {
                 );
                 router.push(page.location, extra: page);
               },
-              trailing: IconButton(
-                tooltip: 'Open task of same id',
-                icon: const Icon(Icons.task),
-                onPressed: () {
-                  router.push(
-                    TaskRoute(taskId: formWithProject.form.id).location,
-                  );
-                },
+              trailing: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  IconButton(
+                    tooltip: 'Open in dialog',
+                    icon: const Icon(Icons.expand),
+                    onPressed: () {
+                      final parameters = FormsFiltersParameters.fromParsedData(
+                        statuses: ref.read(formStatusAppliedFilterProvider),
+                        ids: ref.read(formAppliedFilterProvider),
+                      );
+                      final page = FormDialogRoute(
+                        formId: formWithProject.form.id,
+                        id: parameters.id,
+                        status: parameters.status,
+                      );
+                      router.push(page.location, extra: page);
+                    },
+                  ),
+                  IconButton(
+                    tooltip: 'Open task of same id',
+                    icon: const Icon(Icons.task),
+                    onPressed: () {
+                      router.push(
+                        TaskRoute(taskId: formWithProject.form.id).location,
+                      );
+                    },
+                  ),
+                ],
               ),
             );
           },

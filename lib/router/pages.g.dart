@@ -167,6 +167,10 @@ GoRoute get $formsRoute => GoRouteData.$route(
       factory: $FormsRouteExtension._fromState,
       routes: [
         GoRouteData.$route(
+          path: 'dialog/:formId',
+          factory: $FormDialogRouteExtension._fromState,
+        ),
+        GoRouteData.$route(
           path: ':formId',
           factory: $FormRouteExtension._fromState,
         ),
@@ -184,6 +188,26 @@ extension $FormsRouteExtension on FormsRoute {
         queryParams: {
           if (status != null) 'status': status!,
           if (id != null) 'id': id!,
+        },
+      );
+
+  void go(BuildContext context) => context.go(location, extra: this);
+
+  void push(BuildContext context) => context.push(location, extra: this);
+}
+
+extension $FormDialogRouteExtension on FormDialogRoute {
+  static FormDialogRoute _fromState(GoRouterState state) => FormDialogRoute(
+        formId: int.parse(state.params['formId']!),
+        id: state.queryParams['id'],
+        status: state.queryParams['status'],
+      );
+
+  String get location => GoRouteData.$location(
+        '/forms/dialog/${Uri.encodeComponent(formId.toString())}',
+        queryParams: {
+          if (id != null) 'id': id!,
+          if (status != null) 'status': status!,
         },
       );
 

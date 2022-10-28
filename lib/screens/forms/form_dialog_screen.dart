@@ -7,8 +7,8 @@ import 'package:flutter_app_stable/screens/forms/form_content.dart';
 import 'package:flutter_app_stable/screens/forms/forms_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class FormScreen extends StatelessWidget {
-  const FormScreen({
+class FormDialogScreen extends StatelessWidget {
+  const FormDialogScreen({
     required this.id,
     required this.filters,
     super.key,
@@ -20,56 +20,28 @@ class FormScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ProviderScope(
-      overrides: [
-        formStatusAppliedFilterProvider.overrideWithValue(
-          filters.parsedStatuses,
-        ),
-        formAppliedFilterProvider.overrideWithValue(
-          filters.parsedIds,
-        ),
-      ],
-      child: FormScreenContent(
-        id: id,
-        filters: filters,
-      ),
-    );
-  }
-}
-
-class FormScreenContent extends StatelessWidget {
-  const FormScreenContent({
-    required this.id,
-    required this.filters,
-    Key? key,
-  }) : super(key: key);
-
-  final int id;
-
-  final FormsFiltersParameters filters;
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Row(
-        children: [
-          _PreviousNextButton(
-            id: id,
-            type: _PreviousNext.previous,
-          ),
-          Expanded(
-            child: Center(
+    return Dialog(
+      child: Padding(
+        padding: const EdgeInsets.all(24.0),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            _PreviousNextButton(
+              id: id,
+              type: _PreviousNext.previous,
+            ),
+            Flexible(
               child: FormContent(
                 id: id,
                 filters: filters,
               ),
             ),
-          ),
-          _PreviousNextButton(
-            id: id,
-            type: _PreviousNext.next,
-          ),
-        ],
+            _PreviousNextButton(
+              id: id,
+              type: _PreviousNext.next,
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -131,7 +103,7 @@ class _PreviousNextButton extends ConsumerWidget {
                 ids: ref.read(formAppliedFilterProvider),
               );
               router.replace(
-                FormRoute(
+                FormDialogRoute(
                   formId: forms[index + delta].form.id,
                   status: parameters.status,
                   id: parameters.id,

@@ -7,6 +7,7 @@ import 'package:go_router/go_router.dart';
 class DrawerPage extends Page {
   const DrawerPage({
     required this.child,
+    super.key,
   });
 
   final Widget child;
