@@ -1,16 +1,11 @@
-# flutter_app_stable
+# Ferry evict cache and list
 
-A flutter repository with small reproducible examples of a flutter app on using the stable channel.
+Tries to reproduce/illustrate an issue with ferry's cache where:
 
-## Getting Started
+1. A list of objects is received
+2. One of the object of the list is deleted used `evict`
+3. The list becomes empty
 
-This project is a starting point for a Flutter application.
+---
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+After investigation (see the code example in `lib/`), it seems to work properly.
