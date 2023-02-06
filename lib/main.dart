@@ -49,20 +49,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        body: Operation<GPokemonsData, GPokemonsVars>(
-          // Give an id to the request here to make it work.
-          operationRequest: GPokemonsReq(),
-          client: client,
-          builder: (context, response, error) {
-            return ListView.builder(
-              itemCount: response?.data?.pokemons.length ?? 0,
-              itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(response!.data!.pokemons[index].name),
-                );
-              },
-            );
-          },
+        body: Column(
+          children: const [
+            Expanded(
+              child: SubWidget(),
+            ),
+            Expanded(
+              child: SubWidget(),
+            ),
+          ],
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
@@ -76,6 +71,31 @@ class MyApp extends StatelessWidget {
           child: const Icon(Icons.add),
         ),
       ),
+    );
+  }
+}
+
+class SubWidget extends StatelessWidget {
+  const SubWidget({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Operation<GPokemonsData, GPokemonsVars>(
+      // Give an id to the request here to make it work.
+      operationRequest: GPokemonsReq((req) => req.requestId = 'pokemons'),
+      client: client,
+      builder: (context, response, error) {
+        return ListView.builder(
+          itemCount: response?.data?.pokemons.length ?? 0,
+          itemBuilder: (context, index) {
+            return ListTile(
+              title: Text(response!.data!.pokemons[index].name),
+            );
+          },
+        );
+      },
     );
   }
 }
