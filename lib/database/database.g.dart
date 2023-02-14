@@ -2,35 +2,95 @@
 
 part of 'database.dart';
 
-// **************************************************************************
-// MoorGenerator
-// **************************************************************************
-
 // ignore_for_file: type=lint
+class $ProjectTable extends Project with TableInfo<$ProjectTable, ProjectData> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $ProjectTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<int> id = GeneratedColumn<int>(
+      'id', aliasedName, false,
+      hasAutoIncrement: true,
+      type: DriftSqlType.int,
+      requiredDuringInsert: false,
+      defaultConstraints:
+          GeneratedColumn.constraintIsAlways('PRIMARY KEY AUTOINCREMENT'));
+  static const VerificationMeta _nameMeta = const VerificationMeta('name');
+  @override
+  late final GeneratedColumn<String> name = GeneratedColumn<String>(
+      'name', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _statusMeta = const VerificationMeta('status');
+  @override
+  late final GeneratedColumnWithTypeConverter<ProjectStatus, int> status =
+      GeneratedColumn<int>('status', aliasedName, false,
+              type: DriftSqlType.int, requiredDuringInsert: true)
+          .withConverter<ProjectStatus>($ProjectTable.$converterstatus);
+  @override
+  List<GeneratedColumn> get $columns => [id, name, status];
+  @override
+  String get aliasedName => _alias ?? 'project';
+  @override
+  String get actualTableName => 'project';
+  @override
+  VerificationContext validateIntegrity(Insertable<ProjectData> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    }
+    if (data.containsKey('name')) {
+      context.handle(
+          _nameMeta, name.isAcceptableOrUnknown(data['name']!, _nameMeta));
+    } else if (isInserting) {
+      context.missing(_nameMeta);
+    }
+    context.handle(_statusMeta, const VerificationResult.success());
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  ProjectData map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return ProjectData(
+      id: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}id'])!,
+      name: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}name'])!,
+      status: $ProjectTable.$converterstatus.fromSql(attachedDatabase
+          .typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}status'])!),
+    );
+  }
+
+  @override
+  $ProjectTable createAlias(String alias) {
+    return $ProjectTable(attachedDatabase, alias);
+  }
+
+  static JsonTypeConverter2<ProjectStatus, int, int> $converterstatus =
+      const EnumIndexConverter<ProjectStatus>(ProjectStatus.values);
+}
+
 class ProjectData extends DataClass implements Insertable<ProjectData> {
   final int id;
   final String name;
   final ProjectStatus status;
-  ProjectData({required this.id, required this.name, required this.status});
-  factory ProjectData.fromData(Map<String, dynamic> data, {String? prefix}) {
-    final effectivePrefix = prefix ?? '';
-    return ProjectData(
-      id: const IntType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}id'])!,
-      name: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}name'])!,
-      status: $ProjectTable.$converter0.mapToDart(const IntType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}status']))!,
-    );
-  }
+  const ProjectData(
+      {required this.id, required this.name, required this.status});
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
     map['id'] = Variable<int>(id);
     map['name'] = Variable<String>(name);
     {
-      final converter = $ProjectTable.$converter0;
-      map['status'] = Variable<int>(converter.mapToSql(status)!);
+      final converter = $ProjectTable.$converterstatus;
+      map['status'] = Variable<int>(converter.toSql(status));
     }
     return map;
   }
@@ -49,7 +109,8 @@ class ProjectData extends DataClass implements Insertable<ProjectData> {
     return ProjectData(
       id: serializer.fromJson<int>(json['id']),
       name: serializer.fromJson<String>(json['name']),
-      status: serializer.fromJson<ProjectStatus>(json['status']),
+      status: $ProjectTable.$converterstatus
+          .fromJson(serializer.fromJson<int>(json['status'])),
     );
   }
   @override
@@ -58,7 +119,8 @@ class ProjectData extends DataClass implements Insertable<ProjectData> {
     return <String, dynamic>{
       'id': serializer.toJson<int>(id),
       'name': serializer.toJson<String>(name),
-      'status': serializer.toJson<ProjectStatus>(status),
+      'status':
+          serializer.toJson<int>($ProjectTable.$converterstatus.toJson(status)),
     };
   }
 
@@ -107,7 +169,7 @@ class ProjectCompanion extends UpdateCompanion<ProjectData> {
   static Insertable<ProjectData> custom({
     Expression<int>? id,
     Expression<String>? name,
-    Expression<ProjectStatus>? status,
+    Expression<int>? status,
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
@@ -135,8 +197,8 @@ class ProjectCompanion extends UpdateCompanion<ProjectData> {
       map['name'] = Variable<String>(name.value);
     }
     if (status.present) {
-      final converter = $ProjectTable.$converter0;
-      map['status'] = Variable<int>(converter.mapToSql(status.value)!);
+      final converter = $ProjectTable.$converterstatus;
+      map['status'] = Variable<int>(converter.toSql(status.value));
     }
     return map;
   }
@@ -152,37 +214,48 @@ class ProjectCompanion extends UpdateCompanion<ProjectData> {
   }
 }
 
-class $ProjectTable extends Project with TableInfo<$ProjectTable, ProjectData> {
+class $TaskTable extends Task with TableInfo<$TaskTable, TaskData> {
   @override
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
-  $ProjectTable(this.attachedDatabase, [this._alias]);
-  final VerificationMeta _idMeta = const VerificationMeta('id');
+  $TaskTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
   @override
-  late final GeneratedColumn<int?> id = GeneratedColumn<int?>(
+  late final GeneratedColumn<int> id = GeneratedColumn<int>(
       'id', aliasedName, false,
-      type: const IntType(),
+      hasAutoIncrement: true,
+      type: DriftSqlType.int,
       requiredDuringInsert: false,
-      defaultConstraints: 'PRIMARY KEY AUTOINCREMENT');
-  final VerificationMeta _nameMeta = const VerificationMeta('name');
+      defaultConstraints:
+          GeneratedColumn.constraintIsAlways('PRIMARY KEY AUTOINCREMENT'));
+  static const VerificationMeta _nameMeta = const VerificationMeta('name');
   @override
-  late final GeneratedColumn<String?> name = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> name = GeneratedColumn<String>(
       'name', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
-  final VerificationMeta _statusMeta = const VerificationMeta('status');
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _projectIdMeta =
+      const VerificationMeta('projectId');
   @override
-  late final GeneratedColumnWithTypeConverter<ProjectStatus, int?> status =
-      GeneratedColumn<int?>('status', aliasedName, false,
-              type: const IntType(), requiredDuringInsert: true)
-          .withConverter<ProjectStatus>($ProjectTable.$converter0);
+  late final GeneratedColumn<int> projectId = GeneratedColumn<int>(
+      'project_id', aliasedName, false,
+      type: DriftSqlType.int,
+      requiredDuringInsert: true,
+      defaultConstraints:
+          GeneratedColumn.constraintIsAlways('REFERENCES project (id)'));
+  static const VerificationMeta _statusMeta = const VerificationMeta('status');
   @override
-  List<GeneratedColumn> get $columns => [id, name, status];
+  late final GeneratedColumnWithTypeConverter<TaskStatus, int> status =
+      GeneratedColumn<int>('status', aliasedName, false,
+              type: DriftSqlType.int, requiredDuringInsert: true)
+          .withConverter<TaskStatus>($TaskTable.$converterstatus);
   @override
-  String get aliasedName => _alias ?? 'project';
+  List<GeneratedColumn> get $columns => [id, name, projectId, status];
   @override
-  String get actualTableName => 'project';
+  String get aliasedName => _alias ?? 'task';
   @override
-  VerificationContext validateIntegrity(Insertable<ProjectData> instance,
+  String get actualTableName => 'task';
+  @override
+  VerificationContext validateIntegrity(Insertable<TaskData> instance,
       {bool isInserting = false}) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
@@ -195,6 +268,12 @@ class $ProjectTable extends Project with TableInfo<$ProjectTable, ProjectData> {
     } else if (isInserting) {
       context.missing(_nameMeta);
     }
+    if (data.containsKey('project_id')) {
+      context.handle(_projectIdMeta,
+          projectId.isAcceptableOrUnknown(data['project_id']!, _projectIdMeta));
+    } else if (isInserting) {
+      context.missing(_projectIdMeta);
+    }
     context.handle(_statusMeta, const VerificationResult.success());
     return context;
   }
@@ -202,18 +281,27 @@ class $ProjectTable extends Project with TableInfo<$ProjectTable, ProjectData> {
   @override
   Set<GeneratedColumn> get $primaryKey => {id};
   @override
-  ProjectData map(Map<String, dynamic> data, {String? tablePrefix}) {
-    return ProjectData.fromData(data,
-        prefix: tablePrefix != null ? '$tablePrefix.' : null);
+  TaskData map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return TaskData(
+      id: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}id'])!,
+      name: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}name'])!,
+      projectId: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}project_id'])!,
+      status: $TaskTable.$converterstatus.fromSql(attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}status'])!),
+    );
   }
 
   @override
-  $ProjectTable createAlias(String alias) {
-    return $ProjectTable(attachedDatabase, alias);
+  $TaskTable createAlias(String alias) {
+    return $TaskTable(attachedDatabase, alias);
   }
 
-  static TypeConverter<ProjectStatus, int> $converter0 =
-      const EnumIndexConverter<ProjectStatus>(ProjectStatus.values);
+  static JsonTypeConverter2<TaskStatus, int, int> $converterstatus =
+      const EnumIndexConverter<TaskStatus>(TaskStatus.values);
 }
 
 class TaskData extends DataClass implements Insertable<TaskData> {
@@ -221,24 +309,11 @@ class TaskData extends DataClass implements Insertable<TaskData> {
   final String name;
   final int projectId;
   final TaskStatus status;
-  TaskData(
+  const TaskData(
       {required this.id,
       required this.name,
       required this.projectId,
       required this.status});
-  factory TaskData.fromData(Map<String, dynamic> data, {String? prefix}) {
-    final effectivePrefix = prefix ?? '';
-    return TaskData(
-      id: const IntType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}id'])!,
-      name: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}name'])!,
-      projectId: const IntType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}project_id'])!,
-      status: $TaskTable.$converter0.mapToDart(const IntType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}status']))!,
-    );
-  }
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
@@ -246,8 +321,8 @@ class TaskData extends DataClass implements Insertable<TaskData> {
     map['name'] = Variable<String>(name);
     map['project_id'] = Variable<int>(projectId);
     {
-      final converter = $TaskTable.$converter0;
-      map['status'] = Variable<int>(converter.mapToSql(status)!);
+      final converter = $TaskTable.$converterstatus;
+      map['status'] = Variable<int>(converter.toSql(status));
     }
     return map;
   }
@@ -268,7 +343,8 @@ class TaskData extends DataClass implements Insertable<TaskData> {
       id: serializer.fromJson<int>(json['id']),
       name: serializer.fromJson<String>(json['name']),
       projectId: serializer.fromJson<int>(json['projectId']),
-      status: serializer.fromJson<TaskStatus>(json['status']),
+      status: $TaskTable.$converterstatus
+          .fromJson(serializer.fromJson<int>(json['status'])),
     );
   }
   @override
@@ -278,7 +354,8 @@ class TaskData extends DataClass implements Insertable<TaskData> {
       'id': serializer.toJson<int>(id),
       'name': serializer.toJson<String>(name),
       'projectId': serializer.toJson<int>(projectId),
-      'status': serializer.toJson<TaskStatus>(status),
+      'status':
+          serializer.toJson<int>($TaskTable.$converterstatus.toJson(status)),
     };
   }
 
@@ -336,7 +413,7 @@ class TaskCompanion extends UpdateCompanion<TaskData> {
     Expression<int>? id,
     Expression<String>? name,
     Expression<int>? projectId,
-    Expression<TaskStatus>? status,
+    Expression<int>? status,
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
@@ -372,8 +449,8 @@ class TaskCompanion extends UpdateCompanion<TaskData> {
       map['project_id'] = Variable<int>(projectId.value);
     }
     if (status.present) {
-      final converter = $TaskTable.$converter0;
-      map['status'] = Variable<int>(converter.mapToSql(status.value)!);
+      final converter = $TaskTable.$converterstatus;
+      map['status'] = Variable<int>(converter.toSql(status.value));
     }
     return map;
   }
@@ -390,44 +467,48 @@ class TaskCompanion extends UpdateCompanion<TaskData> {
   }
 }
 
-class $TaskTable extends Task with TableInfo<$TaskTable, TaskData> {
+class $FormTable extends Form with TableInfo<$FormTable, FormData> {
   @override
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
-  $TaskTable(this.attachedDatabase, [this._alias]);
-  final VerificationMeta _idMeta = const VerificationMeta('id');
+  $FormTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
   @override
-  late final GeneratedColumn<int?> id = GeneratedColumn<int?>(
+  late final GeneratedColumn<int> id = GeneratedColumn<int>(
       'id', aliasedName, false,
-      type: const IntType(),
+      hasAutoIncrement: true,
+      type: DriftSqlType.int,
       requiredDuringInsert: false,
-      defaultConstraints: 'PRIMARY KEY AUTOINCREMENT');
-  final VerificationMeta _nameMeta = const VerificationMeta('name');
+      defaultConstraints:
+          GeneratedColumn.constraintIsAlways('PRIMARY KEY AUTOINCREMENT'));
+  static const VerificationMeta _nameMeta = const VerificationMeta('name');
   @override
-  late final GeneratedColumn<String?> name = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> name = GeneratedColumn<String>(
       'name', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
-  final VerificationMeta _projectIdMeta = const VerificationMeta('projectId');
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _projectIdMeta =
+      const VerificationMeta('projectId');
   @override
-  late final GeneratedColumn<int?> projectId = GeneratedColumn<int?>(
+  late final GeneratedColumn<int> projectId = GeneratedColumn<int>(
       'project_id', aliasedName, false,
-      type: const IntType(),
+      type: DriftSqlType.int,
       requiredDuringInsert: true,
-      defaultConstraints: 'REFERENCES project (id)');
-  final VerificationMeta _statusMeta = const VerificationMeta('status');
+      defaultConstraints:
+          GeneratedColumn.constraintIsAlways('REFERENCES project (id)'));
+  static const VerificationMeta _statusMeta = const VerificationMeta('status');
   @override
-  late final GeneratedColumnWithTypeConverter<TaskStatus, int?> status =
-      GeneratedColumn<int?>('status', aliasedName, false,
-              type: const IntType(), requiredDuringInsert: true)
-          .withConverter<TaskStatus>($TaskTable.$converter0);
+  late final GeneratedColumnWithTypeConverter<FormStatus, int> status =
+      GeneratedColumn<int>('status', aliasedName, false,
+              type: DriftSqlType.int, requiredDuringInsert: true)
+          .withConverter<FormStatus>($FormTable.$converterstatus);
   @override
   List<GeneratedColumn> get $columns => [id, name, projectId, status];
   @override
-  String get aliasedName => _alias ?? 'task';
+  String get aliasedName => _alias ?? 'form';
   @override
-  String get actualTableName => 'task';
+  String get actualTableName => 'form';
   @override
-  VerificationContext validateIntegrity(Insertable<TaskData> instance,
+  VerificationContext validateIntegrity(Insertable<FormData> instance,
       {bool isInserting = false}) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
@@ -453,18 +534,27 @@ class $TaskTable extends Task with TableInfo<$TaskTable, TaskData> {
   @override
   Set<GeneratedColumn> get $primaryKey => {id};
   @override
-  TaskData map(Map<String, dynamic> data, {String? tablePrefix}) {
-    return TaskData.fromData(data,
-        prefix: tablePrefix != null ? '$tablePrefix.' : null);
+  FormData map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return FormData(
+      id: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}id'])!,
+      name: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}name'])!,
+      projectId: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}project_id'])!,
+      status: $FormTable.$converterstatus.fromSql(attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}status'])!),
+    );
   }
 
   @override
-  $TaskTable createAlias(String alias) {
-    return $TaskTable(attachedDatabase, alias);
+  $FormTable createAlias(String alias) {
+    return $FormTable(attachedDatabase, alias);
   }
 
-  static TypeConverter<TaskStatus, int> $converter0 =
-      const EnumIndexConverter<TaskStatus>(TaskStatus.values);
+  static JsonTypeConverter2<FormStatus, int, int> $converterstatus =
+      const EnumIndexConverter<FormStatus>(FormStatus.values);
 }
 
 class FormData extends DataClass implements Insertable<FormData> {
@@ -472,24 +562,11 @@ class FormData extends DataClass implements Insertable<FormData> {
   final String name;
   final int projectId;
   final FormStatus status;
-  FormData(
+  const FormData(
       {required this.id,
       required this.name,
       required this.projectId,
       required this.status});
-  factory FormData.fromData(Map<String, dynamic> data, {String? prefix}) {
-    final effectivePrefix = prefix ?? '';
-    return FormData(
-      id: const IntType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}id'])!,
-      name: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}name'])!,
-      projectId: const IntType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}project_id'])!,
-      status: $FormTable.$converter0.mapToDart(const IntType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}status']))!,
-    );
-  }
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
@@ -497,8 +574,8 @@ class FormData extends DataClass implements Insertable<FormData> {
     map['name'] = Variable<String>(name);
     map['project_id'] = Variable<int>(projectId);
     {
-      final converter = $FormTable.$converter0;
-      map['status'] = Variable<int>(converter.mapToSql(status)!);
+      final converter = $FormTable.$converterstatus;
+      map['status'] = Variable<int>(converter.toSql(status));
     }
     return map;
   }
@@ -519,7 +596,8 @@ class FormData extends DataClass implements Insertable<FormData> {
       id: serializer.fromJson<int>(json['id']),
       name: serializer.fromJson<String>(json['name']),
       projectId: serializer.fromJson<int>(json['projectId']),
-      status: serializer.fromJson<FormStatus>(json['status']),
+      status: $FormTable.$converterstatus
+          .fromJson(serializer.fromJson<int>(json['status'])),
     );
   }
   @override
@@ -529,7 +607,8 @@ class FormData extends DataClass implements Insertable<FormData> {
       'id': serializer.toJson<int>(id),
       'name': serializer.toJson<String>(name),
       'projectId': serializer.toJson<int>(projectId),
-      'status': serializer.toJson<FormStatus>(status),
+      'status':
+          serializer.toJson<int>($FormTable.$converterstatus.toJson(status)),
     };
   }
 
@@ -587,7 +666,7 @@ class FormCompanion extends UpdateCompanion<FormData> {
     Expression<int>? id,
     Expression<String>? name,
     Expression<int>? projectId,
-    Expression<FormStatus>? status,
+    Expression<int>? status,
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
@@ -623,8 +702,8 @@ class FormCompanion extends UpdateCompanion<FormData> {
       map['project_id'] = Variable<int>(projectId.value);
     }
     if (status.present) {
-      final converter = $FormTable.$converter0;
-      map['status'] = Variable<int>(converter.mapToSql(status.value)!);
+      final converter = $FormTable.$converterstatus;
+      map['status'] = Variable<int>(converter.toSql(status.value));
     }
     return map;
   }
@@ -641,85 +720,8 @@ class FormCompanion extends UpdateCompanion<FormData> {
   }
 }
 
-class $FormTable extends Form with TableInfo<$FormTable, FormData> {
-  @override
-  final GeneratedDatabase attachedDatabase;
-  final String? _alias;
-  $FormTable(this.attachedDatabase, [this._alias]);
-  final VerificationMeta _idMeta = const VerificationMeta('id');
-  @override
-  late final GeneratedColumn<int?> id = GeneratedColumn<int?>(
-      'id', aliasedName, false,
-      type: const IntType(),
-      requiredDuringInsert: false,
-      defaultConstraints: 'PRIMARY KEY AUTOINCREMENT');
-  final VerificationMeta _nameMeta = const VerificationMeta('name');
-  @override
-  late final GeneratedColumn<String?> name = GeneratedColumn<String?>(
-      'name', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
-  final VerificationMeta _projectIdMeta = const VerificationMeta('projectId');
-  @override
-  late final GeneratedColumn<int?> projectId = GeneratedColumn<int?>(
-      'project_id', aliasedName, false,
-      type: const IntType(),
-      requiredDuringInsert: true,
-      defaultConstraints: 'REFERENCES project (id)');
-  final VerificationMeta _statusMeta = const VerificationMeta('status');
-  @override
-  late final GeneratedColumnWithTypeConverter<FormStatus, int?> status =
-      GeneratedColumn<int?>('status', aliasedName, false,
-              type: const IntType(), requiredDuringInsert: true)
-          .withConverter<FormStatus>($FormTable.$converter0);
-  @override
-  List<GeneratedColumn> get $columns => [id, name, projectId, status];
-  @override
-  String get aliasedName => _alias ?? 'form';
-  @override
-  String get actualTableName => 'form';
-  @override
-  VerificationContext validateIntegrity(Insertable<FormData> instance,
-      {bool isInserting = false}) {
-    final context = VerificationContext();
-    final data = instance.toColumns(true);
-    if (data.containsKey('id')) {
-      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
-    }
-    if (data.containsKey('name')) {
-      context.handle(
-          _nameMeta, name.isAcceptableOrUnknown(data['name']!, _nameMeta));
-    } else if (isInserting) {
-      context.missing(_nameMeta);
-    }
-    if (data.containsKey('project_id')) {
-      context.handle(_projectIdMeta,
-          projectId.isAcceptableOrUnknown(data['project_id']!, _projectIdMeta));
-    } else if (isInserting) {
-      context.missing(_projectIdMeta);
-    }
-    context.handle(_statusMeta, const VerificationResult.success());
-    return context;
-  }
-
-  @override
-  Set<GeneratedColumn> get $primaryKey => {id};
-  @override
-  FormData map(Map<String, dynamic> data, {String? tablePrefix}) {
-    return FormData.fromData(data,
-        prefix: tablePrefix != null ? '$tablePrefix.' : null);
-  }
-
-  @override
-  $FormTable createAlias(String alias) {
-    return $FormTable(attachedDatabase, alias);
-  }
-
-  static TypeConverter<FormStatus, int> $converter0 =
-      const EnumIndexConverter<FormStatus>(FormStatus.values);
-}
-
 abstract class _$Database extends GeneratedDatabase {
-  _$Database(QueryExecutor e) : super(SqlTypeSystem.defaultInstance, e);
+  _$Database(QueryExecutor e) : super(e);
   late final $ProjectTable project = $ProjectTable(this);
   late final $TaskTable task = $TaskTable(this);
   late final $FormTable form = $FormTable(this);
@@ -727,7 +729,8 @@ abstract class _$Database extends GeneratedDatabase {
   late final TaskDao taskDao = TaskDao(this as Database);
   late final FormDao formDao = FormDao(this as Database);
   @override
-  Iterable<TableInfo> get allTables => allSchemaEntities.whereType<TableInfo>();
+  Iterable<TableInfo<Table, Object?>> get allTables =>
+      allSchemaEntities.whereType<TableInfo<Table, Object?>>();
   @override
   List<DatabaseSchemaEntity> get allSchemaEntities => [project, task, form];
 }

@@ -33,29 +33,33 @@ mixin _$ProjectsFiltersParameters {
 abstract class $ProjectsFiltersParametersCopyWith<$Res> {
   factory $ProjectsFiltersParametersCopyWith(ProjectsFiltersParameters value,
           $Res Function(ProjectsFiltersParameters) then) =
-      _$ProjectsFiltersParametersCopyWithImpl<$Res>;
+      _$ProjectsFiltersParametersCopyWithImpl<$Res, ProjectsFiltersParameters>;
+  @useResult
   $Res call({String? status});
 }
 
 /// @nodoc
-class _$ProjectsFiltersParametersCopyWithImpl<$Res>
+class _$ProjectsFiltersParametersCopyWithImpl<$Res,
+        $Val extends ProjectsFiltersParameters>
     implements $ProjectsFiltersParametersCopyWith<$Res> {
   _$ProjectsFiltersParametersCopyWithImpl(this._value, this._then);
 
-  final ProjectsFiltersParameters _value;
   // ignore: unused_field
-  final $Res Function(ProjectsFiltersParameters) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? status = freezed,
   }) {
     return _then(_value.copyWith(
-      status: status == freezed
+      status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -67,28 +71,27 @@ abstract class _$$_ProjectsFiltersParametersCopyWith<$Res>
           $Res Function(_$_ProjectsFiltersParameters) then) =
       __$$_ProjectsFiltersParametersCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String? status});
 }
 
 /// @nodoc
 class __$$_ProjectsFiltersParametersCopyWithImpl<$Res>
-    extends _$ProjectsFiltersParametersCopyWithImpl<$Res>
+    extends _$ProjectsFiltersParametersCopyWithImpl<$Res,
+        _$_ProjectsFiltersParameters>
     implements _$$_ProjectsFiltersParametersCopyWith<$Res> {
   __$$_ProjectsFiltersParametersCopyWithImpl(
       _$_ProjectsFiltersParameters _value,
       $Res Function(_$_ProjectsFiltersParameters) _then)
-      : super(_value, (v) => _then(v as _$_ProjectsFiltersParameters));
+      : super(_value, _then);
 
-  @override
-  _$_ProjectsFiltersParameters get _value =>
-      super._value as _$_ProjectsFiltersParameters;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? status = freezed,
   }) {
     return _then(_$_ProjectsFiltersParameters(
-      status: status == freezed
+      status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -118,16 +121,16 @@ class _$_ProjectsFiltersParameters extends _ProjectsFiltersParameters {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ProjectsFiltersParameters &&
-            const DeepCollectionEquality().equals(other.status, status));
+            (identical(other.status, status) || other.status == status));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(status));
+  int get hashCode => Object.hash(runtimeType, status);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ProjectsFiltersParametersCopyWith<_$_ProjectsFiltersParameters>
       get copyWith => __$$_ProjectsFiltersParametersCopyWithImpl<
           _$_ProjectsFiltersParameters>(this, _$identity);
@@ -176,34 +179,38 @@ mixin _$TasksFiltersParameters {
 abstract class $TasksFiltersParametersCopyWith<$Res> {
   factory $TasksFiltersParametersCopyWith(TasksFiltersParameters value,
           $Res Function(TasksFiltersParameters) then) =
-      _$TasksFiltersParametersCopyWithImpl<$Res>;
+      _$TasksFiltersParametersCopyWithImpl<$Res, TasksFiltersParameters>;
+  @useResult
   $Res call({String? status, String? id});
 }
 
 /// @nodoc
-class _$TasksFiltersParametersCopyWithImpl<$Res>
+class _$TasksFiltersParametersCopyWithImpl<$Res,
+        $Val extends TasksFiltersParameters>
     implements $TasksFiltersParametersCopyWith<$Res> {
   _$TasksFiltersParametersCopyWithImpl(this._value, this._then);
 
-  final TasksFiltersParameters _value;
   // ignore: unused_field
-  final $Res Function(TasksFiltersParameters) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? status = freezed,
     Object? id = freezed,
   }) {
     return _then(_value.copyWith(
-      status: status == freezed
+      status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as String?,
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -214,32 +221,31 @@ abstract class _$$_TasksFiltersParametersCopyWith<$Res>
           $Res Function(_$_TasksFiltersParameters) then) =
       __$$_TasksFiltersParametersCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String? status, String? id});
 }
 
 /// @nodoc
 class __$$_TasksFiltersParametersCopyWithImpl<$Res>
-    extends _$TasksFiltersParametersCopyWithImpl<$Res>
+    extends _$TasksFiltersParametersCopyWithImpl<$Res,
+        _$_TasksFiltersParameters>
     implements _$$_TasksFiltersParametersCopyWith<$Res> {
   __$$_TasksFiltersParametersCopyWithImpl(_$_TasksFiltersParameters _value,
       $Res Function(_$_TasksFiltersParameters) _then)
-      : super(_value, (v) => _then(v as _$_TasksFiltersParameters));
+      : super(_value, _then);
 
-  @override
-  _$_TasksFiltersParameters get _value =>
-      super._value as _$_TasksFiltersParameters;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? status = freezed,
     Object? id = freezed,
   }) {
     return _then(_$_TasksFiltersParameters(
-      status: status == freezed
+      status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as String?,
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -271,19 +277,17 @@ class _$_TasksFiltersParameters extends _TasksFiltersParameters {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_TasksFiltersParameters &&
-            const DeepCollectionEquality().equals(other.status, status) &&
-            const DeepCollectionEquality().equals(other.id, id));
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.id, id) || other.id == id));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(status),
-      const DeepCollectionEquality().hash(id));
+  int get hashCode => Object.hash(runtimeType, status, id);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_TasksFiltersParametersCopyWith<_$_TasksFiltersParameters> get copyWith =>
       __$$_TasksFiltersParametersCopyWithImpl<_$_TasksFiltersParameters>(
           this, _$identity);
@@ -334,34 +338,38 @@ mixin _$FormsFiltersParameters {
 abstract class $FormsFiltersParametersCopyWith<$Res> {
   factory $FormsFiltersParametersCopyWith(FormsFiltersParameters value,
           $Res Function(FormsFiltersParameters) then) =
-      _$FormsFiltersParametersCopyWithImpl<$Res>;
+      _$FormsFiltersParametersCopyWithImpl<$Res, FormsFiltersParameters>;
+  @useResult
   $Res call({String? status, String? id});
 }
 
 /// @nodoc
-class _$FormsFiltersParametersCopyWithImpl<$Res>
+class _$FormsFiltersParametersCopyWithImpl<$Res,
+        $Val extends FormsFiltersParameters>
     implements $FormsFiltersParametersCopyWith<$Res> {
   _$FormsFiltersParametersCopyWithImpl(this._value, this._then);
 
-  final FormsFiltersParameters _value;
   // ignore: unused_field
-  final $Res Function(FormsFiltersParameters) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? status = freezed,
     Object? id = freezed,
   }) {
     return _then(_value.copyWith(
-      status: status == freezed
+      status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as String?,
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -372,32 +380,31 @@ abstract class _$$_FormsFiltersParametersCopyWith<$Res>
           $Res Function(_$_FormsFiltersParameters) then) =
       __$$_FormsFiltersParametersCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String? status, String? id});
 }
 
 /// @nodoc
 class __$$_FormsFiltersParametersCopyWithImpl<$Res>
-    extends _$FormsFiltersParametersCopyWithImpl<$Res>
+    extends _$FormsFiltersParametersCopyWithImpl<$Res,
+        _$_FormsFiltersParameters>
     implements _$$_FormsFiltersParametersCopyWith<$Res> {
   __$$_FormsFiltersParametersCopyWithImpl(_$_FormsFiltersParameters _value,
       $Res Function(_$_FormsFiltersParameters) _then)
-      : super(_value, (v) => _then(v as _$_FormsFiltersParameters));
+      : super(_value, _then);
 
-  @override
-  _$_FormsFiltersParameters get _value =>
-      super._value as _$_FormsFiltersParameters;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? status = freezed,
     Object? id = freezed,
   }) {
     return _then(_$_FormsFiltersParameters(
-      status: status == freezed
+      status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as String?,
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -429,19 +436,17 @@ class _$_FormsFiltersParameters extends _FormsFiltersParameters {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FormsFiltersParameters &&
-            const DeepCollectionEquality().equals(other.status, status) &&
-            const DeepCollectionEquality().equals(other.id, id));
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.id, id) || other.id == id));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(status),
-      const DeepCollectionEquality().hash(id));
+  int get hashCode => Object.hash(runtimeType, status, id);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_FormsFiltersParametersCopyWith<_$_FormsFiltersParameters> get copyWith =>
       __$$_FormsFiltersParametersCopyWithImpl<_$_FormsFiltersParameters>(
           this, _$identity);

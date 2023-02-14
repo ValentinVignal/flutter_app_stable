@@ -2,11 +2,8 @@
 
 part of 'form_dao.dart';
 
-// **************************************************************************
-// DaoGenerator
-// **************************************************************************
-
+// ignore_for_file: type=lint
 mixin _$FormDaoMixin on DatabaseAccessor<Database> {
-  $FormTable get form => attachedDatabase.form;
   $ProjectTable get project => attachedDatabase.project;
+  $FormTable get form => attachedDatabase.form;
 }

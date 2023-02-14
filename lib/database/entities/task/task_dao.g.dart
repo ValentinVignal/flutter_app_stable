@@ -2,11 +2,8 @@
 
 part of 'task_dao.dart';
 
-// **************************************************************************
-// DaoGenerator
-// **************************************************************************
-
+// ignore_for_file: type=lint
 mixin _$TaskDaoMixin on DatabaseAccessor<Database> {
-  $TaskTable get task => attachedDatabase.task;
   $ProjectTable get project => attachedDatabase.project;
+  $TaskTable get task => attachedDatabase.task;
 }

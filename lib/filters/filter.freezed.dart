@@ -29,39 +29,42 @@ mixin _$LocalFilter<T> {
 abstract class $LocalFilterCopyWith<T, $Res> {
   factory $LocalFilterCopyWith(
           LocalFilter<T> value, $Res Function(LocalFilter<T>) then) =
-      _$LocalFilterCopyWithImpl<T, $Res>;
+      _$LocalFilterCopyWithImpl<T, $Res, LocalFilter<T>>;
+  @useResult
   $Res call({String name, Iterable<Option<T>> options, Set<T> selected});
 }
 
 /// @nodoc
-class _$LocalFilterCopyWithImpl<T, $Res>
+class _$LocalFilterCopyWithImpl<T, $Res, $Val extends LocalFilter<T>>
     implements $LocalFilterCopyWith<T, $Res> {
   _$LocalFilterCopyWithImpl(this._value, this._then);
 
-  final LocalFilter<T> _value;
   // ignore: unused_field
-  final $Res Function(LocalFilter<T>) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = freezed,
-    Object? options = freezed,
-    Object? selected = freezed,
+    Object? name = null,
+    Object? options = null,
+    Object? selected = null,
   }) {
     return _then(_value.copyWith(
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      options: options == freezed
+      options: null == options
           ? _value.options
           : options // ignore: cast_nullable_to_non_nullable
               as Iterable<Option<T>>,
-      selected: selected == freezed
+      selected: null == selected
           ? _value.selected
           : selected // ignore: cast_nullable_to_non_nullable
               as Set<T>,
-    ));
+    ) as $Val);
   }
 }
 
@@ -72,36 +75,35 @@ abstract class _$$_LocalFilterCopyWith<T, $Res>
           _$_LocalFilter<T> value, $Res Function(_$_LocalFilter<T>) then) =
       __$$_LocalFilterCopyWithImpl<T, $Res>;
   @override
+  @useResult
   $Res call({String name, Iterable<Option<T>> options, Set<T> selected});
 }
 
 /// @nodoc
 class __$$_LocalFilterCopyWithImpl<T, $Res>
-    extends _$LocalFilterCopyWithImpl<T, $Res>
+    extends _$LocalFilterCopyWithImpl<T, $Res, _$_LocalFilter<T>>
     implements _$$_LocalFilterCopyWith<T, $Res> {
   __$$_LocalFilterCopyWithImpl(
       _$_LocalFilter<T> _value, $Res Function(_$_LocalFilter<T>) _then)
-      : super(_value, (v) => _then(v as _$_LocalFilter<T>));
+      : super(_value, _then);
 
-  @override
-  _$_LocalFilter<T> get _value => super._value as _$_LocalFilter<T>;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = freezed,
-    Object? options = freezed,
-    Object? selected = freezed,
+    Object? name = null,
+    Object? options = null,
+    Object? selected = null,
   }) {
     return _then(_$_LocalFilter<T>(
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      options: options == freezed
+      options: null == options
           ? _value.options
           : options // ignore: cast_nullable_to_non_nullable
               as Iterable<Option<T>>,
-      selected: selected == freezed
+      selected: null == selected
           ? _value._selected
           : selected // ignore: cast_nullable_to_non_nullable
               as Set<T>,
@@ -140,7 +142,7 @@ class _$_LocalFilter<T> extends _LocalFilter<T> {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_LocalFilter<T> &&
-            const DeepCollectionEquality().equals(other.name, name) &&
+            (identical(other.name, name) || other.name == name) &&
             const DeepCollectionEquality().equals(other.options, options) &&
             const DeepCollectionEquality().equals(other._selected, _selected));
   }
@@ -148,12 +150,13 @@ class _$_LocalFilter<T> extends _LocalFilter<T> {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(name),
+      name,
       const DeepCollectionEquality().hash(options),
       const DeepCollectionEquality().hash(_selected));
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_LocalFilterCopyWith<T, _$_LocalFilter<T>> get copyWith =>
       __$$_LocalFilterCopyWithImpl<T, _$_LocalFilter<T>>(this, _$identity);
 }
@@ -193,7 +196,8 @@ mixin _$GlobalFilter<T> {
 abstract class $GlobalFilterCopyWith<T, $Res> {
   factory $GlobalFilterCopyWith(
           GlobalFilter<T> value, $Res Function(GlobalFilter<T>) then) =
-      _$GlobalFilterCopyWithImpl<T, $Res>;
+      _$GlobalFilterCopyWithImpl<T, $Res, GlobalFilter<T>>;
+  @useResult
   $Res call(
       {String name,
       Iterable<Option<T>> options,
@@ -201,34 +205,36 @@ abstract class $GlobalFilterCopyWith<T, $Res> {
 }
 
 /// @nodoc
-class _$GlobalFilterCopyWithImpl<T, $Res>
+class _$GlobalFilterCopyWithImpl<T, $Res, $Val extends GlobalFilter<T>>
     implements $GlobalFilterCopyWith<T, $Res> {
   _$GlobalFilterCopyWithImpl(this._value, this._then);
 
-  final GlobalFilter<T> _value;
   // ignore: unused_field
-  final $Res Function(GlobalFilter<T>) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = freezed,
-    Object? options = freezed,
-    Object? appliedFilterStateController = freezed,
+    Object? name = null,
+    Object? options = null,
+    Object? appliedFilterStateController = null,
   }) {
     return _then(_value.copyWith(
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      options: options == freezed
+      options: null == options
           ? _value.options
           : options // ignore: cast_nullable_to_non_nullable
               as Iterable<Option<T>>,
-      appliedFilterStateController: appliedFilterStateController == freezed
+      appliedFilterStateController: null == appliedFilterStateController
           ? _value.appliedFilterStateController
           : appliedFilterStateController // ignore: cast_nullable_to_non_nullable
               as StateController<Set<T>>,
-    ));
+    ) as $Val);
   }
 }
 
@@ -239,6 +245,7 @@ abstract class _$$_GlobalFilterCopyWith<T, $Res>
           _$_GlobalFilter<T> value, $Res Function(_$_GlobalFilter<T>) then) =
       __$$_GlobalFilterCopyWithImpl<T, $Res>;
   @override
+  @useResult
   $Res call(
       {String name,
       Iterable<Option<T>> options,
@@ -247,31 +254,29 @@ abstract class _$$_GlobalFilterCopyWith<T, $Res>
 
 /// @nodoc
 class __$$_GlobalFilterCopyWithImpl<T, $Res>
-    extends _$GlobalFilterCopyWithImpl<T, $Res>
+    extends _$GlobalFilterCopyWithImpl<T, $Res, _$_GlobalFilter<T>>
     implements _$$_GlobalFilterCopyWith<T, $Res> {
   __$$_GlobalFilterCopyWithImpl(
       _$_GlobalFilter<T> _value, $Res Function(_$_GlobalFilter<T>) _then)
-      : super(_value, (v) => _then(v as _$_GlobalFilter<T>));
+      : super(_value, _then);
 
-  @override
-  _$_GlobalFilter<T> get _value => super._value as _$_GlobalFilter<T>;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = freezed,
-    Object? options = freezed,
-    Object? appliedFilterStateController = freezed,
+    Object? name = null,
+    Object? options = null,
+    Object? appliedFilterStateController = null,
   }) {
     return _then(_$_GlobalFilter<T>(
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      options: options == freezed
+      options: null == options
           ? _value.options
           : options // ignore: cast_nullable_to_non_nullable
               as Iterable<Option<T>>,
-      appliedFilterStateController: appliedFilterStateController == freezed
+      appliedFilterStateController: null == appliedFilterStateController
           ? _value.appliedFilterStateController
           : appliedFilterStateController // ignore: cast_nullable_to_non_nullable
               as StateController<Set<T>>,
@@ -305,22 +310,24 @@ class _$_GlobalFilter<T> extends _GlobalFilter<T> {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_GlobalFilter<T> &&
-            const DeepCollectionEquality().equals(other.name, name) &&
+            (identical(other.name, name) || other.name == name) &&
             const DeepCollectionEquality().equals(other.options, options) &&
-            const DeepCollectionEquality().equals(
-                other.appliedFilterStateController,
-                appliedFilterStateController));
+            (identical(other.appliedFilterStateController,
+                    appliedFilterStateController) ||
+                other.appliedFilterStateController ==
+                    appliedFilterStateController));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(name),
+      name,
       const DeepCollectionEquality().hash(options),
-      const DeepCollectionEquality().hash(appliedFilterStateController));
+      appliedFilterStateController);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_GlobalFilterCopyWith<T, _$_GlobalFilter<T>> get copyWith =>
       __$$_GlobalFilterCopyWithImpl<T, _$_GlobalFilter<T>>(this, _$identity);
 }
