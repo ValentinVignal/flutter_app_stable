@@ -95,7 +95,7 @@ class _ProjectListState extends ConsumerState<ProjectList> {
                 final parameters = ProjectsFiltersParameters.fromParsedData(
                   statuses: statuses,
                 );
-                router.replace(
+                router.pushReplacement(
                   ProjectsRoute(
                     status: parameters.status,
                   ).location,

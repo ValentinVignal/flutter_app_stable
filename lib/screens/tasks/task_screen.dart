@@ -201,7 +201,7 @@ class _PreviousNextButton extends ConsumerWidget {
                 statuses: ref.read(taskStatusAppliedFilterProvider),
                 ids: ref.read(taskAppliedFilterProvider),
               );
-              router.replace(
+              router.pushReplacement(
                 TaskRoute(
                   taskId: tasks[index + delta].task.id,
                   status: parameters.status,

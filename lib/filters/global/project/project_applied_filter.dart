@@ -19,7 +19,7 @@ final projectFilterProvider = Provider.autoDispose<GlobalFilter<int>>(
     // leafs of our widget tree.
     // https://github.com/rrousselGit/riverpod/issues/1523#issuecomment-1204063859
     final appliedFiltersNotifier =
-        ref.watch(projectAppliedFilterProvider.state);
+        ref.watch(projectAppliedFilterProvider.notifier);
     final projects = ref.watch(projectsProvider);
 
     return GlobalFilter(
@@ -33,6 +33,6 @@ final projectFilterProvider = Provider.autoDispose<GlobalFilter<int>>(
   },
   dependencies: [
     projectsProvider,
-    projectAppliedFilterProvider.state,
+    projectAppliedFilterProvider,
   ],
 );

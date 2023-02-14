@@ -102,7 +102,7 @@ class _PreviousNextButton extends ConsumerWidget {
                 statuses: ref.read(formStatusAppliedFilterProvider),
                 ids: ref.read(formAppliedFilterProvider),
               );
-              router.replace(
+              router.pushReplacement(
                 FormDialogRoute(
                   formId: forms[index + delta].form.id,
                   status: parameters.status,

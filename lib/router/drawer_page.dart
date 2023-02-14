@@ -171,7 +171,7 @@ extension GoRouterDrawerPageExtension on GoRouter {
 
   void pushDrawer(String location) {
     if (navigatorObserver.top is _DrawerPageRoute) {
-      router.replace(location);
+      router.pushReplacement(location);
     } else {
       router.push(location);
     }

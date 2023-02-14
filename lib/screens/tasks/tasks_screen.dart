@@ -130,7 +130,7 @@ class TaskList extends ConsumerWidget {
       statuses: statuses ?? ref.read(taskStatusAppliedFilterProvider),
       ids: ids ?? ref.read(taskAppliedFilterProvider),
     );
-    router.replace(
+    router.pushReplacement(
       TasksRoute(
         status: parameters.status,
         id: parameters.id,

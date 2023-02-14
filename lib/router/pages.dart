@@ -60,28 +60,9 @@ class _AuthenticatedScreen extends StatelessWidget {
 
 mixin AuthenticatedRoute on GoRouteData {
   @override
-  Page<void> buildPage(BuildContext context) {
+  Page<void> buildPage(BuildContext context, GoRouterState state) {
     return CustomTransitionPage<void>(
-      // Ideally, we should give a key to the `CustomTransitionPage`. We should
-      // use `GoRouterState.pageKey` to get the key but it is not available at
-      // this moment. https://github.com/flutter/flutter/issues/109440. We
-      // cannot really do it ourselves for the following reasons:
-      // - If we give the `GoRouter.location` (or URL), the history cannot
-      //   contain 2 pages with the same key / URL. This has been fixed in
-      //   https://github.com/flutter/packages/pull/2339 on
-      //   `GoRouterState.pageKey` but as said earlier, we cannot access it.
-      // - If I combine the `GoRouter.location` with something unique:
-      //    - Ex: `DateTime.now()`, this doesn't fix the issue as in go_router,
-      //      `RouteBuilder.getPages()` is used to get the pages and all the
-      //      pages are evaluated at once all together so `DateTime.now()` can
-      //      be equal between 2 pages if the execution is fast enough. And we
-      //      fallback in the duplicated key issue. This is also not a good fix
-      //      as between 2 calls of `RouteBuilder.getPages()`, `DateTime.now()`
-      //      and all the existing pages will get a new key and will be rebuilt.
-      //    - Ex: Create a static variable `_count++`, this is not a fix as
-      //      `getPages()` will return all the pages (even the ones already in
-      //      the history), so the already existing pages will be given and new
-      //      key and will be rebuilt.
+      key: state.pageKey,
       transitionsBuilder: (
         context,
         animation,
@@ -92,12 +73,13 @@ mixin AuthenticatedRoute on GoRouteData {
         opacity: animation,
         child: child,
       ),
-      child: build(context),
+      child: build(context, state),
     );
   }
 
   @override
-  Widget build(BuildContext context) => _AuthenticatedScreen(
+  Widget build(BuildContext context, GoRouterState state) =>
+      _AuthenticatedScreen(
         child: buildScreen(),
       );
 
@@ -111,7 +93,7 @@ class HomeRoute extends GoRouteData {
   const HomeRoute();
 
   @override
-  String? redirect() {
+  String? redirect(BuildContext context, GoRouterState state) {
     if (AuthService.isAuthenticatedValueListenable.value) {
       return '/${ProjectsRoute.urlSegment}';
     } else {
@@ -127,7 +109,8 @@ class LoginRoute extends GoRouteData {
   static const urlSegment = 'login';
 
   @override
-  Widget build(BuildContext context) => const LoginScreen();
+  Widget build(BuildContext context, GoRouterState state) =>
+      const LoginScreen();
 }
 
 @TypedGoRoute<SignUpRoute>(path: '/${SignUpRoute.urlSegment}')
@@ -137,7 +120,8 @@ class SignUpRoute extends GoRouteData {
   static const urlSegment = 'sign-up';
 
   @override
-  Widget build(BuildContext context) => const SignUpScreen();
+  Widget build(BuildContext context, GoRouterState state) =>
+      const SignUpScreen();
 }
 
 @TypedGoRoute<ProjectsRoute>(
@@ -337,7 +321,7 @@ class TaskRoute extends GoRouteData with AuthenticatedRoute {
   final String? id;
 
   @override
-  Page<void> buildPageWithState(BuildContext context, GoRouterState state) {
+  Page<void> buildPage(BuildContext context, GoRouterState state) {
     return DrawerPage(
       key: state.pageKey,
       child: buildScreen(),
@@ -483,7 +467,7 @@ class FormDialogRoute extends GoRouteData with AuthenticatedRoute {
   final String? id;
   final String? status;
   @override
-  Page<void> buildPageWithState(context, state) {
+  Page<void> buildPage(context, state) {
     return DialogPage(
       key: ValueKey(DateTime.now()),
       child: buildScreen(),

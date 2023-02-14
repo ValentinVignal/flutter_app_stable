@@ -47,7 +47,7 @@ class _AddressBarState extends State<AddressBar> {
         ),
         controller: _controller,
         onSubmitted: (newUrl) async {
-          context.replace(newUrl);
+          context.pushReplacement(newUrl);
         },
       ),
     );

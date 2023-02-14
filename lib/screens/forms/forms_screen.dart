@@ -155,7 +155,7 @@ class FormList extends ConsumerWidget {
       statuses: statuses ?? ref.read(formStatusAppliedFilterProvider),
       ids: ids ?? ref.read(formAppliedFilterProvider),
     );
-    router.replace(
+    router.pushReplacement(
       FormsRoute(
         status: parameters.status,
         id: parameters.id,

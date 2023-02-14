@@ -161,7 +161,7 @@ class _PreviousNextButton extends ConsumerWidget {
               final delta = type == _PreviousNext.previous ? -1 : 1;
               final parameters = ProjectsFiltersParameters.fromParsedData(
                   statuses: ref.read(projectStatusAppliedFilterProvider));
-              router.replace(
+              router.pushReplacement(
                 ProjectRoute(
                   projectId: projects[index + delta].id,
                   status: parameters.status,
