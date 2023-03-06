@@ -1,0 +1,9 @@
+# import './pokemon_fragment.graphql'
+
+query NestedPokemons {
+  nestedPokemons {
+    nested {
+      ...PokemonFragment
+    }
+  }
+}

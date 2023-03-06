@@ -45,10 +45,39 @@ const Query = _i1.ObjectTypeDefinitionNode(
         ),
         isNonNull: true,
       ),
+    ),
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'nestedPokemons'),
+      directives: [],
+      args: [],
+      type: _i1.ListTypeNode(
+        type: _i1.NamedTypeNode(
+          name: _i1.NameNode(value: 'NestedPokemon'),
+          isNonNull: true,
+        ),
+        isNonNull: true,
+      ),
+    ),
+  ],
+);
+const NestedPokemon = _i1.ObjectTypeDefinitionNode(
+  name: _i1.NameNode(value: 'NestedPokemon'),
+  directives: [],
+  interfaces: [],
+  fields: [
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'nested'),
+      directives: [],
+      args: [],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'Pokemon'),
+        isNonNull: true,
+      ),
     )
   ],
 );
 const document = _i1.DocumentNode(definitions: [
   Pokemon,
   Query,
+  NestedPokemon,
 ]);

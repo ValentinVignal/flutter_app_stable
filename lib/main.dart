@@ -3,6 +3,9 @@ import 'package:ferry/ferry.dart';
 import 'package:ferry_flutter/ferry_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_stable/__generated__/schema.ast.gql.dart';
+import 'package:flutter_app_stable/graphql/__generated__/nested_pokemons.data.gql.dart';
+import 'package:flutter_app_stable/graphql/__generated__/nested_pokemons.req.gql.dart';
+import 'package:flutter_app_stable/graphql/__generated__/nested_pokemons.var.gql.dart';
 import 'package:flutter_app_stable/graphql/__generated__/pokemons.data.gql.dart';
 import 'package:flutter_app_stable/graphql/__generated__/pokemons.req.gql.dart';
 import 'package:flutter_app_stable/graphql/__generated__/pokemons.var.gql.dart';
@@ -10,30 +13,37 @@ import 'package:gql_exec/src/response.dart';
 
 final client = Client(
   link: Link.function((request, [forward]) {
-    return Stream.value(
-      Response(
-        response: const {},
-        data: GPokemonsData((data) {
-          data.pokemons = ListBuilder([
-            GPokemonsData_pokemons((pokemon) {
-              pokemon
-                ..id = '1'
-                ..name = 'Bulbasaur';
-            }),
-            GPokemonsData_pokemons((pokemon) {
-              pokemon
-                ..id = '2'
-                ..name = 'Ivysaur';
-            }),
-            GPokemonsData_pokemons((pokemon) {
-              pokemon
-                ..id = '3'
-                ..name = 'Venusaur';
-            }),
-          ]);
-        }).toJson(),
-      ),
-    );
+    if (request.operation.operationName == 'Pokemons') {
+      return Stream.value(
+        Response(
+          response: const {},
+          data: GPokemonsData((data) {
+            data.pokemons = ListBuilder(List.generate(
+                40,
+                (i) => GPokemonsData_pokemons(
+                      (pokemon) => pokemon
+                        ..id = '$i'
+                        ..name = 'Pokemon $i',
+                    )));
+          }).toJson(),
+        ),
+      );
+    } else {
+      return Stream.value(
+        Response(
+          response: const {},
+          data: GNestedPokemonsData((data) {
+            data.nestedPokemons = ListBuilder(List.generate(
+                40,
+                (i) => GNestedPokemonsData_nestedPokemons(
+                      (pokemon) => pokemon.nested
+                        ..id = '$i'
+                        ..name = 'Pokemon $i',
+                    )));
+          }).toJson(),
+        ),
+      );
+    }
   }),
 );
 
@@ -57,35 +67,75 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Operation<GPokemonsData, GPokemonsVars>(
-      client: client,
-      operationRequest: GPokemonsReq(),
-      builder: (context, result, _) {
-        final pokemons = result?.data?.pokemons ?? BuiltList();
+    return Scaffold(
+      body: Column(
+        children: [
+          Expanded(
+            child: Operation<GPokemonsData, GPokemonsVars>(
+              client: client,
+              operationRequest: GPokemonsReq(),
+              builder: (context, result, _) {
+                final pokemons = result?.data?.pokemons ?? BuiltList();
 
-        return Scaffold(
-          body: ListView.builder(
-            itemCount: pokemons.length,
-            itemBuilder: (context, index) {
-              final pokemon = pokemons[index];
+                return ListView.builder(
+                  itemCount: pokemons.length,
+                  itemBuilder: (context, index) {
+                    final pokemon = pokemons[index];
 
-              return ListTile(
-                title: Text(pokemon.name),
-                subtitle: Text(pokemon.id),
-              );
-            },
+                    return ListTile(
+                      title: Text(pokemon.name),
+                      subtitle: Text(pokemon.id),
+                    );
+                  },
+                );
+              },
+            ),
           ),
-          floatingActionButton: FloatingActionButton(
-            onPressed: pokemons.isNotEmpty
-                ? () {
-                    client.cache
-                        .evict('${Pokemon.name.value}:${pokemons.first.id}');
-                  }
-                : null,
-            child: const Icon(Icons.remove),
+          Expanded(
+            child: Operation<GNestedPokemonsData, GNestedPokemonsVars>(
+              client: client,
+              operationRequest: GNestedPokemonsReq(),
+              builder: (context, result, _) {
+                final pokemons = result?.data?.nestedPokemons ?? BuiltList();
+
+                return ListView.builder(
+                  itemCount: pokemons.length,
+                  itemBuilder: (context, index) {
+                    final pokemon = pokemons[index];
+
+                    return ListTile(
+                      title: Text(pokemon.nested.name),
+                      subtitle: Text(pokemon.nested.id),
+                    );
+                  },
+                );
+              },
+            ),
           ),
-        );
+        ],
+      ),
+      floatingActionButton: const FAB(),
+    );
+  }
+}
+
+class FAB extends StatefulWidget {
+  const FAB({super.key});
+
+  @override
+  State<FAB> createState() => _FABState();
+}
+
+class _FABState extends State<FAB> {
+  int id = 0;
+  @override
+  Widget build(BuildContext context) {
+    return FloatingActionButton(
+      onPressed: () {
+        client.cache.evict('${Pokemon.name.value}:$id');
+        id++;
       },
+      child: const Icon(Icons.remove),
     );
   }
 }

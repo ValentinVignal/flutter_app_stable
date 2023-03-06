@@ -8,6 +8,11 @@ part of 'serializers.gql.dart';
 
 Serializers _$serializers = (new Serializers().toBuilder()
       ..add(FetchPolicy.serializer)
+      ..add(GNestedPokemonsData.serializer)
+      ..add(GNestedPokemonsData_nestedPokemons.serializer)
+      ..add(GNestedPokemonsData_nestedPokemons_nested.serializer)
+      ..add(GNestedPokemonsReq.serializer)
+      ..add(GNestedPokemonsVars.serializer)
       ..add(GPokemonFragmentData.serializer)
       ..add(GPokemonFragmentReq.serializer)
       ..add(GPokemonFragmentVars.serializer)
@@ -15,6 +20,10 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(GPokemonsData_pokemons.serializer)
       ..add(GPokemonsReq.serializer)
       ..add(GPokemonsVars.serializer)
+      ..addBuilderFactory(
+          const FullType(BuiltList,
+              const [const FullType(GNestedPokemonsData_nestedPokemons)]),
+          () => new ListBuilder<GNestedPokemonsData_nestedPokemons>())
       ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(GPokemonsData_pokemons)]),

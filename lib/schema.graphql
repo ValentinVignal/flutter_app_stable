@@ -5,4 +5,9 @@ type Pokemon {
 
 type Query {
   pokemons: [Pokemon!]!
+  nestedPokemons: [NestedPokemon!]!
+}
+
+type NestedPokemon {
+  nested: Pokemon!
 }
