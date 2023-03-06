@@ -6,8 +6,6 @@ import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:flutter_app_stable/__generated__/serializers.gql.dart' as _i1;
-import 'package:flutter_app_stable/graphql/__generated__/pokemon_fragment.data.gql.dart'
-    as _i2;
 
 part 'nested_pokemons.data.gql.g.dart';
 
@@ -68,8 +66,7 @@ abstract class GNestedPokemonsData_nestedPokemons
 abstract class GNestedPokemonsData_nestedPokemons_nested
     implements
         Built<GNestedPokemonsData_nestedPokemons_nested,
-            GNestedPokemonsData_nestedPokemons_nestedBuilder>,
-        _i2.GPokemonFragment {
+            GNestedPokemonsData_nestedPokemons_nestedBuilder> {
   GNestedPokemonsData_nestedPokemons_nested._();
 
   factory GNestedPokemonsData_nestedPokemons_nested(
@@ -79,16 +76,12 @@ abstract class GNestedPokemonsData_nestedPokemons_nested
   static void _initializeBuilder(
           GNestedPokemonsData_nestedPokemons_nestedBuilder b) =>
       b..G__typename = 'Pokemon';
-  @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
-  @override
   String get id;
-  @override
   String get name;
   static Serializer<GNestedPokemonsData_nestedPokemons_nested> get serializer =>
       _$gNestedPokemonsDataNestedPokemonsNestedSerializer;
-  @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GNestedPokemonsData_nestedPokemons_nested.serializer,
         this,

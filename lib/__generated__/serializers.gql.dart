@@ -14,12 +14,6 @@ import 'package:flutter_app_stable/graphql/__generated__/nested_pokemons.req.gql
     show GNestedPokemonsReq;
 import 'package:flutter_app_stable/graphql/__generated__/nested_pokemons.var.gql.dart'
     show GNestedPokemonsVars;
-import 'package:flutter_app_stable/graphql/__generated__/pokemon_fragment.data.gql.dart'
-    show GPokemonFragmentData;
-import 'package:flutter_app_stable/graphql/__generated__/pokemon_fragment.req.gql.dart'
-    show GPokemonFragmentReq;
-import 'package:flutter_app_stable/graphql/__generated__/pokemon_fragment.var.gql.dart'
-    show GPokemonFragmentVars;
 import 'package:flutter_app_stable/graphql/__generated__/pokemons.data.gql.dart'
     show GPokemonsData, GPokemonsData_pokemons;
 import 'package:flutter_app_stable/graphql/__generated__/pokemons.req.gql.dart'
@@ -40,9 +34,6 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GNestedPokemonsData_nestedPokemons_nested,
   GNestedPokemonsReq,
   GNestedPokemonsVars,
-  GPokemonFragmentData,
-  GPokemonFragmentReq,
-  GPokemonFragmentVars,
   GPokemonsData,
   GPokemonsData_pokemons,
   GPokemonsReq,

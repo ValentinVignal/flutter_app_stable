@@ -2,8 +2,6 @@
 // ignore_for_file: type=lint
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:flutter_app_stable/graphql/__generated__/pokemon_fragment.ast.gql.dart'
-    as _i2;
 import 'package:gql/ast.dart' as _i1;
 
 const Pokemons = _i1.OperationDefinitionNode(
@@ -18,15 +16,22 @@ const Pokemons = _i1.OperationDefinitionNode(
       arguments: [],
       directives: [],
       selectionSet: _i1.SelectionSetNode(selections: [
-        _i1.FragmentSpreadNode(
-          name: _i1.NameNode(value: 'PokemonFragment'),
+        _i1.FieldNode(
+          name: _i1.NameNode(value: 'id'),
+          alias: null,
+          arguments: [],
           directives: [],
-        )
+          selectionSet: null,
+        ),
+        _i1.FieldNode(
+          name: _i1.NameNode(value: 'name'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: null,
+        ),
       ]),
     )
   ]),
 );
-const document = _i1.DocumentNode(definitions: [
-  Pokemons,
-  _i2.PokemonFragment,
-]);
+const document = _i1.DocumentNode(definitions: [Pokemons]);

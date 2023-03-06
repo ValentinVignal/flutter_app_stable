@@ -1,7 +1,6 @@
-# import './pokemon_fragment.graphql'
-
 query Pokemons {
   pokemons {
-    ...PokemonFragment
+    id
+    name
   }
 }

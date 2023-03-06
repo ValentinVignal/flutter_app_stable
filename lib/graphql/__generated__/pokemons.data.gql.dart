@@ -6,8 +6,6 @@ import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:flutter_app_stable/__generated__/serializers.gql.dart' as _i1;
-import 'package:flutter_app_stable/graphql/__generated__/pokemon_fragment.data.gql.dart'
-    as _i2;
 
 part 'pokemons.data.gql.g.dart';
 
@@ -36,9 +34,7 @@ abstract class GPokemonsData
 }
 
 abstract class GPokemonsData_pokemons
-    implements
-        Built<GPokemonsData_pokemons, GPokemonsData_pokemonsBuilder>,
-        _i2.GPokemonFragment {
+    implements Built<GPokemonsData_pokemons, GPokemonsData_pokemonsBuilder> {
   GPokemonsData_pokemons._();
 
   factory GPokemonsData_pokemons(
@@ -47,16 +43,12 @@ abstract class GPokemonsData_pokemons
 
   static void _initializeBuilder(GPokemonsData_pokemonsBuilder b) =>
       b..G__typename = 'Pokemon';
-  @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
-  @override
   String get id;
-  @override
   String get name;
   static Serializer<GPokemonsData_pokemons> get serializer =>
       _$gPokemonsDataPokemonsSerializer;
-  @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GPokemonsData_pokemons.serializer,
         this,
