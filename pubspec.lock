@@ -172,17 +172,17 @@ packages:
   ferry:
     dependency: "direct main"
     description:
-      name: ferry
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.13.0"
+      path: "../ferry/packages/ferry"
+      relative: true
+    source: path
+    version: "0.14.0-dev.0+2"
   ferry_cache:
     dependency: transitive
     description:
       name: ferry_cache
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.7.0"
+    version: "0.7.1-dev.2"
   ferry_exec:
     dependency: transitive
     description:
@@ -190,13 +190,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.3.0"
-  ferry_flutter:
-    dependency: "direct main"
-    description:
-      name: ferry_flutter
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.8.0"
   ferry_generator:
     dependency: "direct dev"
     description:
@@ -210,7 +203,7 @@ packages:
       name: ferry_store
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.5.0"
+    version: "0.5.1"
   file:
     dependency: transitive
     description:
@@ -390,12 +383,12 @@ packages:
     source: hosted
     version: "1.0.4"
   normalize:
-    dependency: transitive
+    dependency: "direct overridden"
     description:
-      name: normalize
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.8.0"
+      path: "../ferry/packages/normalize"
+      relative: true
+    source: path
+    version: "0.8.0-dev.0+2"
   package_config:
     dependency: transitive
     description:

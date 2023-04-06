@@ -1,6 +1,5 @@
 import 'package:built_collection/built_collection.dart';
 import 'package:ferry/ferry.dart';
-import 'package:ferry_flutter/ferry_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_stable/__generated__/schema.ast.gql.dart';
 import 'package:flutter_app_stable/graphql/__generated__/nested_pokemons.data.gql.dart';
@@ -10,6 +9,8 @@ import 'package:flutter_app_stable/graphql/__generated__/pokemons.data.gql.dart'
 import 'package:flutter_app_stable/graphql/__generated__/pokemons.req.gql.dart';
 import 'package:flutter_app_stable/graphql/__generated__/pokemons.var.gql.dart';
 import 'package:gql_exec/src/response.dart';
+
+import 'operation.dart';
 
 final client = Client(
   link: Link.function((request, [forward]) {
