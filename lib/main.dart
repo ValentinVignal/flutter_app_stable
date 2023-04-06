@@ -65,7 +65,6 @@ class _MyWidgetState extends ConsumerState<MyWidget> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(ref.watch(a)),
             // If you open, close and open again, you will see the error:
             //
             // The following assertion was thrown building Consumer(dirty, dependencies:

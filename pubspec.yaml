@@ -48,6 +48,12 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
 
+dependency_overrides:
+  flutter_riverpod:
+    path: ../riverpod/packages/flutter_riverpod
+  riverpod:
+    path: ../riverpod/packages/riverpod
+
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
