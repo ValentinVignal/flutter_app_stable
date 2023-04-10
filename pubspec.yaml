@@ -53,6 +53,8 @@ dev_dependencies:
 dependency_overrides:
   normalize:
     path: ../ferry/packages/normalize
+  ferry_cache:
+    path: ../ferry/packages/ferry_cache
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
