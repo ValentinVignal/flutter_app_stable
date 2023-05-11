@@ -1,0 +1,8 @@
+# import './fragment.workspace.graphql'
+
+query Workspace2 {
+  workspace {
+    ...WorkspaceFragment
+    description2
+  }
+}
