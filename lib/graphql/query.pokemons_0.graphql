@@ -1,0 +1,6 @@
+query Pokemons0 {
+  pokemons {
+    id
+    name
+  }
+}

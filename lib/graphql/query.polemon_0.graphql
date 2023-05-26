@@ -1,0 +1,7 @@
+query Pokemon0($id: ID!) {
+  pokemon(id: $id) {
+    id
+    name
+    type
+  }
+}
