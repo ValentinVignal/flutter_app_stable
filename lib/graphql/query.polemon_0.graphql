@@ -1,7 +1,0 @@
-# import './fragment.pokemon.graphql'
-
-query Pokemon0($id: ID!) {
-  pokemon(id: $id) {
-    ...PokemonFragment
-  }
-}

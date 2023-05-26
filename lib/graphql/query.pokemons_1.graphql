@@ -1,6 +1,0 @@
-query Pokemons1 {
-  pokemons {
-    id
-    name
-  }
-}
