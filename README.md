@@ -1,3 +1,5 @@
+[![wakatime](https://wakatime.com/badge/github/ValentinVignal/flutter_app_stable.svg)](https://wakatime.com/badge/github/ValentinVignal/flutter_app_stable)
+
 # flutter_app_stable
 
 A new Flutter project.
