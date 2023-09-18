@@ -37,6 +37,7 @@ class _MyHomePageState extends State<MyHomePage> {
             duration: const Duration(milliseconds: 300),
             transitionBuilder: (child, animation) {
               return SizeTransition(
+                crossAxisSizeFactor: 1,
                 sizeFactor: animation,
                 axis: Axis.vertical,
                 child: child,
