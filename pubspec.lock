@@ -207,14 +207,14 @@ packages:
       path: "../drift/drift"
       relative: true
     source: path
-    version: "2.12.0-dev"
+    version: "2.12.0"
   drift_dev:
     dependency: "direct dev"
     description:
       path: "../drift/drift_dev"
       relative: true
     source: path
-    version: "2.12.0-dev"
+    version: "2.12.0"
   fake_async:
     dependency: transitive
     description:
@@ -476,7 +476,7 @@ packages:
       path: "../drift/sqlparser"
       relative: true
     source: path
-    version: "0.31.1"
+    version: "0.31.2"
   stack_trace:
     dependency: transitive
     description:
