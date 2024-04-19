@@ -41,7 +41,7 @@ class Widget1 extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final version = ref.watch(combinedProvider) != null;
 
-    return Text(version.toString());
+    return Text('version $version');
   }
 }
 
@@ -50,39 +50,25 @@ class Widget2 extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isPublished = ref.watch(combinedProvider) != null;
-    final versions = ref.watch(providerNotifier);
-    return Text('versions ${versions != null}, $isPublished');
+    final combined = ref.watch(combinedProvider) != null;
+    final provider = ref.watch(secondProvider) != null;
+    return Text('notifier $provider, combined $combined');
   }
 }
 
 final parameterProvider = Provider.autoDispose<int?>((ref) => null);
 
-final streamProvider = StreamProvider.autoDispose<int>((ref) async* {
-  yield 42;
+final futureProvider = FutureProvider.autoDispose<int>((ref) async {
+  return 42;
 });
 
-final providerNotifier =
-    StateNotifierProvider.autoDispose<Notifier, int?>((ref) {
-  return Notifier(ref.watch(streamProvider).valueOrNull);
-}, dependencies: [streamProvider]);
-
-class Notifier extends StateNotifier<int?> {
-  Notifier(super.state);
-}
-
-final effectiveParameterProvider = Provider.autoDispose<int?>(
-  (ref) {
-    return ref.watch(parameterProvider) ?? ref.watch(providerNotifier);
-  },
-  dependencies: [parameterProvider, providerNotifier],
-);
+final secondProvider = Provider.autoDispose<int?>((ref) {
+  return ref.watch(futureProvider).valueOrNull;
+}, dependencies: [futureProvider]);
 
 final combinedProvider = Provider.autoDispose<int?>(
   (ref) {
-    final param = ref.watch(effectiveParameterProvider) ?? 0;
-    final value = ref.watch(providerNotifier) ?? 0;
-    return value + param;
+    return ref.watch(parameterProvider) ?? ref.watch(secondProvider);
   },
-  dependencies: [effectiveParameterProvider, providerNotifier],
+  dependencies: [parameterProvider, secondProvider],
 );
