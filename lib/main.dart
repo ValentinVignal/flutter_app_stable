@@ -18,6 +18,23 @@ final streamProvider = StreamProvider.autoDispose<int>(
   dependencies: [stateProvider],
 );
 
+// Note: it works properly if `streamProvider` is replaced with:
+
+// Stream<int> _buildStream(int value) async* {
+//   for (var i = 0; i < 10; i++) {
+//     await Future.delayed(const Duration(seconds: 1));
+//     yield value * 100 + i;
+//   }
+// }
+
+// final streamProvider = StreamProvider.autoDispose<int>(
+//   (ref) {
+//     final state = ref.watch(stateProvider);
+//     return _buildStream(state);
+//   },
+//   dependencies: [stateProvider],
+// );
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
