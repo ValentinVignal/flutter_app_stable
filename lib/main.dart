@@ -11,7 +11,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       home: Scaffold(
-        body: Center(),
+        body: Center(
+          child: MyWidget(),
+        ),
       ),
     );
   }
