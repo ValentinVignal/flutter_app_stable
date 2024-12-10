@@ -33,7 +33,7 @@ class DocumentsScreen extends ConsumerWidget {
       ),
       body: Column(
         children: [
-          const _DocumentsFilters(),
+          if (false) const _DocumentsFilters(),
           Expanded(child: body),
         ],
       ),
