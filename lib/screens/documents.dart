@@ -33,7 +33,7 @@ class DocumentsScreen extends ConsumerWidget {
       ),
       body: Column(
         children: [
-          if (false) const _DocumentsFilters(),
+          const _DocumentsFilters(),
           Expanded(child: body),
         ],
       ),
@@ -46,6 +46,7 @@ class _DocumentsFilters extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final selected = ref.watch(documentTypeProvider);
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Row(
@@ -55,7 +56,10 @@ class _DocumentsFilters extends ConsumerWidget {
             child: SegmentedButton<DocumentType>(
               emptySelectionAllowed: true,
               multiSelectionEnabled: true,
-              onSelectionChanged: (selected) {},
+              onSelectionChanged: (selected) {
+                ref.read(documentTypeProvider.notifier).state =
+                    selected.toSet();
+              },
               segments: DocumentType.values
                   .map(
                     (type) => ButtonSegment(
@@ -64,14 +68,16 @@ class _DocumentsFilters extends ConsumerWidget {
                     ),
                   )
                   .toList(),
-              selected: DocumentType.values.toSet(),
+              selected: selected,
             ),
           ),
           const SizedBox(width: 8),
           Expanded(
             child: TextFormField(
               decoration: const InputDecoration(prefix: Icon(Icons.search)),
-              onChanged: (value) {},
+              onChanged: (value) {
+                ref.read(searchProvider.notifier).state = value;
+              },
             ),
           ),
         ],
@@ -85,7 +91,7 @@ class _DocumentsList extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final documents = ref.watch(documentsProvider).valueOrNull ?? const [];
+    final documents = ref.watch(filteredDocumentsProvider);
     return ListView.builder(
       itemCount: documents.length,
       itemBuilder: (context, index) {

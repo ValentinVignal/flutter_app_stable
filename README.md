@@ -1,18 +1,14 @@
-[![wakatime](https://wakatime.com/badge/github/ValentinVignal/flutter_app_stable.svg)](https://wakatime.com/badge/github/ValentinVignal/flutter_app_stable)
+# Introduction to riverpod
 
-# flutter_app_stable
+1. How does it work?
+   1. How are the data stored
+   2. How are the data updated
+2. How to use it
 
-A new Flutter project.
+## TLDR:
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Use immutable data
+- Use the simplest provider possible
+- Use `ref.watch` in widget's and provider's `build`.
+- Use `ref.read` for callbacks.
+- Keep your widget's `build` method pure

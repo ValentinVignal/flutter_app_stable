@@ -1,30 +1,69 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
 import 'package:flutter/material.dart';
-import 'package:flutter_test/flutter_test.dart';
-
+import 'package:flutter_app_stable/data/document.dart';
 import 'package:flutter_app_stable/main.dart';
+import 'package:flutter_app_stable/providers/documents_provider.dart';
+import 'package:flutter_app_stable/screens/documents.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
-
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
-
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
+    await tester.pumpWidget(
+      ProviderScope(
+        overrides: [
+          documentsProvider.overrideWith(
+            (ref) => Stream.value([
+              Document(
+                id: 0,
+                name: 'Document 0',
+                updatedAt: DateTime.now(),
+                type: DocumentType.pdf,
+              ),
+              Document(
+                id: 1,
+                name: 'Document 1',
+                updatedAt: DateTime.now(),
+                type: DocumentType.txt,
+              ),
+            ]),
+          ),
+        ],
+        child: const MyApp(),
+      ),
+    );
     await tester.pump();
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    expect(find.byType(DocumentsScreen), findsOne);
+
+    expect(find.text('Document 0 .pdf'), findsOneWidget);
+    expect(find.text('Document 1 .txt'), findsOneWidget);
+
+    await expectLater(
+      find.byType(MaterialApp),
+      matchesGoldenFile('golden/widget.test.0.png'),
+    );
+
+    await tester.tap(find.text('pdf'));
+    await tester.pump();
+
+    await expectLater(
+      find.byType(MaterialApp),
+      matchesGoldenFile('golden/widget.test.1.png'),
+    );
+
+    expect(find.text('Document 0 .pdf'), findsNothing);
+    expect(find.text('Document 1 .txt'), findsOneWidget);
+
+    await tester.tap(find.text('pdf'));
+    await tester.pump();
+
+    expect(find.text('Document 0 .pdf'), findsOneWidget);
+    expect(find.text('Document 1 .txt'), findsOneWidget);
+
+    await tester.enterText(find.byType(TextFormField), '0');
+    await tester.pump();
+
+    expect(find.text('Document 0 .pdf'), findsOneWidget);
+    expect(find.text('Document 1 .txt'), findsNothing);
   });
 }
