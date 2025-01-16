@@ -1,0 +1,52 @@
+import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_app_stable/screens/home.dart';
+import 'package:flutter_app_stable/screens/wizard.dart';
+import 'package:go_router/go_router.dart';
+import 'package:imperative_page_routes/imperative_page_routes.dart';
+
+part 'routes.g.dart';
+
+@TypedGoRoute<HomeRoute>(
+  path: '/home',
+  routes: [
+    TypedGoRoute<WizardRoute>(path: 'dialog'),
+  ],
+)
+class HomeRoute extends GoRouteData {
+  const HomeRoute();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) => const HomeScreen();
+}
+
+class _WizardKey with EquatableMixin implements LocalKey {
+  const _WizardKey({
+    required this.pageKey,
+    required this.step,
+  });
+
+  final ValueKey<String> pageKey;
+  final int step;
+
+  @override
+  List<Object?> get props => [pageKey, step];
+}
+
+class WizardRoute extends GoRouteData {
+  const WizardRoute({
+    this.step = 0,
+  });
+
+  final int step;
+
+  @override
+  Page<void> buildPage(BuildContext context, GoRouterState state) {
+    return DialogPage(
+      key: _WizardKey(pageKey: state.pageKey, step: step),
+      child: WizardScreen(
+        step: step,
+      ),
+    );
+  }
+}
