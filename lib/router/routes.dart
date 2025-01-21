@@ -41,6 +41,32 @@ class WizardRoute extends GoRouteData {
   final int step;
 
   @override
+  Future<bool> onExit(BuildContext context, GoRouterState state) async {
+    print(state.uri);
+    final didPop = await showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Are you sure?'),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop(false);
+            },
+            child: const Text('No'),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.of(context).pop(true);
+            },
+            child: const Text('Yes'),
+          ),
+        ],
+      ),
+    );
+    return didPop ?? false;
+  }
+
+  @override
   Page<void> buildPage(BuildContext context, GoRouterState state) {
     return DialogPage(
       key: _WizardKey(pageKey: state.pageKey, step: step),
