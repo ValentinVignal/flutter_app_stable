@@ -1,0 +1,22 @@
+interface Person {
+  id: ID!
+  name: String!
+  email: String!
+}
+
+type User implements Person {
+  id: ID!
+  name: String!
+  email: String!
+}
+
+type Agent implements Person {
+  id: ID!
+  name: String!
+  email: String!
+}
+
+type Query {
+  users: [User!]!
+  agents: [Agent!]!
+}
