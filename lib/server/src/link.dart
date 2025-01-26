@@ -3,13 +3,15 @@ import 'dart:developer';
 import 'package:built_collection/built_collection.dart';
 import 'package:ferry/ferry.dart';
 import 'package:flutter_app_stable/src/graphql/__generated__/fragment.user.data.gql.dart';
+import 'package:flutter_app_stable/src/graphql/__generated__/mutation.create_user.data.gql.dart';
 import 'package:flutter_app_stable/src/graphql/__generated__/query.user.data.gql.dart';
 import 'package:flutter_app_stable/src/graphql/__generated__/query.users.data.gql.dart';
 import 'package:gql_exec/gql_exec.dart';
 
 class ServerLink extends Link {
-  final _users = {
-    for (var i = 0; i < 2; i++)
+  var _userCount = 2;
+  late final _users = {
+    for (var i = 0; i < _userCount; i++)
       i.toString(): GUserFragmentData(
         (user) => user
           ..id = i.toString()
@@ -26,6 +28,9 @@ class ServerLink extends Link {
         return _getUsers(request);
       case 'User':
         return _getUser(request);
+      case 'CreateUser':
+        return _createUser(request);
+
       default:
         throw Exception('Operation not found');
     }
@@ -66,6 +71,28 @@ class ServerLink extends Link {
         errors: errors,
         context: request.context,
         data: data?.toJson(),
+        response: const {},
+      ),
+    );
+  }
+
+  Stream<Response> _createUser(Request request) {
+    final errors = <GraphQLError>[];
+    final index = _userCount++;
+    final newUser = GUserFragmentData((user) => user
+      ..id = index.toString()
+      ..name = 'User $index'
+      ..email = 'email $index');
+    _users[index.toString()] = newUser;
+    final data = GCreateUserData(
+      (user) => user.createUser =
+          GCreateUserData_createUser.fromJson(newUser.toJson())!.toBuilder(),
+    );
+    return Stream.value(
+      Response(
+        errors: errors,
+        context: request.context,
+        data: data.toJson(),
         response: const {},
       ),
     );

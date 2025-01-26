@@ -1,7 +1,0 @@
-query Agents {
-  agents {
-    id
-    name
-    email
-  }
-}

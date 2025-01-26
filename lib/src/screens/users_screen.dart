@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_stable/src/graphql/__generated__/mutation.create_user.req.gql.dart';
+import 'package:flutter_app_stable/src/graphql/__generated__/query.users.data.gql.dart';
+import 'package:flutter_app_stable/src/graphql/client.dart';
 import 'package:flutter_app_stable/src/graphql/router/routes.dart';
 import 'package:flutter_app_stable/src/providers/users_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -34,6 +37,57 @@ class UsersScreen extends ConsumerWidget {
         title: const Text('Users'),
       ),
       body: child,
+      floatingActionButton: const CreateUserFAB(),
+    );
+  }
+}
+
+class CreateUserFAB extends ConsumerStatefulWidget {
+  const CreateUserFAB({super.key});
+
+  @override
+  ConsumerState<CreateUserFAB> createState() => _CreateUserFABState();
+}
+
+class _CreateUserFABState extends ConsumerState<CreateUserFAB> {
+  var enabled = true;
+
+  @override
+  Widget build(BuildContext context) {
+    return FloatingActionButton(
+      onPressed: enabled
+          ? () async {
+              setState(() {
+                enabled = false;
+              });
+              try {
+                final client = GraphqlClient.instance;
+
+                final user =
+                    (await client.request(GCreateUserReq()).first).data;
+                final cache = client.cache;
+
+                final usersRequest = ref.read(usersRequestProvider);
+                final cacheData = cache.readQuery(usersRequest);
+                if (cacheData != null && user != null) {
+                  cache.writeQuery(
+                    usersRequest,
+                    cacheData.rebuild(
+                      (users) => users.users.add(
+                        GUsersData_users.fromJson(user.createUser.toJson())!,
+                      ),
+                    ),
+                  );
+                }
+              } finally {
+                setState(() {
+                  enabled = true;
+                });
+              }
+            }
+          : null,
+      child:
+          enabled ? const Icon(Icons.add) : const CircularProgressIndicator(),
     );
   }
 }

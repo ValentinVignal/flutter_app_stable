@@ -5,36 +5,36 @@
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:ferry_exec/ferry_exec.dart' as _i1;
-import 'package:flutter_app_stable/src/graphql/__generated__/query.agents.ast.gql.dart'
+import 'package:flutter_app_stable/src/graphql/__generated__/mutation.create_user.ast.gql.dart'
     as _i5;
-import 'package:flutter_app_stable/src/graphql/__generated__/query.agents.data.gql.dart'
+import 'package:flutter_app_stable/src/graphql/__generated__/mutation.create_user.data.gql.dart'
     as _i2;
-import 'package:flutter_app_stable/src/graphql/__generated__/query.agents.var.gql.dart'
+import 'package:flutter_app_stable/src/graphql/__generated__/mutation.create_user.var.gql.dart'
     as _i3;
 import 'package:flutter_app_stable/src/graphql/__generated__/serializers.gql.dart'
     as _i6;
 import 'package:gql_exec/gql_exec.dart' as _i4;
 
-part 'query.agents.req.gql.g.dart';
+part 'mutation.create_user.req.gql.g.dart';
 
-abstract class GAgentsReq
+abstract class GCreateUserReq
     implements
-        Built<GAgentsReq, GAgentsReqBuilder>,
-        _i1.OperationRequest<_i2.GAgentsData, _i3.GAgentsVars> {
-  GAgentsReq._();
+        Built<GCreateUserReq, GCreateUserReqBuilder>,
+        _i1.OperationRequest<_i2.GCreateUserData, _i3.GCreateUserVars> {
+  GCreateUserReq._();
 
-  factory GAgentsReq([void Function(GAgentsReqBuilder b) updates]) =
-      _$GAgentsReq;
+  factory GCreateUserReq([void Function(GCreateUserReqBuilder b) updates]) =
+      _$GCreateUserReq;
 
-  static void _initializeBuilder(GAgentsReqBuilder b) => b
+  static void _initializeBuilder(GCreateUserReqBuilder b) => b
     ..operation = _i4.Operation(
       document: _i5.document,
-      operationName: 'Agents',
+      operationName: 'CreateUser',
     )
     ..executeOnListen = true;
 
   @override
-  _i3.GAgentsVars get vars;
+  _i3.GCreateUserVars get vars;
   @override
   _i4.Operation get operation;
   @override
@@ -48,12 +48,12 @@ abstract class GAgentsReq
   String? get requestId;
   @override
   @BuiltValueField(serialize: false)
-  _i2.GAgentsData? Function(
-    _i2.GAgentsData?,
-    _i2.GAgentsData?,
+  _i2.GCreateUserData? Function(
+    _i2.GCreateUserData?,
+    _i2.GCreateUserData?,
   )? get updateResult;
   @override
-  _i2.GAgentsData? get optimisticResponse;
+  _i2.GCreateUserData? get optimisticResponse;
   @override
   String? get updateCacheHandlerKey;
   @override
@@ -66,30 +66,31 @@ abstract class GAgentsReq
   @BuiltValueField(serialize: false)
   _i4.Context? get context;
   @override
-  _i2.GAgentsData? parseData(Map<String, dynamic> json) =>
-      _i2.GAgentsData.fromJson(json);
+  _i2.GCreateUserData? parseData(Map<String, dynamic> json) =>
+      _i2.GCreateUserData.fromJson(json);
 
   @override
   Map<String, dynamic> varsToJson() => vars.toJson();
 
   @override
-  Map<String, dynamic> dataToJson(_i2.GAgentsData data) => data.toJson();
+  Map<String, dynamic> dataToJson(_i2.GCreateUserData data) => data.toJson();
 
   @override
-  _i1.OperationRequest<_i2.GAgentsData, _i3.GAgentsVars> transformOperation(
-          _i4.Operation Function(_i4.Operation) transform) =>
-      this.rebuild((b) => b..operation = transform(operation));
+  _i1.OperationRequest<_i2.GCreateUserData, _i3.GCreateUserVars>
+      transformOperation(_i4.Operation Function(_i4.Operation) transform) =>
+          this.rebuild((b) => b..operation = transform(operation));
 
-  static Serializer<GAgentsReq> get serializer => _$gAgentsReqSerializer;
+  static Serializer<GCreateUserReq> get serializer =>
+      _$gCreateUserReqSerializer;
 
   Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
-        GAgentsReq.serializer,
+        GCreateUserReq.serializer,
         this,
       ) as Map<String, dynamic>);
 
-  static GAgentsReq? fromJson(Map<String, dynamic> json) =>
+  static GCreateUserReq? fromJson(Map<String, dynamic> json) =>
       _i6.serializers.deserializeWith(
-        GAgentsReq.serializer,
+        GCreateUserReq.serializer,
         json,
       );
 }

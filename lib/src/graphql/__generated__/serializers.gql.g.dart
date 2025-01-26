@@ -8,10 +8,10 @@ part of 'serializers.gql.dart';
 
 Serializers _$serializers = (new Serializers().toBuilder()
       ..add(FetchPolicy.serializer)
-      ..add(GAgentsData.serializer)
-      ..add(GAgentsData_agents.serializer)
-      ..add(GAgentsReq.serializer)
-      ..add(GAgentsVars.serializer)
+      ..add(GCreateUserData.serializer)
+      ..add(GCreateUserData_createUser.serializer)
+      ..add(GCreateUserReq.serializer)
+      ..add(GCreateUserVars.serializer)
       ..add(GUserData.serializer)
       ..add(GUserData_user.serializer)
       ..add(GUserFragmentData.serializer)
@@ -23,9 +23,6 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(GUsersData_users.serializer)
       ..add(GUsersReq.serializer)
       ..add(GUsersVars.serializer)
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(GAgentsData_agents)]),
-          () => new ListBuilder<GAgentsData_agents>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(GUsersData_users)]),
           () => new ListBuilder<GUsersData_users>()))

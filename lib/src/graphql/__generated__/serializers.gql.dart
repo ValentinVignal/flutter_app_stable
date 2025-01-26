@@ -11,12 +11,12 @@ import 'package:flutter_app_stable/src/graphql/__generated__/fragment.user.req.g
     show GUserFragmentReq;
 import 'package:flutter_app_stable/src/graphql/__generated__/fragment.user.var.gql.dart'
     show GUserFragmentVars;
-import 'package:flutter_app_stable/src/graphql/__generated__/query.agents.data.gql.dart'
-    show GAgentsData, GAgentsData_agents;
-import 'package:flutter_app_stable/src/graphql/__generated__/query.agents.req.gql.dart'
-    show GAgentsReq;
-import 'package:flutter_app_stable/src/graphql/__generated__/query.agents.var.gql.dart'
-    show GAgentsVars;
+import 'package:flutter_app_stable/src/graphql/__generated__/mutation.create_user.data.gql.dart'
+    show GCreateUserData, GCreateUserData_createUser;
+import 'package:flutter_app_stable/src/graphql/__generated__/mutation.create_user.req.gql.dart'
+    show GCreateUserReq;
+import 'package:flutter_app_stable/src/graphql/__generated__/mutation.create_user.var.gql.dart'
+    show GCreateUserVars;
 import 'package:flutter_app_stable/src/graphql/__generated__/query.user.data.gql.dart'
     show GUserData, GUserData_user;
 import 'package:flutter_app_stable/src/graphql/__generated__/query.user.req.gql.dart'
@@ -38,10 +38,10 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   ..add(OperationSerializer())
   ..addPlugin(StandardJsonPlugin());
 @SerializersFor([
-  GAgentsData,
-  GAgentsData_agents,
-  GAgentsReq,
-  GAgentsVars,
+  GCreateUserData,
+  GCreateUserData_createUser,
+  GCreateUserReq,
+  GCreateUserVars,
   GUserData,
   GUserData_user,
   GUserFragmentData,

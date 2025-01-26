@@ -1,26 +1,28 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'query.agents.req.gql.dart';
+part of 'mutation.create_user.req.gql.dart';
 
 // **************************************************************************
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializer<GAgentsReq> _$gAgentsReqSerializer = new _$GAgentsReqSerializer();
+Serializer<GCreateUserReq> _$gCreateUserReqSerializer =
+    new _$GCreateUserReqSerializer();
 
-class _$GAgentsReqSerializer implements StructuredSerializer<GAgentsReq> {
+class _$GCreateUserReqSerializer
+    implements StructuredSerializer<GCreateUserReq> {
   @override
-  final Iterable<Type> types = const [GAgentsReq, _$GAgentsReq];
+  final Iterable<Type> types = const [GCreateUserReq, _$GCreateUserReq];
   @override
-  final String wireName = 'GAgentsReq';
+  final String wireName = 'GCreateUserReq';
 
   @override
-  Iterable<Object?> serialize(Serializers serializers, GAgentsReq object,
+  Iterable<Object?> serialize(Serializers serializers, GCreateUserReq object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
       'vars',
       serializers.serialize(object.vars,
-          specifiedType: const FullType(_i3.GAgentsVars)),
+          specifiedType: const FullType(_i3.GCreateUserVars)),
       'operation',
       serializers.serialize(object.operation,
           specifiedType: const FullType(_i4.Operation)),
@@ -41,7 +43,7 @@ class _$GAgentsReqSerializer implements StructuredSerializer<GAgentsReq> {
       result
         ..add('optimisticResponse')
         ..add(serializers.serialize(value,
-            specifiedType: const FullType(_i2.GAgentsData)));
+            specifiedType: const FullType(_i2.GCreateUserData)));
     }
     value = object.updateCacheHandlerKey;
     if (value != null) {
@@ -69,9 +71,10 @@ class _$GAgentsReqSerializer implements StructuredSerializer<GAgentsReq> {
   }
 
   @override
-  GAgentsReq deserialize(Serializers serializers, Iterable<Object?> serialized,
+  GCreateUserReq deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GAgentsReqBuilder();
+    final result = new GCreateUserReqBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -81,8 +84,8 @@ class _$GAgentsReqSerializer implements StructuredSerializer<GAgentsReq> {
       switch (key) {
         case 'vars':
           result.vars.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(_i3.GAgentsVars))!
-              as _i3.GAgentsVars);
+                  specifiedType: const FullType(_i3.GCreateUserVars))!
+              as _i3.GCreateUserVars);
           break;
         case 'operation':
           result.operation = serializers.deserialize(value,
@@ -94,8 +97,8 @@ class _$GAgentsReqSerializer implements StructuredSerializer<GAgentsReq> {
           break;
         case 'optimisticResponse':
           result.optimisticResponse.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(_i2.GAgentsData))!
-              as _i2.GAgentsData);
+                  specifiedType: const FullType(_i2.GCreateUserData))!
+              as _i2.GCreateUserData);
           break;
         case 'updateCacheHandlerKey':
           result.updateCacheHandlerKey = serializers.deserialize(value,
@@ -124,18 +127,18 @@ class _$GAgentsReqSerializer implements StructuredSerializer<GAgentsReq> {
   }
 }
 
-class _$GAgentsReq extends GAgentsReq {
+class _$GCreateUserReq extends GCreateUserReq {
   @override
-  final _i3.GAgentsVars vars;
+  final _i3.GCreateUserVars vars;
   @override
   final _i4.Operation operation;
   @override
   final String? requestId;
   @override
-  final _i2.GAgentsData? Function(_i2.GAgentsData?, _i2.GAgentsData?)?
-      updateResult;
+  final _i2.GCreateUserData? Function(
+      _i2.GCreateUserData?, _i2.GCreateUserData?)? updateResult;
   @override
-  final _i2.GAgentsData? optimisticResponse;
+  final _i2.GCreateUserData? optimisticResponse;
   @override
   final String? updateCacheHandlerKey;
   @override
@@ -147,10 +150,10 @@ class _$GAgentsReq extends GAgentsReq {
   @override
   final _i4.Context? context;
 
-  factory _$GAgentsReq([void Function(GAgentsReqBuilder)? updates]) =>
-      (new GAgentsReqBuilder()..update(updates))._build();
+  factory _$GCreateUserReq([void Function(GCreateUserReqBuilder)? updates]) =>
+      (new GCreateUserReqBuilder()..update(updates))._build();
 
-  _$GAgentsReq._(
+  _$GCreateUserReq._(
       {required this.vars,
       required this.operation,
       this.requestId,
@@ -162,25 +165,26 @@ class _$GAgentsReq extends GAgentsReq {
       required this.executeOnListen,
       this.context})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(vars, r'GAgentsReq', 'vars');
+    BuiltValueNullFieldError.checkNotNull(vars, r'GCreateUserReq', 'vars');
     BuiltValueNullFieldError.checkNotNull(
-        operation, r'GAgentsReq', 'operation');
+        operation, r'GCreateUserReq', 'operation');
     BuiltValueNullFieldError.checkNotNull(
-        executeOnListen, r'GAgentsReq', 'executeOnListen');
+        executeOnListen, r'GCreateUserReq', 'executeOnListen');
   }
 
   @override
-  GAgentsReq rebuild(void Function(GAgentsReqBuilder) updates) =>
+  GCreateUserReq rebuild(void Function(GCreateUserReqBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GAgentsReqBuilder toBuilder() => new GAgentsReqBuilder()..replace(this);
+  GCreateUserReqBuilder toBuilder() =>
+      new GCreateUserReqBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     final dynamic _$dynamicOther = other;
-    return other is GAgentsReq &&
+    return other is GCreateUserReq &&
         vars == other.vars &&
         operation == other.operation &&
         requestId == other.requestId &&
@@ -212,7 +216,7 @@ class _$GAgentsReq extends GAgentsReq {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'GAgentsReq')
+    return (newBuiltValueToStringHelper(r'GCreateUserReq')
           ..add('vars', vars)
           ..add('operation', operation)
           ..add('requestId', requestId)
@@ -227,13 +231,14 @@ class _$GAgentsReq extends GAgentsReq {
   }
 }
 
-class GAgentsReqBuilder implements Builder<GAgentsReq, GAgentsReqBuilder> {
-  _$GAgentsReq? _$v;
+class GCreateUserReqBuilder
+    implements Builder<GCreateUserReq, GCreateUserReqBuilder> {
+  _$GCreateUserReq? _$v;
 
-  _i3.GAgentsVarsBuilder? _vars;
-  _i3.GAgentsVarsBuilder get vars =>
-      _$this._vars ??= new _i3.GAgentsVarsBuilder();
-  set vars(_i3.GAgentsVarsBuilder? vars) => _$this._vars = vars;
+  _i3.GCreateUserVarsBuilder? _vars;
+  _i3.GCreateUserVarsBuilder get vars =>
+      _$this._vars ??= new _i3.GCreateUserVarsBuilder();
+  set vars(_i3.GCreateUserVarsBuilder? vars) => _$this._vars = vars;
 
   _i4.Operation? _operation;
   _i4.Operation? get operation => _$this._operation;
@@ -243,18 +248,20 @@ class GAgentsReqBuilder implements Builder<GAgentsReq, GAgentsReqBuilder> {
   String? get requestId => _$this._requestId;
   set requestId(String? requestId) => _$this._requestId = requestId;
 
-  _i2.GAgentsData? Function(_i2.GAgentsData?, _i2.GAgentsData?)? _updateResult;
-  _i2.GAgentsData? Function(_i2.GAgentsData?, _i2.GAgentsData?)?
+  _i2.GCreateUserData? Function(_i2.GCreateUserData?, _i2.GCreateUserData?)?
+      _updateResult;
+  _i2.GCreateUserData? Function(_i2.GCreateUserData?, _i2.GCreateUserData?)?
       get updateResult => _$this._updateResult;
   set updateResult(
-          _i2.GAgentsData? Function(_i2.GAgentsData?, _i2.GAgentsData?)?
+          _i2.GCreateUserData? Function(
+                  _i2.GCreateUserData?, _i2.GCreateUserData?)?
               updateResult) =>
       _$this._updateResult = updateResult;
 
-  _i2.GAgentsDataBuilder? _optimisticResponse;
-  _i2.GAgentsDataBuilder get optimisticResponse =>
-      _$this._optimisticResponse ??= new _i2.GAgentsDataBuilder();
-  set optimisticResponse(_i2.GAgentsDataBuilder? optimisticResponse) =>
+  _i2.GCreateUserDataBuilder? _optimisticResponse;
+  _i2.GCreateUserDataBuilder get optimisticResponse =>
+      _$this._optimisticResponse ??= new _i2.GCreateUserDataBuilder();
+  set optimisticResponse(_i2.GCreateUserDataBuilder? optimisticResponse) =>
       _$this._optimisticResponse = optimisticResponse;
 
   String? _updateCacheHandlerKey;
@@ -283,11 +290,11 @@ class GAgentsReqBuilder implements Builder<GAgentsReq, GAgentsReqBuilder> {
   _i4.Context? get context => _$this._context;
   set context(_i4.Context? context) => _$this._context = context;
 
-  GAgentsReqBuilder() {
-    GAgentsReq._initializeBuilder(this);
+  GCreateUserReqBuilder() {
+    GCreateUserReq._initializeBuilder(this);
   }
 
-  GAgentsReqBuilder get _$this {
+  GCreateUserReqBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _vars = $v.vars.toBuilder();
@@ -306,27 +313,27 @@ class GAgentsReqBuilder implements Builder<GAgentsReq, GAgentsReqBuilder> {
   }
 
   @override
-  void replace(GAgentsReq other) {
+  void replace(GCreateUserReq other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$GAgentsReq;
+    _$v = other as _$GCreateUserReq;
   }
 
   @override
-  void update(void Function(GAgentsReqBuilder)? updates) {
+  void update(void Function(GCreateUserReqBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  GAgentsReq build() => _build();
+  GCreateUserReq build() => _build();
 
-  _$GAgentsReq _build() {
-    _$GAgentsReq _$result;
+  _$GCreateUserReq _build() {
+    _$GCreateUserReq _$result;
     try {
       _$result = _$v ??
-          new _$GAgentsReq._(
+          new _$GCreateUserReq._(
               vars: vars.build(),
               operation: BuiltValueNullFieldError.checkNotNull(
-                  operation, r'GAgentsReq', 'operation'),
+                  operation, r'GCreateUserReq', 'operation'),
               requestId: requestId,
               updateResult: updateResult,
               optimisticResponse: _optimisticResponse?.build(),
@@ -334,7 +341,7 @@ class GAgentsReqBuilder implements Builder<GAgentsReq, GAgentsReqBuilder> {
               updateCacheHandlerContext: updateCacheHandlerContext,
               fetchPolicy: fetchPolicy,
               executeOnListen: BuiltValueNullFieldError.checkNotNull(
-                  executeOnListen, r'GAgentsReq', 'executeOnListen'),
+                  executeOnListen, r'GCreateUserReq', 'executeOnListen'),
               context: context);
     } catch (_) {
       late String _$failedField;
@@ -346,7 +353,7 @@ class GAgentsReqBuilder implements Builder<GAgentsReq, GAgentsReqBuilder> {
         _optimisticResponse?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            r'GAgentsReq', _$failedField, e.toString());
+            r'GCreateUserReq', _$failedField, e.toString());
       }
       rethrow;
     }

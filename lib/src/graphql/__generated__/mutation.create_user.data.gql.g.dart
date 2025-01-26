@@ -1,41 +1,43 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'query.agents.data.gql.dart';
+part of 'mutation.create_user.data.gql.dart';
 
 // **************************************************************************
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializer<GAgentsData> _$gAgentsDataSerializer = new _$GAgentsDataSerializer();
-Serializer<GAgentsData_agents> _$gAgentsDataAgentsSerializer =
-    new _$GAgentsData_agentsSerializer();
+Serializer<GCreateUserData> _$gCreateUserDataSerializer =
+    new _$GCreateUserDataSerializer();
+Serializer<GCreateUserData_createUser> _$gCreateUserDataCreateUserSerializer =
+    new _$GCreateUserData_createUserSerializer();
 
-class _$GAgentsDataSerializer implements StructuredSerializer<GAgentsData> {
+class _$GCreateUserDataSerializer
+    implements StructuredSerializer<GCreateUserData> {
   @override
-  final Iterable<Type> types = const [GAgentsData, _$GAgentsData];
+  final Iterable<Type> types = const [GCreateUserData, _$GCreateUserData];
   @override
-  final String wireName = 'GAgentsData';
+  final String wireName = 'GCreateUserData';
 
   @override
-  Iterable<Object?> serialize(Serializers serializers, GAgentsData object,
+  Iterable<Object?> serialize(Serializers serializers, GCreateUserData object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
       '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
-      'agents',
-      serializers.serialize(object.agents,
-          specifiedType: const FullType(
-              BuiltList, const [const FullType(GAgentsData_agents)])),
+      'createUser',
+      serializers.serialize(object.createUser,
+          specifiedType: const FullType(GCreateUserData_createUser)),
     ];
 
     return result;
   }
 
   @override
-  GAgentsData deserialize(Serializers serializers, Iterable<Object?> serialized,
+  GCreateUserData deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GAgentsDataBuilder();
+    final result = new GCreateUserDataBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -47,11 +49,10 @@ class _$GAgentsDataSerializer implements StructuredSerializer<GAgentsData> {
           result.G__typename = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
-        case 'agents':
-          result.agents.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      BuiltList, const [const FullType(GAgentsData_agents)]))!
-              as BuiltList<Object?>);
+        case 'createUser':
+          result.createUser.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(GCreateUserData_createUser))!
+              as GCreateUserData_createUser);
           break;
       }
     }
@@ -60,16 +61,19 @@ class _$GAgentsDataSerializer implements StructuredSerializer<GAgentsData> {
   }
 }
 
-class _$GAgentsData_agentsSerializer
-    implements StructuredSerializer<GAgentsData_agents> {
+class _$GCreateUserData_createUserSerializer
+    implements StructuredSerializer<GCreateUserData_createUser> {
   @override
-  final Iterable<Type> types = const [GAgentsData_agents, _$GAgentsData_agents];
+  final Iterable<Type> types = const [
+    GCreateUserData_createUser,
+    _$GCreateUserData_createUser
+  ];
   @override
-  final String wireName = 'GAgentsData_agents';
+  final String wireName = 'GCreateUserData_createUser';
 
   @override
   Iterable<Object?> serialize(
-      Serializers serializers, GAgentsData_agents object,
+      Serializers serializers, GCreateUserData_createUser object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
       '__typename',
@@ -88,10 +92,10 @@ class _$GAgentsData_agentsSerializer
   }
 
   @override
-  GAgentsData_agents deserialize(
+  GCreateUserData_createUser deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GAgentsData_agentsBuilder();
+    final result = new GCreateUserData_createUserBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -122,112 +126,115 @@ class _$GAgentsData_agentsSerializer
   }
 }
 
-class _$GAgentsData extends GAgentsData {
+class _$GCreateUserData extends GCreateUserData {
   @override
   final String G__typename;
   @override
-  final BuiltList<GAgentsData_agents> agents;
+  final GCreateUserData_createUser createUser;
 
-  factory _$GAgentsData([void Function(GAgentsDataBuilder)? updates]) =>
-      (new GAgentsDataBuilder()..update(updates))._build();
+  factory _$GCreateUserData([void Function(GCreateUserDataBuilder)? updates]) =>
+      (new GCreateUserDataBuilder()..update(updates))._build();
 
-  _$GAgentsData._({required this.G__typename, required this.agents})
+  _$GCreateUserData._({required this.G__typename, required this.createUser})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        G__typename, r'GAgentsData', 'G__typename');
-    BuiltValueNullFieldError.checkNotNull(agents, r'GAgentsData', 'agents');
+        G__typename, r'GCreateUserData', 'G__typename');
+    BuiltValueNullFieldError.checkNotNull(
+        createUser, r'GCreateUserData', 'createUser');
   }
 
   @override
-  GAgentsData rebuild(void Function(GAgentsDataBuilder) updates) =>
+  GCreateUserData rebuild(void Function(GCreateUserDataBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GAgentsDataBuilder toBuilder() => new GAgentsDataBuilder()..replace(this);
+  GCreateUserDataBuilder toBuilder() =>
+      new GCreateUserDataBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is GAgentsData &&
+    return other is GCreateUserData &&
         G__typename == other.G__typename &&
-        agents == other.agents;
+        createUser == other.createUser;
   }
 
   @override
   int get hashCode {
     var _$hash = 0;
     _$hash = $jc(_$hash, G__typename.hashCode);
-    _$hash = $jc(_$hash, agents.hashCode);
+    _$hash = $jc(_$hash, createUser.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'GAgentsData')
+    return (newBuiltValueToStringHelper(r'GCreateUserData')
           ..add('G__typename', G__typename)
-          ..add('agents', agents))
+          ..add('createUser', createUser))
         .toString();
   }
 }
 
-class GAgentsDataBuilder implements Builder<GAgentsData, GAgentsDataBuilder> {
-  _$GAgentsData? _$v;
+class GCreateUserDataBuilder
+    implements Builder<GCreateUserData, GCreateUserDataBuilder> {
+  _$GCreateUserData? _$v;
 
   String? _G__typename;
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  ListBuilder<GAgentsData_agents>? _agents;
-  ListBuilder<GAgentsData_agents> get agents =>
-      _$this._agents ??= new ListBuilder<GAgentsData_agents>();
-  set agents(ListBuilder<GAgentsData_agents>? agents) =>
-      _$this._agents = agents;
+  GCreateUserData_createUserBuilder? _createUser;
+  GCreateUserData_createUserBuilder get createUser =>
+      _$this._createUser ??= new GCreateUserData_createUserBuilder();
+  set createUser(GCreateUserData_createUserBuilder? createUser) =>
+      _$this._createUser = createUser;
 
-  GAgentsDataBuilder() {
-    GAgentsData._initializeBuilder(this);
+  GCreateUserDataBuilder() {
+    GCreateUserData._initializeBuilder(this);
   }
 
-  GAgentsDataBuilder get _$this {
+  GCreateUserDataBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _G__typename = $v.G__typename;
-      _agents = $v.agents.toBuilder();
+      _createUser = $v.createUser.toBuilder();
       _$v = null;
     }
     return this;
   }
 
   @override
-  void replace(GAgentsData other) {
+  void replace(GCreateUserData other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$GAgentsData;
+    _$v = other as _$GCreateUserData;
   }
 
   @override
-  void update(void Function(GAgentsDataBuilder)? updates) {
+  void update(void Function(GCreateUserDataBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  GAgentsData build() => _build();
+  GCreateUserData build() => _build();
 
-  _$GAgentsData _build() {
-    _$GAgentsData _$result;
+  _$GCreateUserData _build() {
+    _$GCreateUserData _$result;
     try {
       _$result = _$v ??
-          new _$GAgentsData._(
+          new _$GCreateUserData._(
               G__typename: BuiltValueNullFieldError.checkNotNull(
-                  G__typename, r'GAgentsData', 'G__typename'),
-              agents: agents.build());
+                  G__typename, r'GCreateUserData', 'G__typename'),
+              createUser: createUser.build());
     } catch (_) {
       late String _$failedField;
       try {
-        _$failedField = 'agents';
-        agents.build();
+        _$failedField = 'createUser';
+        createUser.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            r'GAgentsData', _$failedField, e.toString());
+            r'GCreateUserData', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -236,7 +243,7 @@ class GAgentsDataBuilder implements Builder<GAgentsData, GAgentsDataBuilder> {
   }
 }
 
-class _$GAgentsData_agents extends GAgentsData_agents {
+class _$GCreateUserData_createUser extends GCreateUserData_createUser {
   @override
   final String G__typename;
   @override
@@ -246,37 +253,39 @@ class _$GAgentsData_agents extends GAgentsData_agents {
   @override
   final String email;
 
-  factory _$GAgentsData_agents(
-          [void Function(GAgentsData_agentsBuilder)? updates]) =>
-      (new GAgentsData_agentsBuilder()..update(updates))._build();
+  factory _$GCreateUserData_createUser(
+          [void Function(GCreateUserData_createUserBuilder)? updates]) =>
+      (new GCreateUserData_createUserBuilder()..update(updates))._build();
 
-  _$GAgentsData_agents._(
+  _$GCreateUserData_createUser._(
       {required this.G__typename,
       required this.id,
       required this.name,
       required this.email})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        G__typename, r'GAgentsData_agents', 'G__typename');
-    BuiltValueNullFieldError.checkNotNull(id, r'GAgentsData_agents', 'id');
-    BuiltValueNullFieldError.checkNotNull(name, r'GAgentsData_agents', 'name');
+        G__typename, r'GCreateUserData_createUser', 'G__typename');
     BuiltValueNullFieldError.checkNotNull(
-        email, r'GAgentsData_agents', 'email');
+        id, r'GCreateUserData_createUser', 'id');
+    BuiltValueNullFieldError.checkNotNull(
+        name, r'GCreateUserData_createUser', 'name');
+    BuiltValueNullFieldError.checkNotNull(
+        email, r'GCreateUserData_createUser', 'email');
   }
 
   @override
-  GAgentsData_agents rebuild(
-          void Function(GAgentsData_agentsBuilder) updates) =>
+  GCreateUserData_createUser rebuild(
+          void Function(GCreateUserData_createUserBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GAgentsData_agentsBuilder toBuilder() =>
-      new GAgentsData_agentsBuilder()..replace(this);
+  GCreateUserData_createUserBuilder toBuilder() =>
+      new GCreateUserData_createUserBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is GAgentsData_agents &&
+    return other is GCreateUserData_createUser &&
         G__typename == other.G__typename &&
         id == other.id &&
         name == other.name &&
@@ -296,7 +305,7 @@ class _$GAgentsData_agents extends GAgentsData_agents {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'GAgentsData_agents')
+    return (newBuiltValueToStringHelper(r'GCreateUserData_createUser')
           ..add('G__typename', G__typename)
           ..add('id', id)
           ..add('name', name)
@@ -305,9 +314,10 @@ class _$GAgentsData_agents extends GAgentsData_agents {
   }
 }
 
-class GAgentsData_agentsBuilder
-    implements Builder<GAgentsData_agents, GAgentsData_agentsBuilder> {
-  _$GAgentsData_agents? _$v;
+class GCreateUserData_createUserBuilder
+    implements
+        Builder<GCreateUserData_createUser, GCreateUserData_createUserBuilder> {
+  _$GCreateUserData_createUser? _$v;
 
   String? _G__typename;
   String? get G__typename => _$this._G__typename;
@@ -325,11 +335,11 @@ class GAgentsData_agentsBuilder
   String? get email => _$this._email;
   set email(String? email) => _$this._email = email;
 
-  GAgentsData_agentsBuilder() {
-    GAgentsData_agents._initializeBuilder(this);
+  GCreateUserData_createUserBuilder() {
+    GCreateUserData_createUser._initializeBuilder(this);
   }
 
-  GAgentsData_agentsBuilder get _$this {
+  GCreateUserData_createUserBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _G__typename = $v.G__typename;
@@ -342,30 +352,30 @@ class GAgentsData_agentsBuilder
   }
 
   @override
-  void replace(GAgentsData_agents other) {
+  void replace(GCreateUserData_createUser other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$GAgentsData_agents;
+    _$v = other as _$GCreateUserData_createUser;
   }
 
   @override
-  void update(void Function(GAgentsData_agentsBuilder)? updates) {
+  void update(void Function(GCreateUserData_createUserBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  GAgentsData_agents build() => _build();
+  GCreateUserData_createUser build() => _build();
 
-  _$GAgentsData_agents _build() {
+  _$GCreateUserData_createUser _build() {
     final _$result = _$v ??
-        new _$GAgentsData_agents._(
+        new _$GCreateUserData_createUser._(
             G__typename: BuiltValueNullFieldError.checkNotNull(
-                G__typename, r'GAgentsData_agents', 'G__typename'),
+                G__typename, r'GCreateUserData_createUser', 'G__typename'),
             id: BuiltValueNullFieldError.checkNotNull(
-                id, r'GAgentsData_agents', 'id'),
+                id, r'GCreateUserData_createUser', 'id'),
             name: BuiltValueNullFieldError.checkNotNull(
-                name, r'GAgentsData_agents', 'name'),
+                name, r'GCreateUserData_createUser', 'name'),
             email: BuiltValueNullFieldError.checkNotNull(
-                email, r'GAgentsData_agents', 'email'));
+                email, r'GCreateUserData_createUser', 'email'));
     replace(_$result);
     return _$result;
   }

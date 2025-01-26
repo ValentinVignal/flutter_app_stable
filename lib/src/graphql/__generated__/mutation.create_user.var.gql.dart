@@ -7,24 +7,26 @@ import 'package:built_value/serializer.dart';
 import 'package:flutter_app_stable/src/graphql/__generated__/serializers.gql.dart'
     as _i1;
 
-part 'query.agents.var.gql.g.dart';
+part 'mutation.create_user.var.gql.g.dart';
 
-abstract class GAgentsVars implements Built<GAgentsVars, GAgentsVarsBuilder> {
-  GAgentsVars._();
+abstract class GCreateUserVars
+    implements Built<GCreateUserVars, GCreateUserVarsBuilder> {
+  GCreateUserVars._();
 
-  factory GAgentsVars([void Function(GAgentsVarsBuilder b) updates]) =
-      _$GAgentsVars;
+  factory GCreateUserVars([void Function(GCreateUserVarsBuilder b) updates]) =
+      _$GCreateUserVars;
 
-  static Serializer<GAgentsVars> get serializer => _$gAgentsVarsSerializer;
+  static Serializer<GCreateUserVars> get serializer =>
+      _$gCreateUserVarsSerializer;
 
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GAgentsVars.serializer,
+        GCreateUserVars.serializer,
         this,
       ) as Map<String, dynamic>);
 
-  static GAgentsVars? fromJson(Map<String, dynamic> json) =>
+  static GCreateUserVars? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
-        GAgentsVars.serializer,
+        GCreateUserVars.serializer,
         json,
       );
 }
