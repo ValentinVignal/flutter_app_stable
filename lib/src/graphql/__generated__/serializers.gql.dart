@@ -17,6 +17,12 @@ import 'package:flutter_app_stable/src/graphql/__generated__/mutation.create_use
     show GCreateUserReq;
 import 'package:flutter_app_stable/src/graphql/__generated__/mutation.create_user.var.gql.dart'
     show GCreateUserVars;
+import 'package:flutter_app_stable/src/graphql/__generated__/mutation.delete_user.data.gql.dart'
+    show GDeleteUserData;
+import 'package:flutter_app_stable/src/graphql/__generated__/mutation.delete_user.req.gql.dart'
+    show GDeleteUserReq;
+import 'package:flutter_app_stable/src/graphql/__generated__/mutation.delete_user.var.gql.dart'
+    show GDeleteUserVars;
 import 'package:flutter_app_stable/src/graphql/__generated__/query.user.data.gql.dart'
     show GUserData, GUserData_user;
 import 'package:flutter_app_stable/src/graphql/__generated__/query.user.req.gql.dart'
@@ -42,6 +48,9 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GCreateUserData_createUser,
   GCreateUserReq,
   GCreateUserVars,
+  GDeleteUserData,
+  GDeleteUserReq,
+  GDeleteUserVars,
   GUserData,
   GUserData_user,
   GUserFragmentData,

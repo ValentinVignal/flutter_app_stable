@@ -6,6 +6,9 @@ import 'package:flutter_app_stable/src/graphql/router/routes.dart';
 import 'package:flutter_app_stable/src/providers/users_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../graphql/__generated__/mutation.delete_user.req.gql.dart';
+import '../graphql/__generated__/schema.ast.gql.dart';
+
 class UsersScreen extends ConsumerWidget {
   const UsersScreen({super.key});
 
@@ -27,6 +30,21 @@ class UsersScreen extends ConsumerWidget {
             onTap: () {
               UserRoute(id: user.id).go(context);
             },
+            trailing: IconButton(
+              icon: const Icon(Icons.delete),
+              onPressed: () async {
+                final client = GraphqlClient.instance;
+                final response = await client
+                    .request(
+                        GDeleteUserReq((request) => request.vars.id = user.id))
+                    .first;
+                if (response.data?.deleteUser ?? false) {
+                  client.cache
+                    ..evict('${User.name.value}:${user.id}')
+                    ..gc();
+                }
+              },
+            ),
           );
         },
       ),

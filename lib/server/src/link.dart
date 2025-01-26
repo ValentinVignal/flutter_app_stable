@@ -4,6 +4,7 @@ import 'package:built_collection/built_collection.dart';
 import 'package:ferry/ferry.dart';
 import 'package:flutter_app_stable/src/graphql/__generated__/fragment.user.data.gql.dart';
 import 'package:flutter_app_stable/src/graphql/__generated__/mutation.create_user.data.gql.dart';
+import 'package:flutter_app_stable/src/graphql/__generated__/mutation.delete_user.data.gql.dart';
 import 'package:flutter_app_stable/src/graphql/__generated__/query.user.data.gql.dart';
 import 'package:flutter_app_stable/src/graphql/__generated__/query.users.data.gql.dart';
 import 'package:gql_exec/gql_exec.dart';
@@ -30,6 +31,8 @@ class ServerLink extends Link {
         return _getUser(request);
       case 'CreateUser':
         return _createUser(request);
+      case 'DeleteUser':
+        return _deleteUser(request);
 
       default:
         throw Exception('Operation not found');
@@ -77,7 +80,6 @@ class ServerLink extends Link {
   }
 
   Stream<Response> _createUser(Request request) {
-    final errors = <GraphQLError>[];
     final index = _userCount++;
     final newUser = GUserFragmentData((user) => user
       ..id = index.toString()
@@ -90,9 +92,29 @@ class ServerLink extends Link {
     );
     return Stream.value(
       Response(
-        errors: errors,
         context: request.context,
         data: data.toJson(),
+        response: const {},
+      ),
+    );
+  }
+
+  Stream<Response> _deleteUser(Request request) {
+    final errors = <GraphQLError>[];
+    final id = request.variables['id'];
+    late final bool data;
+    if (!_users.containsKey(id)) {
+      errors.add(const GraphQLError(message: 'User not found'));
+      data = false;
+    } else {
+      _users.remove(id);
+      data = true;
+    }
+    return Stream.value(
+      Response(
+        errors: errors,
+        context: request.context,
+        data: GDeleteUserData((b) => b.deleteUser = data).toJson(),
         response: const {},
       ),
     );
