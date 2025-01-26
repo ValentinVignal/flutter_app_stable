@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_stable/src/graphql/router/routes.dart';
 import 'package:flutter_app_stable/src/providers/users_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -20,6 +21,9 @@ class UsersScreen extends ConsumerWidget {
           return ListTile(
             title: Text(user.name),
             subtitle: Text(user.email),
+            onTap: () {
+              UserRoute(id: user.id).go(context);
+            },
           );
         },
       ),

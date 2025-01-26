@@ -18,5 +18,6 @@ type Agent implements Person {
 
 type Query {
   users: [User!]!
+  user(id: ID!): User!
   agents: [Agent!]!
 }

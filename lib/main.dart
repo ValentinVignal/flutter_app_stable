@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_stable/src/graphql/client.dart';
-import 'package:flutter_app_stable/src/screens/users_screen.dart';
+import 'package:flutter_app_stable/src/graphql/router/router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 Future<void> main() async {
@@ -13,9 +13,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       darkTheme: ThemeData.dark(),
-      home: const UsersScreen(),
+      routerConfig: router,
     );
   }
 }

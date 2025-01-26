@@ -5,6 +5,8 @@
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
+import 'package:flutter_app_stable/src/graphql/__generated__/fragment.user.data.gql.dart'
+    as _i2;
 import 'package:flutter_app_stable/src/graphql/__generated__/serializers.gql.dart'
     as _i1;
 
@@ -37,7 +39,9 @@ abstract class GUsersData implements Built<GUsersData, GUsersDataBuilder> {
 }
 
 abstract class GUsersData_users
-    implements Built<GUsersData_users, GUsersData_usersBuilder> {
+    implements
+        Built<GUsersData_users, GUsersData_usersBuilder>,
+        _i2.GUserFragment {
   GUsersData_users._();
 
   factory GUsersData_users([void Function(GUsersData_usersBuilder b) updates]) =
@@ -46,14 +50,19 @@ abstract class GUsersData_users
   static void _initializeBuilder(GUsersData_usersBuilder b) =>
       b..G__typename = 'User';
 
+  @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
+  @override
   String get id;
+  @override
   String get name;
+  @override
   String get email;
   static Serializer<GUsersData_users> get serializer =>
       _$gUsersDataUsersSerializer;
 
+  @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GUsersData_users.serializer,
         this,
