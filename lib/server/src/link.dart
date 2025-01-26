@@ -5,6 +5,7 @@ import 'package:ferry/ferry.dart';
 import 'package:flutter_app_stable/src/graphql/__generated__/fragment.user.data.gql.dart';
 import 'package:flutter_app_stable/src/graphql/__generated__/mutation.create_user.data.gql.dart';
 import 'package:flutter_app_stable/src/graphql/__generated__/mutation.delete_user.data.gql.dart';
+import 'package:flutter_app_stable/src/graphql/__generated__/mutation.update_user.data.gql.dart';
 import 'package:flutter_app_stable/src/graphql/__generated__/query.user.data.gql.dart';
 import 'package:flutter_app_stable/src/graphql/__generated__/query.users.data.gql.dart';
 import 'package:gql_exec/gql_exec.dart';
@@ -22,17 +23,25 @@ class ServerLink extends Link {
   };
 
   @override
-  Stream<Response> request(Request request, [NextLink? forward]) {
+  Stream<Response> request(Request request, [NextLink? forward]) async* {
     log('Request: ${request.operation.operationName}${request.variables}');
+    await Future.delayed(const Duration(seconds: 1));
     switch (request.operation.operationName) {
       case 'Users':
-        return _getUsers(request);
+        yield* _getUsers(request);
+        return;
       case 'User':
-        return _getUser(request);
+        yield* _getUser(request);
+        return;
       case 'CreateUser':
-        return _createUser(request);
+        yield* _createUser(request);
+        return;
       case 'DeleteUser':
-        return _deleteUser(request);
+        yield* _deleteUser(request);
+        return;
+      case 'UpdateUser':
+        yield* _updateUser(request);
+        return;
 
       default:
         throw Exception('Operation not found');
@@ -107,7 +116,6 @@ class ServerLink extends Link {
       errors.add(const GraphQLError(message: 'User not found'));
       data = false;
     } else {
-      _users.remove(id);
       data = true;
     }
     return Stream.value(
@@ -115,6 +123,35 @@ class ServerLink extends Link {
         errors: errors,
         context: request.context,
         data: GDeleteUserData((b) => b.deleteUser = data).toJson(),
+        response: const {},
+      ),
+    );
+  }
+
+  Stream<Response> _updateUser(Request request) {
+    final errors = <GraphQLError>[];
+    final input =
+        GUpdateUserData_updateUser.fromJson(request.variables['input']);
+    late final GUpdateUserData? data;
+    if (input == null || !_users.containsKey(input.id)) {
+      errors.add(const GraphQLError(message: 'User not found'));
+      data = null;
+    } else {
+      final newUser = GUserFragmentData((user) => user
+        ..id = input.id
+        ..name = input.name
+        ..email = input.email);
+      _users[input.id] = newUser;
+      data = GUpdateUserData(
+        (update) => update.updateUser =
+            GUpdateUserData_updateUser.fromJson(newUser.toJson())!.toBuilder(),
+      );
+    }
+    return Stream.value(
+      Response(
+        errors: errors,
+        context: request.context,
+        data: data?.toJson(),
         response: const {},
       ),
     );

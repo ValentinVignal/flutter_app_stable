@@ -456,6 +456,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.2"
+  imperative_page_routes:
+    dependency: "direct main"
+    description:
+      name: imperative_page_routes
+      sha256: "837438f71f61ceef8c1aa6dd8061f8e5c264129390c7a6074607d791c5e794bc"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.2"
   io:
     dependency: transitive
     description:

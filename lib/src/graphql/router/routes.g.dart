@@ -17,6 +17,12 @@ RouteBase get $usersRoute => GoRouteData.$route(
         GoRouteData.$route(
           path: ':id',
           factory: $UserRouteExtension._fromState,
+          routes: [
+            GoRouteData.$route(
+              path: 'edit',
+              factory: $EditUserRouteExtension._fromState,
+            ),
+          ],
         ),
       ],
     );
@@ -45,6 +51,25 @@ extension $UserRouteExtension on UserRoute {
 
   String get location => GoRouteData.$location(
         '/users/${Uri.encodeComponent(id)}',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $EditUserRouteExtension on EditUserRoute {
+  static EditUserRoute _fromState(GoRouterState state) => EditUserRoute(
+        id: state.pathParameters['id']!,
+      );
+
+  String get location => GoRouteData.$location(
+        '/users/${Uri.encodeComponent(id)}/edit',
       );
 
   void go(BuildContext context) => context.go(location);

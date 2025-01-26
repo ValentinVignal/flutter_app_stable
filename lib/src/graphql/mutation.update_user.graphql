@@ -1,0 +1,7 @@
+#import './fragment.user.graphql'
+
+mutation UpdateUser($input: UpdateUser!) {
+  updateUser(input: $input) {
+    ...UserFragment
+  }
+}

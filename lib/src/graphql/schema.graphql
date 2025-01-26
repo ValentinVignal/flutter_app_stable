@@ -10,6 +10,12 @@ type User implements Person {
   email: String!
 }
 
+input UpdateUser {
+  id: ID!
+  name: String
+  email: String
+}
+
 type Query {
   users: [User!]!
   user(id: ID!): User!
@@ -18,4 +24,5 @@ type Query {
 type Mutation {
   createUser: User!
   deleteUser(id: ID!): Boolean!
+  updateUser(input: UpdateUser!): User!
 }
