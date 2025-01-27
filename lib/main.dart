@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_stable/src/graphql/client.dart';
-import 'package:flutter_app_stable/src/graphql/router/router.dart';
+import 'package:flutter_app_stable/src/router/router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 Future<void> main() async {

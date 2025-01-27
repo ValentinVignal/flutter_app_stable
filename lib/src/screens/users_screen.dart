@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app_stable/src/graphql/__generated__/mutation.create_user.req.gql.dart';
 import 'package:flutter_app_stable/src/graphql/__generated__/query.users.data.gql.dart';
 import 'package:flutter_app_stable/src/graphql/client.dart';
-import 'package:flutter_app_stable/src/graphql/router/routes.dart';
 import 'package:flutter_app_stable/src/providers/users_provider.dart';
+import 'package:flutter_app_stable/src/router/routes.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../graphql/__generated__/mutation.delete_user.req.gql.dart';
