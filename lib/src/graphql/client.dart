@@ -1,6 +1,7 @@
 import 'package:ferry/ferry.dart';
 import 'package:ferry_hive_store/ferry_hive_store.dart';
 import 'package:flutter_app_stable/server/server.dart';
+import 'package:flutter_app_stable/src/utils/bindings.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 // import 'package:flutter_app_stable/src/graphql/__generated__/schema.ast.gql.dart';
 
@@ -26,11 +27,4 @@ abstract class GraphqlClient {
 
   static Client? _instance;
   static Client get instance => checkInstance(_instance);
-
-  static T checkInstance<T>(T? instance) {
-    if (instance == null) {
-      throw Exception('$T is not initialized');
-    }
-    return instance;
-  }
 }

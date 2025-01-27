@@ -19,7 +19,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: '>=2.19.4 <3.0.0'
+  sdk: ^3.0.0
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -47,7 +47,7 @@ dependencies:
   ferry_hive_store: ^0.6.0
   hive_flutter: ^1.1.0
   collection: ^1.18.0
-  drift_flutter: ^0.2.0
+  drift_flutter: ^0.2.4
   built_collection: ^5.1.1
   gql_exec: ^1.0.0+1
   imperative_page_routes: ^0.0.2
@@ -65,6 +65,7 @@ dev_dependencies:
   go_router_builder: ^2.7.1
   build_runner: ^2.4.9
   json_serializable: ^6.8.0
+  drift_dev: ^2.21.2
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
