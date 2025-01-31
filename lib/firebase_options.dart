@@ -85,4 +85,5 @@ class DefaultFirebaseOptions {
     storageBucket: 'connectcarechatbot.firebasestorage.app',
     measurementId: 'G-E5H3TJYCPM',
   );
+
 }
