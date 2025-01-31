@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "758202431270",
+    "project_id": "connectcarechatbot",
+    "storage_bucket": "connectcarechatbot.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:758202431270:android:cac5710543681f7df533e7",
+        "android_client_info": {
+          "package_name": "com.example.flutter_app_stable"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDy1yAg9J5kTo7d342ON1igeGnKUy83ATU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:758202431270:android:b341da4e742415f8f533e7",
+        "android_client_info": {
+          "package_name": "com.example.my_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDy1yAg9J5kTo7d342ON1igeGnKUy83ATU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
