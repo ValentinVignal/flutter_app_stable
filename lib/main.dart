@@ -2,6 +2,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_stable/firebase_options.dart';
+import 'package:flutter_app_stable/router/router.dart';
+import 'package:flutter_app_stable/theme/theme.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,8 +25,10 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Home(),
+    return MaterialApp.router(
+      theme: lightTheme,
+      darkTheme: darkTheme,
+      routerConfig: router,
     );
   }
 }
