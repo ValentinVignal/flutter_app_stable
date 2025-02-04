@@ -1,10 +1,10 @@
-import 'dart:async';
-
 import 'package:flutter/widgets.dart';
 import 'package:flutter_app_stable/screens/home/home.dart';
+import 'package:flutter_app_stable/screens/home/notification_drawer.dart';
 import 'package:flutter_app_stable/screens/login.dart';
 import 'package:flutter_app_stable/user_notifier.dart';
 import 'package:go_router/go_router.dart';
+import 'package:imperative_page_routes/imperative_page_routes.dart';
 
 part 'routes.g.dart';
 
@@ -39,6 +39,11 @@ class LoginRoute extends GoRouteData {
 
 @TypedGoRoute<HomeRoute>(
   path: '/home',
+  routes: [
+    TypedGoRoute<NotificationRoute>(
+      path: 'notifications/:id',
+    ),
+  ],
 )
 class HomeRoute extends GoRouteData {
   const HomeRoute();
@@ -46,5 +51,20 @@ class HomeRoute extends GoRouteData {
   @override
   Widget build(BuildContext context, GoRouterState state) {
     return const HomeScreen();
+  }
+}
+
+class NotificationRoute extends GoRouteData {
+  const NotificationRoute({
+    required this.id,
+  });
+
+  final String id;
+
+  @override
+  Page<void> buildPage(BuildContext context, GoRouterState state) {
+    return DrawerPage(
+      child: NotificationDrawer(id: id),
+    );
   }
 }

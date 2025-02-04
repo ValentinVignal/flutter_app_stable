@@ -48,6 +48,7 @@ class __ForegroundState extends State<_Foreground> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return ConstrainedBox(
       constraints: const BoxConstraints(maxWidth: 600),
       child: Card(
@@ -59,9 +60,15 @@ class __ForegroundState extends State<_Foreground> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text('Log in to your account'),
+                  Text(
+                    'Log in to your account',
+                    style: theme.textTheme.titleLarge,
+                  ),
                   const SizedBox(height: 48),
-                  const Text('Email address'),
+                  Text(
+                    'Email address',
+                    style: theme.textTheme.labelMedium,
+                  ),
                   const SizedBox(height: 8),
                   TextField(
                     controller: _emailController,
@@ -69,8 +76,11 @@ class __ForegroundState extends State<_Foreground> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Flexible(
-                        child: Text('Password'),
+                      Flexible(
+                        child: Text(
+                          'Password',
+                          style: theme.textTheme.labelMedium,
+                        ),
                       ),
                       Flexible(
                         child: TextButton(
@@ -97,14 +107,25 @@ class __ForegroundState extends State<_Foreground> {
                     ),
                   ),
                   const SizedBox(height: 32),
-                  const Row(
+                  Row(
                     children: [
-                      Expanded(child: Divider()),
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 8.0),
-                        child: Text('Or log in with'),
+                      Expanded(
+                        child: Divider(
+                          color: theme.textTheme.labelSmall!.color,
+                        ),
                       ),
-                      Expanded(child: Divider()),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: Text(
+                          'Or log in with',
+                          style: theme.textTheme.labelSmall,
+                        ),
+                      ),
+                      Expanded(
+                        child: Divider(
+                          color: theme.textTheme.labelSmall!.color,
+                        ),
+                      ),
                     ],
                   ),
                   const SizedBox(height: 32),
@@ -130,6 +151,7 @@ class __ForegroundState extends State<_Foreground> {
                   const SizedBox(height: 40),
                   Text.rich(
                     TextSpan(
+                      style: theme.textTheme.labelMedium,
                       children: [
                         const TextSpan(
                           text: 'Want to become a Prudential agent?  ',
@@ -169,6 +191,7 @@ class _Background extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Row(
       children: [
         Expanded(
@@ -187,14 +210,24 @@ class _Background extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 84),
-                const Padding(
-                  padding: EdgeInsets.only(left: 80),
-                  child: Text('Welcome to PRUForce'),
+                Padding(
+                  padding: const EdgeInsets.only(left: 80),
+                  child: FractionallySizedBox(
+                    widthFactor: 0.5,
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      'Welcome to PRUForce',
+                      style: theme.textTheme.displayLarge,
+                    ),
+                  ),
                 ),
                 const SizedBox(height: 8),
-                const Padding(
-                  padding: EdgeInsets.only(left: 80.0),
-                  child: Text('Singapore'),
+                Padding(
+                  padding: const EdgeInsets.only(left: 80.0),
+                  child: Text(
+                    'Singapore',
+                    style: theme.textTheme.displayMedium,
+                  ),
                 ),
                 const Spacer(),
                 Expanded(
@@ -214,11 +247,14 @@ class _Background extends StatelessWidget {
           ),
         ),
         const Expanded(
-          child: Image(
-            image: AssetImage(
-              'assets/trees.png',
+          child: SizedBox(
+            height: double.infinity,
+            child: Image(
+              image: AssetImage(
+                'assets/trees.png',
+              ),
+              fit: BoxFit.cover,
             ),
-            fit: BoxFit.cover,
           ),
         ),
       ],
