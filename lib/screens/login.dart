@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_stable/user_notifier.dart';
 import 'package:flutter_svg/svg.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -29,9 +30,24 @@ class _Foreground extends StatefulWidget {
 }
 
 class __ForegroundState extends State<_Foreground> {
+  late final _emailController = TextEditingController()
+    ..addListener(() {
+      setState(() {});
+    });
+  late final _passwordController = TextEditingController()
+    ..addListener(() {
+      setState(() {});
+    });
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return ConstrainedBox(
       constraints: const BoxConstraints(maxWidth: 600),
       child: Card(
@@ -47,12 +63,14 @@ class __ForegroundState extends State<_Foreground> {
                   const SizedBox(height: 48),
                   const Text('Email address'),
                   const SizedBox(height: 8),
-                  const TextField(),
+                  TextField(
+                    controller: _emailController,
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const Flexible(
-                        child: Text('Email address'),
+                        child: Text('Password'),
                       ),
                       Flexible(
                         child: TextButton(
@@ -62,12 +80,19 @@ class __ForegroundState extends State<_Foreground> {
                       ),
                     ],
                   ),
-                  const TextField(),
+                  TextField(
+                    controller: _passwordController,
+                  ),
                   const SizedBox(height: 32),
                   SizedBox(
                     width: double.infinity,
-                    child: ElevatedButton(
-                      onPressed: () {},
+                    child: FilledButton(
+                      onPressed: _emailController.text.isEmpty ||
+                              _passwordController.text.isEmpty
+                          ? null
+                          : () {
+                              userNotifier.value = _emailController.text;
+                            },
                       child: const Text('Log in'),
                     ),
                   ),
@@ -86,7 +111,7 @@ class __ForegroundState extends State<_Foreground> {
                   Row(
                     children: [
                       Expanded(
-                        child: ElevatedButton.icon(
+                        child: OutlinedButton.icon(
                           onPressed: () {},
                           icon: SvgPicture.asset('assets/google.svg'),
                           label: const Text('Google'),
@@ -94,7 +119,7 @@ class __ForegroundState extends State<_Foreground> {
                       ),
                       const SizedBox(width: 16),
                       Expanded(
-                        child: ElevatedButton.icon(
+                        child: OutlinedButton.icon(
                           onPressed: () {},
                           icon: SvgPicture.asset('assets/facebook.svg'),
                           label: const Text('Facebook'),
@@ -109,20 +134,22 @@ class __ForegroundState extends State<_Foreground> {
                         const TextSpan(
                           text: 'Want to become a Prudential agent?  ',
                         ),
-                        TextSpan(
-                          text: 'Sign up',
-                          style: TextStyle(
-                            color: theme.colorScheme.primary,
+                        WidgetSpan(
+                          alignment: PlaceholderAlignment.middle,
+                          child: TextButton(
+                            onPressed: () {},
+                            child: const Text('Sign up'),
                           ),
-                        )
+                        ),
                       ],
                     ),
                   ),
-                  const SizedBox(height: 48),
                 ],
               ),
             ),
-            const Divider(),
+            const Divider(
+              height: 1,
+            ),
             Padding(
               padding: const EdgeInsets.only(
                 top: 32,
@@ -160,14 +187,21 @@ class _Background extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 84),
-                const Text('Welcome to PRUForce'),
+                const Padding(
+                  padding: EdgeInsets.only(left: 80),
+                  child: Text('Welcome to PRUForce'),
+                ),
                 const SizedBox(height: 8),
-                const Text('Singapore'),
+                const Padding(
+                  padding: EdgeInsets.only(left: 80.0),
+                  child: Text('Singapore'),
+                ),
                 const Spacer(),
                 Expanded(
                   flex: 2,
                   child: SvgPicture.asset('assets/circle_logo.svg'),
                 ),
+                const SizedBox(height: 30),
                 const Row(
                   children: [
                     Icon(Icons.help_outline),

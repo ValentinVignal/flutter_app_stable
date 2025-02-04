@@ -11,7 +11,7 @@ final router = GoRouter(
     final fallback =
         isLoggedIn ? const HomeRoute().location : const LoginRoute().location;
     final isEmpty = state.uri.pathSegments.isEmpty;
-    if (isLoggedIn != isLoginPage || isEmpty) {
+    if (isLoggedIn == isLoginPage || isEmpty) {
       return fallback;
     }
     return null;
