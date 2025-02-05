@@ -42,6 +42,7 @@ class WizardRoute extends GoRouteData {
 
   @override
   Future<bool> onExit(BuildContext context, GoRouterState state) async {
+    return true;
     print(state.uri);
     final didPop = await showDialog(
       context: context,
