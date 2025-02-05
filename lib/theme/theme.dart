@@ -30,6 +30,10 @@ ThemeData _buildTheme(Brightness brightness) {
         fontSize: 40,
         color: Color(0xff71717a),
       ),
+      bodyLarge: TextStyle(
+        fontSize: 24,
+        color: Color(0xff000000),
+      ),
       bodyMedium: TextStyle(
         color: Color(0xff18181b),
       ),

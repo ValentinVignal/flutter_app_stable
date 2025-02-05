@@ -269,8 +269,12 @@ class _Body extends StatelessWidget {
                                 child: Text(action.$1),
                               ),
                               TableCell(
-                                child: Text(action.$2.toString(),
-                                    style: const TextStyle()),
+                                child: Text(
+                                  action.$2.toString(),
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
                               ),
                               TableCell(
                                 child: IconButton(
@@ -302,8 +306,11 @@ class _Body extends StatelessWidget {
                     children: [
                       Row(
                         children: [
-                          const Expanded(
-                            child: Text('New candidates'),
+                          Expanded(
+                            child: Text(
+                              'New candidates',
+                              style: theme.textTheme.titleSmall,
+                            ),
                           ),
                           IconButton(
                             onPressed: () {},
@@ -311,20 +318,50 @@ class _Body extends StatelessWidget {
                           )
                         ],
                       ),
-                      const Expanded(
+                      Expanded(
                         child: Row(
                           children: [
-                            Expanded(child: Text('500')),
-                            Expanded(child: Text('323')),
-                            Expanded(child: Text('177')),
+                            Expanded(
+                              child: Text(
+                                '500',
+                                style: theme.textTheme.displayLarge,
+                              ),
+                            ),
+                            Expanded(
+                              child: Text(
+                                '323',
+                                style: theme.textTheme.displaySmall,
+                              ),
+                            ),
+                            Expanded(
+                              child: Text(
+                                '177',
+                                style: theme.textTheme.displaySmall,
+                              ),
+                            ),
                           ],
                         ),
                       ),
-                      const Row(
+                      Row(
                         children: [
-                          Expanded(child: Text('Total')),
-                          Expanded(child: Text('New')),
-                          Expanded(child: Text('Invited')),
+                          Expanded(
+                            child: Text(
+                              'Total',
+                              style: theme.textTheme.labelSmall,
+                            ),
+                          ),
+                          Expanded(
+                            child: Text(
+                              'New',
+                              style: theme.textTheme.labelSmall,
+                            ),
+                          ),
+                          Expanded(
+                            child: Text(
+                              'Invited',
+                              style: theme.textTheme.labelSmall,
+                            ),
+                          ),
                         ],
                       ),
                       const Row(
@@ -395,8 +432,11 @@ class _Body extends StatelessWidget {
                     children: [
                       Row(
                         children: [
-                          const Expanded(
-                            child: Text('Active Candidates'),
+                          Expanded(
+                            child: Text(
+                              'Active Candidates',
+                              style: theme.textTheme.titleSmall,
+                            ),
                           ),
                           IconButton(
                             onPressed: () {},
@@ -404,8 +444,16 @@ class _Body extends StatelessWidget {
                           )
                         ],
                       ),
-                      const Expanded(child: Text('352')),
-                      const Text('Total'),
+                      Expanded(
+                        child: Text(
+                          '352',
+                          style: theme.textTheme.displayLarge,
+                        ),
+                      ),
+                      Text(
+                        'Total',
+                        style: theme.textTheme.labelSmall,
+                      ),
                       const Row(
                         children: [
                           Icon(
@@ -436,8 +484,11 @@ class _Body extends StatelessWidget {
                     children: [
                       Row(
                         children: [
-                          const Expanded(
-                            child: Text('Avg time to completion'),
+                          Expanded(
+                            child: Text(
+                              'Avg time to completion',
+                              style: theme.textTheme.titleSmall,
+                            ),
                           ),
                           IconButton(
                             onPressed: () {},
@@ -445,10 +496,16 @@ class _Body extends StatelessWidget {
                           )
                         ],
                       ),
-                      const Expanded(
-                        child: Text('12'),
+                      Expanded(
+                        child: Text(
+                          '12',
+                          style: theme.textTheme.displayLarge,
+                        ),
                       ),
-                      const Text('Days'),
+                      Text(
+                        'Days',
+                        style: theme.textTheme.labelSmall,
+                      ),
                       const Row(
                         children: [
                           Icon(
@@ -479,8 +536,11 @@ class _Body extends StatelessWidget {
                     children: [
                       Row(
                         children: [
-                          const Expanded(
-                            child: Text('Exam pass rate'),
+                          Expanded(
+                            child: Text(
+                              'Exam pass rate',
+                              style: theme.textTheme.titleSmall,
+                            ),
                           ),
                           IconButton(
                             onPressed: () {},
@@ -488,10 +548,16 @@ class _Body extends StatelessWidget {
                           )
                         ],
                       ),
-                      const Expanded(
-                        child: Text('88'),
+                      Expanded(
+                        child: Text(
+                          '88',
+                          style: theme.textTheme.displayLarge,
+                        ),
                       ),
-                      const Text('Percent'),
+                      Text(
+                        'Percent',
+                        style: theme.textTheme.labelSmall,
+                      ),
                       const Row(
                         children: [
                           Icon(
@@ -522,8 +588,11 @@ class _Body extends StatelessWidget {
                     children: [
                       Row(
                         children: [
-                          const Expanded(
-                            child: Text('New candidates by lead source'),
+                          Expanded(
+                            child: Text(
+                              'New candidates by lead source',
+                              style: theme.textTheme.titleSmall,
+                            ),
                           ),
                           IconButton(
                             onPressed: () {},
@@ -551,8 +620,11 @@ class _Body extends StatelessWidget {
                     children: [
                       Row(
                         children: [
-                          const Expanded(
-                            child: Text('Active candidates by status'),
+                          Expanded(
+                            child: Text(
+                              'Active candidates by status',
+                              style: theme.textTheme.titleSmall,
+                            ),
                           ),
                           IconButton(
                             onPressed: () {},
@@ -582,8 +654,11 @@ class _Body extends StatelessWidget {
                       children: [
                         Row(
                           children: [
-                            const Expanded(
-                              child: Text('Unresponsive'),
+                            Expanded(
+                              child: Text(
+                                'Unresponsive',
+                                style: theme.textTheme.titleSmall,
+                              ),
                             ),
                             IconButton(
                               onPressed: () {},
@@ -591,16 +666,18 @@ class _Body extends StatelessWidget {
                             )
                           ],
                         ),
-                        const Row(
+                        Row(
                           children: [
                             Expanded(
                               child: Text.rich(
                                 TextSpan(
-                                  children: [
+                                  style: theme.textTheme.bodyLarge,
+                                  children: const [
                                     TextSpan(
                                       text: '13 ',
                                       style: TextStyle(
-                                          fontWeight: FontWeight.bold),
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     ),
                                     TextSpan(
                                       text: 'Candidates',
@@ -612,7 +689,8 @@ class _Body extends StatelessWidget {
                             Expanded(
                               child: Text.rich(
                                 TextSpan(
-                                  children: [
+                                  style: theme.textTheme.bodyLarge,
+                                  children: const [
                                     TextSpan(
                                       text: 'Avg 4 days  ',
                                       style: TextStyle(
@@ -678,8 +756,11 @@ class _Body extends StatelessWidget {
                       children: [
                         TableRow(
                           children: [
-                            const TableCell(
-                              child: Text('Top 3 dropoff points'),
+                            TableCell(
+                              child: Text(
+                                'Top 3 dropoff points',
+                                style: theme.textTheme.titleSmall,
+                              ),
                             ),
                             const TableCell(
                               child: SizedBox(),
@@ -699,7 +780,12 @@ class _Body extends StatelessWidget {
                                 child: Text(action.$1),
                               ),
                               TableCell(
-                                child: Text(action.$2.toString()),
+                                child: Text(
+                                  action.$2.toString(),
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
                               ),
                               TableCell(
                                 child: IconButton(
