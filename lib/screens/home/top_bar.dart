@@ -34,25 +34,6 @@ class TopBar extends StatelessWidget {
                 final theme = Theme.of(context);
                 return Stack(
                   children: [
-                    Positioned(
-                      top: 0,
-                      right: 0,
-                      child: DecoratedBox(
-                        decoration: BoxDecoration(
-                          color: theme.colorScheme.primary,
-                          shape: BoxShape.circle,
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(4.0),
-                          child: Text(
-                            '2',
-                            style: TextStyle(
-                              color: theme.colorScheme.onPrimary,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
                     IconButton(
                       onPressed: () {
                         if (controller.isOpen) {
@@ -62,6 +43,25 @@ class TopBar extends StatelessWidget {
                         }
                       },
                       icon: const Icon(Icons.inbox_outlined),
+                    ),
+                    Positioned(
+                      top: 0,
+                      right: 0,
+                      child: DecoratedBox(
+                        decoration: BoxDecoration(
+                          color: theme.colorScheme.primary.withOpacity(1),
+                          shape: BoxShape.circle,
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(4.0),
+                          child: Text(
+                            '2',
+                            style: theme.textTheme.labelSmall!.copyWith(
+                              color: theme.colorScheme.onPrimary,
+                            ),
+                          ),
+                        ),
+                      ),
                     ),
                   ],
                 );

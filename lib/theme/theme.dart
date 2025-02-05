@@ -61,6 +61,34 @@ ThemeData _buildTheme(Brightness brightness) {
         color: Color(0xff71717a),
       ),
     ),
+    segmentedButtonTheme: SegmentedButtonThemeData(
+      selectedIcon: const SizedBox(),
+      style: ButtonStyle(
+        foregroundColor: MaterialStateProperty.resolveWith((states) {
+          if (states.contains(MaterialState.selected)) {
+            return const Color(0xff18181b);
+          }
+          return const Color(0xffa1a1aa);
+        }),
+        backgroundColor: MaterialStateProperty.resolveWith((states) {
+          if (states.contains(MaterialState.selected)) {
+            return Colors.white;
+          }
+          return const Color(0xffe5e7eb);
+        }),
+        shape: MaterialStateProperty.all(
+          const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(8)),
+          ),
+        ),
+        side: MaterialStateProperty.all(
+          const BorderSide(
+            color: Color(0xffe5e7eb),
+            width: 4,
+          ),
+        ),
+      ),
+    ),
   );
 }
 
