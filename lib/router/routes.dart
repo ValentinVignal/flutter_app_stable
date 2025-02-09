@@ -4,7 +4,8 @@ import 'package:flutter_app_stable/screens/home/notification_drawer.dart';
 import 'package:flutter_app_stable/screens/login.dart';
 import 'package:flutter_app_stable/user_notifier.dart';
 import 'package:go_router/go_router.dart';
-import 'package:imperative_page_routes/imperative_page_routes.dart';
+
+import 'pages/drawer_page.dart';
 
 part 'routes.g.dart';
 

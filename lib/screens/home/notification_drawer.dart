@@ -19,21 +19,24 @@ class NotificationDrawer extends StatelessWidget {
         children: [
           ColoredBox(
             color: theme.colorScheme.secondaryContainer,
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Row(
-                children: [
-                  CloseButton(
-                    color: theme.colorScheme.onSecondaryContainer,
-                  ),
-                  const SizedBox(width: 16),
-                  Text(
-                    'Connect care',
-                    style: TextStyle(
+            child: SafeArea(
+              bottom: false,
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Row(
+                  children: [
+                    CloseButton(
                       color: theme.colorScheme.onSecondaryContainer,
                     ),
-                  ),
-                ],
+                    const SizedBox(width: 16),
+                    Text(
+                      'Connect care',
+                      style: TextStyle(
+                        color: theme.colorScheme.onSecondaryContainer,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

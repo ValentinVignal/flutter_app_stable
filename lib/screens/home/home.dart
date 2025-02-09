@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_app_stable/screens/home/top_bar.dart';
 import 'package:flutter_app_stable/theme/theme.dart';
@@ -9,25 +11,36 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Row(
-        children: [
-          Expanded(
-            flex: 3,
-            child: _Drawer(),
-          ),
-          Expanded(
-            flex: 16,
-            child: Column(
-              children: [
-                TopBar(),
-                Expanded(
-                  child: _Body(),
-                )
-              ],
+    return Scaffold(
+      body: SafeArea(
+        child: LayoutBuilder(builder: (context, constraints) {
+          return SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: ConstrainedBox(
+              constraints:
+                  BoxConstraints(maxWidth: max(constraints.maxWidth, 1300)),
+              child: const Row(
+                children: [
+                  Expanded(
+                    flex: 3,
+                    child: _Drawer(),
+                  ),
+                  Expanded(
+                    flex: 16,
+                    child: Column(
+                      children: [
+                        TopBar(),
+                        Expanded(
+                          child: _Body(),
+                        )
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+          );
+        }),
       ),
     );
   }

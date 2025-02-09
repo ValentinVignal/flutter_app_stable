@@ -1,3 +1,3 @@
 import 'package:flutter/material.dart';
 
-final userNotifier = ValueNotifier<String?>('');
+final userNotifier = ValueNotifier<String?>(null);

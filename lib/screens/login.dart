@@ -1,3 +1,4 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_stable/user_notifier.dart';
 import 'package:flutter_svg/svg.dart';
@@ -8,15 +9,17 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: Stack(
-        children: [
-          Positioned.fill(
-            child: _Background(),
-          ),
-          Center(
-            child: _Foreground(),
-          ),
-        ],
+      body: SafeArea(
+        child: Stack(
+          children: [
+            Positioned.fill(
+              child: _Background(),
+            ),
+            Center(
+              child: _Foreground(),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -38,6 +41,17 @@ class __ForegroundState extends State<_Foreground> {
     ..addListener(() {
       setState(() {});
     });
+
+  Future<void> _login() async {
+    await FirebaseMessaging.instance.requestPermission(provisional: true);
+    final fmcToken = await FirebaseMessaging.instance.getToken();
+    if (fmcToken == null) {
+      throw UnsupportedError('No token');
+    }
+    print('token');
+    print(fmcToken);
+    userNotifier.value = _emailController.text;
+  }
 
   @override
   void dispose() {
@@ -100,9 +114,7 @@ class __ForegroundState extends State<_Foreground> {
                       onPressed: _emailController.text.isEmpty ||
                               _passwordController.text.isEmpty
                           ? null
-                          : () {
-                              userNotifier.value = _emailController.text;
-                            },
+                          : _login,
                       child: const Text('Log in'),
                     ),
                   ),
