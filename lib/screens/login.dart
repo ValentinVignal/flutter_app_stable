@@ -48,8 +48,33 @@ class __ForegroundState extends State<_Foreground> {
     if (fmcToken == null) {
       throw UnsupportedError('No token');
     }
-    print('token');
-    print(fmcToken);
+    void handleMessage(RemoteMessage message) {
+      print('handleMessage: $message');
+      if (message.data['type'] == 'chat') {
+        // Do something to navigate to the correct screen.
+      }
+    }
+
+    Future<void> setupInteractedMessage() async {
+      // Get any messages which caused the application to open from
+      // a terminated state.
+      RemoteMessage? initialMessage =
+          await FirebaseMessaging.instance.getInitialMessage();
+
+      // If the message also contains a data property with a "type" of "chat",
+      // navigate to a chat screen
+      if (initialMessage != null) {
+        handleMessage(initialMessage);
+      }
+
+      // Also handle any interaction when the app is in the background via a
+      // Stream listener
+      FirebaseMessaging.onMessageOpenedApp.listen(handleMessage);
+    }
+
+    setupInteractedMessage();
+
+    print('token: $fmcToken');
     userNotifier.value = _emailController.text;
   }
 
