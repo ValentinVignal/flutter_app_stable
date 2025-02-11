@@ -8,14 +8,16 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    final size = MediaQuery.sizeOf(context).shortestSide;
+    return Scaffold(
       body: SafeArea(
         child: Stack(
           children: [
-            Positioned.fill(
-              child: _Background(),
-            ),
-            Center(
+            if (size > 700)
+              const Positioned.fill(
+                child: _Background(),
+              ),
+            const Center(
               child: _Foreground(),
             ),
           ],

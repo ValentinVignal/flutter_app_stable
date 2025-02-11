@@ -6,6 +6,7 @@ ThemeData _buildTheme(Brightness brightness) {
     colorScheme: ColorScheme.fromSeed(
       brightness: brightness,
       seedColor: const Color(0xffed1b2d),
+      primary: const Color(0xffed1b2d),
       surfaceTint: Colors.transparent,
       surface: Colors.white,
       background: const Color(0xfffcfcfc),
@@ -31,7 +32,7 @@ ThemeData _buildTheme(Brightness brightness) {
         color: Color(0xff71717a),
       ),
       bodyLarge: TextStyle(
-        fontSize: 24,
+        // fontSize: 24,
         color: Color(0xff000000),
       ),
       bodyMedium: TextStyle(
@@ -88,6 +89,18 @@ ThemeData _buildTheme(Brightness brightness) {
           ),
         ),
       ),
+    ),
+    filledButtonTheme: FilledButtonThemeData(
+      style: ButtonStyle(
+        shape: MaterialStateProperty.all(
+          const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(8)),
+          ),
+        ),
+      ),
+    ),
+    inputDecorationTheme: const InputDecorationTheme(
+      border: OutlineInputBorder(),
     ),
   );
 }
