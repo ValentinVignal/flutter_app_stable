@@ -55,5 +55,15 @@
       });
     });
   </script>
+  <script>
+    if ("serviceWorker" in navigator) {
+      console.log('here');
+      window.addEventListener("load", function () {
+        navigator.serviceWorker.register("firebase-messaging-sw.js", {
+          scope: "/firebase-cloud-messaging-push-scope",
+        });
+      });
+    }
+  </script>
 </body>
 </html>
