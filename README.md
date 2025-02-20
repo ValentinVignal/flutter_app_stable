@@ -1,18 +1,82 @@
-[![wakatime](https://wakatime.com/badge/github/ValentinVignal/flutter_app_stable.svg)](https://wakatime.com/badge/github/ValentinVignal/flutter_app_stable)
+# Dart and flutter tests
 
-# flutter_app_stable
+- Dart: `package:test`
+- Flutter: `package:flutter_test`
 
-A new Flutter project.
+- Test files must end with `_test.dart`
 
-## Getting Started
+Cycle:
+1. `setUpAll` (= `beforeAll`)
+2. `setUp` (= `beforeEach`)
+3. `group` (= `describe`)
+4. `test` or `testWidgets` (= `it`)
+5. `tearDown` (= `afterEach`)
+6. `tearDownAll` (= `afterAll`)
 
-This project is a starting point for a Flutter application.
+- `expect(actual, matcher)`
 
-A few resources to get you started if this is your first Flutter project:
+`flutter_test_config`: Special file that allows you to run code for each test files.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Flutter test
+
+`testWidgets` providers `WidgetTester tester` which allows you to interact with the pumped application.
+
+- `tester.pumpWidget` to pump your widget.
+- `expect(find.byType(MyWidget), findsOne)`
+- Multiple widget finders
+  - `find.byType(MyWidget)`
+  - `find.text('My Text')`
+  - `find.byIcon(Icon.close)`
+  - `find.byKey(myKey)`
+  - `find.byWidgetPredicate((widget) => ...)`
+- Multiple finders:
+  - `findsOne`
+  - `findsNothing`
+  - `findsExactly(3)`
+
+
+### Interact
+
+- `tester.enterText('my text');`
+- `tester.tap(find.byType(MyButton))`
+
+### Fake async
+
+Flutter test are running in a fake async environment
+
+- `tester.pump();` (preferred)
+- `tester.pumpAndSettle();`
+
+## Mocking
+
+Dart is statically typed. It makes it safer. It also prevent us to easily mock classes / methods.
+
+You **cannot** mock a static object or an already existing object.
+
+The way to mock is more similar to Java than JavaScript.
+
+You have to create your own mocks. or fakes.
+
+Som packages allow you to do it (`mockito`, `mocktail`)
+
+```dart
+class MyObject {
+  int add(int a, int b) => a + b;
+}
+
+class _MyObjectMock extends Mock implements MyObject {}
+
+class _MyObjectFake extends Fake implements MyObject {
+  @override
+  int myMethod(int a, int b) => 0;
+}
+
+final mock = _MyObjectMock();
+when(() => mock.add(any(), any())).thenReturn(0);
+final fake = _MyObjectFake();
+
+myFunctionUsingAMyObject(mock);
+myFunctionUsingAMyObject(fake);
+
+```
