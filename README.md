@@ -22,6 +22,82 @@
 It was being experimentally implemented but dropped by the team for the moment.
 Instead there is `build_runner` (Example of package for data classes: `freezed`, `built_value`).
 
+## Naming convention
+
+- variable, functions : `camelCase`
+`const myVariable = 2;`
+- Types, classes: `PascalCase`
+Ex: `class MyClass {}`
+- Library/package/file name: `snake_case`. Ex: `my_file_name.dart`
+- Enum: `PascalCase` and singular. Entries are in `camelCase`.
+
+Ex:
+
+```dart
+enum Animal {
+  cat,
+  dog,
+  parrot,
+}
+```
+
+## Extensions
+
+```dart
+extension StringExtension on String {
+  String initials => split(' ').map((word) => word.first).join('');
+}
+
+const name = 'Valentin Vignal';
+final initials = name.initials; // 'VV'
+```
+
+Example of `.sum` on `num`.
+
+```dart
+extension IntSum on List<int> {
+  int get sum => // TODO;
+}
+
+const list = [1, 2, 3];
+final sum = list.sum; // 6
+```
+
+```dart
+extension DoubleSum on List<double> {
+  double get sum => // TODO;
+}
+
+const list = [1.0, 2.0, 3.0];
+final sum = list.sum; // 6.0
+```
+
+
+```dart
+extension NumSum on List<num> {
+  int get sum => // TODO;
+}
+
+const list = [1, 2, 3];
+final sum = list.sum; // 6 as a num
+```
+
+```dart
+extension NumSum<T extends num> on List<T> {
+  T get sum => // TODO;
+}
+
+const list = [1, 2, 3];
+final sum = list.sum; // 6 as a int.
+```
+
+## Augmented types:
+
+TODO
+
+
+
+
   
 
 # Flutter
@@ -61,13 +137,12 @@ Theme can be defined using `ThemeData` which then can be used with `Theme.of(con
 ## Constraints go down, sizes go up, parent set position.
 
 
-
 ## Good practices and convention:
 
 - When a widget takes a sub-widget as a parameter, name it `child`.
 - When a widget takes a list of sub-widgets as a parameter, name it `children`.
 - When a widget take a callback method that returns a widget as a parameter, name it `builder`.
-- Use simpler widget to make the code light-weight
+- Use simpler widget to make the code light-weight. Avoid `Container`.
 
 # Learn more
 
@@ -80,3 +155,4 @@ Theme can be defined using `ThemeData` which then can be used with `Theme.of(con
 - Discord: The flutter team has a server and is quite responsive
 - X: Most of the flutter team members are on X.
 - In the code source. Dart and Flutter are open source, you can inspect the code of the package that are used.
+
