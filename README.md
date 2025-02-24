@@ -1,7 +1,7 @@
 # Dart and flutter tests
 
-- Dart: `package:test`
-- Flutter: `package:flutter_test`
+- Dart: [`package:test`](https://pub.dev/packages/test)
+- Flutter: [`package:flutter_test`](https://api.flutter.dev/flutter/flutter_test/)
 
 - Test files must end with `_test.dart`
 
@@ -20,7 +20,7 @@ Cycle:
 
 ## Flutter test
 
-`testWidgets` providers `WidgetTester tester` which allows you to interact with the pumped application.
+`testWidgets` provides `WidgetTester tester` which allows you to interact with the pumped application.
 
 - `tester.pumpWidget` to pump your widget.
 - `expect(find.byType(MyWidget), findsOne)`
@@ -58,7 +58,7 @@ The way to mock is more similar to Java than JavaScript.
 
 You have to create your own mocks. or fakes.
 
-Som packages allow you to do it (`mockito`, `mocktail`)
+Some packages allow you to do it (`mockito`, `mocktail`)
 
 ```dart
 class MyObject {
@@ -78,5 +78,13 @@ final fake = _MyObjectFake();
 
 myFunctionUsingAMyObject(mock);
 myFunctionUsingAMyObject(fake);
-
 ```
+
+
+## Where to learn
+
+- In the code source (ex: `url_launcher`).
+- github:
+  - [pub.dev](https://pub.dev/)
+  - [flutter/flutter](https://github.com/flutter/flutter)
+- [StackOverflow](https://stackoverflow.com/)
