@@ -62,10 +62,28 @@ By using provider instead of manually writing InheritedWidget, you get:
 
 To read more about a provider, see its [documentation](https://pub.dev/documentation/provider/latest/provider/provider-library.html).
 
+### Pros:
 
+- Not verbose.
+
+### Cons
+
+- Hard to have dependencies between models.
 
 
 ## `riverpod`
 
 - https://pub.dev/packages/riverpod
-- https://pub.dev/packages/flutter_ri-verpod
+- https://pub.dev/packages/flutter_riverpod
+
+A reactive caching and data-binding framework. https://riverpod.dev Riverpod makes working with asynchronous code a breeze by:
+
+- handling errors/loading states by default. No need to manually catch errors
+- natively supporting advanced scenarios, such as pull-to-refresh
+- separating the logic from your UI
+- ensuring your code is testable, scalable and reusable
+
+### Pros:
+
+- Not verbose.
+- Easy to have dependencies between providers.
