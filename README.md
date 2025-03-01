@@ -19,6 +19,19 @@
 - https://api.flutter.dev/flutter/widgets/InheritedWidget-class.html
 - https://www.youtube.com/watch?v=Zbm3hjPjQMk
 
+
+### Pros:
+
+- No need to pass parameters down the widget tree.
+
+### Cons: 
+
+- Verbose.
+- Data cannot be updated directly.
+- Relies on `StatefulWidget` to store and update the state.
+- Need to pass the callback as a parameter.
+
+
 ## `InheritedNotifier`
 
 - https://api.flutter.dev/flutter/widgets/InheritedNotifier-class.html
