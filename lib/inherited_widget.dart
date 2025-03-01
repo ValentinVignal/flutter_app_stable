@@ -44,27 +44,40 @@ class _InheritedCount extends InheritedWidget {
   }
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
   @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  int _count = 0;
+
+  @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       home: Count(
-        data: 0,
-        child: MyHomePage(),
+        data: _count,
+        child: MyHomePage(
+          onPressed: () {
+            setState(() {
+              _count++;
+            });
+          },
+        ),
       ),
     );
   }
 }
 
 class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key});
+  const MyHomePage({
+    super.key,
+    required this.onPressed,
+  });
 
-  void _incrementCounter(BuildContext context) {
-    final count = Count.of(context);
-    // Cannot change
-  }
+  final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -86,7 +99,7 @@ class MyHomePage extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => _incrementCounter(context),
+        onPressed: onPressed,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
