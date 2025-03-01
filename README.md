@@ -31,7 +31,6 @@
 - Relies on `StatefulWidget` to store and update the state.
 - Need to pass the callback as a parameter.
 
-
 ## `InheritedNotifier`
 
 - https://api.flutter.dev/flutter/widgets/InheritedNotifier-class.html
