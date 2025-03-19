@@ -40,32 +40,21 @@ extension $HomeRouteExtension on HomeRoute {
 
 extension $WizardRouteExtension on WizardRoute {
   static WizardRoute _fromState(GoRouterState state) => WizardRoute(
-        step: _$convertMapValue('step', state.uri.queryParameters, int.parse) ??
-            0,
+        $extra: state.extra as int?,
       );
 
   String get location => GoRouteData.$location(
         '/home/dialog',
-        queryParams: {
-          if (step != 0) 'step': step.toString(),
-        },
       );
 
-  void go(BuildContext context) => context.go(location);
+  void go(BuildContext context) => context.go(location, extra: $extra);
 
-  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+  Future<T?> push<T>(BuildContext context) =>
+      context.push<T>(location, extra: $extra);
 
   void pushReplacement(BuildContext context) =>
-      context.pushReplacement(location);
+      context.pushReplacement(location, extra: $extra);
 
-  void replace(BuildContext context) => context.replace(location);
-}
-
-T? _$convertMapValue<T>(
-  String key,
-  Map<String, String> map,
-  T Function(String) converter,
-) {
-  final value = map[key];
-  return value == null ? null : converter(value);
+  void replace(BuildContext context) =>
+      context.replace(location, extra: $extra);
 }

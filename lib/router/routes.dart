@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app_stable/on_exit/on_exit.dart';
 import 'package:flutter_app_stable/screens/home.dart';
 import 'package:flutter_app_stable/screens/wizard.dart';
 import 'package:go_router/go_router.dart';
@@ -35,19 +36,21 @@ class _WizardKey with EquatableMixin implements LocalKey {
 
 class WizardRoute extends GoRouteData {
   const WizardRoute({
-    this.step = 0,
+    this.$extra,
   });
 
-  final int step;
+  final int? $extra;
 
   @override
   Future<bool> onExit(BuildContext context, GoRouterState state) async {
-    return true;
+    if (!onExitKeys.contains(state.pageKey)) {
+      return true;
+    }
     print(state.uri);
     final didPop = await showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Are you sure?'),
+        title: const Text('Are you sure to exit?'),
         actions: [
           TextButton(
             onPressed: () {
@@ -69,10 +72,11 @@ class WizardRoute extends GoRouteData {
 
   @override
   Page<void> buildPage(BuildContext context, GoRouterState state) {
+    print('extra: ${$extra}');
     return DialogPage(
-      key: _WizardKey(pageKey: state.pageKey, step: step),
-      child: WizardScreen(
-        step: step,
+      key: state.pageKey,
+      child: const WarnRefresh(
+        child: WizardScreen(),
       ),
     );
   }

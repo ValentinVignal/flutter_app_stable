@@ -1,4 +1,6 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app_stable/on_exit/on_exit.dart';
 import 'package:flutter_app_stable/router/router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
@@ -7,6 +9,9 @@ import 'package:go_router/go_router.dart';
 void main() {
   GoRouter.optionURLReflectsImperativeAPIs = true;
   usePathUrlStrategy();
+  if (kIsWeb) {
+    warnRefresh();
+  }
   runApp(const ProviderScope(child: MyApp()));
 }
 

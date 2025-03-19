@@ -10,7 +10,7 @@ class HomeScreen extends StatelessWidget {
       body: Center(
         child: ElevatedButton(
           onPressed: () {
-            const WizardRoute().push(context);
+            const WizardRoute($extra: 4).push(context);
           },
           child: const Text('Home'),
         ),
