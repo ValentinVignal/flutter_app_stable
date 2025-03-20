@@ -55,10 +55,27 @@ extension $HomeRouteExtension on HomeRoute {
 }
 
 extension $UsersRouteExtension on UsersRoute {
-  static UsersRoute _fromState(GoRouterState state) => const UsersRoute();
+  static UsersRoute _fromState(GoRouterState state) => UsersRoute(
+        ageFrom: _$convertMapValue(
+                'age-from', state.uri.queryParameters, int.parse) ??
+            0,
+        ageTo:
+            _$convertMapValue('age-to', state.uri.queryParameters, int.parse) ??
+                100,
+        role: state.uri.queryParametersAll['role']
+                ?.map(_$UserRoleEnumMap._$fromName)
+                .toSet() ??
+            const {},
+      );
 
   String get location => GoRouteData.$location(
         '/users',
+        queryParams: {
+          if (ageFrom != 0) 'age-from': ageFrom.toString(),
+          if (ageTo != 100) 'age-to': ageTo.toString(),
+          if (role != const {})
+            'role': role.map((e) => _$UserRoleEnumMap[e]).toList(),
+        },
       );
 
   void go(BuildContext context) => context.go(location);
@@ -70,6 +87,13 @@ extension $UsersRouteExtension on UsersRoute {
 
   void replace(BuildContext context) => context.replace(location);
 }
+
+const _$UserRoleEnumMap = {
+  UserRole.admin: 'admin',
+  UserRole.user: 'user',
+  UserRole.guest: 'guest',
+  UserRole.readOnly: 'read-only',
+};
 
 extension $UserRouteExtension on UserRoute {
   static UserRoute _fromState(GoRouterState state) => UserRoute(
@@ -125,4 +149,18 @@ extension $DocumentRouteExtension on DocumentRoute {
       context.pushReplacement(location);
 
   void replace(BuildContext context) => context.replace(location);
+}
+
+T? _$convertMapValue<T>(
+  String key,
+  Map<String, String> map,
+  T Function(String) converter,
+) {
+  final value = map[key];
+  return value == null ? null : converter(value);
+}
+
+extension<T extends Enum> on Map<T, String> {
+  T _$fromName(String value) =>
+      entries.singleWhere((element) => element.value == value).key;
 }

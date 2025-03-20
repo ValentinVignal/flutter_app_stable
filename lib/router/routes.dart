@@ -1,9 +1,12 @@
+import 'package:built_collection/built_collection.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app_stable/database/user.dart';
 import 'package:flutter_app_stable/screens/documents/document/document_screen.dart';
 import 'package:flutter_app_stable/screens/documents/documents_screen.dart';
 import 'package:flutter_app_stable/screens/home/home_screen.dart';
 import 'package:flutter_app_stable/screens/users/user/user_screen.dart';
 import 'package:flutter_app_stable/screens/users/users_screen.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 part 'routes.g.dart';
@@ -35,11 +38,25 @@ class HomeRoute extends GoRouteData {
 }
 
 class UsersRoute extends GoRouteData {
-  const UsersRoute();
+  const UsersRoute({
+    this.ageFrom = 0,
+    this.ageTo = 100,
+    this.role = const {},
+  });
+
+  final int ageFrom;
+  final int ageTo;
+  final Set<UserRole> role;
 
   @override
   Widget build(BuildContext context, GoRouterState state) {
-    return const UsersScreen();
+    return ProviderScope(
+      overrides: [
+        userAgeFilterProvider.overrideWithValue((from: ageFrom, to: ageTo)),
+        userRoleFilterProvider.overrideWithValue(BuiltSet(role)),
+      ],
+      child: const UsersScreen(),
+    );
   }
 }
 

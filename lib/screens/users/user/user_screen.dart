@@ -25,6 +25,9 @@ class UserScreen extends ConsumerWidget {
           ListTile(
             title: Text(user?.role.name ?? ''),
           ),
+          ListTile(
+            title: Text(user?.age.toString() ?? ''),
+          ),
         ],
       ),
     );

@@ -40,6 +40,7 @@ dependencies:
   flutter_web_plugins:
     sdk: flutter
   flutter_riverpod: ^2.6.1
+  built_collection: ^5.1.1
 
 dev_dependencies:
   flutter_test:
