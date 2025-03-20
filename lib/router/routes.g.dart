@@ -115,11 +115,25 @@ extension $UserRouteExtension on UserRoute {
 }
 
 extension $DocumentsRouteExtension on DocumentsRoute {
-  static DocumentsRoute _fromState(GoRouterState state) =>
-      const DocumentsRoute();
+  static DocumentsRoute _fromState(GoRouterState state) => DocumentsRoute(
+        type: state.uri.queryParametersAll['type']
+                ?.map(_$DocumentTypeEnumMap._$fromName)
+                .toSet() ??
+            const {},
+        createdBy: state.uri.queryParametersAll['created-by']
+                ?.map(int.parse)
+                .toSet() ??
+            const {},
+      );
 
   String get location => GoRouteData.$location(
         '/documents',
+        queryParams: {
+          if (type != const {})
+            'type': type.map((e) => _$DocumentTypeEnumMap[e]).toList(),
+          if (createdBy != const {})
+            'created-by': createdBy.map((e) => e.toString()).toList(),
+        },
       );
 
   void go(BuildContext context) => context.go(location);
@@ -131,6 +145,13 @@ extension $DocumentsRouteExtension on DocumentsRoute {
 
   void replace(BuildContext context) => context.replace(location);
 }
+
+const _$DocumentTypeEnumMap = {
+  DocumentType.pdf: 'pdf',
+  DocumentType.doc: 'doc',
+  DocumentType.xls: 'xls',
+  DocumentType.ppt: 'ppt',
+};
 
 extension $DocumentRouteExtension on DocumentRoute {
   static DocumentRoute _fromState(GoRouterState state) => DocumentRoute(

@@ -21,7 +21,7 @@ class _UsersScreenState extends ConsumerState<UsersScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final users = ref.watch(userFilteredProvider).valueOrNull ?? const [];
+    final users = ref.watch(usersFilteredProvider).valueOrNull ?? const [];
     final ages = ref.watch(userAgeFilterProvider);
     final roles = ref.watch(userRoleFilterProvider);
     return Scaffold(

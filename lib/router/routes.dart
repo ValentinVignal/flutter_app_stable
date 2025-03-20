@@ -1,5 +1,6 @@
 import 'package:built_collection/built_collection.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app_stable/database/document.dart';
 import 'package:flutter_app_stable/database/user.dart';
 import 'package:flutter_app_stable/screens/documents/document/document_screen.dart';
 import 'package:flutter_app_stable/screens/documents/documents_screen.dart';
@@ -72,11 +73,23 @@ class UserRoute extends GoRouteData {
 }
 
 class DocumentsRoute extends GoRouteData {
-  const DocumentsRoute();
+  const DocumentsRoute({
+    this.type = const {},
+    this.createdBy = const {},
+  });
+
+  final Set<DocumentType> type;
+  final Set<int> createdBy;
 
   @override
   Widget build(BuildContext context, GoRouterState state) {
-    return const DocumentsScreen();
+    return ProviderScope(
+      overrides: [
+        documentTypeFilterProvider.overrideWithValue(BuiltSet(type)),
+        documentCreatedByFilterProvider.overrideWithValue(BuiltSet(createdBy)),
+      ],
+      child: const DocumentsScreen(),
+    );
   }
 }
 

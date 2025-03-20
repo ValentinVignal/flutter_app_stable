@@ -1,3 +1,4 @@
+import 'package:built_collection/built_collection.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 enum DocumentType {
@@ -108,3 +109,31 @@ final documentProvider =
   await Future.delayed(const Duration(seconds: 1));
   return _documents.firstWhere((user) => user.id == id);
 });
+
+final documentTypeFilterProvider =
+    Provider.autoDispose<BuiltSet<DocumentType>>((ref) => BuiltSet());
+final documentCreatedByFilterProvider =
+    Provider.autoDispose<BuiltSet<int>>((ref) => BuiltSet());
+
+final documentsFilteredProvider = FutureProvider.autoDispose<List<Document>>(
+  (ref) async {
+    final type = ref.watch(documentTypeFilterProvider);
+    final createdBy = ref.watch(documentCreatedByFilterProvider);
+    final documents = await ref.watch(documentsProvider.future);
+
+    return documents.where((user) {
+      if (type.isNotEmpty && !type.contains(user.type)) {
+        return false;
+      }
+      if (createdBy.isNotEmpty && !createdBy.contains(user.createdBy)) {
+        return false;
+      }
+      return true;
+    }).toList();
+  },
+  dependencies: [
+    documentTypeFilterProvider,
+    documentCreatedByFilterProvider,
+    documentsProvider
+  ],
+);

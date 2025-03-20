@@ -138,7 +138,7 @@ final userAgeFilterProvider =
 final userRoleFilterProvider =
     Provider.autoDispose<BuiltSet<UserRole>>((ref) => BuiltSet());
 
-final userFilteredProvider = FutureProvider.autoDispose<List<User>>(
+final usersFilteredProvider = FutureProvider.autoDispose<List<User>>(
   (ref) async {
     final age = ref.watch(userAgeFilterProvider);
     final roleFilter = ref.watch(userRoleFilterProvider);
