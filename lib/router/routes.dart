@@ -75,7 +75,7 @@ class WizardRoute extends GoRouteData {
     print('extra: ${$extra}');
     return DialogPage(
       key: state.pageKey,
-      child: const WarnRefresh(
+      child: const WarnExit(
         child: WizardScreen(),
       ),
     );

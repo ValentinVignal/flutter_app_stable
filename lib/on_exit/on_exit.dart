@@ -1,31 +1,18 @@
-import 'dart:js_interop';
-
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:web/web.dart';
 
 final onExitKeys = <ValueKey<String>>{};
 
-void warnRefresh() {
-  window.onbeforeunload = _onBeforeUnload.toJS;
-}
-
-void _onBeforeUnload(Event event) {
-  if (onExitKeys.isNotEmpty) {
-    event.preventDefault();
-  }
-}
-
-class WarnRefresh extends StatefulWidget {
-  const WarnRefresh({required this.child, super.key});
+class WarnExit extends StatefulWidget {
+  const WarnExit({required this.child, super.key});
 
   final Widget child;
 
   @override
-  State<WarnRefresh> createState() => _WarnRefreshState();
+  State<WarnExit> createState() => _WarnExitState();
 }
 
-class _WarnRefreshState extends State<WarnRefresh> {
+class _WarnExitState extends State<WarnExit> {
   late final ValueKey<String> pageKey;
   @override
   void initState() {

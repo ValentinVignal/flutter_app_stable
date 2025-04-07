@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_stable/on_exit/on_exit.dart';
+import 'package:flutter_app_stable/on_refresh/warn_on_refresh.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
@@ -21,34 +22,7 @@ class _WizardScreenState extends ConsumerState<WizardScreen> {
   @override
   Widget build(BuildContext context) {
     final counter = ref.watch(counterProvider);
-    return PopScope(
-      canPop: _step < 3,
-      onPopInvoked: (didPop) async {
-        if (didPop) return;
-        final pop = await showDialog(
-          context: context,
-          builder: (context) => AlertDialog(
-            title: const Text('Are you sure?'),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  Navigator.of(context).pop(false);
-                },
-                child: const Text('No'),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.of(context).pop(true);
-                },
-                child: const Text('Yes'),
-              ),
-            ],
-          ),
-        );
-        if ((pop ?? false) && context.mounted) {
-          Navigator.of(context).pop();
-        }
-      },
+    return WarnOnRefresh(
       child: Dialog.fullscreen(
         child: Column(
           children: [
