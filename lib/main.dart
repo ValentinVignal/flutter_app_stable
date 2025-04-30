@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_app_stable/poc/poc.dart';
 import 'package:google_maps_flutter_android/google_maps_flutter_android.dart';
 import 'package:google_maps_flutter_platform_interface/google_maps_flutter_platform_interface.dart';
 
@@ -26,6 +28,7 @@ import 'snapshot.dart';
 import 'tile_overlay.dart';
 
 final List<GoogleMapExampleAppPage> _allPages = <GoogleMapExampleAppPage>[
+  const Poc(),
   const MapUiPage(),
   const MapCoordinatesPage(),
   const MapClickPage(),
@@ -48,10 +51,15 @@ final List<GoogleMapExampleAppPage> _allPages = <GoogleMapExampleAppPage>[
 ];
 
 /// MapsDemo is the Main Application.
-class MapsDemo extends StatelessWidget {
+class MapsDemo extends StatefulWidget {
   /// Default Constructor
   const MapsDemo({super.key});
 
+  @override
+  State<MapsDemo> createState() => _MapsDemoState();
+}
+
+class _MapsDemoState extends State<MapsDemo> {
   void _pushPage(BuildContext context, GoogleMapExampleAppPage page) {
     Navigator.of(context).push(
       MaterialPageRoute<void>(
@@ -60,6 +68,14 @@ class MapsDemo extends StatelessWidget {
                 Scaffold(appBar: AppBar(title: Text(page.title)), body: page),
       ),
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    SchedulerBinding.instance.addPostFrameCallback((_) {
+      _pushPage(context, const Poc());
+    });
   }
 
   @override
