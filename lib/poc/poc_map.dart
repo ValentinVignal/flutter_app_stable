@@ -13,10 +13,16 @@ class PocMap extends ConsumerStatefulWidget {
 }
 
 class _PocMapState extends ConsumerState<PocMap> {
-  int? _selectedIndex;
+  Set<int> _selectedIndexes = const {};
 
-  final _clusterManager = ClusterManager(
+  late final _clusterManager = ClusterManager(
     clusterManagerId: ClusterManagerId('cluster_manager_id'),
+    onClusterTap: (cluster) {
+      setState(() {
+        _selectedIndexes =
+            cluster.markerIds.map((marker) => int.parse(marker.value)).toSet();
+      });
+    },
   );
 
   @override
@@ -38,7 +44,7 @@ class _PocMapState extends ConsumerState<PocMap> {
                         position: entry.value,
                         onTap: () {
                           setState(() {
-                            _selectedIndex = entry.key;
+                            _selectedIndexes = {entry.key};
                           });
                         },
                       ),
@@ -54,12 +60,11 @@ class _PocMapState extends ConsumerState<PocMap> {
                     currentPosition.longitude,
                   ),
                   radius: 5000, // 5 km radius
-                  // fillColor: Colors.blue.withValues(alpha: 0.2),
                   strokeColor: Colors.blue,
                   strokeWidth: 1,
                   onTap: () {
                     setState(() {
-                      _selectedIndex = null;
+                      _selectedIndexes = const {};
                     });
                   },
                 ),
@@ -67,7 +72,7 @@ class _PocMapState extends ConsumerState<PocMap> {
             clusterManagers: {_clusterManager},
             onTap: (_) {
               setState(() {
-                _selectedIndex = null;
+                _selectedIndexes = const {};
               });
             },
             initialCameraPosition: const CameraPosition(
@@ -83,7 +88,7 @@ class _PocMapState extends ConsumerState<PocMap> {
 
           child: AnimatedVisibility(
             axis: Axis.horizontal,
-            visible: _selectedIndex != null,
+            visible: _selectedIndexes.isNotEmpty,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Card(
@@ -93,24 +98,38 @@ class _PocMapState extends ConsumerState<PocMap> {
                     constraints: const BoxConstraints(
                       minWidth: 100,
                       minHeight: 200,
+                      maxWidth: 300,
                     ),
-                    child: Column(
-                      children: [
-                        Text(
-                          _selectedIndex == null
-                              ? ''
-                              : 'Latitude: ${list[_selectedIndex!].latitude}, Longitude: ${list[_selectedIndex!].longitude}',
-                        ),
-                        SizedBox(height: 10),
-                        OutlinedButton(
-                          onPressed: () async {
-                            await launchUrlString(
-                              'https://www.google.com/maps/dir/?api=1&destination=${Uri.encodeQueryComponent("Labrador Tower")}',
-                            );
-                          },
-                          child: Text('Direction'),
-                        ),
-                      ],
+                    child: ListView.separated(
+                      separatorBuilder: (context, index) => const Divider(),
+                      shrinkWrap: true,
+                      itemCount: _selectedIndexes.length,
+                      itemBuilder:
+                          (context, index) => Column(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Location ${_selectedIndexes.elementAt(index) + 1}',
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              const SizedBox(height: 5),
+                              Text(
+                                'Latitude: ${list[_selectedIndexes.elementAt(index)].latitude}, Longitude: ${list[_selectedIndexes.elementAt(index)].longitude}',
+                              ),
+                              const SizedBox(height: 5),
+                              OutlinedButton(
+                                onPressed: () async {
+                                  await launchUrlString(
+                                    'https://www.google.com/maps/dir/?api=1&destination=${Uri.encodeQueryComponent("Labrador Tower")}',
+                                  );
+                                },
+                                child: Text('Direction'),
+                              ),
+                            ],
+                          ),
                     ),
                   ),
                 ),
