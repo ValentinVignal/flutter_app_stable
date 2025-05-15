@@ -118,9 +118,9 @@ class _MoreButton extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return TextButton(
-      child: const Text('Add more locations'),
+      child: const Text('Add more Doctors'),
       onPressed: () {
-        addMoreLocations(ref);
+        addMoreDoctors(ref);
       },
     );
   }

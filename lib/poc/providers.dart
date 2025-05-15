@@ -1,5 +1,6 @@
 import 'dart:math' as math;
 
+import 'package:collection/collection.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -7,6 +8,21 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 final positionProvider = Provider.autoDispose<Position?>((ref) {
   return null;
 });
+
+class Hospital {
+  const Hospital({required this.id, required this.location});
+  final String id;
+
+  final LatLng location;
+}
+
+class Doctor {
+  const Doctor({required this.id, required this.hospitals});
+
+  final String id;
+
+  final List<Hospital> hospitals;
+}
 
 const _latLongList = [
   LatLng(1.290270, 103.851959),
@@ -24,24 +40,56 @@ const _maxLat = 1.4538;
 const _minLong = 103.6194;
 const _maxLong = 103.9895;
 
-final _listProvider = StateProvider.autoDispose<List<LatLng>>((ref) {
-  return _latLongList;
+final _doctorsProvider = StateProvider.autoDispose<List<Doctor>>((ref) {
+  return [
+    Doctor(
+      id: '0',
+      hospitals:
+          _latLongList
+              .mapIndexed(
+                (index, location) =>
+                    Hospital(id: '0_$index', location: location),
+              )
+              .toList(),
+    ),
+  ];
 });
 
-void addMoreLocations(WidgetRef ref) {
-  final list = ref.read(_listProvider);
-  final newList = List<LatLng>.from(list);
+void addMoreDoctors(WidgetRef ref) {
+  final currentList = ref.read(_doctorsProvider);
+  final newList =
+      List<Doctor>.from(currentList).followedBy([
+        for (var i = 0; i < 10; i++)
+          Doctor(
+            id: '${currentList.length + i}',
+            hospitals:
+                _getMoreLocations()
+                    .mapIndexed(
+                      (index, location) => Hospital(
+                        id: '${currentList.length + i}_$index',
+                        location: location,
+                      ),
+                    )
+                    .toList(),
+          ),
+      ]).toList();
+  ref.read(_doctorsProvider.notifier).state = newList;
+}
+
+List<LatLng> _getMoreLocations() {
+  final locations = <LatLng>[];
+
   for (var i = 0; i < 10; i++) {
     final random = math.Random();
     final lat = random.nextDouble() * (_maxLat - _minLat) + _minLat;
     final long = random.nextDouble() * (_maxLong - _minLong) + _minLong;
-    newList.add(LatLng(lat, long));
+    locations.add(LatLng(lat, long));
   }
-  ref.read(_listProvider.notifier).state = newList;
+  return locations;
 }
 
-final listProvider = FutureProvider.autoDispose<List<LatLng>>((ref) async {
-  return ref.watch(_listProvider);
+final doctorsProvider = FutureProvider.autoDispose<List<Doctor>>((ref) async {
+  return ref.watch(_doctorsProvider);
 });
 
 double getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
