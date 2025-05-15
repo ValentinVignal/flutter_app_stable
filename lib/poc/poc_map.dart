@@ -61,30 +61,12 @@ class _PocMapState extends ConsumerState<PocMap> {
                           ),
                         )
                         .toSet(),
-                circles: {
-                  if (currentPosition != null)
-                    Circle(
-                      consumeTapEvents: false,
-                      circleId: const CircleId('current_position'),
-                      center: LatLng(
-                        currentPosition.latitude,
-                        currentPosition.longitude,
-                      ),
-                      radius: 5000, // 5 km radius
-                      strokeColor: Colors.blue,
-                      strokeWidth: 1,
-                      onTap: () {
-                        setState(() {
-                          _selectedIds = const {};
-                        });
-                      },
-                    ),
-                },
                 clusterManagers: {_clusterManager},
                 onTap: (_) {
                   setState(() {
                     _selectedIds = const {};
                   });
+                  ref.read(highlightedHospitalProvider.notifier).state = null;
                 },
                 initialCameraPosition: const CameraPosition(
                   target: LatLng(1.290270, 103.851959),
