@@ -47,6 +47,16 @@ class _PocMapState extends ConsumerState<PocMap> {
                               setState(() {
                                 _selectedIds = {hospital.id};
                               });
+                              final doctorId = hospital.id.split('_').first;
+                              ref
+                                  .read(itemScrollControllerProvider)
+                                  .scrollTo(
+                                    index: int.parse(doctorId),
+                                    duration: const Duration(milliseconds: 500),
+                                  );
+                              ref
+                                  .read(highlightedHospitalProvider.notifier)
+                                  .state = hospital.id;
                             },
                           ),
                         )
@@ -128,6 +138,27 @@ class _PocMapState extends ConsumerState<PocMap> {
                                     'Location ${hospital.location.latitude}, ${hospital.location.longitude}',
                                   ),
                                   const SizedBox(height: 5),
+                                  OutlinedButton(
+                                    onPressed: () async {
+                                      ref
+                                          .read(itemScrollControllerProvider)
+                                          .scrollTo(
+                                            index: int.parse(doctorId),
+                                            duration: const Duration(
+                                              milliseconds: 500,
+                                            ),
+                                          );
+                                      ref
+                                          .read(
+                                            highlightedHospitalProvider
+                                                .notifier,
+                                          )
+                                          .state = hospital.id;
+                                    },
+                                    child: Text('Scroll in List'),
+                                  ),
+                                  const SizedBox(height: 5),
+
                                   OutlinedButton(
                                     onPressed: () async {
                                       await launchUrlString(

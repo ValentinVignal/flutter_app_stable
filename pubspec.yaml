@@ -44,6 +44,7 @@ dependencies:
   url_launcher: ^6.3.1
   pointer_interceptor: ^0.10.1+2
   collection: ^1.19.1
+  scrollable_positioned_list: ^0.3.8
 
 
 dev_dependencies:

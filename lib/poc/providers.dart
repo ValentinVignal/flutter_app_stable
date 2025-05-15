@@ -4,6 +4,7 @@ import 'package:collection/collection.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
 final positionProvider = Provider.autoDispose<Position?>((ref) {
   return null;
@@ -110,3 +111,13 @@ double getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
 double deg2rad(deg) {
   return deg * (math.pi / 180);
 }
+
+final itemScrollControllerProvider = Provider.autoDispose<ItemScrollController>(
+  (ref) {
+    return ItemScrollController();
+  },
+);
+
+final highlightedHospitalProvider = StateProvider.autoDispose<String?>((ref) {
+  return null;
+});
