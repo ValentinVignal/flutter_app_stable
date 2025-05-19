@@ -28,7 +28,6 @@ class _PocMapState extends ConsumerState<PocMap> {
   @override
   Widget build(BuildContext context) {
     final doctors = ref.watch(doctorsProvider).valueOrNull ?? const [];
-    final currentPosition = ref.watch(positionProvider);
     return LayoutBuilder(
       builder: (context, constraints) {
         return Stack(
