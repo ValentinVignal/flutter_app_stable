@@ -34,7 +34,8 @@ class _MyWidgetState extends State<MyWidget> {
         Text('Selected: ${_selected ?? "none"}'),
         Autocomplete<String>(
           initialValue: TextEditingValue(text: _selected ?? ''),
-          optionsBuilder: (TextEditingValue textEditingValue) {
+          optionsBuilder: (TextEditingValue textEditingValue) async {
+            await Future.delayed(const Duration(seconds: 3));
             if (textEditingValue.text == '') {
               return const Iterable<String>.empty();
             }
