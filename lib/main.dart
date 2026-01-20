@@ -61,6 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(title: Text('Shorebird Example')),
       body: Center(
         child: Column(
+          spacing: 8,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text('Current patch:'),
@@ -83,6 +84,8 @@ class _MyHomePageState extends State<MyHomePage> {
             Text(_updateStatus?.name ?? 'null'),
             Text('Exception:'),
             Text(_updateException.toString()),
+
+            Text('Patched 1'),
           ],
         ),
       ),
